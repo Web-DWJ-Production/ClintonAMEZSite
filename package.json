@@ -1,0 +1,19 @@
+{
+  "name": "clintonamez-demo",
+  "version": "1.0.0",
+  "description": "This serves as an example for the project structure and deployment strategies for the ClintonAMEZ project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agoley/ClintonAMEZ-DEMO.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agoley/ClintonAMEZ-DEMO/issues"
+  },
+  "homepage": "https://github.com/agoley/ClintonAMEZ-DEMO#readme"
+}
