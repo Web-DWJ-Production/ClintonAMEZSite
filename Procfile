@@ -1,0 +1,1 @@
+web: bin/start-nginx bundle exec node clintonamez-api/index.js
