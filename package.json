@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd clintonamez-ui && npm i && ng build --aot -prod && cd ../clintonamez-api && npm install"
+    "postinstall": "cd clintonamez-ui && npm i && ng build --aot -prod && cd ../clintonamez-api && npm i && node index.js"
   },
   "dependencies": {
     "@angular/cli": "~1.7.0",
