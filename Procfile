@@ -1,1 +1,1 @@
-web: bin/start-nginx
+web: bin/start-nginx node clintonamez-api/index.js
