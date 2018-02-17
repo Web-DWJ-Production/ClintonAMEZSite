@@ -9,8 +9,8 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .listen(PORT, () => {
-      console.log(`Listening on 5000`);
+    console.log('API is listening on 5000');
 
-      // Create the app-initialized file to signal to NGINX the api is ready.
-      fs.openSync('../tmp/app-initialized', 'w');
+    // Create the app-initialized file to signal to NGINX the api is ready.
+    fs.writeFileSync('../tmp/app-initialized');
   })
