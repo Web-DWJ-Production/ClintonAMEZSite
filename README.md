@@ -41,7 +41,7 @@ heroku login
 
 heroku create
 
-git pudh heroku master
+git push heroku master
 
 ## Built With
 
