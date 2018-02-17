@@ -5,11 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd clintonamez-ui && npm i && ng build --aot -prod && cd ../clintonamez-api && npm i"
+    "postinstall": "cd clintonamez-ui && npm i && ng build --aot -prod && cd ../clintonamez-api && npm install"
   },
-  "Dependencies": {
-    "@angular/cli": "~1.7.0",
-    "@angular/compiler-cli": "^5.2.0",
+  "devDependencies": {
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
@@ -26,6 +24,10 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
+  },
+  "buildDependencies": {
+    "@angular/cli": "~1.7.0",
+    "@angular/compiler-cli": "^5.2.0"
   },
   "engines": {
     "node": "7.6.0",
