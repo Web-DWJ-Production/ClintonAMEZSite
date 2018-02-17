@@ -12,5 +12,5 @@ express()
       console.log(`Listening on 5000`);
 
       // Create the app-initialized file to signal to NGINX the api is ready.
-      fs.openSync('/tmp/app-initialized', 'w');
+      fs.openSync('../tmp/app-initialized', 'w');
   })
