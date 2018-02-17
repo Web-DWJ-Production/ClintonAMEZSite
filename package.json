@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@angular/cli": "~1.7.0",
-    "@angular/compiler-cli": "^5.2.0"
+    "@angular/compiler-cli": "^5.2.0",
+    "typescript": "~2.5.3"
   },
   "devDependencies": {
     "@angular/language-service": "^5.2.0",
