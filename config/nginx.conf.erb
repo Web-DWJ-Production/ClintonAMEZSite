@@ -37,7 +37,8 @@ http {
 		keepalive_timeout 5;
 
 		location / {
-    		root /clintonamez-ui/dist;
+			root /clintonamez-ui/dist;
+			index  index.html index.htm;
 		}
 
 		location /api/ {
