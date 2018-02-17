@@ -13,6 +13,7 @@ git clone https://github.com/agoley/ClintonAMEZ-DEMO.git
 What things you need to install the software and how to install them
 
 node
+
 git
 
 ### Installing
@@ -37,7 +38,9 @@ n/a
 Add additional notes about how to deploy this on a live system.
 
 heroku login
+
 heroku create
+
 git pudh heroku master
 
 ## Built With
