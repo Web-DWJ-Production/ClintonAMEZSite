@@ -13,6 +13,7 @@ git clone https://github.com/agoley/ClintonAMEZ-DEMO.git
 What things you need to install the software and how to install them
 
 node
+git
 
 ### Installing
 
@@ -21,7 +22,7 @@ git clone https://github.com/agoley/ClintonAMEZ-DEMO.git
 
 ## Running the tests
 
-No tests
+n/a
 
 ### Break down into end to end tests
 
