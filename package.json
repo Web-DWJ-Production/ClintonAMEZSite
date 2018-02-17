@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "cd clintonamez-ui && npm i && ng build --aot -prod && cd ../clintonamez-api && npm i"
   },
-  "devDependencies": {
+  "Dependencies": {
     "@angular/cli": "~1.7.0",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
