@@ -1,0 +1,294 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+@import (reference) "./app/modules/variables.less";
+
+body, html { 
+    margin: 0px !important;
+    color: rgba(0,0,0,1);
+    height: 100%;
+    font-size: @font-size;
+
+    //font-family: 'Roboto', sans-serif;
+    //font-family: 'Raleway', sans-serif;
+    //font-family: 'Comfortaa', cursive;
+}
+
+*:focus { outline: none;}
+/**/
+.site-page {
+    .title-card {
+        padding: 100px 5px;
+        text-align: center;
+        color: rgba(255,255,255,1);
+        position: relative;
+        h1 { font-size: 4rem; margin:0px; position: relative; z-index: 1;}
+
+        .back-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            img {
+                position: absolute;
+                width: 100%;
+                min-height: 100%;
+                top: 0;
+                left:0;
+                z-index: 0;
+            }
+            .cover {
+                width: 100%;
+                height: 100%;
+                opacity: 0.4;
+                position: relative;
+                z-index: 1;
+                &.c3c2 { background: linear-gradient(to right, @color3, @color2);}
+                &.mainGrad { .backgroundGradient(1);}
+            }
+        }
+        &.c1 {  background-color: rgba(150,150,150,1); }
+    }
+}
+.body-section {  
+    
+    &.notched-top { 
+        position: relative;        
+        &:before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: -@notchSize;
+            left: 50%;
+            transform: translateX(-50%);
+            height: @notchSize;
+            width: @notchSize *2;
+            background-color: rgba(250,250,250,1);
+            border-top-left-radius: @notchSize * 2;
+            border-top-right-radius: @notchSize * 2;
+        }  
+        &.c1 {
+            &:before { .color1(background-color, 1); }
+        } 
+        &.c2 {
+            &:before { background-color: @color2; }
+        } 
+        &.c2-mid {
+            &:before { .color2(background-color, 0.7); }
+        }         
+    }
+}
+
+/* Common elements */
+.font-title1 { font-family: 'Homemade Apple', cursive !important; }
+
+.btn-row {
+    margin-top: 20px;
+    display: block;
+}
+.fill-btn {
+    color: rgba(0,0,0,1);
+    background-color: rgba(230,230,230,1);
+    opacity: 0.6;
+    border-radius: 50px;
+    padding: 5px 10px;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);                        
+    transition: 0.5s all ease-in-out;
+    &:hover { box-shadow: rgba(0,0,0,0); opacity: 1;}
+    &+.fill-btn { margin-left: 10px;}
+}
+
+.btn {
+    color: @color1;
+    background-color: rgba(255,255,255,0);
+    border: 2px solid @color1;
+    border-radius: 50px;
+    padding: 5px 10px;
+    display: inline-flex;
+    cursor: pointer;
+    transition: 0.5s all ease;
+    .title { margin-left: 10px; }
+    &:hover { background-color: @color1; color: rgba(255,255,255,1); box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);}
+
+    &.c3 { color: @color3; border-color: @color3; &:hover { background-color: @color3; color: rgba(255,255,255,1);}}
+    &.c3-flip { color: rgba(255,255,255,1); border-color: rgba(0,0,0,0); .color3(background-color, 1); &:hover { .color3(background-color, 1);}}
+}
+.btn-link {
+    color: @color3;
+    font-weight: bold;
+    opacity: 0.7;
+    transition: 0.5s all ease;
+    cursor: pointer;    
+    text-transform: uppercase;
+
+    &:hover { opacity: 1; }
+}
+
+.md-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .md-sz-10 { width: 100%; }
+    .md-sz-9 { width: 90%; }
+    .md-sz-8 { width: 80%; }
+    .md-sz-7 { width: 70%; }
+    .md-sz-6 { width: 60%; }
+    .md-sz-5 { width: 50%; }
+    .md-sz-4 { width: 40%; }
+    .md-sz-3 { width: 30%; }
+    .md-sz-2 { width: 20%; }
+    .md-sz-1 { width: 10%; }    
+}
+
+/* Carousel*/
+ngx-carousel{
+    height: 100%;
+    z-index: 1;
+    position: relative;
+    .ngxcarousel {
+        height: 100%;
+        position: relative;
+        .ngxcarousel-inner {
+            height: 100%;            
+            .ngxcarousel-items {
+                height: 100%;                
+                .item { 
+                    height: 100%;                    
+                }
+            }
+        }
+        .carousel-ctrl {
+            position: absolute;
+            top: 50%;
+            color: rgba(200,200,200,0.5);
+            transform: translateY(-50%);
+            font-size: 50px;
+            transition: 0.5s all ease;
+            cursor: pointer; 
+            &.prev { left: 10px;}
+            &.next { right: 10px;}   
+            &:hover { color: rgba(255,255,255,1);}
+
+            &.c3 { .color3(color, 0.5); &:hover { color: @color3 !important;}}
+            @media @mobile-device { display: none !important; }
+        }
+    }
+
+    &.tile-carousel { 
+        .ngxcarousel-inner {  
+            width: 85%; 
+            margin: 0px auto;
+            @media @mobile-device { width: 100%;}
+        }
+    } 
+
+    .ngxcarouselPoint {
+        display: none;
+        li { 
+            background: rgba(200,200,200,0.5) !important;
+            //.color2(background, 0.2);
+            &.active { /*.color2(background, 0.7);*/background: rgba(200,200,200,0.7) !important; }
+        }
+    }
+}
+
+/* Custom Scroll */
+.scroll1 {
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+     
+    /* Track */
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+     
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: rgba(100,100,100,0.8); 
+        -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(100,100,100,0.4); 
+    }
+}
+
+/* Devices */
+.half-tablet {
+    border: solid 40px #fff;
+    border-bottom: 0;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    position: relative;
+    vertical-align: middle;
+    width: 40%;
+    
+    &.content {      
+      &:before {
+        background-color: rgba(50,50,50,0.2);
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;        
+      }
+      .content-area {
+        display: block;
+        width: 100%;
+        min-height: 300px;
+      }
+    }
+    &:after {
+      background: rgba(50,50,50,1);
+      border-radius: 100%;
+      content: '';
+      height: 10px;
+      left: 50%;
+      margin: -23px 0 0 -5px;
+      position: absolute;
+      top: 0;
+      width: 10px;
+    }
+
+    &.left {
+        border-bottom: solid 40px #fff;
+        border-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;        
+        border-bottom-right-radius: 20px;
+
+        &:after {
+            left: 100%;
+            top:50%;
+            margin: -5px 0 0 13px;
+        }
+    }
+    &.right {
+        border-bottom: solid 40px #fff;
+        border-right: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 20px;
+
+        &:after {
+            left: -23px;
+            top:50%;            
+        }
+    }
+  }

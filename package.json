@@ -1,5 +1,5 @@
 {
-  "name": "clintonamez-demo",
+  "name": "clintonamez-site-api",
   "version": "1.0.0",
   "description": "This serves as an example for the project structure and deployment strategies for the ClintonAMEZ project.",
   "main": "index.js",

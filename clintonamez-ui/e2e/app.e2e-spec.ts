@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('clintonamez-ui App', () => {
+describe('clinton-amez App', () => {
   let page: AppPage;
 
   beforeEach(() => {
