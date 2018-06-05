@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AGMaterialModule } from '../../material';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxCarouselModule } from 'ngx-carousel';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AgmCoreModule } from '@agm/core';
 
 import 'hammerjs';
 
@@ -47,12 +48,14 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,    
     FormsModule,
+    ReactiveFormsModule,
     AGMaterialModule,
     BrowserModule,
     BrowserAnimationsModule,
     NgxCarouselModule,
     NoopAnimationsModule,    
-    RouterModule.forRoot(appRoutes,{ enableTracing: false } )
+    RouterModule.forRoot(appRoutes,{ enableTracing: false } ),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyDGEvJhKl5-BC1STbiT4rYWIbfeCRkof8E' })
   ],
   declarations: [ MainComponent, HomeComponent, ContactUsComponent, AboutUsComponent, OurHistoryComponent, ServiceInfoComponent, OurStaffComponent, HeaderComponent, FooterComponent, PicBookComponent ],
   exports: []

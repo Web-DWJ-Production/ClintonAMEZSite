@@ -1,4 +1,4 @@
-<div class="site-page about-us">
+<div class="site-page contact-us">
     <section class="title-card c1">
         <h1 class="font-title1">Contact Us</h1>
         <div class="back-img">
@@ -7,8 +7,51 @@
         </div>
     </section>
 
-    <section class="body-section full-txt notched-top">
-        <p>We would be ........</p>
+    <section class="body-section contact-form notched-top">
+        <p class="contact-message">The Clinton Church Family invites you to join us in Christian Fellowship. <br>Please reach out to us below for any question, prayer requests, or general information.</p>
+
+        <form class="email-form" [formGroup]="contactForm" #formDir="ngForm" (ngSubmit)="submitForm()">
+            <div class="form-group">
+                <!-- Name -->
+                <input id="name" class="form-control" placeholder="Name" formControlName="name" required>
+
+                <!-- Email -->
+                <input id="email" class="form-control" placeholder="Email" formControlName="email" required>
+
+                <!-- Type -->
+                <select id="messageType" class="form-control" formControlName="type" required>
+                    <option *ngFor="let type of formtypes" [value]="type">{{type}}</option>
+                </select>
+
+                <!-- Message -->
+                <textarea id="message" class="form-control" rows="5" placeholder="Please Type You Message" formControlName="message" required></textarea>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn btn c3"><span>Submit</span></button>
+            </div>
+        </form>
+    </section>
+
+    <section class="body-section contact-info c3 notched-top">
+        <div class="info-section">
+            <h2>Church Address</h2>
+            <p>Clinton African Methodist Episcopal Zion Church</p>
+            <p>223 Elizabeth Avenue</p>
+            <p>Rockville, MD. 20850</p>
+        </div>
+
+        <div class="info-section">
+            <h2>Contact Information</h2>
+            <p><span>Phone:</span> (301) 340-7942</p>
+            <p><span>Fax:</span> (301) 825-8938</p>
+            <p><span>Email:</span> camez223@aol.com</p>
+        </div>
+    </section>
+
+    <section class="body-section contact-map map notched-top">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zm">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
     </section>
 
 </div>
