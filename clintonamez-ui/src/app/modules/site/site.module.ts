@@ -19,6 +19,7 @@ import { OurHistoryComponent } from './components/ourHistory/ourHistory';
 import { OurStaffComponent } from './components/ourStaff/ourStaff';
 import { ServiceInfoComponent } from './components/serviceInfo/serviceInfo';
 import { ContactUsComponent } from './components/contactUs/contactUs';
+import { PastorsPageComponent } from './components/pastorsPage/pastorsPage';
 
 /* Templates */
 import { HeaderComponent } from './components/templates/header';
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
                 {path:'our-staff', component: OurStaffComponent},
                 {path:'our-service', component: ServiceInfoComponent}
             ]},
-            { path:'contact-us', component: ContactUsComponent}
+            { path:'contact-us', component: ContactUsComponent},
+            { path: 'pastors-page', component: PastorsPageComponent }
         ]
     }  
 ];
@@ -57,7 +59,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes,{ enableTracing: false } ),
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyDGEvJhKl5-BC1STbiT4rYWIbfeCRkof8E' })
   ],
-  declarations: [ MainComponent, HomeComponent, ContactUsComponent, AboutUsComponent, OurHistoryComponent, ServiceInfoComponent, OurStaffComponent, HeaderComponent, FooterComponent, PicBookComponent ],
+  declarations: [ MainComponent, HomeComponent, PastorsPageComponent, ContactUsComponent, AboutUsComponent, OurHistoryComponent, ServiceInfoComponent, OurStaffComponent, HeaderComponent, FooterComponent, PicBookComponent ],
   exports: []
 })
 export class SiteModule { }

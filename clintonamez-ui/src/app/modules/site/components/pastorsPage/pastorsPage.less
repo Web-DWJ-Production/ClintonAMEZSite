@@ -1,0 +1,40 @@
+@import (reference) "../../../variables.less";
+
+.our-pastor {
+    .pastorInfo {
+        padding: 50px 5%;
+        .section-title {
+            text-align: center;
+            width: 100%;
+            padding: 0px 5%;
+            font-size: 2.5rem;
+            color: @color3;
+        }
+        .pastor-card { 
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            display: flex;
+            max-height: 500px;
+            .church-img { width: 50%; overflow:hidden; img{ height: 100%; min-width: 100%;}}
+            .pastor-content { 
+                padding: 30px;                
+                flex: 1;
+                font-size: 1.2rem;
+                overflow-y: auto;   
+                .content-info  {                                                
+                    .bio {
+                        p { text-indent: 50px; line-height: 2rem; margin: 0 0 30px; }
+                    }
+                    .closing-verse {
+                        text-align: center;
+                        font-style: italic;
+                        font-size: 1rem;
+                        div { margin-bottom: 10px;}                        
+                    }
+                    
+                }
+            }
+        }
+    }
+}
