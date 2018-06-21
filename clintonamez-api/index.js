@@ -4,10 +4,11 @@ const fs = require('fs')
 const PORT = 5000
 
 express()
+  .use(express.json())
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
+  .use('/mail', require('./controllers/mail.controller.js'))
   .listen(PORT, () => {
     console.log('API is listening on 5000');
 
