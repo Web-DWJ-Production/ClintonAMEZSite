@@ -6,6 +6,7 @@ import { AnnouncementModel } from '../datamodels/announcementModel';
 import { LineTypeModel } from '../datamodels/lineTypeModel';
 import { MinistryModel } from '../datamodels/ministryModel';
 import { EventsModel } from '../datamodels/eventsModel';
+import { GalleryModel } from '../datamodels/galleryModel';
 
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEvent } from 'angular-calendar';
@@ -126,5 +127,18 @@ export class CoreService {
             new EventsModel("Leadership Meeting 3", addDays(new Date(), 20), "1 Test Street, Gaithersburg, MD. 20878")
         ];
         callback({"errorMessage":null,"results":tmpEvents});
-    }    
+    }
+    
+    getTmpGalleries(callback){
+        var tmpGalleries: GalleryModel[] = [
+            new GalleryModel("Gallery 1", [ "https://cdn.shopify.com/s/files/1/1368/5523/products/Tada_Poodle_F7_1024x1024.jpg?v=1527264126", "https://cdn.shopify.com/s/files/1/1368/5523/products/Love_Dach_F1_1024x1024.jpg?v=1529295722", "https://a00000820018-live-cc36dd0ff06f46c08f9308e5144c2f82-209a3c0.s3.amazonaws.com/filer_public_thumbnails/filer_public/6f/36/6f36ea5b-ff88-4892-8a6e-2b2410a38c02/block-photos_available-pets_383968525-cropped-small.jpg__425x318_q90_crop_subsampling-2_upscale.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA"]),
+            new GalleryModel("Gallery 2", [ "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA", "https://www.rover.com/blog/wp-content/uploads/2017/05/puppies-together-960x540.jpg", "https://www.rover.com/blog/wp-content/uploads/2017/05/puppies-together-960x540.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5-aCvDIKMYghocPGz1XPiniG37vvfBFyAcXAF6Uzoxst_fKBl"]),
+            new GalleryModel("Test 1", [ "https://cdn.shopify.com/s/files/1/1368/5523/products/Tada_Poodle_F7_1024x1024.jpg?v=1527264126", "https://cdn.shopify.com/s/files/1/1368/5523/products/Love_Dach_F1_1024x1024.jpg?v=1529295722", "https://a00000820018-live-cc36dd0ff06f46c08f9308e5144c2f82-209a3c0.s3.amazonaws.com/filer_public_thumbnails/filer_public/6f/36/6f36ea5b-ff88-4892-8a6e-2b2410a38c02/block-photos_available-pets_383968525-cropped-small.jpg__425x318_q90_crop_subsampling-2_upscale.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA"]),
+            new GalleryModel("Test 2", [ "https://cdn.shopify.com/s/files/1/1368/5523/products/Tada_Poodle_F7_1024x1024.jpg?v=1527264126", "https://cdn.shopify.com/s/files/1/1368/5523/products/Love_Dach_F1_1024x1024.jpg?v=1529295722", "https://a00000820018-live-cc36dd0ff06f46c08f9308e5144c2f82-209a3c0.s3.amazonaws.com/filer_public_thumbnails/filer_public/6f/36/6f36ea5b-ff88-4892-8a6e-2b2410a38c02/block-photos_available-pets_383968525-cropped-small.jpg__425x318_q90_crop_subsampling-2_upscale.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA"]),
+            new GalleryModel("InsideTest Base 1", [ "https://cdn.shopify.com/s/files/1/1368/5523/products/Tada_Poodle_F7_1024x1024.jpg?v=1527264126", "https://cdn.shopify.com/s/files/1/1368/5523/products/Love_Dach_F1_1024x1024.jpg?v=1529295722", "https://a00000820018-live-cc36dd0ff06f46c08f9308e5144c2f82-209a3c0.s3.amazonaws.com/filer_public_thumbnails/filer_public/6f/36/6f36ea5b-ff88-4892-8a6e-2b2410a38c02/block-photos_available-pets_383968525-cropped-small.jpg__425x318_q90_crop_subsampling-2_upscale.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA"]),
+            new GalleryModel("InsideTest Base 2", [ "https://cdn.shopify.com/s/files/1/1368/5523/products/Tada_Poodle_F7_1024x1024.jpg?v=1527264126", "https://cdn.shopify.com/s/files/1/1368/5523/products/Love_Dach_F1_1024x1024.jpg?v=1529295722", "https://a00000820018-live-cc36dd0ff06f46c08f9308e5144c2f82-209a3c0.s3.amazonaws.com/filer_public_thumbnails/filer_public/6f/36/6f36ea5b-ff88-4892-8a6e-2b2410a38c02/block-photos_available-pets_383968525-cropped-small.jpg__425x318_q90_crop_subsampling-2_upscale.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2znBf_GmLSD9EyToeHHQ23RVxlId6yd9fTxZ8ikcxlXKNYQZzsA"]),
+        ];
+
+        callback({"errorMessage":null,"results":tmpGalleries});
+    }
 }

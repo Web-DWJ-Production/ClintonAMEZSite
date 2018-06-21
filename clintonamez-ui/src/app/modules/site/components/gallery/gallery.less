@@ -1,0 +1,57 @@
+@import (reference) "../../../variables.less";
+
+.gallery {
+    .gallery-display {
+        padding: 30px 5%;
+        .galleryList {
+            .galleryFilter {
+                text-align: center;
+                .search-container {
+                    background: rgba(100,100,100,1);
+                    border-radius: 50px;
+                    padding: 10px 20px;
+                    color: rgba(255,255,255,1);
+                    width: 400px;
+                    display: inline-flex;
+                    justify-content: space-between;
+
+                    input{ 
+                        margin-right: 10px; 
+                        flex: 1;
+                        background-color: rgba(100,100,100,1);
+                        border: none;
+                        color: rgba(255,255,255,1);
+                        &::placeholder { color: rgba(220,220,220,0.5);}
+                    }
+                }
+            }
+        }
+
+        .galleryListContainer {
+            margin: 30px 0px;
+            display: flex;
+            //justify-content: space-between;
+            flex-wrap: wrap; 
+
+            .galleryItem { 
+                border: 2px solid rgba(100,100,100,1);
+                border-radius: 5px;
+                padding: 10px;
+                overflow: hidden;
+                margin: 0px 1% 30px 0px;
+
+                width: 22%;
+                height: 200px;
+
+                .itemContainer {
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    height: 100%;
+                    .img-container { flex: 1; img { width: 100%; }}
+                    .img-title { font-weight: bold; font-size: 2rem;}
+                }
+            }
+        }
+    }
+}

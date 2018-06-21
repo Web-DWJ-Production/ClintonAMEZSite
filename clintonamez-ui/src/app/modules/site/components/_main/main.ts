@@ -13,7 +13,7 @@ import { CmsNavModel } from '../../../../datamodels/cmsNavModel';
       new CmsNavModel("pastors page", null, 'site/pastors-page', null, false),
       new CmsNavModel("ministries", null, '', null, false),
       new CmsNavModel("get connected", null, '', [new CmsNavModel("events calender", null, '', null, false), new CmsNavModel("clinton resources", null, '', null, false)], false),
-      new CmsNavModel("gallery", null, '', null, false),
+      new CmsNavModel("gallery", null, 'site/gallery', null, false),
       new CmsNavModel("contact us", null, 'site/contact-us', null, false)
     ];
   }

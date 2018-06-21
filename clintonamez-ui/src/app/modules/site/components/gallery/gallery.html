@@ -1,0 +1,36 @@
+<div class="site-page gallery">
+    <section class="title-card c1">
+        <h1 class="font-title1">Gallery</h1>
+        <div class="back-img">
+            <div class="cover c3c2"></div>
+            <img src="assets/images/tmpMedia/img4.jpg">
+        </div>
+    </section>
+
+    <section class="body-section gallery-display notched-top">
+        <!-- Gallery Display -->
+        <div class="galleryList">
+            <div class="galleryFilter">
+                <div class="search-container">
+                    <input [(ngModel)]="searchText" class="filter-search" placeholder="Search Gallery" autocomplete="off">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <div class="galleryListContainer">
+                <div class="galleryItem" *ngFor="let gallery of galleryObject.list | galleryfilter : searchText">
+                    <div class="itemContainer">
+                        <div class="img-container"><img [src]="getDisplayImg(gallery)"></div>
+                        <div class="item-title">{{ gallery.title }}</div>
+                    </div>
+                </div>
+
+                <div class="listControl"></div>
+            </div>
+        </div>
+
+        <!-- Photos Display -->
+        <div class="photosList"></div>
+    </section>
+
+</div>
