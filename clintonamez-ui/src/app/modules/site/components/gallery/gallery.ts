@@ -1,37 +1,9 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, ChangeDetectorRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GalleryModel } from '../../../../datamodels/galleryModel';
 
 /* Services */
 import { CoreService } from '../../../../services/coreServices';
-
-@Pipe({ name: 'galleryfilter' })
-export class GalleryFilterPipe implements PipeTransform {
-  constructor(private sanitizer: DomSanitizer) {}
-  transform(items: GalleryModel[], searchText: string) {
-    if(!items) return [];
-    if(!searchText) return items;
-
-    searchText = searchText.toLowerCase();
-    return items.filter( it => { 
-        return it.title.toLowerCase().includes(searchText);
-    });
-  }
-}
-
-@Pipe({ name: 'gallerypaging' })
-export class GalleryPagingPipe implements PipeTransform {
-  constructor(private sanitizer: DomSanitizer) {}
-  transform(items: GalleryModel[], searchText: string) {
-    if(!items) return [];
-    if(!searchText) return items;
-
-    searchText = searchText.toLowerCase();
-    return items.filter( it => { 
-        return it.title.toLowerCase().includes(searchText);
-    });
-  }
-}
 
 @Component({
   selector: 'pg-gallery',
@@ -46,35 +18,59 @@ export class GalleryComponent implements OnInit {
     pageTotal:1,
     pageMax: 8
   };
-  public galleryList: GalleryModel[] = null;
+  public searchText: string="";
 
-  constructor(private coreService: CoreService) { }
+  constructor(private coreService: CoreService, private chRef: ChangeDetectorRef) { }
   ngOnInit() {
       this.loadGalleries();
    }   
 
   public loadGalleries(){
     var self = this;
-    this.coreService.getTmpGalleries(function(res){
+    /*this.coreService.getTmpGalleries(function(res){
       if(!res.errorMessage){
         self.galleryObject.list = res.results;
         self.galleryObject.pageTotal = Math.ceil(res.results.size / self.galleryObject.pageMax);
       }
+    });*/
+
+    this.coreService.getGalleryList().subscribe(res => { 
+      self.galleryObject.list = res;
+      self.galleryObject.pageTotal = Math.ceil(res.length / self.galleryObject.pageMax);
     });
   }
 
-  public displayGalleryList(){
-    var self = this;
+  public changeSelected(gallery){
+    this.galleryObject.selected = gallery;
+  }
+
+  public changePage(direction) {
+    if(direction < 0){
+      this.galleryObject.page = (this.galleryObject.page == 0 ? this.galleryObject.page : this.galleryObject.page -1);
+    }
+    else {
+      this.galleryObject.page = (this.galleryObject.page == (this.galleryObject.pageTotal -1) ? this.galleryObject.page : this.galleryObject.page +1);
+    }
+    this.chRef.detectChanges();
+  }
+  
+  public galleryFilter(search, list){
     var ret = [];
-
     try {
-      var minItem = this.galleryObject.page * this.galleryObject.pageMax;
-      var maxItem = ((this.galleryObject.page+1) < this.galleryObject.pageTotal ? ((this.galleryObject.page+1) * this.galleryObject.pageMax) : this.galleryObject.list.length);
+      ret = list.filter(it => { 
+        return it.title.toLowerCase().includes(search);
+      });
 
-      ret = this.galleryObject.list.slice(minItem, maxItem);
+      // Pagnation
+      this.galleryObject.pageTotal = Math.ceil(list.length / this.galleryObject.pageMax);
+
+      var minItem = this.galleryObject.page * this.galleryObject.pageMax;
+      var maxItem = ((this.galleryObject.page+1) < this.galleryObject.pageTotal ? ((this.galleryObject.page+1) * this.galleryObject.pageMax) :list.length);
+    
+      ret = ret.slice(minItem, maxItem);
     }
     catch(ex){
-      console.log("error: ", ex);
+      console.log("Error: ", ex);
     }
     return ret;
   }

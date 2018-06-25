@@ -20,7 +20,7 @@ import { OurStaffComponent } from './components/ourStaff/ourStaff';
 import { ServiceInfoComponent } from './components/serviceInfo/serviceInfo';
 import { ContactUsComponent } from './components/contactUs/contactUs';
 import { PastorsPageComponent } from './components/pastorsPage/pastorsPage';
-import { GalleryComponent, GalleryFilterPipe } from './components/gallery/gallery';
+import { GalleryComponent} from './components/gallery/gallery';
 
 /* Templates */
 import { HeaderComponent } from './components/templates/header';
@@ -65,7 +65,6 @@ const appRoutes: Routes = [
       MainComponent, 
       HomeComponent, 
       GalleryComponent,
-      GalleryFilterPipe, 
       PastorsPageComponent, 
       ContactUsComponent, 
       AboutUsComponent, 

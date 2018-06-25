@@ -1,9 +1,11 @@
 export class GalleryModel {
     public title: string;
-    public images: string[];
+    public totalImgs: number;
+    public setId: string;
+    public previewImg: string;
 
-    constructor(myTitle, myImages){        
+    constructor(myTitle, myPreviewImg){        
         this.title = myTitle;
-        this.images = myImages;
+        this.previewImg = myPreviewImg;
     }
 }

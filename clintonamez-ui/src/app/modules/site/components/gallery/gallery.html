@@ -9,7 +9,7 @@
 
     <section class="body-section gallery-display notched-top">
         <!-- Gallery Display -->
-        <div class="galleryList">
+        <div class="galleryList" *ngIf="galleryObject.selected == null">
             <div class="galleryFilter">
                 <div class="search-container">
                     <input [(ngModel)]="searchText" class="filter-search" placeholder="Search Gallery" autocomplete="off">
@@ -17,20 +17,39 @@
                 </div>
             </div>
 
-            <div class="galleryListContainer">
-                <div class="galleryItem" *ngFor="let gallery of galleryObject.list | galleryfilter : searchText">
+            <div class="galleryListContainer" >
+                <div class="galleryItem" *ngFor="let gallery of galleryFilter(searchText,galleryObject.list)" (click)="changeSelected(gallery)">
                     <div class="itemContainer">
-                        <div class="img-container"><img [src]="getDisplayImg(gallery)"></div>
+                        <div class="img-container"><img [src]="gallery.previewImg"></div>
                         <div class="item-title">{{ gallery.title }}</div>
                     </div>
                 </div>
 
-                <div class="listControl"></div>
+                <div class="listControl">
+                    <div class="ctrl-container">
+                        <div class="ctrl ctrl-left" (click)="changePage(-1)" [ngClass]="{'disabled':galleryObject.page == 0}"><i class="fas fa-caret-left" ></i></div>
+                        <div class="page-values"><span class="ctrl-page">{{galleryObject.page + 1}}</span> / <span class="ctrl-total">{{galleryObject.pageTotal}}</span></div>
+                        <div class="ctrl ctrl-right" (click)="changePage(1)" [ngClass]="{'disabled':galleryObject.page == (galleryObject.pageTotal -1)}"><i class="fas fa-caret-right" (click)="changePage(1)"></i></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Photos Display -->
-        <div class="photosList"></div>
+        <div class="photosList" *ngIf="galleryObject.selected != null">
+            <div class="pageControl" (click)="changeSelected(null)">
+                <div class="ctrl ctrl-back"><i class="far fa-arrow-alt-circle-left" ></i></div>
+                <span>Return To All Galleries</span>
+            </div>
+
+            <div class="photoListContainer" >
+                <div class="photoItem" *ngFor="let photo of galleryObject.selected.images">
+                    <div class="photoContainer">
+                        <div class="img-container"><img [src]="photo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 </div>

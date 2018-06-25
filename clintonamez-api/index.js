@@ -9,6 +9,8 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .use('/mail', require('./controllers/mail.controller.js'))
+  .use('/mediaSet',require('./controllers/photoset.controller.js'))
+  .use('/media',require('./controllers/photo.controller.js'))
   .listen(PORT, () => {
     console.log('API is listening on 5000');
 
