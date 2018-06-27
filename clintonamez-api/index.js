@@ -8,6 +8,12 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
+  /* For Dev Only */
+  .use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  })
   .use('/mail', require('./controllers/mail.controller.js'))
   .use('/mediaSet',require('./controllers/photoset.controller.js'))
   .use('/media',require('./controllers/photo.controller.js'))

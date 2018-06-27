@@ -6,27 +6,19 @@ import { CmsNavModel } from '../../../../datamodels/cmsNavModel';
 @Component({
   selector:'my-header',  
   templateUrl: './_header.html',
-  animations:[
-    trigger('slideDownNav',[
-      transition('void => *',[
-        query('*', style({ opacity: 0})),
-        query('*', stagger('300ms', [
-          animate('0.8s ease-in', keyframes([
-            style({opacity: 0, transform: 'translateY(-75%)'}),
-            style({opacity: 1, transform: 'translateY(0)'})
-          ]))
-        ]))
-      ]),
-      transition('* => void',[
-        query('*', style({ opacity: 1})),
-        query('*', stagger('300ms', [
-          animate('0.8s ease-in', keyframes([
-            style({opacity: 1, transform: 'translateY(0)'}),
-            style({opacity: 0, transform: 'translateY(-75%)'})
-          ]))
-        ]))
-      ])
-    ])
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({transform: 'translateX(100%)', opacity: 0}),
+          animate('500ms', style({transform: 'translateX(0)', opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({transform: 'translateX(0)', opacity: 1}),
+          animate('500ms', style({transform: 'translateX(100%)', opacity: 0}))
+        ])
+      ]
+    )
   ],
   styleUrls: ['./_header.less', '../../site.styles.less']
 })

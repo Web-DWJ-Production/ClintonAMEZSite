@@ -36,7 +36,7 @@
         </div>
     </div>
     <!-- Additional Menu -->
-    <div class="additionalMenu" *ngIf="additonalMenu.display == true" (mouseleave)="hideAdditionalMenu()" [@slideDownNav]>
+    <div class="additionalMenu" *ngIf="additonalMenu.display" (mouseleave)="hideAdditionalMenu()" [@enterAnimation]="additonalMenu.display">
         <div class="additionalContainer">
             <div class="add-nav-link main-link">
                 <a [href]="additonalMenu.titlepage">{{additonalMenu.title}}</a>

@@ -16,7 +16,8 @@ export class GalleryComponent implements OnInit {
     list: [],
     page:0,
     pageTotal:1,
-    pageMax: 8
+    pageMax: 8,
+    loading: false
   };
   public searchText: string="";
 
@@ -27,21 +28,30 @@ export class GalleryComponent implements OnInit {
 
   public loadGalleries(){
     var self = this;
-    /*this.coreService.getTmpGalleries(function(res){
-      if(!res.errorMessage){
-        self.galleryObject.list = res.results;
-        self.galleryObject.pageTotal = Math.ceil(res.results.size / self.galleryObject.pageMax);
-      }
-    });*/
 
+    this.galleryObject.loading = true;
     this.coreService.getGalleryList().subscribe(res => { 
       self.galleryObject.list = res;
       self.galleryObject.pageTotal = Math.ceil(res.length / self.galleryObject.pageMax);
+
+      this.galleryObject.loading = false;
     });
   }
 
   public changeSelected(gallery){
+    var self = this;
     this.galleryObject.selected = gallery;
+
+    if(gallery != null){
+      if(self.galleryObject.selected.images == null || self.galleryObject.selected.images == undefined){
+        this.galleryObject.loading = true;
+        this.coreService.getGallery(this.galleryObject.selected.setId).subscribe(res => { 
+          self.galleryObject.selected.images = res;
+          this.galleryObject.loading = false;
+        });
+      }
+    }
+
   }
 
   public changePage(direction) {

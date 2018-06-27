@@ -91,7 +91,21 @@
                 display:flex; 
                 font-size: 2rem; 
                 cursor: pointer; 
-                .ctrl { margin-right: 10px;}
+                color: @color3;
+                .ctrl-container {
+                    display: inline-flex;
+                    border-radius: 50px;
+                    padding: 5px 20px;
+                    border: 2px solid @color3;
+                    background: rgba(255,255,255,0.5);
+                    transition: 0.5s all ease-in-out;
+                    &:hover { 
+                        .color3(background, 0.5);
+                        color: rgba(250,250,250,1);
+                        border-color: rgba(255,255,255,0);
+                    }
+                    .ctrl { margin-right: 10px;}
+                }
             }
 
             .photoListContainer {
@@ -118,7 +132,11 @@
                     }
                 }
             }
+        }
 
+        .loading-animation {
+            text-align: center;
+            font-size: 200px;
         }
     }
 }

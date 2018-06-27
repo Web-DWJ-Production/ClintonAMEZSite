@@ -3,6 +3,7 @@ export class GalleryModel {
     public totalImgs: number;
     public setId: string;
     public previewImg: string;
+    public images: string[];
 
     constructor(myTitle, myPreviewImg){        
         this.title = myTitle;

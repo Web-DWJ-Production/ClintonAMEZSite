@@ -33,23 +33,21 @@ var media = {
                 if(!err && resp.statusCode === 200){
                     var ret = [];
                     try {
-                        for(var i =0; i < body.photoset.photo.length; i++){
-                            var tmp = getImgUrl(body.photoset.photo[i]);
+                        if(body.photoset != undefined){
+                            for(var i =0; i < body.photoset.photo.length; i++){
+                                var tmp = getImgUrl(body.photoset.photo[i]);
 
-                            if(tmp != {}) { ret.push(tmp);}
+                                if(tmp != {}) { ret.push(tmp);}
+                            }
                         }
                     }
                     catch(ex){
                         console.log("Error building Img list: ", ex);
                     }
-                    // For Dev
-                    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
                     res.status(200).json(ret);
                 }
                 else {
                     console.error(err);
-                    // For Dev
-                    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
                     res.status(400).json(ret);
                 }
             });
@@ -68,16 +66,11 @@ var media = {
 
                         if(tmp != {}) { ret.push(tmp);}
                     }
-
-                    // For Dev
-                    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+                    
                     res.status(200).json(ret);
                 }
                 else {
-                    console.error(err);
-                    
-                    // For Dev
-                    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+                    console.error(err);                    
                     res.status(400).json(ret);
                 }
             });
@@ -89,7 +82,9 @@ function getImgUrl(imgObj){
     var url = "";
 
     try{
-        url = util.format("http://c1.staticflickr.com/%s/%s/%s_%s_b.jpg", imgObj.farm, imgObj.server, imgObj.primary, imgObj.secret);
+        var photoId = (imgObj.primary == undefined ? imgObj.id : imgObj.primary);
+        //url = util.format("http://c1.staticflickr.com/%s/%s/%s_%s_b.jpg", imgObj.farm, imgObj.server, photoId, imgObj.secret);
+        url = util.format("https://farm%s.staticflickr.com/%s/%s_%s_z.jpg", imgObj.farm, imgObj.server, photoId, imgObj.secret);
     }
     catch(ex){
         console.log("Error Processing Img: ", ex);

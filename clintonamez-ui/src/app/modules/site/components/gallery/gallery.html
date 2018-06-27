@@ -9,7 +9,7 @@
 
     <section class="body-section gallery-display notched-top">
         <!-- Gallery Display -->
-        <div class="galleryList" *ngIf="galleryObject.selected == null">
+        <div class="galleryList" *ngIf="galleryObject.selected == null && galleryObject.loading == false">
             <div class="galleryFilter">
                 <div class="search-container">
                     <input [(ngModel)]="searchText" class="filter-search" placeholder="Search Gallery" autocomplete="off">
@@ -36,10 +36,12 @@
         </div>
 
         <!-- Photos Display -->
-        <div class="photosList" *ngIf="galleryObject.selected != null">
+        <div class="photosList" *ngIf="galleryObject.selected != null && galleryObject.loading == false">
             <div class="pageControl" (click)="changeSelected(null)">
-                <div class="ctrl ctrl-back"><i class="far fa-arrow-alt-circle-left" ></i></div>
-                <span>Return To All Galleries</span>
+                <div class="ctrl-container">
+                    <div class="ctrl ctrl-back"><i class="far fa-arrow-alt-circle-left" ></i></div>
+                    <span>Return To All Galleries</span>
+                </div>
             </div>
 
             <div class="photoListContainer" >
@@ -49,6 +51,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading-animation" *ngIf="galleryObject.loading == true">
+            <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div>
         </div>
     </section>
 

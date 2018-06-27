@@ -8,7 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class OurStaffComponent implements OnInit {
   constructor() { }
-  
+  public colorClass = ["", "c2-mid",""];
+
   public staffList = [
       {"name":"Administrative Team", "members":[
           {"name":"Ms. Jonice Adams & Ms. Donna Cawley", "title":"Co-Directors, Communication & Brand Management"},
