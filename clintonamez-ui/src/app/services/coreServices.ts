@@ -135,6 +135,55 @@ export class CoreService {
         ];
         callback({"errorMessage":null,"results":tmpEvents});
     }
+    getTmpMinistry(id,callback){
+        var tmpMinistry = {
+            "section":"Administration & Stewardship", 
+            "title":"Event Planning & Management", 
+            "defaultMedia":"assets/images/tmpMedia/c1.jpg",
+            "logo":"", 
+            "subSections":["Admin & Tech"],
+            "mission":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "populationsServed":["population1", "population2", "population3"],
+            "activities":[{"name":"Test Activity 1", "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},{"name":"Test Activity 2", "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."}],
+            "leadership":[{"name": "John Test", "title":"President", "email": "J.Test@testmail.com"}, {"name": "Wilma Test", "title":"Vice-President", "email": "W.Test@testmail.com"}],
+            "images":[],
+            "siblings": [
+                    {"section":"Administration & Stewardship", "title":"Trustee Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                    {"section":"Administration & Stewardship", "title":"Steward Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                    {"section":"Administration & Stewardship", "title":"Budget and Finance", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                    {"section":"Administration & Stewardship", "title":"Calendar and Scheduling", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]}
+                ]
+        };
+        callback({"errorMessage":null, "results":tmpMinistry});
+    }
+
+    getTmpMinistries(callback){
+        var tmpMinistries = [
+            {"sectionTitle":"Administration & Stewardship", "list":[
+                {"section":"Administration & Stewardship", "title":"Trustee Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Administration & Stewardship", "title":"Steward Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Administration & Stewardship", "title":"Budget & Finance", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Administration & Stewardship", "title":"Calendar/Scheduling", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]},
+                {"section":"Administration & Stewardship", "title":"Event Planning & Management", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]}
+            ]},
+            {"sectionTitle":"Evangelism & Discipleship", "list":[
+                {"section":"Evangelism & Discipleship", "title":"Trustee Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Evangelism & Discipleship", "title":"Steward Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Evangelism & Discipleship", "title":"Budget & Finance", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Evangelism & Discipleship", "title":"Calendar/Scheduling", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]},
+                {"section":"Evangelism & Discipleship", "title":"Event Planning & Management", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]}
+            ]},
+            {"sectionTitle":"Mission, Outreach, & Service", "list":[
+                {"section":"Mission, Outreach, & Service", "title":"Trustee Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Mission, Outreach, & Service", "title":"Steward Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Mission, Outreach, & Service", "title":"Budget & Finance", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
+                {"section":"Mission, Outreach, & Service", "title":"Calendar/Scheduling", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]},
+                {"section":"Mission, Outreach, & Service", "title":"Event Planning & Management", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]}
+            ]}
+        ];
+
+        callback({"errorMessage":null, "results":tmpMinistries});
+    }
 
     getGalleryList(){
         return this.http.get<GalleryModel[]>(this.urlBase+'/mediaSet');

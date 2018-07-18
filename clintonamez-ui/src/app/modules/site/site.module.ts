@@ -21,6 +21,8 @@ import { ServiceInfoComponent } from './components/serviceInfo/serviceInfo';
 import { ContactUsComponent } from './components/contactUs/contactUs';
 import { PastorsPageComponent } from './components/pastorsPage/pastorsPage';
 import { GalleryComponent} from './components/gallery/gallery';
+import { MinistriesComponent } from './components/ministries/ministries';
+import { indMinistryComponent } from './components/ministries/indMinistry';
 
 /* Templates */
 import { HeaderComponent } from './components/templates/header';
@@ -35,7 +37,7 @@ const appRoutes: Routes = [
         component: MainComponent,
         children:[
             { path:'', component: HomeComponent },
-            { path:'about-us', component: AboutUsComponent },
+            { path:'about-us', component: AboutUsComponent},
             { path:'about-us', children:[
                 {path:'our-history', component: OurHistoryComponent},
                 {path:'our-staff', component: OurStaffComponent},
@@ -43,7 +45,11 @@ const appRoutes: Routes = [
             ]},
             { path:'contact-us', component: ContactUsComponent},
             { path: 'pastors-page', component: PastorsPageComponent },
-            { path: 'gallery', component: GalleryComponent}
+            { path: 'gallery', component: GalleryComponent},
+            { path: 'ministries', component: MinistriesComponent},
+            { path: 'ministries', children:[
+                {path:':id', component: indMinistryComponent}
+            ]}
         ]
     }  
 ];
@@ -67,7 +73,9 @@ const appRoutes: Routes = [
       GalleryComponent,
       PastorsPageComponent, 
       ContactUsComponent, 
-      AboutUsComponent, 
+      AboutUsComponent,
+      MinistriesComponent, 
+      indMinistryComponent,
       OurHistoryComponent, 
       ServiceInfoComponent, 
       OurStaffComponent, 

@@ -1,0 +1,82 @@
+<div class="site-page ministry">
+    <!-- Ministry List-->
+    <section class="sub-nav-card c1">
+        <div class="back-img">
+            <div class="cover c3c2"></div>
+        </div>
+        <!-- Front -->
+        <div class="front-content">
+            <div class="title-container"><h2 class="font-title2">Ministry</h2></div>
+            <div class="sub-nav-container">
+                <!-- Back Tile -->
+                <div class="back-tile tile-container">
+                    <a class="tile-page link" href="/site/ministries">
+                        <div class="full-page-info">
+                            <div>Return To All Ministries</div>
+                            <div class="back-icon"><i class="fas fa-arrow-alt-circle-left"></i></div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Sibling List -->
+                <ngx-carousel [inputs]="siblingCarousel" class="sibling-carousels tile-carousel">        
+                    <ngx-item *ngFor="let ministry of ministryComponent.siblings" NgxCarouselItem>
+                        <div class="tile-container">
+                            <a class="tile-page link mini" [href]="getAddress(ministry.title)">
+                                <div class="page-img"><img [src]="ministry.defaultMedia"></div>
+                                <div class="page-info">
+                                    <!-- LOGO -->
+                                    <div class="icon amez-logo"><img src="assets/images/logos/ame_zion_logo.png"></div>
+                                    <!-- Title -->
+                                    <div class="page-title">{{ministry.title}}</div>
+                                    <!-- Sub Title -->
+                                    <div class="sub-title" *ngIf="ministry.subSections.length > 0">{{ministry.subSections[0]}}</div>
+                                </div>
+                            </a>
+                        </div>
+                    </ngx-item>
+
+                    <div NgxCarouselPrev class="carousel-ctrl light prev"> <i class="nav fas fa-chevron-left"></i> </div>
+                    <div NgxCarouselNext class="carousel-ctrl light next"> <i class="nav fas fa-chevron-right"></i> </div>
+                </ngx-carousel>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Body -->
+    <section class="body-section notched-top">
+        <div class="outer-slide-container">
+            <!-- Slide Bottom-->
+            <div class="slide-bottom">
+                <h1 class="ministry-title">{{ ministryComponent.title }}</h1>
+                <div class="ministry-bio">{{ ministryComponent.mission }}</div>
+            </div>
+
+            <!-- Slide Top -->
+            <div class="slide-top">
+                <div class="slide-wrapper">
+                    <!-- Title -->
+                    <div class="slide-panel">
+                        <div class="side-img filtered sz-175"><img [src]="ministryComponent.defaultMedia"></div>
+                        <div class="content gcolor0 sz-325">
+                            <h1 class="m-title">{{ ministryComponent.title }}</h1>
+                            <div class="m-logo">
+                                <img *ngIf="logoEmpty(ministryComponent.logo)" src="assets/images/logos/ame_zion_logo.png">
+                                <img *ngIf="!logoEmpty(ministryComponent.logo)" [src]="ministryComponent.logo">
+                            </div>
+
+                            <div class="m-leader" *ngFor="let leader of ministryComponent.leadership">
+                                <div class="leader-name">{{leader.name}}</div>
+                                <div class="leader-title">{{leader.title}}</div>
+                                <div class="leader-email">{{leader.email}}</div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                    <div class="slide-panel"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
