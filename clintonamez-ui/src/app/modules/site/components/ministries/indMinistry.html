@@ -73,8 +73,42 @@
                         </div>
                     </div>
 
-                    <!--  -->
-                    <div class="slide-panel"></div>
+                    <!-- About Us-->
+                    <div class="slide-panel">
+                        <div class="content gcolor1 sz-500">
+                            <h2 class="m-title">About Us</h2>
+                            <p>{{ ministryComponent.mission | slice: 0:150 }} ..... <span>More</span></p>
+
+                            <h2 class="m-title space-gap">Organizations</h2>
+                            <div class="section-list">
+                                <!-- Section -->
+                                <div class="section-item">
+                                    <div class="bullet"><div class="bullseye"></div></div>
+                                    <div class="text"><span>{{ministryComponent.section}}</span></div>
+                                </div>
+
+                                <!-- Sub Sections-->
+                                <div class="section-item" *ngFor="let section of ministryComponent.subSections">
+                                    <div class="bullet"><div class="bullseye"></div></div>
+                                    <div class="text"><span>{{section}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Programs -->
+                    <div class="slide-panel">
+                        <div class="content gcolor2 sz-na flex-content">
+                            <h2 class="m-title">Special Programs</h2>
+
+                            <div class="program-list">
+                                <div class="program-item" *ngFor="let program of ministryComponent.activities">
+                                    <h3>{{program.name}}</h3>
+                                    <p>{{program.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
