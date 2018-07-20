@@ -123,6 +123,48 @@
                     .sz-325 { width: 325px; flex-shrink: 0;}
                     .sz-500 { width: 500px; flex-shrink: 0;}
 
+                    .gallery {
+                        position: relative;
+                        display: flex;
+                        .gallery-group {
+                            display: flex;
+                            flex-wrap: wrap;
+
+                            .image { 
+                                height: 50%; 
+                                position: relative;
+                                overflow: hidden;
+                                img { 
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    transition: 0.5s all ease-in-out;
+                                    position: relative;
+                                    z-index: 0;
+                                }
+                                &:hover {
+                                    img {
+                                        -moz-transform: scale(1.025);
+                                        -webkit-transform: scale(1.025);
+                                        -ms-transform: scale(1.025);
+                                        transform: scale(1.025);
+                                    }
+                                }
+                                &:after { 
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    opacity: 1;
+                                    z-index: 1;
+                                    .backgroundGradient3(0.20);
+                                } 
+                            }
+                        }
+                    }
+
                     .content { 
                         padding: 30px;                        
                         font-family: 'Montserrat Alternates', sans-serif;
@@ -208,8 +250,7 @@
 
                         .program-list {
                             display: flex;
-                            flex-direction: column;
-                            flex-wrap: wrap;
+                            flex-flow: column wrap;
                             .program-item {
                                 height: 50%;
                                 padding: 10px;
@@ -217,6 +258,7 @@
                             }
                         }
                     }
+                    
                     .side-img {
                         position: relative;
                         &.filtered {

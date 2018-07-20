@@ -15,6 +15,7 @@ import { CoreService } from '../../../../services/coreServices';
 })
 export class indMinistryComponent implements OnInit {
   public ministryComponent: MinistryModel = null;
+  public ministryImgs = [];
   public siblingCarousel: NgxCarousel;
   public mId:string = null;
 
@@ -45,6 +46,7 @@ export class indMinistryComponent implements OnInit {
     });*/
     self.coreService.getTmpMinistry(mId, function(res){
         self.ministryComponent = res.results;
+        self.ministryImgs = self.groupImgs(self.ministryComponent.images);
     });
   }
 
@@ -54,6 +56,24 @@ export class indMinistryComponent implements OnInit {
   }
 
   public logoEmpty(logo) {
-      return (logo == null || logo == "");
+    return (logo == null || logo == "");
+  }
+
+  public groupImgs(list){
+    var groups = [];
+    var groupNum = -1;
+    var insertNum = 0;
+    for(var i =0; i < list.length; i++){
+      if(insertNum == 0) { groupNum++; insertNum = (groupNum%2 ==0 ? 3 : 4);}
+      if(groups[groupNum] == undefined){ groups.push(new Array());}
+
+      groups[groupNum].push(list[i]);
+      insertNum--;
+    }
+    return groups;
+  }
+
+  public getImgSz(i){
+    return (i == 1 || i == 2? "sz-15": "sz-30");
   }
 }

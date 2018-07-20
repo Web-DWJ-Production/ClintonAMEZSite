@@ -109,6 +109,15 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Pictures -->
+                    <div class="slide-panel">
+                        <div class="gallery">
+                            <div class="gallery-group" [ngClass]="{ 'sz-45': gallery.length == 4, 'sz-30': gallery.length != 4}" *ngFor="let gallery of ministryImgs">
+                                <div class="image {{ getImgSz(i)}}" *ngFor="let img of gallery;let i = index"><img [src]="img" /></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

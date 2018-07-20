@@ -158,13 +158,7 @@ export class CoreService {
                 "https://farm2.staticflickr.com/1768/42000884985_3e05056de6_z.jpg",
                 "https://farm2.staticflickr.com/1804/42000884745_35de1be7cb_z.jpg",
                 "https://farm1.staticflickr.com/888/42000884565_9dc77f2800_z.jpg",
-                "https://farm2.staticflickr.com/1789/42000884505_db2365b0a5_z.jpg",
-                "https://farm2.staticflickr.com/1825/42000884355_9c432dc377_z.jpg",
-                "https://farm2.staticflickr.com/1827/42000884055_11f657ca6a_z.jpg",
-                "https://farm2.staticflickr.com/1762/42000883795_bb64da4861_z.jpg",
-                "https://farm1.staticflickr.com/900/42000883515_31d361ca12_z.jpg",
-                "https://farm2.staticflickr.com/1825/42000883315_eb08cbc4d5_z.jpg",
-                "https://farm2.staticflickr.com/1783/42000883195_8530ba024d_z.jpg"
+                "https://farm2.staticflickr.com/1789/42000884505_db2365b0a5_z.jpg"
             ],
             "siblings": [
                     {"section":"Administration & Stewardship", "title":"Trustee Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
