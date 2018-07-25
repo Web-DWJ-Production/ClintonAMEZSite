@@ -23,7 +23,13 @@ body, html {
         text-align: center;
         color: rgba(255,255,255,1);
         position: relative;
-        h1 { font-size: 4rem; margin:0px; position: relative; z-index: 1;}
+        h1 { 
+            font-size: 4rem; 
+            margin:0px; 
+            position: relative; 
+            z-index: 1;
+            @media @mobile-device { font-size: 3rem;}
+        }
 
         .back-img {
             position: absolute;
@@ -310,6 +316,16 @@ ngx-carousel{
     }
 
     .tb-sz-2 { flex-grow: 2;}
+
+    @media @mobile-device {
+        .tb-sz-2 { flex-grow: 1;}
+
+        .mat-header-row {
+            .mat-sort-header-container { 
+                font-size: 1.2rem;
+            }
+        }
+    }
 }
 /* Size chart*/
 .sz-15 { width: 15rem;}

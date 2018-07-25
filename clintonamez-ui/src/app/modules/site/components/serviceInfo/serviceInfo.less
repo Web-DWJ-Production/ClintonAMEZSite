@@ -2,31 +2,64 @@
 
 .our-service {
     .serviceInfo {
-        padding: 50px 5%;
+        padding: 70px 5%;
         .service-card { 
             border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
             display: flex;
-            max-height: 400px;
-            .church-img { width: 50%; overflow:hidden; img{ height: 100%; min-width: 100%;}}
+            flex-flow: row wrap;
+            .church-img { 
+                border-radius: 10px; 
+                width: 45%; 
+                overflow:hidden; 
+                @media @mobile-device { width: inherit; margin-bottom: 30px;}
+                img{ width: 100%; height: 100%; object-fit: cover;}
+            }
             .service-content { 
-                padding: 30px 10px;
+                padding: 0px 10px 10px;
                 text-align: center;
                 flex: 1;
                 font-size: 1.5rem;
                 .content-info  {
                     &+.content-info { margin-top: 20px;}
                     .info-txt { 
-                        font-family: 'Homemade Apple', cursive;                          
-                        color: @color2;
+                        font-family: 'Homemade Apple', cursive;   
+                        font-weight: bold;
+                        margin-bottom: 10px;                       
                         p { margin: 0; }
                     }
                     p { margin: 0; }
                     .service-info {
                         &+.service-info { margin-top: 15px;}
                         .title { font-weight: bold;}
-                        .time { }
+                    }
+
+                    &.txt {
+                        position: relative;
+                        padding: 20px;
+                        font-size: 1.2rem;
+                        line-height: 2rem;
+                        text-indent: 30px;
+                        &.c2 { &:after { .color2(background, 0.5); }}
+                        &.c3 { &:after { .color3(background, 0.5); }}
+                        &.c4 { &:after { .color4(background, 0.5); }}
+                        &.c5 { &:after { .color5(background, 0.5); }}
+                        &.c6 { color: rgba(255,255,255,1); &:after { .color6(background, 0.5); }}
+                        &.c7 { &:after { .color7(background, 0.5); }}
+    
+                        &.left { &:after { transform: rotate(-2deg);}}
+                        &.right { &:after { transform: rotate(2deg);}}
+    
+                        &:after { 
+                            content: '';
+                            position: absolute;
+                            padding: 10px 0px;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: -1; 
+                            border-radius: 10px;                             
+                        }
                     }
                 }
             }
