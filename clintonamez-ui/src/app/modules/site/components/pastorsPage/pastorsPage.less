@@ -6,7 +6,6 @@
         .section-title {
             text-align: center;
             width: 100%;
-            padding: 0px 5%;
             font-size: 2.5rem;
             color: @color3;
         }
@@ -33,6 +32,55 @@
                         div { margin-bottom: 10px;}                        
                     }
                     
+                }
+            }
+        }
+
+        .pastor-blog {
+            display: flex;
+            flex-flow: column wrap;
+            .row {
+                display: flex;
+                flex-flow: row wrap;
+                &.headline {
+                    .church-img { border-radius: 10px; width: 45%; overflow:hidden; img{ width: 100%; height: 100%; object-fit: cover;}}
+                    .text {
+                        width: 50%;
+                        padding: 5px 20px;
+                    }
+                }
+                &.info { 
+                    padding: 10px 0px 50px;
+                    .newspaper-txt { padding-top: 20px; column-count: 2; p { margin-top: 0px;}}
+                }
+
+                .txt {
+                    position: relative;
+                    padding: 20px;
+                    font-size: 1.2rem;
+                    line-height: 2rem;
+                    text-indent: 30px;
+                    &.c2 { &:after { .color2(background, 0.5); }}
+                    &.c3 { &:after { .color3(background, 0.5); }}
+                    &.c4 { &:after { .color4(background, 0.5); }}
+                    &.c5 { &:after { .color5(background, 0.5); }}
+                    &.c6 { color: rgba(255,255,255,1); &:after { .color6(background, 0.5); }}
+                    &.c7 { &:after { .color7(background, 0.5); }}
+
+                    &.left { &:after { transform: rotate(-2deg);}}
+                    &.right { &:after { transform: rotate(2deg);}}
+
+                    &:after { 
+                        content: '';
+                        position: absolute;
+                        padding: 10px 0px;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: -1; 
+                        border-radius: 10px;                             
+                    }
                 }
             }
         }

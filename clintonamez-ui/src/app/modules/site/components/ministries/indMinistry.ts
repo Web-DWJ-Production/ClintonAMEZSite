@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxCarousel } from 'ngx-carousel';
+import { MalihuScrollbarService } from 'ngx-malihu-scrollbar';
 
 /* Models */
 import { MinistryModel } from '../../../../datamodels/ministryModel';
@@ -16,10 +17,11 @@ import { CoreService } from '../../../../services/coreServices';
 export class indMinistryComponent implements OnInit {
   public ministryComponent: MinistryModel = null;
   public ministryImgs = [];
+  public ministryActivities = [];
   public siblingCarousel: NgxCarousel;
   public mId:string = null;
-
-  constructor(private coreService: CoreService, private route: ActivatedRoute) { }
+  
+  constructor(private coreService: CoreService, private route: ActivatedRoute, private mScrollbarService: MalihuScrollbarService) { }
 
   ngOnInit() { 
     this.siblingCarousel = {
@@ -38,7 +40,7 @@ export class indMinistryComponent implements OnInit {
         }
     });
   }  
-  
+
   public loadMinistry(mId){
     var self = this;
     /*this.coreService.getTmpMinistry(mId).subscribe(res => { 
@@ -47,6 +49,7 @@ export class indMinistryComponent implements OnInit {
     self.coreService.getTmpMinistry(mId, function(res){
         self.ministryComponent = res.results;
         self.ministryImgs = self.groupImgs(self.ministryComponent.images);
+        self.ministryActivities = self.groupActivities(self.ministryComponent.activities);
     });
   }
 
@@ -73,7 +76,45 @@ export class indMinistryComponent implements OnInit {
     return groups;
   }
 
+  public groupActivities(list){
+    var groups = [];
+    var groupNum = -1;
+    var insertNum = 0;
+    for(var i =0; i < list.length; i++){
+      if(insertNum == 0) { groupNum++; insertNum = 2;}
+      if(groups[groupNum] == undefined){ groups.push(new Array());}
+
+      groups[groupNum].push(list[i]);
+      insertNum--;
+    }
+    return groups;
+  }
+
   public getImgSz(i){
     return (i == 1 || i == 2? "sz-15": "sz-30");
+  }
+
+  public horizontalJump(tag){
+    let time = 1000;
+    var timeInc = 10;
+    var loc = (tag == '' ? 0: document.getElementById(tag).offsetLeft);
+    let scrollArea = document.getElementsByClassName('slide-top');
+    // Value of difference between points
+    var distance = loc - scrollArea[0].scrollLeft;
+    // pixels per .25 sec
+    var pps = distance / (time/timeInc);
+
+    this.setJumpTimer(timeInc, pps, scrollArea[0], loc, (distance > 0));
+  }
+
+  public setJumpTimer(time, pps, scrollArea, finalLoc, forwardDir){
+    var self = this;
+    if((forwardDir && scrollArea.scrollLeft < finalLoc) 
+    || (!forwardDir && scrollArea.scrollLeft > finalLoc)){
+      setTimeout(()=> {
+        scrollArea.scrollLeft = scrollArea.scrollLeft + pps;
+        self.setJumpTimer(time, pps, scrollArea, finalLoc, forwardDir);
+      }, time);
+    }
   }
 }

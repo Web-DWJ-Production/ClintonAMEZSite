@@ -69,7 +69,7 @@ import {
       MatTableModule,
       MatTabsModule,
       MatToolbarModule,
-      MatTooltipModule,
+      MatTooltipModule
     ]
   })
   export class AGMaterialModule {}

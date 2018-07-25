@@ -8,6 +8,7 @@ import { LineTypeModel } from '../datamodels/lineTypeModel';
 import { MinistryModel } from '../datamodels/ministryModel';
 import { EventsModel } from '../datamodels/eventsModel';
 import { GalleryModel } from '../datamodels/galleryModel';
+import { BibleStudyModel } from '../datamodels/bibleStudyModel';
 
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEvent } from 'angular-calendar';
@@ -196,6 +197,23 @@ export class CoreService {
         ];
 
         callback({"errorMessage":null, "results":tmpMinistries});
+    }
+    
+    getTmpBibleStudy(callback){
+        let tmpData = [
+            new BibleStudyModel('01-10-2018','Test-1',''),
+            new BibleStudyModel('03-25-2018','Test-2',''),
+            new BibleStudyModel('04-05-2018','Test-3',''),
+            new BibleStudyModel('04-10-2018','Test-4',''),
+            new BibleStudyModel('05-16-2018','Test-5',''),
+            new BibleStudyModel('05-20-2018','Test-6',''),
+            new BibleStudyModel('05-24-2018','Test-7',''),
+            new BibleStudyModel('06-12-2018','Test-8',''),
+            new BibleStudyModel('07-08-2018','Test-9',''),
+            new BibleStudyModel('07-23-2018','Test-10','')
+        ];
+
+        callback({"errorMessage":null, "results":tmpData});
     }
 
     getGalleryList(){

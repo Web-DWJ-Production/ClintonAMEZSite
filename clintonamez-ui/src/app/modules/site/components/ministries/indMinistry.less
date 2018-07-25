@@ -81,27 +81,27 @@
     /* Body*/
     .outer-slide-container {
         position: relative;
-        padding: 30px 0px;
+        padding: 30px 0px 30px 2px;
         min-height: 500px;
         .slide-bottom {
             position: absolute;
             z-index: 0;
             top: 0;
             left: 5%;
-            width: 45%;
-            max-height: 500px;
+            width: 55%;
+            max-height: 450px;
             .ministry-title { font-size: 4rem;}
             .ministry-bio { font-size: 1.5rem; line-height: 3rem;}
         }
         .slide-top {         
-            padding: 5px 5px 5px 55%;
+            padding: 5px 5px 30px 65%;
             display: flex;
             justify-content: flex-start;
             height: 100%;
             overflow-x: auto;
             .slide-wrapper {
                 min-width: 95vw;
-                height: 600px;
+                height: 500px;
                 border-top-left-radius: 10px;
                 border-bottom-left-radius: 10px;   
                 box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);                        
@@ -123,9 +123,31 @@
                     .sz-325 { width: 325px; flex-shrink: 0;}
                     .sz-500 { width: 500px; flex-shrink: 0;}
 
+                    .m-jump {
+                        cursor: pointer;
+                        transition: 0.5s all ease-in-out;
+
+                        display: inline-flex;
+                        margin-top: 7px;
+                        padding: 5px 6px;
+                        background: rgba(50,50,50,0.7);
+                        border-radius: 50%;
+                        font-size: 20px;
+                        color: rgba(50,50,50,1);
+                        background: rgba(255,255,255,1);
+                        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);                        
+                        &:hover { opacity: 0.7;}
+                    }
+
                     .gallery {
                         position: relative;
                         display: flex;
+                        .m-jump {
+                            position: absolute;
+                            bottom: 15%;
+                            left: 10%;
+                            z-index: 3;
+                        }
                         .gallery-group {
                             display: flex;
                             flex-wrap: wrap;
@@ -173,13 +195,21 @@
                         &.gcolor2 { .backgroundGradient6(0.25); background-color: @color3;}
                         &.flex-content { display: flex; flex-direction: column;}
 
-                        h1 { font-size: 3rem; }
+                        h1 { font-size: 2.5rem;}
                         p { line-height: 1.5rem;}
+                        .more-jump { 
+                            cursor: pointer; 
+                            text-decoration: underline;
+                            color: rgb(249, 216, 255,1);
+                            transition: 0.5s all ease-in-out;
+                            &:hover { opacity: 0.7;}
+                        }
 
                         .m-title {
                             font-family: 'Cabin Condensed', sans-serif;
                             position: relative;
                             color: rgba(255,255,255,1); 
+                            margin: 0.83rem 0;
                             &:after {
                                 content: '';
                                 position: absolute;
@@ -194,23 +224,29 @@
                         .m-logo {
                             overflow: hidden;
                             padding: 5px;
-                            background: rgba(255,255,255,0.7);
+                            background: rgba(50,50,50,0.7);
                             border-radius: 50%;
-                            width: 70px;
-                            height: 70px;
-                            margin-bottom: 40px;
+                            width: 50px;
+                            height: 50px;
+                            margin-bottom: 15px;
                             img { width: 100%;}
+                        }
+                        .population-list {
+                            margin-bottom: 15px; 
+                            text-transform: capitalize;
                         }
                         .m-leader {
                             margin-bottom: 10px;
-                            .leader-name { font-size: 1.5rem; font-weight: bold; color: rgba(50,50,50,1); margin-bottom: 2px;}
+                            display: flex;
+                            flex-wrap: wrap;
+                            .leader-name { font-size: 1.2rem; font-weight: bold; color: rgba(255,255,255,1); margin-bottom: 2px;}
                             .leader-email { font-size: 1rem; padding-left: 7px; color: rgba(50,50,50,1);}
                             .leader-title { 
                                 font-size: 1rem; 
                                 padding: 0px 7px; 
                                 color: rgba(255,255,255,1);
                                 display: inline-block;
-                                margin: 5px 0px;
+                                margin:0px 10px;
                                 border: 1px solid rgba(255,255,255,1);
                             }
                         }
@@ -250,11 +286,14 @@
 
                         .program-list {
                             display: flex;
-                            flex-flow: column wrap;
-                            .program-item {
-                                height: 50%;
-                                padding: 10px;
-                                max-width: 550px;
+                            height: 100%;
+                            .program-group {
+                                display: flex;
+                                flex-flow: column wrap;
+                                .program-item {
+                                    padding: 10px 10px 15px;
+                                    max-width: 550px;
+                                }
                             }
                         }
                     }

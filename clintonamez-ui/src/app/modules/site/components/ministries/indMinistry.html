@@ -53,10 +53,10 @@
             </div>
 
             <!-- Slide Top -->
-            <div class="slide-top">
+            <div class="slide-top scroll2">
                 <div class="slide-wrapper">
                     <!-- Title -->
-                    <div class="slide-panel">
+                    <div class="slide-panel" id="panel-1">
                         <div class="side-img filtered sz-175"><img [src]="ministryComponent.defaultMedia"></div>
                         <div class="content gcolor0 sz-325">
                             <h1 class="m-title">{{ ministryComponent.title }}</h1>
@@ -65,19 +65,23 @@
                                 <img *ngIf="!logoEmpty(ministryComponent.logo)" [src]="ministryComponent.logo">
                             </div>
 
+                            <div class="population-list">{{ ministryComponent.populationsServed.join(", ")}}</div>
+                            
                             <div class="m-leader" *ngFor="let leader of ministryComponent.leadership">
                                 <div class="leader-name">{{leader.name}}</div>
                                 <div class="leader-title">{{leader.title}}</div>
                                 <div class="leader-email">{{leader.email}}</div>                                
                             </div>
+
+                            <div class="m-jump" (click)="horizontalJump('panel-2')"><i class="fas fa-angle-double-right"></i></div>
                         </div>
                     </div>
 
                     <!-- About Us-->
-                    <div class="slide-panel">
+                    <div class="slide-panel" id="panel-2">
                         <div class="content gcolor1 sz-500">
                             <h2 class="m-title">About Us</h2>
-                            <p>{{ ministryComponent.mission | slice: 0:150 }} ..... <span>More</span></p>
+                            <p>{{ ministryComponent.mission | slice: 0:150 }} ..... <a class="more-jump" (click)="horizontalJump('')">More</a></p>
 
                             <h2 class="m-title space-gap">Organizations</h2>
                             <div class="section-list">
@@ -97,25 +101,29 @@
                     </div>
 
                     <!-- Special Programs -->
-                    <div class="slide-panel">
+                    <div class="slide-panel" id="panel-3">
                         <div class="content gcolor2 sz-na flex-content">
                             <h2 class="m-title">Special Programs</h2>
 
                             <div class="program-list">
-                                <div class="program-item" *ngFor="let program of ministryComponent.activities">
-                                    <h3>{{program.name}}</h3>
-                                    <p>{{program.description}}</p>
+                                <div class="program-group" *ngFor="let group of ministryActivities">
+                                    <div class="program-item" *ngFor="let program of group">
+                                        <h3>{{program.name}}</h3>
+                                        <p>{{program.description}}</p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="jump-container"><div class="m-jump" (click)="horizontalJump('panel-4')"><i class="fas fa-angle-double-right"></i></div></div>
                         </div>
                     </div>
 
                     <!-- Pictures -->
-                    <div class="slide-panel">
+                    <div class="slide-panel" id="panel-4">
                         <div class="gallery">
                             <div class="gallery-group" [ngClass]="{ 'sz-45': gallery.length == 4, 'sz-30': gallery.length != 4}" *ngFor="let gallery of ministryImgs">
                                 <div class="image {{ getImgSz(i)}}" *ngFor="let img of gallery;let i = index"><img [src]="img" /></div>
                             </div>
+                            <div class="m-jump" (click)="horizontalJump('panel-1')"><i class="fas fa-angle-double-left"></i></div>
                         </div>
                     </div>
                 </div>

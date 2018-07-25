@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     }
 
     this.eventsCarousel = {
-      grid: {xs: 2, sm: 3, md: 3, lg: 3, all: 0},
+      grid: {xs: 1, sm: 2, md: 3, lg: 3, all: 0},
       slide: 3, speed: 0, interval: 0,
       point: { visible: true },
       load: 3, touch: true, loop: false, custom: 'banner'

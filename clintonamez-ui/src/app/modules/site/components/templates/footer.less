@@ -1,9 +1,13 @@
+@import (reference) "../../../variables.less";
+
+
 .footer-body {
     background: rgba(50,50,50,1);
     color: rgba(255,255,255,1);
     padding: 40px 5%;
     .footer-container {
         display:flex;
+        @media @mobile-device { flex-direction: column; .column-title { text-align: center;}}
         .footer-column {
             flex-basis: 0; 
             flex: 1 1 0;

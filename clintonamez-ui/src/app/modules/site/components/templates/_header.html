@@ -34,6 +34,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Toggle -->
+        <div class="split-nav toggle"><div (click)="toggleSideNav()" class="toggle-container"><i class="fas fa-bars"></i></div></div>
     </div>
     <!-- Additional Menu -->
     <div class="additionalMenu" *ngIf="additonalMenu.display" (mouseleave)="hideAdditionalMenu()" [@enterAnimation]="additonalMenu.display">

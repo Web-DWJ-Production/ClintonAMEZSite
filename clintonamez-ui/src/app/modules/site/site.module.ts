@@ -8,7 +8,7 @@ import { NgxCarouselModule } from 'ngx-carousel';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AgmCoreModule } from '@agm/core';
-
+import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import 'hammerjs';
 
 /* Site Components */
@@ -23,6 +23,7 @@ import { PastorsPageComponent } from './components/pastorsPage/pastorsPage';
 import { GalleryComponent} from './components/gallery/gallery';
 import { MinistriesComponent } from './components/ministries/ministries';
 import { indMinistryComponent } from './components/ministries/indMinistry';
+import { GetConnectedComponent } from './components/getConnected/getConnected';
 
 /* Templates */
 import { HeaderComponent } from './components/templates/header';
@@ -46,10 +47,11 @@ const appRoutes: Routes = [
             { path:'contact-us', component: ContactUsComponent},
             { path: 'pastors-page', component: PastorsPageComponent },
             { path: 'gallery', component: GalleryComponent},
+            { path:'get-connected', component: GetConnectedComponent },
             { path: 'ministries', component: MinistriesComponent},
             { path: 'ministries', children:[
                 {path:':id', component: indMinistryComponent}
-            ]}
+            ]},
         ]
     }  
 ];
@@ -63,7 +65,8 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     NgxCarouselModule,
-    NoopAnimationsModule,    
+    NoopAnimationsModule, 
+    MalihuScrollbarModule.forRoot(),   
     RouterModule.forRoot(appRoutes,{ enableTracing: false } ),
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyDGEvJhKl5-BC1STbiT4rYWIbfeCRkof8E' })
   ],
@@ -77,7 +80,8 @@ const appRoutes: Routes = [
       MinistriesComponent, 
       indMinistryComponent,
       OurHistoryComponent, 
-      ServiceInfoComponent, 
+      ServiceInfoComponent,
+      GetConnectedComponent, 
       OurStaffComponent, 
       HeaderComponent, 
       FooterComponent, 

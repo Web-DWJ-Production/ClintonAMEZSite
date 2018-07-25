@@ -42,30 +42,30 @@
         <h1 class="font-title1">Get Connected</h1>
         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
         <div class="cards-holder">
-            <div class="card service">
+            <a href="site/about-us/our-service" class="card service">
                 <div class="card-container">
                    <div class="card-title">
                         <div class="icon-header"><div class="icon-container c2"><i class="icon-center far fa-clock"></i></div></div>
                         <div class="text">Service Times</div>
                     </div>
                 </div>
-            </div>
-            <div class="card prayer">
+            </a>
+            <a href="site/get-connected" class="card prayer">
                 <div class="card-container">                    
                     <div class="card-title">
                         <div class="icon-header c4"><div class="icon-container c4"><i class="icon-center fas fa-phone"></i></div></div>
                         <div class="text">Prayer Call</div>
                     </div>
                 </div>
-            </div>
-            <div class="card bible">
+            </a>
+            <a href="site/get-connected#bible-study" class="card bible">
                 <div class="card-container">
                    <div class="card-title">
                         <div class="icon-header c5"><div class="icon-container c5"><i class="icon-center fab fa-audible"></i></div></div>
                         <div class="text">Bible Study</div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -86,11 +86,11 @@
                 </div>
 
                 <!-- All Ministries Card -->
-                <div class="ministry-card-container all-ministries">
+                <a href="site/ministries" class="ministry-card-container all-ministries">
                     <div class="ministry-card">                        
                         <div class="card-title">View All Of Our Ministries</div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <!-- Controllers -->
@@ -127,12 +127,12 @@
         <div class="spacer1"><img src="assets/images/tmpMedia/church2.jpg"></div>
     </section>
 
-    <!-- Get Connected Section -->
+    <!-- Upcoming Events Section -->
     <section class="upcomingEvents">
         <h1 class="font-title1">Upcoming Events</h1>
          <ngx-carousel [inputs]="eventsCarousel" (carouselLoad)="loadCarousel('events', $event)" class="clinton-carousels tile-carousel events-carousel">
             
-            <ngx-item *ngFor="let event of eventsList" NgxCarouselItem>
+            <ngx-item *ngFor="let event of eventsList" class="event-item" NgxCarouselItem>
                 <div class="details-container">
                     <div class="event-container">
                         <div class="event-details-container event-date">

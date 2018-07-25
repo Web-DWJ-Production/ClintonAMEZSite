@@ -4,7 +4,16 @@
             <div class="nav-link"><a (click)="sidenav.toggle()"><i class="fas fa-times-circle"></i></a></div>
         </div>
         <div class="side-body">
-            <div class="nav-link" *ngFor="let item of navitems"><a [href]="item.page">{{item.title}}</a></div>
+            <div class="nav-link-container" *ngFor="let item of navitems">
+                <div class="nav-link">
+                    <a [href]="item.page">{{item.title}}</a>
+                </div>
+
+                <!-- Sub Nav -->
+                <div class="nav-link sub" *ngFor="let sub of item.subPages">
+                    <a [href]="sub.page" [attr.target]="item.external == true ? '_blank' : null">{{sub.title}}</a>
+                </div>
+            </div>
         </div>        
     </mat-sidenav>
 
