@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxCarousel } from 'ngx-carousel';
+import { MatDialog } from '@angular/material';
 
 /* Data Models */
 import { LineTypeModel } from '../../../../datamodels/lineTypeModel';
 import { AnnouncementModel } from '../../../../datamodels/announcementModel';
 import { MinistryModel } from '../../../../datamodels/ministryModel';
 import { EventsModel } from '../../../../datamodels/eventsModel';
+
 /* Services */
 import { CoreService } from '../../../../services/coreServices';
+
+/* Components */
+import { EventDialogComponent } from '../../components/templates/eventDialog';
 
 @Component({
   selector: 'pg-home',
@@ -25,7 +30,7 @@ export class HomeComponent implements OnInit {
   public intervalId = null;
   public mobileCheck = new RegExp('Android|webOS|iPhone|iPad|' + 'BlackBerry|Windows Phone|'  + 'Opera Mini|IEMobile|Mobile' , 'i');
   
-  constructor(private coreService: CoreService) { }
+  constructor(private coreService: CoreService, public dialog: MatDialog) { }
 
   ngOnInit() { 
     this.mainCarousel = {
@@ -101,5 +106,12 @@ export class HomeComponent implements OnInit {
 
   public scrollDeactivate(){
     clearInterval(this.intervalId);
+  }
+
+  public openEvent(evnt):void{
+    const dialogRef = this.dialog.open(EventDialogComponent, {
+      width: '75%',
+      data: evnt
+    });
   }
 }

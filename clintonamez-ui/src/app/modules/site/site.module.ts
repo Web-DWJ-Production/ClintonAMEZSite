@@ -29,6 +29,7 @@ import { GetConnectedComponent } from './components/getConnected/getConnected';
 import { HeaderComponent } from './components/templates/header';
 import { FooterComponent } from './components/templates/footer';
 import { PicBookComponent } from './components/templates/picBook';
+import { EventDialogComponent } from './components/templates/eventDialog';
 
 /* Routes */
 const appRoutes: Routes = [    
@@ -85,7 +86,9 @@ const appRoutes: Routes = [
       OurStaffComponent, 
       HeaderComponent, 
       FooterComponent, 
-      PicBookComponent ],
+      PicBookComponent,
+      EventDialogComponent ],
+  entryComponents:[EventDialogComponent],
   exports: []
 })
 export class SiteModule { }

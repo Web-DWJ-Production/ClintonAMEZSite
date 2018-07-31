@@ -128,11 +128,11 @@ export class CoreService {
 
     getTmpEvents(callback){
         var tmpEvents: EventsModel[] = [
-            new EventsModel("Leadership Meeting", addDays(new Date(), 3), "1 Test Street, Gaithersburg, MD. 20878"),
-            new EventsModel("Test Event 2", addDays(new Date(), 7), "1 Test Street, Gaithersburg, MD. 20878"),
-            new EventsModel("Test Event 3", addDays(new Date(), 14), "1 Test Street, Gaithersburg, MD. 20878"),
-            new EventsModel("Leadership Meeting 2", addDays(new Date(), 15), "1 Test Street, Gaithersburg, MD. 20878"),
-            new EventsModel("Leadership Meeting 3", addDays(new Date(), 20), "1 Test Street, Gaithersburg, MD. 20878")
+            new EventsModel("Leadership Meeting", addDays(new Date(), 3), {address:"223 Elizabeth Ave, Rockville, MD. 20850", lat: 39.0959446, lng: -77.1504001}),
+            new EventsModel("Test Event 2", addDays(new Date(), 7), {address:"13501 Richter Farm Rd, Germantown, MD. 20874", lat: 39.1517872, lng: -77.2818221}),
+            new EventsModel("Test Event 3", addDays(new Date(), 14), {address:"223 Elizabeth Ave, Rockville, MD. 20850", lat: 39.0959446, lng: -77.1504001}),
+            new EventsModel("Leadership Meeting 2", addDays(new Date(), 15), {address:"223 Elizabeth Ave, Rockville, MD. 20850", lat: 39.0959446, lng: -77.1504001}),
+            new EventsModel("Leadership Meeting 3", addDays(new Date(), 20), {address:"223 Elizabeth Ave, Rockville, MD. 20850", lat: 39.0959446, lng: -77.1504001})
         ];
         callback({"errorMessage":null,"results":tmpEvents});
     }

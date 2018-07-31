@@ -17,6 +17,7 @@ express()
   .use('/mail', require('./controllers/mail.controller.js'))
   .use('/mediaSet',require('./controllers/photoset.controller.js'))
   .use('/media',require('./controllers/photo.controller.js'))
+  .use('/ministry',require('./controllers/ministry.controller.js'))
   .listen(PORT, () => {
     console.log('API is listening on 5000');
 

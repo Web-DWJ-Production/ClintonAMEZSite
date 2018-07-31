@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter, HostListener, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, Renderer } from '@angular/core';
 import {trigger, transition, style, animate, keyframes, query, stagger, group, state, animateChild} from '@angular/animations'
 
 import { PicBookPages } from '../../../../datamodels/picBookPages';

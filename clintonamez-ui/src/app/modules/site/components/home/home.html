@@ -133,7 +133,7 @@
          <ngx-carousel [inputs]="eventsCarousel" (carouselLoad)="loadCarousel('events', $event)" class="clinton-carousels tile-carousel events-carousel">
             
             <ngx-item *ngFor="let event of eventsList" class="event-item" NgxCarouselItem>
-                <div class="details-container">
+                <div class="details-container" (click)="openEvent(event)">
                     <div class="event-container">
                         <div class="event-details-container event-date">
                             <div class="date-day">{{event.date | date:'dd'}}</div>

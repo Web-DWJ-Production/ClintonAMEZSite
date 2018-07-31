@@ -3,6 +3,7 @@ export class MinistryModel {
     public defaultMedia: string;
     public logo: string;
     public mission: string;
+    public base: Boolean;
     public populationsServed: string[];
     public activities: {name:string, description:string}[];
     public leadership: {name: string, title:string, email: string}[];
