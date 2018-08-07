@@ -4,7 +4,8 @@
   "description": "This serves as an example for the project structure and deployment strategies for the ClintonAMEZ project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "mkdir tmp && cd clintonamez-ui && npm i && ng build -prod && cd ../clintonamez-api && npm i"
   },
   "engines": {
     "node": "7.6.0",
