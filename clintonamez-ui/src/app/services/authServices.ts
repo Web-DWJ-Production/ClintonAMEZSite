@@ -7,6 +7,7 @@ export class AuthService {
     public userKey: string = "clintonEditorUser";
     constructor(private http: HttpClient) { }
 
+    
     validateUser(callback){
         let userInfo: UserInfoModel = new UserInfoModel('Kris','Redding', 'Site Admin', 'test3@gmail.com', true, { "announcements":true, "calender":true, "gallery":true, "forms":true, "ministries":true });
         var currentUser = JSON.parse(localStorage.getItem(this.userKey));
