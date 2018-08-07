@@ -14,7 +14,12 @@ import { CoreService } from '../../../../services/coreServices';
   styleUrls: ['./ministries.less']
 })
 export class MinistriesComponent implements OnInit {
+  public ministryList: MinistryModel[];
   constructor(private authService: AuthService, private coreService: CoreService) { }
   
-  ngOnInit() { } 
+  ngOnInit() { this.getMinistries();} 
+
+  getMinistries(){
+
+  }
 }

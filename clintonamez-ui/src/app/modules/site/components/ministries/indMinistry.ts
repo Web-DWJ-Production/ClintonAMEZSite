@@ -18,6 +18,7 @@ export class indMinistryComponent implements OnInit {
   public ministryComponent: MinistryModel = null;
   public ministryImgs = [];
   public ministryActivities = [];
+  public ministryError = null;
   public siblingCarousel: NgxCarousel;
   public mId:string = null;
   
@@ -43,13 +44,15 @@ export class indMinistryComponent implements OnInit {
 
   public loadMinistry(mId){
     var self = this;
-    /*this.coreService.getTmpMinistry(mId).subscribe(res => { 
-        self.ministryComponent = res;
-    });*/
-    self.coreService.getTmpMinistry(mId, function(res){
-        self.ministryComponent = res.results;
-        self.ministryImgs = self.groupImgs(self.ministryComponent.images);
-        self.ministryActivities = self.groupActivities(self.ministryComponent.activities);
+    this.coreService.getMinistries(mId).subscribe(res => { 
+        if(!res.errorMessage){
+          self.ministryComponent = res.results;
+          self.ministryImgs = self.groupImgs(self.ministryComponent.images);
+          self.ministryActivities = self.groupActivities(self.ministryComponent.activities);
+        }
+        else {
+          self.ministryError = res.errorMessage;
+        }
     });
   }
 

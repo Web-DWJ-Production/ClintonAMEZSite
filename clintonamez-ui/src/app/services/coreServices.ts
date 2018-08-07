@@ -109,23 +109,6 @@ export class CoreService {
         callback({"errorMessage":null,"results":retList});
     }
 
-    getMinistries(callback){
-        var tmpMins: MinistryModel[] = [
-            new MinistryModel("Lay Council","assets/images/tmpMedia/c1.jpg"),
-            new MinistryModel("Admin & Tech","assets/images/tmpMedia/c5.jpg"),
-            new MinistryModel("Christian Education","assets/images/tmpMedia/c6.jpg"),
-            new MinistryModel("Men of Varick","assets/images/tmpMedia/c4.jpg"),
-            new MinistryModel("Faith & Social Justice Ministry","assets/images/tmpMedia/c3.jpg"),
-            new MinistryModel("WHOMS","assets/images/tmpMedia/c2.jpg"),
-            new MinistryModel("Women of Zion","assets/images/tmpMedia/c7.jpg"),
-            new MinistryModel("Senior Ministry (Gems)","assets/images/tmpMedia/c6.jpg"),
-            new MinistryModel("Young Adult Missionary Society","assets/images/tmpMedia/c9.jpg"),
-            new MinistryModel("Bags of Hope","assets/images/tmpMedia/c6.jpg")
-        ];
-
-        callback({"errorMessage":null,"results":tmpMins});
-    }
-
     getTmpEvents(callback){
         var tmpEvents: EventsModel[] = [
             new EventsModel("Leadership Meeting", addDays(new Date(), 3), {address:"223 Elizabeth Ave, Rockville, MD. 20850", lat: 39.0959446, lng: -77.1504001}),
@@ -142,9 +125,9 @@ export class CoreService {
             "title":"Event Planning & Management", 
             "defaultMedia":"assets/images/tmpMedia/c1.jpg",
             "logo":"", 
-            "subSections":["Admin & Tech", "T2"],
+            "subSections":["Admin & Tech"],
             "mission":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "populationsServed":["population1", "population2", "population3"],
+            "populationsServed":"population1",
             "activities":[{"name":"Test Activity 1", "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},{"name":"Test Activity 2", "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},
             {"name":"Test Activity 3", "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},{"name":"Test Activity 4", "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},
             {"name":"Test Activity 5", "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."},{"name":"Test Activity 6", "description":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."}],
@@ -171,34 +154,6 @@ export class CoreService {
         callback({"errorMessage":null, "results":tmpMinistry});
     }
 
-    getTmpMinistries(callback){
-        var tmpMinistries = [
-            {"sectionTitle":"Administration & Stewardship", "list":[
-                {"section":"Administration & Stewardship", "title":"Trustee Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Administration & Stewardship", "title":"Steward Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Administration & Stewardship", "title":"Budget & Finance", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Administration & Stewardship", "title":"Calendar/Scheduling", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]},
-                {"section":"Administration & Stewardship", "title":"Event Planning & Management", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]}
-            ]},
-            {"sectionTitle":"Evangelism & Discipleship", "list":[
-                {"section":"Evangelism & Discipleship", "title":"Trustee Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Evangelism & Discipleship", "title":"Steward Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Evangelism & Discipleship", "title":"Budget & Finance", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Evangelism & Discipleship", "title":"Calendar/Scheduling", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]},
-                {"section":"Evangelism & Discipleship", "title":"Event Planning & Management", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]}
-            ]},
-            {"sectionTitle":"Mission, Outreach, & Service", "list":[
-                {"section":"Mission, Outreach, & Service", "title":"Trustee Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Mission, Outreach, & Service", "title":"Steward Board", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Mission, Outreach, & Service", "title":"Budget & Finance", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":[]},
-                {"section":"Mission, Outreach, & Service", "title":"Calendar/Scheduling", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]},
-                {"section":"Mission, Outreach, & Service", "title":"Event Planning & Management", "defaultMedia":"assets/images/tmpMedia/c1.jpg","logo":"", "subSections":["Admin & Tech"]}
-            ]}
-        ];
-
-        callback({"errorMessage":null, "results":tmpMinistries});
-    }
-    
     getTmpBibleStudy(callback){
         let tmpData = [
             new BibleStudyModel('01-10-2018','Test-1',''),
@@ -214,6 +169,10 @@ export class CoreService {
         ];
 
         callback({"errorMessage":null, "results":tmpData});
+    }
+    getMinistries(mId){
+        mId = (!mId ? "all" : mId);
+        return this.http.get<{"errorMessage":string, "results":any}>(this.urlBase+'/ministry/'+mId);
     }
 
     getGalleryList(){

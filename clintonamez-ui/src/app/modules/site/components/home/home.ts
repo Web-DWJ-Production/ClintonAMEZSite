@@ -65,9 +65,17 @@ export class HomeComponent implements OnInit {
 
   public loadMinistries(){
     var self = this;
-    this.coreService.getMinistries(function(res){
+    self.ministryList = [];
+    
+    this.coreService.getMinistries("all").subscribe(res => { 
       if(!res.errorMessage){
-        self.ministryList = res.results;
+        var key1 = Object.keys(res.results);
+        for(var i=0; i < key1.length; i++){
+          var key2 = Object.keys(res.results[key1[i]].children);
+          for(var j =0; j < key2.length; j++){
+            self.ministryList.push(res.results[key1[i]].children[key2[j]]);
+          }
+        }
       }
     });
   }

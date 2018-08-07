@@ -30,16 +30,25 @@ export class MinistriesComponent implements OnInit {
   
   public loadMinistries(){
     var self = this;
-    /*this.coreService.getTmpMinistries().subscribe(res => { 
-        self.ministryList = res;
-    });*/
-    self.coreService.getTmpMinistries( function(res){
-        self.ministryList = res.results;
+    this.coreService.getMinistries("all").subscribe(res => { 
+      if(!res.errorMessage){
+        self.ministryList =[];
+        var key1 = Object.keys(res.results);
+        for(var i=0; i < key1.length; i++){
+          var tmpObj = {"sectionTitle":key1[i], "list":[]};
+          var key2 = Object.keys(res.results[key1[i]].children);
+
+          for(var j =0; j < key2.length; j++){
+            tmpObj.list.push(res.results[key1[i]].children[key2[j]]);
+          }
+          self.ministryList.push(tmpObj);
+        }
+      }
     });
   }
 
   public getAddress(name){
-    var cleanName = name.split(' ').join("%20");
+    var cleanName = name.replace(/([&\/\\()])/g,"_").split(' ').join("");
     return "/site/ministries/"+cleanName;
   }
 }

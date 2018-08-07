@@ -65,7 +65,7 @@
                                 <img *ngIf="!logoEmpty(ministryComponent.logo)" [src]="ministryComponent.logo">
                             </div>
 
-                            <div class="population-list">{{ ministryComponent.populationsServed.join(", ")}}</div>
+                            <div class="population-list">{{ ministryComponent.populationsServed}}</div>
                             
                             <div class="m-leader" *ngFor="let leader of ministryComponent.leadership">
                                 <div class="leader-name">{{leader.name}}</div>

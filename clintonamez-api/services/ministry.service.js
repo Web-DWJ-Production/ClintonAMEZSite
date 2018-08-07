@@ -8,7 +8,7 @@ var mongoClient = require('mongodb').MongoClient;
     
      -- Ministry --
     Get: Individual or Tree
-    Post: Update Individual
+    Post: Update Individual [todo:Set titleId]
     Put: Add Individual
     Delete: Remove Individual
 
@@ -38,11 +38,30 @@ var ministry = {
         updateById: function(req, res){
             var response = {"errorMessage":null, "results":null};
             try {
-
+                var mId = req.body._id;
+                
+                if(mId != null){
+                    mongoClient.connect(database.remoteUrl, database.mongoOptions, function(err, client){
+                        if(err) {
+                            response.errorMessage = err;
+                            callback(response);
+                        }
+                        else {  
+                            const db = client.db(database.dbName).collection('ministries');
+                            db.updateOne({'_id': mId}, req.body);
+                            response.results = "success";
+                        }
+                    });
+                }
+                else {
+                    response.errorMessage = "Couldn't find id";
+                }
             }
             catch(ex){
-
+                response.errorMessage = "Error: "+ ex;
+                console.log(ex);
             }
+            callback(response);
         },
         insertById: function(req,res) { 
             var response = {"errorMessage":null, "results":null};
@@ -56,11 +75,30 @@ var ministry = {
         deleteById: function(req, res){
             var response = {"errorMessage":null, "results":null};
             try {
-
+                var mId = req.body._id;
+                
+                if(mId != null){
+                    mongoClient.connect(database.remoteUrl, database.mongoOptions, function(err, client){
+                        if(err) {
+                            response.errorMessage = err;
+                            callback(response);
+                        }
+                        else {  
+                            const db = client.db(database.dbName).collection('ministries');
+                            db.remove({'_id': mId});
+                            response.results = "success";
+                        }
+                    });
+                }
+                else {
+                    response.errorMessage = "Couldn't find id";
+                }
             }
             catch(ex){
-                
+                response.errorMessage = "Error: "+ ex;
+                console.log(ex);
             }
+            callback(response);
         }
     }
 };
@@ -70,6 +108,7 @@ function getIndividual(mId, callback){
     var response = {"errorMessage":null, "results":null};
 
     try {
+        mId = mId.toLowerCase();
         mongoClient.connect(database.remoteUrl, database.mongoOptions, function(err, client){
             if(err) {
                 response.errorMessage = err;
@@ -78,10 +117,17 @@ function getIndividual(mId, callback){
             else {  
                 const db = client.db(database.dbName).collection('ministries');
 
-                db.find({'title': mId}).toArray(function(err, res){
+                db.find({'titleId': mId}).toArray(function(err, res){
                     if(res == null || res == undefined) { response.errorMessage = "Unable to find id";}
                     else { response.results = res[0];}
-                    callback(response);
+                    
+                    var siblingSearch = (response.results.subSections.length > 0 ? response.results.subSections[response.results.subSections.length - 1] : response.results.title);
+                    if(response.results.subSections.length >= 0){}
+
+                    db.find({'subSections': siblingSearch, 'titleId':{$ne: mId}}).toArray(function(err,res){
+                        response.results.siblings = (res ? res : []);
+                        callback(response);
+                    });
                 });
             }
         });
@@ -140,7 +186,6 @@ function addBranches(item, ret, loc){
     try {
         if(item.title in ret){
             // update ret info
-            ret[item.title].base = true;
             ret[item.title].subSections = item.subSections;
             ret[item.title].defaultMedia = item.defaultMedia;
             ret[item.title].logo = item.logo;
@@ -153,15 +198,10 @@ function addBranches(item, ret, loc){
             // push to list
             ret[item.title]= item;
         }
-        else if(item.subSections[loc] in ret){
-            // send inside to recursive (loc+1)
-            addBranches(item, checkRet(ret[item.subSections[loc]].children), (loc+1));
-        }
         else {
-            // add to list
-            ret[item.subSections[loc]] = {"children":{}};
-            // send inside to recursize (loc+1)
-            addBranches(item, checkRet(ret[item.subSections[loc]].children), (loc+1));
+            ret[item.subSections[loc]].children = checkRet(ret[item.subSections[loc]].children);
+            // send inside to recursive (loc+1)
+            addBranches(item, ret[item.subSections[loc]].children, (loc+1));
         }
     }
     catch(ex){
