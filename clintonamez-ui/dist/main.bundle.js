@@ -2727,7 +2727,7 @@ var SiteModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_6_ngx_carousel__["a" /* NgxCarouselModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__["b" /* NoopAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_9_ngx_malihu_scrollbar__["a" /* MalihuScrollbarModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { enableTracing: false }),
+                __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* RouterModule */].forRoot(appRoutes, { enableTracing: false, useHash: true }),
                 __WEBPACK_IMPORTED_MODULE_8__agm_core__["a" /* AgmCoreModule */].forRoot({ apiKey: 'AIzaSyDGEvJhKl5-BC1STbiT4rYWIbfeCRkof8E' })
             ],
             declarations: [

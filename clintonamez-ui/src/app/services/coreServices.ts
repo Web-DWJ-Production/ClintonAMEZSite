@@ -22,6 +22,7 @@ export class CoreService {
     public userKey: string = "clintonEditorUser";
     //urlBase: string = 'http://localhost:5000';
     urlBase: string = '';
+    
    
     constructor(private http: HttpClient) { }
     
