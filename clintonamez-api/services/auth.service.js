@@ -29,7 +29,6 @@ var auth = {
                 var userId = ("userId" in req.params ? req.params.userId : null);
 
                 if(!email || !userId){
-                    // Error Message Email or UserId is undefined
                     response.errorMessage = "Email or UserId is undefined";
                     res.status(400).json(response);
                 }

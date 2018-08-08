@@ -21,6 +21,6 @@ express()
   .listen(PORT, () => {
     console.log('API is listening on 5000');
 
-    // Create the app-initialized file to signal to NGINX the api is ready.
+    /* Create the app-initialized file to signal to NGINX the api is ready.*/
     fs.writeFileSync('../tmp/app-initialized');
   })

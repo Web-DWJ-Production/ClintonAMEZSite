@@ -185,22 +185,20 @@ function buildTree(list){
 function addBranches(item, ret, loc){
     try {
         if(item.title in ret){
-            // update ret info
+            /* update ret info */
             ret[item.title].subSections = item.subSections;
             ret[item.title].defaultMedia = item.defaultMedia;
             ret[item.title].logo = item.logo;
             ret[item.title].section = item.section;
-            // return
             return;
         }
 
         if((loc+1) > item.subSections.length){
-            // push to list
+            /* push to list */
             ret[item.title]= item;
         }
         else {
             ret[item.subSections[loc]].children = checkRet(ret[item.subSections[loc]].children);
-            // send inside to recursive (loc+1)
             addBranches(item, ret[item.subSections[loc]].children, (loc+1));
         }
     }
