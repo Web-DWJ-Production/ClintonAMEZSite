@@ -2875,8 +2875,8 @@ var CoreService = (function () {
     function CoreService(http) {
         this.http = http;
         this.userKey = "clintonEditorUser";
-        //urlBase: string = 'http://localhost:5000';
-        this.urlBase = '';
+        //urlBase: string = 'http://localhost:5000/api';
+        this.urlBase = '/api';
         this.features = {
             "announcements": { "navItem": 'fa-bullhorn' },
             "forms": { "navItem": 'fa-clipboard' },
