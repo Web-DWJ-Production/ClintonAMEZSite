@@ -14,10 +14,10 @@ express()
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   })
-  .use('/mail', require('./controllers/mail.controller.js'))
-  .use('/mediaSet',require('./controllers/photoset.controller.js'))
-  .use('/media',require('./controllers/photo.controller.js'))
-  .use('/ministry',require('./controllers/ministry.controller.js'))
+  .use('/api/mail', require('./controllers/mail.controller.js'))
+  .use('/api/mediaSet',require('./controllers/photoset.controller.js'))
+  .use('/api/media',require('./controllers/photo.controller.js'))
+  .use('/api/ministry',require('./controllers/ministry.controller.js'))
   .listen(PORT, () => {
     console.log('API is listening on 5000');
 
