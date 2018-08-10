@@ -20,8 +20,8 @@ const httpOptions = {
 @Injectable()
 export class CoreService {
     public userKey: string = "clintonEditorUser";
-    //urlBase: string = 'http://localhost:5000/api';
-    urlBase: string = '/api';
+    urlBase: string = 'http://localhost:5000/api';
+    //urlBase: string = '/api';
 
    
     constructor(private http: HttpClient) { }

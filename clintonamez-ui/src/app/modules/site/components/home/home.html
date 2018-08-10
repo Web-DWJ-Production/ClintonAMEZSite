@@ -79,10 +79,12 @@
         <div class="ministry-container" id="ministryList">
             <div class="ministry-full-container">
                 <div class="ministry-card-container" *ngFor="let card of ministryList | slice:0:10;">
-                    <div class="ministry-card">
-                        <img src="{{card.defaultMedia}}" class="card-img">
-                        <div class="card-title">{{card.title}}</div>
-                    </div>
+                    <a [href]="getMinistryAddress(card.title)">
+                        <div class="ministry-card">
+                            <img [src]="checkImg(card.defaultMedia)" class="card-img">
+                            <div class="card-title">{{card.title}}</div>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- All Ministries Card -->

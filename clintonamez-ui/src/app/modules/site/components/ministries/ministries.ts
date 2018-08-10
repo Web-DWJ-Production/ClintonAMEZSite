@@ -51,4 +51,13 @@ export class MinistriesComponent implements OnInit {
     var cleanName = name.replace(/([&\/\\()])/g,"_").split(' ').join("");
     return "/site/ministries/"+cleanName;
   }
+
+  public defaultImg(img, type){
+    if(type == "logo"){
+      return (img? img : "assets/images/logos/ame_zion_logo.png");
+    }
+    else {
+      return (img? img : "assets/images/logos/ame_zion_logo.png");
+    }
+  }
 }

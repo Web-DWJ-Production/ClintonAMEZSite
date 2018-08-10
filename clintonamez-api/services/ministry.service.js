@@ -118,16 +118,21 @@ function getIndividual(mId, callback){
                 const db = client.db(database.dbName).collection('ministries');
 
                 db.find({'titleId': mId}).toArray(function(err, res){
-                    if(res == null || res == undefined) { response.errorMessage = "Unable to find id";}
-                    else { response.results = res[0];}
-                    
-                    var siblingSearch = (response.results.subSections.length > 0 ? response.results.subSections[response.results.subSections.length - 1] : response.results.title);
-                    if(response.results.subSections.length >= 0){}
-
-                    db.find({'subSections': siblingSearch, 'titleId':{$ne: mId}}).toArray(function(err,res){
-                        response.results.siblings = (res ? res : []);
+                    if(!res || res.length == 0) { 
+                        response.errorMessage = "Unable to find id";
                         callback(response);
-                    });
+                    }
+                    else { 
+                        response.results = res[0];                    
+                    
+                        var siblingSearch = (response.results.subSections.length > 0 ? response.results.subSections[response.results.subSections.length - 1] : response.results.title);
+                        if(response.results.subSections.length >= 0){}
+
+                        db.find({ $or: [{'subSections': siblingSearch, 'titleId':{$ne: mId}}, {'title': siblingSearch}]}).toArray(function(err,res){
+                            response.results.siblings = (res && res.length > 1 ? res : []);
+                            callback(response);
+                        });
+                    }
                 });
             }
         });

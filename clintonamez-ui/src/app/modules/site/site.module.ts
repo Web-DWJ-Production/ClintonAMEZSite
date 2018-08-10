@@ -68,7 +68,7 @@ const appRoutes: Routes = [
     NgxCarouselModule,
     NoopAnimationsModule, 
     MalihuScrollbarModule.forRoot(),   
-    RouterModule.forRoot(appRoutes,{ enableTracing: false, useHash: true } ),
+    RouterModule.forRoot(appRoutes,{ } ),
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyDGEvJhKl5-BC1STbiT4rYWIbfeCRkof8E' })
   ],
   declarations: [ 

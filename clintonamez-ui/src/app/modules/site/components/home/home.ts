@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit {
   public eventsList: EventsModel[];
   public intervalId = null;
   public mobileCheck = new RegExp('Android|webOS|iPhone|iPad|' + 'BlackBerry|Windows Phone|'  + 'Opera Mini|IEMobile|Mobile' , 'i');
-  
+  public defaultImg = "assets/images/logos/ame_zion_logo2.png";
+
   constructor(private coreService: CoreService, public dialog: MatDialog) { }
 
   ngOnInit() { 
@@ -121,5 +122,13 @@ export class HomeComponent implements OnInit {
       width: '75%',
       data: evnt
     });
+  }
+
+  public checkImg(img){
+    return (img? img : this.defaultImg);
+  }
+  public getMinistryAddress(name){
+    var cleanName = name.replace(/([&\/\\()])/g,"_").split(' ').join("");
+    return "/site/ministries/"+cleanName;
   }
 }

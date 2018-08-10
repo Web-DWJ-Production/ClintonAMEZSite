@@ -19,7 +19,7 @@
                 </div>
 
                 <!-- Sibling List -->
-                <ngx-carousel [inputs]="siblingCarousel" class="sibling-carousels tile-carousel">        
+                <ngx-carousel [inputs]="siblingCarousel" class="sibling-carousels tile-carousel" *ngIf="ministryComponent != undefined">        
                     <ngx-item *ngFor="let ministry of ministryComponent.siblings" NgxCarouselItem>
                         <div class="tile-container">
                             <a class="tile-page link mini" [href]="getAddress(ministry.title)">
@@ -45,7 +45,7 @@
 
     <!-- Information Body -->
     <section class="body-section notched-top">
-        <div class="outer-slide-container">
+        <div class="outer-slide-container" *ngIf="ministryComponent != undefined">
             <!-- Slide Bottom-->
             <div class="slide-bottom">
                 <h1 class="ministry-title">{{ ministryComponent.title }}</h1>
@@ -61,8 +61,7 @@
                         <div class="content gcolor0 sz-325">
                             <h1 class="m-title">{{ ministryComponent.title }}</h1>
                             <div class="m-logo">
-                                <img *ngIf="logoEmpty(ministryComponent.logo)" src="assets/images/logos/ame_zion_logo.png">
-                                <img *ngIf="!logoEmpty(ministryComponent.logo)" [src]="ministryComponent.logo">
+                                <img [src]="defaultImg(ministry, 'logo')">
                             </div>
 
                             <div class="population-list">{{ ministryComponent.populationsServed}}</div>

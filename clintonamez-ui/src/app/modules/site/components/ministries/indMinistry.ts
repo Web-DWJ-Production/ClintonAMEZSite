@@ -27,7 +27,7 @@ export class indMinistryComponent implements OnInit {
   ngOnInit() { 
     this.siblingCarousel = {
         grid: {xs: 1, sm: 3, md: 4, lg: 4, all: 0},
-        slide: 1, speed: 400, interval: 10000,
+        slide: 1, speed: 400, interval: 20000,
         point: { visible: true },
         load: 2, touch: true, loop: true, easing: 'ease'
     }
@@ -57,12 +57,17 @@ export class indMinistryComponent implements OnInit {
   }
 
   public getAddress(name){
-    var cleanName = name.split(' ').join("%20");
+    var cleanName = name.replace(/([&\/\\()])/g,"_").split(' ').join("");
     return "/site/ministries/"+cleanName;
   }
 
-  public logoEmpty(logo) {
-    return (logo == null || logo == "");
+  public defaultImg(img, type){
+    if(type == "logo"){
+      return (img && img.logo? img : "assets/images/logos/ame_zion_logo.png");
+    }
+    else {
+      return (img && img[type]? img : "assets/images/logos/ame_zion_logo.png");
+    }
   }
 
   public groupImgs(list){
@@ -120,4 +125,5 @@ export class indMinistryComponent implements OnInit {
       }, time);
     }
   }
+  
 }
