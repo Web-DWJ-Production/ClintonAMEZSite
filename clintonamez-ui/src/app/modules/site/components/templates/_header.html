@@ -28,9 +28,9 @@
             <div class="bottom-nav">
                 <!-- Full Menu -->
                 <div class="navbar-items full">
-                    <div class="nav-link" *ngFor="let item of navitems">
-                        <a [href]="item.page" [attr.target]="item.external == true ? '_blank' : null" (mouseenter)="showAdditionalMenu(item)"><span>{{item.title}}</span> <span class="nav-more" *ngIf="item.subPages != null"><i class="fas fa-chevron-down"></i></span></a>
-                    </div>        
+                    <a class="nav-link" *ngFor="let item of navitems" [href]="item.page" [attr.target]="item.external == true ? '_blank' : null" (mouseenter)="showAdditionalMenu(item)">
+                        <div><span>{{item.title}}</span> <span class="nav-more" *ngIf="item.subPages != null"><i class="fas fa-chevron-down"></i></span></div>
+                    </a>        
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="split-nav toggle"><div (click)="toggleSideNav()" class="toggle-container"><i class="fas fa-bars"></i></div></div>
     </div>
     <!-- Additional Menu -->
-    <div class="additionalMenu" *ngIf="additonalMenu.display" (mouseleave)="hideAdditionalMenu()" [@enterAnimation]="additonalMenu.display">
+    <div class="additionalMenu" *ngIf="additonalMenu.display" (mouseleave)="hideAdditionalMenu()">
         <div class="additionalContainer">
             <div class="add-nav-link main-link">
                 <a [href]="additonalMenu.titlepage">{{additonalMenu.title}}</a>

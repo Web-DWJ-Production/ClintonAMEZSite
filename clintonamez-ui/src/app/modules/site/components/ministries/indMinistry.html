@@ -23,10 +23,10 @@
                     <ngx-item *ngFor="let ministry of ministryComponent.siblings" NgxCarouselItem>
                         <div class="tile-container">
                             <a class="tile-page link mini" [href]="getAddress(ministry.title)">
-                                <div class="page-img"><img [src]="ministry.defaultMedia"></div>
+                                <div class="page-img"><img [src]="defaultImg(ministry, 'defaultMedia')"></div>
                                 <div class="page-info">
                                     <!-- LOGO -->
-                                    <div class="icon amez-logo"><img src="assets/images/logos/ame_zion_logo.png"></div>
+                                    <div class="icon amez-logo"><img [src]="defaultImg(ministry, 'logo')"></div>
                                     <!-- Title -->
                                     <div class="page-title">{{ministry.title}}</div>
                                     <!-- Sub Title -->
@@ -57,7 +57,7 @@
                 <div class="slide-wrapper">
                     <!-- Title -->
                     <div class="slide-panel" id="panel-1">
-                        <div class="side-img filtered sz-175"><img [src]="ministryComponent.defaultMedia"></div>
+                        <div class="side-img filtered sz-175"><img [src]="defaultImg(ministryComponent, 'defaultMedia')"></div>
                         <div class="content gcolor0 sz-325">
                             <h1 class="m-title">{{ ministryComponent.title }}</h1>
                             <div class="m-logo">

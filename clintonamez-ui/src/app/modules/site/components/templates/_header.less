@@ -36,7 +36,7 @@
                         overflow: hidden;
                         padding: 10px 30px;
                         display: flex;
-                        .logo { height: 100px;  }
+                        .logo { height: 80px;  }
                     }
                 } 
             }
@@ -99,7 +99,7 @@
                         }
 
                         .nav-link { 
-                            font-size: 1.3rem;
+                            font-size: 1.2rem;
                             padding: 0px 20px;
                             position: relative;
                             margin: auto 0px;
@@ -110,19 +110,18 @@
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
+                            text-decoration: none;
 
-                                                        
-                            a { 
-                                color: rgba(0,0,0,1);
-                                text-decoration: none;
+                            div { 
+                                color: rgba(0,0,0,1);                                
                                 text-transform: capitalize;
                                 display: inline-block;
                                 .nav-more { font-size: 1rem; }
                                 &:hover, &:focus { color: rgba(0,0,0,1); text-decoration: none; }
                             }
 
-                            &:hover { 
-                                a { color: @color6; }
+                            &:hover, &:focus { 
+                                div { color: @color6; text-decoration: none; }
                                 background: rgba(30,30,30,0.9);
                                 //.color3(background, 0.5);
                             }
@@ -135,12 +134,12 @@
 
     .additionalMenu {        
         .color3(background-color, 0.7);
-        padding: 30px 20px; 
+        padding: 20px; 
         transition: 5s all ease;  
         font-family: 'Montserrat Alternates', sans-serif;    
         
         .additionalContainer {
-            max-width: 1350px;
+            max-width: 100%;
             margin: 0px auto;            
             display: flex; 
             justify-content: center;

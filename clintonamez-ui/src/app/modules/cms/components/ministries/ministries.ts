@@ -11,7 +11,7 @@ import { CoreService } from '../../../../services/coreServices';
 @Component({
   selector: 'cms-ministries',
   templateUrl: './ministries.html',
-  styleUrls: ['./ministries.less']
+  styleUrls: ['./ministries.less', '../../cms.styles.less']
 })
 export class MinistriesComponent implements OnInit {
   public ministryList: MinistryModel[];

@@ -6,6 +6,7 @@ import { AGMaterialModule } from '../../material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { CalendarModule } from 'angular-calendar';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { CoreDirective } from './directives/core.directive';
 import { CMSCoreComponent } from './components/core/core';
@@ -16,6 +17,7 @@ import { AdminComponent, EditUserDialog } from './components/admin/admin';
 import { CalendarComponent, EventDialog } from './components/calendar/calendar';
 import { MinistriesComponent } from './components/ministries/ministries';
 import { DynamicListComponent } from './components/ministries/dynamicList';
+import { GalleryComponent } from './components/gallery/gallery';
 
 import { AuthService } from '../../services/authServices';
 import { CoreService } from '../../services/coreServices';
@@ -32,12 +34,13 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     NoopAnimationsModule,
     AGMaterialModule,
+    FileUploadModule,
     CalendarModule.forRoot(),
     RouterModule.forRoot(appRoutes,{ enableTracing: false } )
   ],
-  declarations: [CMSCoreComponent, CoreDirective, SignInComponent, HomeComponent, SettingsComponent, AdminComponent, EditUserDialog, CalendarComponent, EventDialog, MinistriesComponent, DynamicListComponent],
+  declarations: [CMSCoreComponent, CoreDirective, SignInComponent, HomeComponent, SettingsComponent, AdminComponent, EditUserDialog, CalendarComponent, EventDialog, MinistriesComponent, DynamicListComponent,GalleryComponent],
   providers: [AuthService, CoreService],
-  entryComponents: [SignInComponent, HomeComponent, SettingsComponent, AdminComponent, EditUserDialog, CalendarComponent, EventDialog, MinistriesComponent],
+  entryComponents: [SignInComponent, HomeComponent, SettingsComponent, AdminComponent, EditUserDialog, CalendarComponent, EventDialog, MinistriesComponent, GalleryComponent],
   exports: []
 })
 export class CMSModule { }

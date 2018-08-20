@@ -8,6 +8,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ToastrModule } from 'ngx-toastr';
 import { CalendarModule } from 'angular-calendar';
 import { NgbDatepickerModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AGMaterialModule } from './material';
 import { AppComponent } from './app.component';
@@ -26,7 +27,8 @@ const routes: Routes = [];
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AGMaterialModule,    
+    AGMaterialModule, 
+    FileUploadModule,
     CalendarModule.forRoot(),
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes),

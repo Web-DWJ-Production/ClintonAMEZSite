@@ -17,6 +17,10 @@ const httpOptions = {
     headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
 };
 
+const fileHttpOptions = {
+    headers: new HttpHeaders().set('Content-Type', 'multipart/form-data; charset=utf-8')
+};
+
 @Injectable()
 export class CoreService {
     public userKey: string = "clintonEditorUser";
@@ -158,12 +162,6 @@ export class CoreService {
 
     getTmpBibleStudy(callback){
         let tmpData = [
-            new BibleStudyModel('01-10-2018','Test-1',''),
-            new BibleStudyModel('03-25-2018','Test-2',''),
-            new BibleStudyModel('04-05-2018','Test-3',''),
-            new BibleStudyModel('04-10-2018','Test-4',''),
-            new BibleStudyModel('05-16-2018','Test-5',''),
-            new BibleStudyModel('05-20-2018','Test-6',''),
             new BibleStudyModel('05-24-2018','Test-7',''),
             new BibleStudyModel('06-12-2018','Test-8',''),
             new BibleStudyModel('07-08-2018','Test-9',''),
@@ -185,5 +183,13 @@ export class CoreService {
         let body = JSON.stringify({setId:photosetId});
 
         return this.http.post(this.urlBase+'/media', body, httpOptions);
+    }
+    sendEmail(form){
+        return this.http.post(this.urlBase+'/mail', form, httpOptions);
+    }
+
+    /* CMS */
+    getUploadImagesUrl(){       
+        return this.urlBase+'/media';
     }
 }

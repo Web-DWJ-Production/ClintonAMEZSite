@@ -1,7 +1,10 @@
-const express = require('express')
-const path = require('path')
-const fs = require('fs')
-const PORT = 5000
+const express = require('express');
+var multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const PORT = 5000;
+var DIR = path.join(__dirname, 'upload/');
+
 
 express()
   .use(express.json())
@@ -10,10 +13,25 @@ express()
   .set('view engine', 'ejs')
   /* For Dev Only */
   .use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    //res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader('Access-Control-Allow-Methods', 'POST');
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
   })
+  .use(multer({
+    dest: DIR,
+    rename: function (fieldname, filename) {
+      return filename + Date.now();
+    },
+    onFileUploadStart: function (file) {
+      console.log(file.originalname + ' is starting ...');
+    },
+    onFileUploadComplete: function (file) {
+      console.log(file.fieldname + ' uploaded to  ' + file.path);
+    }
+  }).any())
   .use('/api/mail', require('./controllers/mail.controller.js'))
   .use('/api/mediaSet',require('./controllers/photoset.controller.js'))
   .use('/api/media',require('./controllers/photo.controller.js'))

@@ -31,7 +31,9 @@ export class GalleryComponent implements OnInit {
 
     this.galleryObject.loading = true;
     this.coreService.getGalleryList().subscribe(res => { 
-      self.galleryObject.list = res;
+      self.galleryObject.list = res.filter(it => { 
+        return !it.title.toLowerCase().startsWith("_");
+      });
       self.galleryObject.pageTotal = Math.ceil(res.length / self.galleryObject.pageMax);
 
       this.galleryObject.loading = false;

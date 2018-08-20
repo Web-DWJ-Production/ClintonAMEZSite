@@ -107,6 +107,12 @@ export class indMinistryComponent implements OnInit {
     var timeInc = 10;
     var loc = (tag == '' ? 0: document.getElementById(tag).offsetLeft);
     let scrollArea = document.getElementsByClassName('slide-top');
+
+    // Check Parent
+
+    if(document.getElementById(tag).offsetParent.clientWidth < loc){
+      loc = document.getElementById(tag).offsetParent.clientWidth - (document.getElementById(tag).offsetParent.clientWidth * .38);
+    }
     // Value of difference between points
     var distance = loc - scrollArea[0].scrollLeft;
     // pixels per .25 sec

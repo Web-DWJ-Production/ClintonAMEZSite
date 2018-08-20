@@ -25,10 +25,10 @@ mail.send = (req, res) => {
             console.log(error);
             res.status(200).json(false);
         }
-    });
-
-    res.status(200).json(true);
-    
+        else {
+            res.status(200).json(true);
+        }
+    });    
 };
 
 module.exports = mail;
