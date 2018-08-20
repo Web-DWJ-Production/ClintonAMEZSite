@@ -182,7 +182,7 @@ export class CoreService {
     getGallery(photosetId){
         let body = JSON.stringify({setId:photosetId});
 
-        return this.http.post(this.urlBase+'/media', body, httpOptions);
+        return this.http.get(this.urlBase+'/media'+'/'+photosetId);
     }
     sendEmail(form){
         return this.http.post(this.urlBase+'/mail', form, httpOptions);

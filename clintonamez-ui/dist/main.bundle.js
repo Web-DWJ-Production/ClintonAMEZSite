@@ -3249,7 +3249,7 @@ var CoreService = (function () {
     };
     CoreService.prototype.getGallery = function (photosetId) {
         var body = JSON.stringify({ setId: photosetId });
-        return this.http.post(this.urlBase + '/media', body, httpOptions);
+        return this.http.get(this.urlBase + '/media' + '/' + photosetId);
     };
     CoreService.prototype.sendEmail = function (form) {
         return this.http.post(this.urlBase + '/mail', form, httpOptions);
