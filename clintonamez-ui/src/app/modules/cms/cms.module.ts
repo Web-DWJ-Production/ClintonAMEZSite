@@ -18,6 +18,7 @@ import { CalendarComponent, EventDialog } from './components/calendar/calendar';
 import { MinistriesComponent } from './components/ministries/ministries';
 import { DynamicListComponent } from './components/ministries/dynamicList';
 import { GalleryComponent } from './components/gallery/gallery';
+import { AnnouncementsComponent } from './components/announcements/announcements';
 
 import { AuthService } from '../../services/authServices';
 import { CoreService } from '../../services/coreServices';
@@ -38,9 +39,9 @@ const appRoutes: Routes = [
     CalendarModule.forRoot(),
     RouterModule.forRoot(appRoutes,{ enableTracing: false } )
   ],
-  declarations: [CMSCoreComponent, CoreDirective, SignInComponent, HomeComponent, SettingsComponent, AdminComponent, EditUserDialog, CalendarComponent, EventDialog, MinistriesComponent, DynamicListComponent,GalleryComponent],
+  declarations: [CMSCoreComponent, CoreDirective, SignInComponent, HomeComponent, SettingsComponent, AdminComponent, EditUserDialog, CalendarComponent, EventDialog, MinistriesComponent, DynamicListComponent, GalleryComponent, AnnouncementsComponent],
   providers: [AuthService, CoreService],
-  entryComponents: [SignInComponent, HomeComponent, SettingsComponent, AdminComponent, EditUserDialog, CalendarComponent, EventDialog, MinistriesComponent, GalleryComponent],
+  entryComponents: [SignInComponent, HomeComponent, SettingsComponent, AdminComponent, EditUserDialog, CalendarComponent, EventDialog, MinistriesComponent, GalleryComponent, AnnouncementsComponent],
   exports: []
 })
 export class CMSModule { }

@@ -80,7 +80,7 @@ export class CoreService {
     }
 
     getAnnouncements(callback){
-        var vidAnnouncement: AnnouncementModel=  new AnnouncementModel("assets/images/tmpMedia/tmpVideo.mp4", "full-video",null, null);
+        var vidAnnouncement: AnnouncementModel=  new AnnouncementModel(5,"assets/images/tmpMedia/tmpVideo.mp4", "full-video",null, null);
         vidAnnouncement.defaultMedia = "assets/images/tmpMedia/tmpVide_mini.JPG";
 
         var tmpList1: LineTypeModel[] = [
@@ -105,11 +105,10 @@ export class CoreService {
         ];
 
         var retList: AnnouncementModel[] = [
-            //vidAnnouncement,
-            new AnnouncementModel("", "cover-title","Welcome To Clinton", []),            
-            new AnnouncementModel("assets/images/tmpMedia/pastor1.jpg","card-img", "Welcome", tmpList1),
-            new AnnouncementModel("assets/images/tmpMedia/Clinton_2012.jpg","card-img", "Clinton For Your Spirit, Mind and Body", tmpList2),
-            new AnnouncementModel("assets/images/tmpMedia/Homecoming-Flyer.png","card-img", "New Event", tmpList3)
+            //vidAnnouncement,           
+            new AnnouncementModel(0,"assets/images/tmpMedia/pastor1.jpg","card-img", "Welcome", tmpList1),
+            new AnnouncementModel(1,"assets/images/tmpMedia/Clinton_2012.jpg","card-img", "Clinton For Your Spirit, Mind and Body", tmpList2),
+            new AnnouncementModel(2,"assets/images/tmpMedia/Homecoming-Flyer.png","card-img", "New Event", tmpList3)
         ];
 
         callback({"errorMessage":null,"results":retList});

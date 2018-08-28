@@ -1,0 +1,45 @@
+<div class="cms-content inner-page announcements">
+  <div class="cms-container">
+    <h1 class="header-message"><i class="fas fa-bullhorn"></i> <span>Announcements</span></h1>
+
+    <div class="announcements-body">
+      <div class="acard-container">
+        <!-- Card Preview -->
+        <div class="card-preview">
+          <div [ngClass]="['crd-ctrl', 'prev', isDisabled('prev')]" (click)="changeSelected('prev',0)"><i class="fas fa-chevron-left"></i></div>
+          <div class="card-content">
+            <div class="carousel-page" [ngClass]="selectedCard.type">              
+              <!-- Card Image -->
+              <div class="carousel-card img-card">
+                <div class="img-card-container">
+                  <div class="img-container"><img src="{{selectedCard.media}}" class="carousel-card-img" alt=""></div>
+                  <div class="card-content">
+                    <div class="content-title">{{selectedCard.title}}</div>
+                    <div *ngFor="let line of selectedCard.lines" [ngClass]="['content-line', line.size, isBold(line.bold)]">{{line.text}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div [ngClass]="['crd-ctrl', 'next', isDisabled('next')]"  (click)="changeSelected('next',0)"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <!-- Card Order Control-->
+        <div class="card-ctrl">
+          <div class="card-mini-preview">
+            <!-- Current Cards -->
+            <div [ngClass]="['card-mini-content', 'current', isActive(i)]" *ngFor="let card of editCards; let i = index" (click)="changeSelected('jump',i)">
+              <div class="card-inside"><span>{{ i }}</span></div>
+            </div>
+
+            <!-- Add Cards -->
+            <div class="card-mini-content add" *ngFor="let card of addCardList(); let i = index">
+              <div class="card-inside" *ngIf="i == 0">Add</div>
+              <div class="card-inside" *ngIf="i > 0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

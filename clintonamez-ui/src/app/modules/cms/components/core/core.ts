@@ -14,6 +14,7 @@ import { AdminComponent } from '../admin/admin';
 import { CalendarComponent } from '../calendar/calendar';
 import { MinistriesComponent } from '../ministries/ministries';
 import { GalleryComponent } from '../gallery/gallery';
+import { AnnouncementsComponent } from '../announcements/announcements';
 
 /* Data Models */
 import { CmsNavModel } from '../../../../datamodels/cmsNavModel';
@@ -32,7 +33,7 @@ export class CMSCoreComponent implements OnInit {
     "signin":{ "navItem":null, "template":SignInComponent },
     "settings":{ "navItem":null, "template":SettingsComponent },
     "admin":{ "navItem":null, "template":AdminComponent },
-    "announcements": { "navItem":new CmsNavModel('announcements', 'fa-bullhorn', 'announcements', null, false), "template":HomeComponent},
+    "announcements": { "navItem": new CmsNavModel('announcements', 'fa-bullhorn', 'announcements', null, false), "template": AnnouncementsComponent},
     "ministries": { "navItem":new CmsNavModel('ministries', 'fa-child', 'ministries', null, false), "template":MinistriesComponent},    
     "gallery": { "navItem":new CmsNavModel('gallery', 'fa-images', 'gallery', null, false), "template":GalleryComponent},
     "calender": { "navItem":new CmsNavModel('calender', 'fa-calendar-alt', 'calender', null, false), "template":CalendarComponent},    

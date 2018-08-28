@@ -5,9 +5,11 @@ export class AnnouncementModel {
     public defaultMedia: string;
     public type: string;
     public title: string;
+    public order: number;
     public lines: LineTypeModel[];    
 
-    constructor(myMedia, myType, myTitle, myLines){
+  constructor(myOrder, myMedia, myType, myTitle, myLines) {
+        this.order = myOrder;
         this.media = myMedia;
         this.type = myType;
         this.title = myTitle;
