@@ -85,8 +85,8 @@ export class CoreService {
 
         var tmpList1: LineTypeModel[] = [
             new LineTypeModel("We are marking our 150th year as a continuing congregation.", "h1", true),
-            new LineTypeModel("Our vision is to affect a completely transformed community of faith, worthy of citizenship in the Kingdom of God, by the power of God through His Son Jesus Christ. Our mission is to produce ministries that will serve the CAUSE of Christ through the spiritual transformation of minds, bodies and spirits.", "paragraph", false),
-            new LineTypeModel("Sunday morning worship services begin at 10:00 AM.  Visitors, we encourage you to be sure to explore our 'Galleries' tab.", "paragraph", true)
+            new LineTypeModel("Our vision is to affect a completely transformed community of faith, worthy of citizenship in the Kingdom of God, by the power of God through His Son Jesus Christ. Our mission is to produce ministries that will serve the CAUSE of Christ through the spiritual transformation of minds, bodies and spirits.", "p", false),
+            new LineTypeModel("Sunday morning worship services begin at 10:00 AM.  Visitors, we encourage you to be sure to explore our 'Galleries' tab.", "p", true)
         ];
         var tmpList2: LineTypeModel[] = [
             new LineTypeModel("Uplifting and Informative", "h2",true),

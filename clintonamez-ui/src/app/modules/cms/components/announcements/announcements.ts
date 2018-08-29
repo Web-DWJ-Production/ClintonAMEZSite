@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 /* Data Models */
 import { AnnouncementModel } from '../../../../datamodels/announcementModel';
+import { LineTypeModel } from '../../../../datamodels/lineTypeModel';
 
 /* Service */
 import { AuthService } from '../../../../services/authServices';
@@ -78,4 +79,31 @@ export class AnnouncementsComponent implements OnInit {
     var self = this;
     return (self.selectedLoc == loc ? 'active' : '');
   }
+
+ public addLine(){
+  var self = this;
+  self.selectedCard.lines.push(new LineTypeModel("", "p",false));
+ }
+
+ public removeLine(index){
+   var self = this;
+   self.selectedCard.lines.splice(index,1);
+ }
+
+ public szChange(index){
+  
+  var szChart = ["p","h2","h1"];
+  var szIndex = szChart.indexOf(this.selectedCard.lines[index].size);
+
+  if(szIndex+1 == szChart.length){
+    this.selectedCard.lines[index].size = szChart[0];
+  }
+  else {
+    this.selectedCard.lines[index].size = szChart[szIndex+1];
+  }
+ }
+
+ public boldChange(index){
+  this.selectedCard.lines[index].bold = !this.selectedCard.lines[index].bold;
+ }
 }
