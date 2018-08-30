@@ -104,6 +104,6 @@ export class AnnouncementsComponent implements OnInit {
  }
 
  public boldChange(index){
-  this.selectedCard.lines[index].bold = !this.selectedCard.lines[index].bold;
+  this.selectedCard.lines[index].bold = (this.selectedCard.lines[index].bold == false ? true : false);
  }
 }

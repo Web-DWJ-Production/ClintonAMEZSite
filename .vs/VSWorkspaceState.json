@@ -1,19 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\clintonamez-api\\config",
+    "\\clintonamez-api\\services",
     "\\clintonamez-ui",
     "\\clintonamez-ui\\src",
     "\\clintonamez-ui\\src\\app",
-    "\\clintonamez-ui\\src\\app\\modules",
-    "\\clintonamez-ui\\src\\app\\modules\\cms\\components",
-    "\\clintonamez-ui\\src\\app\\modules\\cms\\components\\core",
-    "\\clintonamez-ui\\src\\app\\modules\\cms\\components\\ministries",
-    "\\clintonamez-ui\\src\\app\\modules\\site",
-    "\\clintonamez-ui\\src\\app\\modules\\site\\components",
-    "\\clintonamez-ui\\src\\app\\modules\\site\\components\\gallery",
-    "\\clintonamez-ui\\src\\app\\modules\\site\\components\\home",
-    "\\clintonamez-ui\\src\\app\\services"
+    "\\clintonamez-ui\\src\\app\\datamodels"
   ],
-  "SelectedNode": "\\clintonamez-ui\\src\\app\\modules\\site\\components\\home\\home.less",
+  "SelectedNode": "\\clintonamez-ui\\src\\app\\datamodels\\announcementModel.ts",
   "PreviewInSolutionExplorer": false
 }

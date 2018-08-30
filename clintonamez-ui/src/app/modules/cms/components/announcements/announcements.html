@@ -31,14 +31,16 @@
                           <span *ngSwitchCase="'h1'">H1</span>
                         </div>
                         <!-- Bold -->
-                        <div class="sm-btn boldChange" (click)="boldChange(j)" [ngSwitch]="line.bold">
+                        <div class="sm-btn boldChange" (click)="boldChange(j)">
                           <!-- Bold -->
-                          <i class="fas fa-bold" *ngSwitchCase="true"></i>
+                          <span class="icon-container" *ngIf="line.bold == true"><i class="fas fa-bold"></i></span>
 
                           <!-- Not Bold-->
-                          <span class="fa-stack" *ngSwitchCase="false">
-                            <i class="fas fa-bold fa-stack-1x" data-fa-transform="shrink-6"></i>
-                            <i class="fas fa-ban fa-stack-1x" style="color:Tomato"></i>
+                          <span class="icon-container" *ngIf="line.bold == false">
+                            <span class="fa-stack">
+                              <i class="fas fa-bold fa-stack-1x" data-fa-transform="shrink-6"></i>
+                              <i class="fas fa-ban fa-stack-1x" style="color:Tomato"></i>
+                            </span>
                           </span>
                         </div>
                         <!-- Remove -->

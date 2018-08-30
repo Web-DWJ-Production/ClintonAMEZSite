@@ -4,16 +4,8 @@ var path = require('path');
 var util = require('util');
 var fs = require('fs');
 var request = require('request');
-var multer = require('multer');
 
-var flickrConfig = {
-    token:"8fbb27fc0ec755b0591ab7e5a4b02be8",
-    secret:"20fb55a36bdcf198",
-    userId:"140987161@N03",
-    access_token:"72157697121992972-198ddd37e760eef8",
-    access_token_secret:"ea9448f83362c19a"
-};
-
+var flickrConfig = require("../config/flickrconfig.json");
 var Flickr = require("flickrapi");
 
 var FlickrOptions = { 
