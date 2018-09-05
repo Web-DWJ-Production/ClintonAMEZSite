@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FileUploader } from 'ng2-file-upload';
 
 /* Data Models */
 import { AnnouncementModel } from '../../../../datamodels/announcementModel';
@@ -15,6 +16,7 @@ import { CoreService } from '../../../../services/coreServices';
   styleUrls: ['./announcements.less', '../../cms.styles.less']
 })
 export class AnnouncementsComponent implements OnInit {
+  public uploader:FileUploader = new FileUploader({url: this.coreService.getUploadUrl('announcements')});
   public initialCards: AnnouncementModel[];
   public editCards: AnnouncementModel[];
   public selectedCard: AnnouncementModel;
@@ -75,6 +77,14 @@ export class AnnouncementsComponent implements OnInit {
     return new Array(lgth);
   }
 
+  public addCard(){
+    var self = this;
+    var blankLines = [new LineTypeModel("", "p",false)];
+    var blankCard = new AnnouncementModel(-1,null,'card-img','', blankLines);
+
+    self.editCards.unshift(blankCard);
+    self.changeSelected('jump', 0);
+  }
   public isActive(loc) {
     var self = this;
     return (self.selectedLoc == loc ? 'active' : '');

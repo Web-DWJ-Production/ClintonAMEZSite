@@ -14,7 +14,7 @@ import { CoreService } from '../../../../services/coreServices';
   styleUrls: ['./gallery.less', '../../cms.styles.less']
 })
 export class GalleryComponent implements OnInit {
-  public uploader:FileUploader = new FileUploader({url: this.coreService.getUploadImagesUrl()});
+  public uploader:FileUploader = new FileUploader({url: this.coreService.getUploadUrl('media')});
 
   public dataSource;
   public galleryObject = {

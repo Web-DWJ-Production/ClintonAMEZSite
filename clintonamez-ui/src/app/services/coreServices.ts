@@ -188,7 +188,19 @@ export class CoreService {
     }
 
     /* CMS */
-    getUploadImagesUrl(){       
-        return this.urlBase+'/media';
+    getUploadUrl(type){  
+        var retUrl = this.urlBase;
+        switch(type){
+            case "media":
+                retUrl += '/media';
+                break;
+            case "announcements":
+                retUrl += '/announcements';
+                break;
+            default:
+                break;
+        }     
+
+        return retUrl;
     }
 }
