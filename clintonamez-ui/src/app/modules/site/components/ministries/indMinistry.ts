@@ -63,7 +63,7 @@ export class indMinistryComponent implements OnInit {
 
   public defaultImg(img, type){
     if(type == "logo"){
-      return (img && img.logo? img : "assets/images/logos/ame_zion_logo.png");
+      return (img && img.logo? img.logo : "assets/images/logos/ame_zion_logo.png");
     }
     else {
       return (img && img[type]? img : "assets/images/logos/ame_zion_logo.png");

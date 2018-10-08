@@ -48,6 +48,7 @@ export class MinistriesComponent implements OnInit {
   }
 
   public getAddress(name){
+    name = (!name ? "" : name);
     var cleanName = name.replace(/([&\/\\()])/g,"_").split(' ').join("");
     return "/site/ministries/"+cleanName;
   }

@@ -162,17 +162,16 @@
                 transition: 0.7s all ease-in-out;
 
                 @media @mobile-device { width: inherit; padding: 10px;}
-                &:hover {                    
-                    &.service { .card-container { color: rgba(255,255,255,1); .color2(background, 0.7); }}
-                    &.prayer { .card-container {color: rgba(255,255,255,1); .color4(background, 0.7); }}
-                    &.bible { .card-container {color: rgba(255,255,255,1); .color5(background, 0.7); }}
+                &:hover { 
+                    .card-container { color: rgba(255,255,255,1); .color6(background, 0.7); border-color: rgba(255,255,255,1) !important; }
                 }
                 .card-container {
                     background: rgba( 230,230,230,0.2);
                     height: 125px;
                     color:rgba(0,0,0,1);
                     position: relative; 
-                    border: 7px solid rgba(255,255,255,1);
+                    border: 3px solid;
+                    .color6(border-color, 0.7);
                     border-radius: 5px;
                     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);                    
                     transition: 0.7s all ease-in-out;
@@ -201,6 +200,7 @@
                                 &.c3 { background: @color3;}
                                 &.c4 { background: @color4;}                            
                                 &.c5 { background: @color5;}
+                                &.c6 { background: @color6;}
                                     
                                 .icon-center{ 
                                     position: absolute; 
@@ -260,7 +260,7 @@
                         background: rgba(50,50,50,1);
                         position: relative;
                         overflow: hidden;
-                        border: 7px solid rgba(240,240,240,1);
+                        border: 3px solid rgba(240,240,240,1);
                         border-radius: 5px;                        
                         cursor: pointer;
 

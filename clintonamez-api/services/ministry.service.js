@@ -159,6 +159,7 @@ function getTree(callback){
                 db.find({},{title: 1, section:1, subSections:1,defaultMedia:1,logo:1}).toArray(function(err, res){
                     if(res == null || res == undefined) { response.errorMessage = "Unable get list";}
                     else { response.results = buildTree(res);}
+
                     callback(response);
                 });
             }
@@ -195,14 +196,22 @@ function addBranches(item, ret, loc){
             ret[item.title].defaultMedia = item.defaultMedia;
             ret[item.title].logo = item.logo;
             ret[item.title].section = item.section;
+            ret[item.title].title = item.title;
+            ret[item.title].mission = item.mission;
             return;
         }
-
+        
         if((loc+1) > item.subSections.length){
             /* push to list */
+            var tmpChildren = (ret[item.title] && ret[item.title].children? ret[item.title].children : {});
             ret[item.title]= item;
+            ret[item.title].children = tmpChildren;
         }
         else {
+            if(!ret[item.subSections[loc]]){
+                ret[item.subSections[loc]] = { "children":{}};
+            }
+
             ret[item.subSections[loc]].children = checkRet(ret[item.subSections[loc]].children);
             addBranches(item, ret[item.subSections[loc]].children, (loc+1));
         }
