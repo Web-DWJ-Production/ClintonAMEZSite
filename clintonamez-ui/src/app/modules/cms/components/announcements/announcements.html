@@ -12,7 +12,16 @@
               <!-- Card Image -->
               <div class="carousel-card img-card">
                 <div class="img-card-container">
-                  <div class="img-container"><img src="{{selectedCard.media}}" class="carousel-card-img" alt=""></div>
+                  <!-- IMAGE -->
+                  <div class="img-container">
+                    <div class="img-upload">
+                        <input type="file" class="img-input" name="imgFile" id="imgFile" (change)="onFileChange($event)" accept="image/*" #fileInput>
+                        <label class="img-lbl" for="imgFile"><i class="fas fa-cloud-upload-alt"></i></label>
+                    </div>
+
+                    <img [src]="buildMedia(selectedCard.mediaArray)" class="carousel-card-img" alt="">
+                  </div>
+
                   <div class="card-content">
                     <!-- Title -->
                     <div class="content-title"><dynamic-field [(text)]="selectedCard.title"></dynamic-field></div>
@@ -72,6 +81,13 @@
               <div class="card-inside" *ngIf="i > 0"></div>
             </div>
           </div>
+        </div>
+
+        <!-- Update Btn -->
+        <div class="btn-section">
+            <button type="button" class="btn c4-flip" (click)="updateCarousel()">
+              <i class="fas fa-edit"></i> <span>Update</span>
+            </button>
         </div>
       </div>
     </div>

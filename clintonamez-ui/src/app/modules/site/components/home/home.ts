@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
 
   public loadAnnouncements(){
     var self = this;
-    this.coreService.getAnnouncements(function(res){
+    this.coreService.getTmpAnnouncements(function(res){
       if(res.errorMessage == null){
         self.homeCards = res.results;
         self.homeCards.unshift(new AnnouncementModel(0, "", "cover-title", "Welcome To Clinton", []));

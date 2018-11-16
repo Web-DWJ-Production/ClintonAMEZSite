@@ -13,8 +13,8 @@ var announcements = require('../services/announcements.service');
 
 */
 
-router.get('', getMinistries);
-//router.post('', updateMinistry);
+router.get('', getAnnouncements);
+router.post('', updateAnnouncements);
 //router.put('', addMinistry);
 //router.delete('', deleteMinistry);
 

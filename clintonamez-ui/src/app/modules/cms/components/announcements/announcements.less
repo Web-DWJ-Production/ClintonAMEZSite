@@ -55,6 +55,25 @@
               align-content: flex-start;
               width: 100%;
 
+              .img-container {
+                position: relative;
+                .img-upload { 
+                  position: absolute;
+                  left: 5px;
+                  top: 5px;
+                  z-index: 100;
+                  background: @color3;
+                  padding: 5px;
+                  border-radius: 50%;
+                  opacity: 0.5;
+                  transition: 0.5s all ease;
+                  cursor: pointer;
+                  &:hover { opacity: 0.8;}
+                  .img-input { display:none; cursor: pointer;}
+                  .img-lbl { cursor: pointer;}
+                }
+              }
+
               @media @mobile-device {
                 flex-direction: column;
               }
@@ -185,6 +204,10 @@
           }
         }
       }
+
+      .btn-section {
+        margin: 20px 0px;
+      }
     }
   }
 }
@@ -233,4 +256,15 @@
   //margin-bottom: -30px;
 
   &:focus, &.empty { border: 2px dashed rgba(250,250,250,0.3); }
+}
+
+.btn {
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+    &:hover { 
+      .color4(background, 1);
+      box-shadow: none;
+    }
+  }
 }

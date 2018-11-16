@@ -79,9 +79,9 @@ export class CoreService {
         callback({"errorMessage":null,"results":retList});
     }
 
-    getAnnouncements(callback){
-        var vidAnnouncement: AnnouncementModel=  new AnnouncementModel(5,"assets/images/tmpMedia/tmpVideo.mp4", "full-video",null, null);
-        vidAnnouncement.defaultMedia = "assets/images/tmpMedia/tmpVide_mini.JPG";
+    getTmpAnnouncements(callback){
+        //var vidAnnouncement: AnnouncementModel=  new AnnouncementModel(5,"assets/images/tmpMedia/tmpVideo.mp4", "full-video",null, null);
+        //vidAnnouncement.defaultMedia = "assets/images/tmpMedia/tmpVide_mini.JPG";
 
         var tmpList1: LineTypeModel[] = [
             new LineTypeModel("We are marking our 150th year as a continuing congregation.", "h1", true),
@@ -169,6 +169,14 @@ export class CoreService {
 
         callback({"errorMessage":null, "results":tmpData});
     }
+    
+    getAnnouncements(){
+        return this.http.get<{"errorMessage":string, "results":AnnouncementModel[]}>(this.urlBase+'/announcements');
+    }
+    updateAnnouncements(list){
+        return this.http.post(this.urlBase+'/announcements', list, httpOptions);
+    }
+
     getMinistries(mId){
         mId = (!mId ? "all" : mId);
         return this.http.get<{"errorMessage":string, "results":any}>(this.urlBase+'/ministry/'+mId);

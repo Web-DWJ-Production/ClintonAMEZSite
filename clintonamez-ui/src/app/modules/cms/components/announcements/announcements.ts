@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { FileUploader } from 'ng2-file-upload';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 /* Data Models */
 import { AnnouncementModel } from '../../../../datamodels/announcementModel';
@@ -16,14 +15,13 @@ import { CoreService } from '../../../../services/coreServices';
   styleUrls: ['./announcements.less', '../../cms.styles.less']
 })
 export class AnnouncementsComponent implements OnInit {
-  public uploader:FileUploader = new FileUploader({url: this.coreService.getUploadUrl('announcements')});
   public initialCards: AnnouncementModel[];
   public editCards: AnnouncementModel[];
   public selectedCard: AnnouncementModel;
   public selectedLoc: number;
   public cardMax = 5;
 
-  constructor(private authService: AuthService, private coreService: CoreService) { }
+  constructor(private authService: AuthService, private coreService: CoreService, private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.loadAnnouncements();
@@ -31,15 +29,97 @@ export class AnnouncementsComponent implements OnInit {
 
   public loadAnnouncements() {
     var self = this;
-    this.coreService.getAnnouncements(function (res) {
-      if (res.errorMessage == null) {
-        self.initialCards = res.results;
-        self.editCards = res.results;
+    this.coreService.getAnnouncements().subscribe(res => {
+      if(!res.errorMessage){
+        self.initialCards= res.results.slice();
+        self.editCards = res.results.slice();
 
         self.selectedCard = (self.editCards && self.editCards.length > 0 ? self.editCards[0] : null);
         self.selectedLoc = 0;
       }
     });
+  }
+
+  /* Convert base64 */
+  public onFileChange(event) {
+    var self = this;
+
+    let reader = new FileReader();
+
+    try {
+      if(event.target.files && event.target.files.length > 0) {
+        let file = event.target.files[0];
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          //self.selectedCard.media = reader.result;
+          self.selectedCard.mediaArray = self.splitBase64Media(reader.result);
+        };
+      }
+    }
+    catch(ex){
+      console.log("Error with new img file: ", ex);
+    }
+  
+  }
+
+  public buildMedia(list){
+    var self = this;
+    var url = null;
+    try {
+      var str = (list.length > 0 ? list.join('') : null);
+      url = self._sanitizer.bypassSecurityTrustResourceUrl(str);
+    }
+    catch(ex){
+      console.log("Error cleaning Url: ", ex);
+    }
+
+    return url;
+  }
+  
+  public splitBase64Media(str){
+    var ret = [];
+    var sliceLgth = 25000;
+    try {
+      while(str.length > 0){
+        var tmp = str.slice(0, sliceLgth);
+        ret.push(tmp);
+
+        str = str.slice(sliceLgth);
+      }
+    }
+    catch(ex){
+      console.log("error splitting base64: ", ex);
+    }
+    return ret;
+  }
+
+  public readyForUpdate(){
+    var self = this;
+    var ret = false;
+
+    try {
+      ret = (self.initialCards !== self.editCards);
+    }
+    catch(ex){
+      console.log("Error checking for update: ", ex);
+    }
+
+    return ret;
+  }
+
+  public updateCarousel(){
+    var self = this;
+    try {
+      var list = {"list": self.editCards};
+
+      this.coreService.updateAnnouncements(list).subscribe(res => {
+        if(res) { /* Error Message*/ }
+        else { /* Send Message */} 
+    }); 
+    }
+    catch(ex){
+      console.log("error updating carousel: ",ex);
+    }
   }
 
   public isBold(bold) {
