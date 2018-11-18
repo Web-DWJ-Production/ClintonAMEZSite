@@ -40,6 +40,18 @@ export class AnnouncementsComponent implements OnInit {
     });
   }
 
+  public getJSONString(obj){
+    return JSON.stringify(obj.mediaArray);
+  }
+
+  public textAreaAdjust(obj, ret){
+    obj.style.height = "1px";
+    var objHeight = (2+obj.scrollHeight)+"px";
+    obj.style.height = objHeight;
+    
+    if(ret) return objHeight;
+  }
+
   /* Convert base64 */
   public onFileChange(event) {
     var self = this;
@@ -115,7 +127,7 @@ export class AnnouncementsComponent implements OnInit {
       this.coreService.updateAnnouncements(list).subscribe(res => {
         if(res) { /* Error Message*/ }
         else { /* Send Message */} 
-    }); 
+      }); 
     }
     catch(ex){
       console.log("error updating carousel: ",ex);
@@ -137,6 +149,7 @@ export class AnnouncementsComponent implements OnInit {
 
   public changeSelected(dir, loc) {
     var self = this;
+    
     if (dir == "jump") {
       self.selectedLoc = loc;
     }

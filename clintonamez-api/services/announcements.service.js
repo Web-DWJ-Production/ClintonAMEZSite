@@ -17,7 +17,7 @@ var announcements = {
 					else {  
 						const db = client.db(database.dbName).collection('announcements');
 						// Get Announcement List From DB
-						db.find({}).sort( { order: 1 } ).toArray(function(err, dbres){
+						db.find({}, {useNewUrlParser: true}).sort( { order: 1 } ).toArray(function(err, dbres){
 							if(dbres == null || dbres == undefined) { response.errorMessage = "Unable get list";}
 							else {  
                                 response.results = dbres;
@@ -58,6 +58,7 @@ module.exports = announcements;
 
 function updateList(list, loc, callback){
 	try {
+		console.log(" [DEBUG]: ", list[loc]);
 		if(loc >= list.length){
 			callback(true);
 		}

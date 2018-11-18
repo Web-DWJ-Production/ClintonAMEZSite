@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 var multer = require('multer');
 const path = require('path');
 const fs = require('fs');
@@ -8,6 +9,8 @@ var DIR = path.join(__dirname, 'upload/');
 
 express()
   .use(express.json())
+  .use(bodyParser.json({limit: '500mb'}))
+  .use(bodyParser.urlencoded({limit: '500mb', extended: true}))
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')

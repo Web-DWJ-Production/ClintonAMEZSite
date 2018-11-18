@@ -5,7 +5,7 @@
     <div class="announcements-body">
       <div class="acard-container">
         <!-- Card Preview -->
-        <div class="card-preview">
+        <div class="card-preview" *ngIf="selectedCard">
           <div [ngClass]="['crd-ctrl', 'prev', isDisabled('prev')]" (click)="changeSelected('prev',0)"><i class="fas fa-chevron-left"></i></div>
           <div class="card-full-content">
             <div class="carousel-page" [ngClass]="selectedCard.type">              
@@ -28,7 +28,10 @@
 
                     <!-- Lines -->
                     <div *ngFor="let line of selectedCard.lines; let j = index" [ngClass]="['content-line', line.size, isBold(line.bold)]">
-                      <dynamic-field [(text)]="line.text"></dynamic-field>
+                      
+                      <textarea [ngClass]="['h-form', (line.text.length == 0 ? 'empty': '')]" #selectTitle [ngStyle]="{'height':textAreaAdjust(selectTitle, true)}" [(ngModel)]="line.text"></textarea>
+                      <!--<dynamic-field [(text)]="line.text"></dynamic-field>-->
+
                       <div class="type-btns">
                         <!-- Size -->
                         <div class="sm-btn sizeChange" [ngSwitch]="line.size" (click)="szChange(j)">
@@ -68,7 +71,7 @@
         </div>
 
         <!-- Card Order Control-->
-        <div class="card-ctrl">
+        <div class="card-ctrl" *ngIf="editCards">
           <div class="card-mini-preview">
             <!-- Current Cards -->
             <div [ngClass]="['card-mini-content', 'current', isActive(i)]" *ngFor="let card of editCards; let i = index" (click)="changeSelected('jump',i)">
@@ -90,6 +93,10 @@
             </button>
         </div>
       </div>
+
+      <!--<div style="word-break: break-word;">{{ getJSONString(selectedCard) }}</div>-->
+
     </div>
   </div>
 </div>
+
