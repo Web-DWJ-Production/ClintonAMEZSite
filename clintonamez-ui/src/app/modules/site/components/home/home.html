@@ -22,7 +22,7 @@
                     <!-- Card Image -->
                     <div class="carousel-card img-card" *ngSwitchDefault> 
                         <div class="img-card-container">                       
-                            <div class="img-container"><img src="{{item.media}}" class="carousel-card-img" alt=""></div>
+                            <div class="img-container"><img [src]="buildMedia(item.mediaArray)" class="carousel-card-img" alt=""></div>
                             <div class="card-content">
                                 <div class="content-title">{{item.title}}</div>
                                 <div *ngFor="let line of item.lines" [ngClass]="['content-line', line.size, isBold(line.bold)]">{{line.text}}</div>

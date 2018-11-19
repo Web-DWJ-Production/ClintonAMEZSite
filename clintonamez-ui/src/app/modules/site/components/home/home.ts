@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   public mobileCheck = new RegExp('Android|webOS|iPhone|iPad|' + 'BlackBerry|Windows Phone|'  + 'Opera Mini|IEMobile|Mobile' , 'i');
   public defaultImg = "assets/images/logos/ame_zion_logo2.png";
 
-  constructor(private coreService: CoreService, public dialog: MatDialog) { }
+  constructor(private coreService: CoreService, public dialog: MatDialog, private _sanitizer: DomSanitizer) { }
 
   ngOnInit() { 
     this.mainCarousel = {
@@ -57,12 +57,26 @@ export class HomeComponent implements OnInit {
 
   public loadAnnouncements(){
     var self = this;
-    this.coreService.getTmpAnnouncements(function(res){
-      if(res.errorMessage == null){
+
+    this.coreService.getAnnouncements().subscribe(res => {
+      if(!res.errorMessage){
         self.homeCards = res.results;
         self.homeCards.unshift(new AnnouncementModel(0, "", "cover-title", "Welcome To Clinton", []));
       }
     });
+  }
+  public buildMedia(list){
+    var self = this;
+    var url = null;
+    try {
+      var str = (list.length > 0 ? list.join('') : null);
+      url = self._sanitizer.bypassSecurityTrustResourceUrl(str);
+    }
+    catch(ex){
+      console.log("Error cleaning Url: ", ex);
+    }
+
+    return url;
   }
 
   public loadMinistries(){
