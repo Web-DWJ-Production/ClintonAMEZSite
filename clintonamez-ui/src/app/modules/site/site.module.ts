@@ -42,7 +42,7 @@ const appRoutes: Routes = [
             { path:'about-us', component: AboutUsComponent},
             { path:'about-us', children:[
                 {path:'our-history', component: OurHistoryComponent},
-                {path:'our-staff', component: OurStaffComponent},
+                {path:'our-clergy', component: OurStaffComponent},
                 {path:'our-service', component: ServiceInfoComponent}
             ]},
             { path:'contact-us', component: ContactUsComponent},

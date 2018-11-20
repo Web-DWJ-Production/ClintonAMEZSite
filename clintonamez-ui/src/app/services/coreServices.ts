@@ -124,6 +124,7 @@ export class CoreService {
         ];
         callback({"errorMessage":null,"results":tmpEvents});
     }
+
     getTmpMinistry(id,callback){
         var tmpMinistry = {
             "section":"Administration & Stewardship", 
@@ -169,7 +170,18 @@ export class CoreService {
 
         callback({"errorMessage":null, "results":tmpData});
     }
+
+    getBibleStudy(callback){
+        let tmpData = [];
+
+        callback({"errorMessage":null, "results":tmpData});
+    }
     
+    getEventsList(stDt, endDt){
+        var range = {"startDt": stDt, "endDt":endDt};
+        return this.http.post<{"errorMessage":string, "results":EventsModel[]}>(this.urlBase+'/events', range, httpOptions);
+    }
+
     getAnnouncements(){
         return this.http.get<{"errorMessage":string, "results":AnnouncementModel[]}>(this.urlBase+'/announcements');
     }

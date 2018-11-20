@@ -98,9 +98,13 @@ export class HomeComponent implements OnInit {
 
   public loadEvents(){
     var self = this;
-    this.coreService.getTmpEvents(function(res){
+    var todayDt = new Date();
+    var futureDt = new Date();
+    futureDt.setFullYear(todayDt.getFullYear() + 1);
+
+    this.coreService.getEventsList(todayDt, futureDt).subscribe(res => { 
       if(!res.errorMessage){
-        self.eventsList = res.results;
+        self.eventsList = (res.results ? res.results.slice(0,9) : []);
       }
     });
   }

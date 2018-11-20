@@ -15,5 +15,5 @@ router.post('', getEvents);
 module.exports = router;
 
 /* Get all events in date range */
-function getEvents(req, res){ events.all.getRange(req, res); }
+function getEvents(req, res){ events.all.getEvents(req, res); }
 

@@ -138,12 +138,12 @@
                 <div class="details-container" (click)="openEvent(event)">
                     <div class="event-container">
                         <div class="event-details-container event-date">
-                            <div class="date-day">{{event.date | date:'dd'}}</div>
-                            <div class="date-month">{{event.date |  date: 'MMM'}}</div>
+                            <div class="date-day">{{event.start_dt | date:'dd'}}</div>
+                            <div class="date-month">{{event.start_dt |  date: 'MMM'}}</div>
                         </div>
                         <div class="event-details-container event-info">
                             <div class="info-title">{{event.title}}</div>
-                            <div class="info-time">{{event.date | date:'shortTime'}}</div>
+                            <div class="info-time">{{event.start_dt | date:'shortTime'}}</div>
                         </div>
                     </div>
                 </div>

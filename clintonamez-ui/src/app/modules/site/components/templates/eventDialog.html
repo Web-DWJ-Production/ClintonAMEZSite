@@ -1,27 +1,27 @@
 <h1 mat-dialog-title>{{data.title}}</h1>
 <div class="event-body">
     <div class="event-map">
-        <agm-map [latitude]="data.location.lat" [longitude]="data.location.lng" [zoom]="zoomVal">
-            <agm-marker [latitude]="data.location.lat" [longitude]="data.location.lng"></agm-marker>
+        <agm-map [latitude]="church.location.lat" [longitude]="church.location.lng" [zoom]="zoomVal">
+            <agm-marker [latitude]="church.location.lat" [longitude]="church.location.lng"></agm-marker>
         </agm-map>
     </div>
     <div class="event-info">
         <!-- Date -->
         <div class="info-line">
             <div class="line-title">Date:</div>
-            <div class="line-txt">{{ data.date | date:'longDate' }}</div>
+            <div class="line-txt">{{ data.start_dt | date:'longDate' }}</div>
         </div>
 
         <!-- Time -->
         <div class="info-line">
             <div class="line-title">Time:</div>
-            <div class="line-txt">{{ data.date | date:'shortTime' }}</div>
+            <div class="line-txt">{{ getTime(data) }}</div>
         </div>
 
         <!-- Address -->
         <div class="info-line">
             <div class="line-title">Address:</div>
-            <div class="line-txt">{{ data.location.address }}</div>
+            <div class="line-txt">{{ data.location }}</div>
         </div>
     </div>
 </div>

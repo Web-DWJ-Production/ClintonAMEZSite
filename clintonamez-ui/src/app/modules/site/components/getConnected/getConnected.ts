@@ -25,10 +25,8 @@ export class GetConnectedComponent implements OnInit {
 
   public loadBibleStudy(){
       var self = this;
-    /*this.coreService.getTmpBibleStudy().subscribe(res => { 
-        self.bibleStudyInfo = res.result;
-    });*/
-    self.coreService.getTmpBibleStudy( function(res){
+      
+    self.coreService.getBibleStudy( function(res){
         self.bibleStudyInfo = res.results;
         self.dataSource = new MatTableDataSource(self.bibleStudyInfo);
         self.dataSource.sort = self.sort;
