@@ -3420,11 +3420,11 @@ var fileHttpOptions = {
     headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'multipart/form-data; charset=utf-8')
 };
 var CoreService = (function () {
-    //urlBase: string = '/api';
     function CoreService(http) {
         this.http = http;
         this.userKey = "clintonEditorUser";
-        this.urlBase = 'http://localhost:5000/api';
+        //urlBase: string = 'http://localhost:5000/api';
+        this.urlBase = '/api';
         this.features = {
             "announcements": { "navItem": 'fa-bullhorn' },
             "forms": { "navItem": 'fa-clipboard' },
