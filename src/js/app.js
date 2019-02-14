@@ -1,12 +1,20 @@
 //https://reacttraining.com/react-router/web/example/route-config
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { CSSTransitionGroup } from 'react-transition-group';
 
 /* Components */
 import Footer from './templates/footer';
 import Home from './templates/home';
+import AboutUs from './templates/aboutUs';
+import OurHistory from './templates/ourHistory';
+import OurClergy from './templates/ourClergy';
+import OurService from './templates/ourService';
+import PastorsPage from './templates/pastorsPage';
+import Ministries from './templates/ministries';
+
 import UC from './templates/uc';
+import NoMatch from './templates/404';
 
 /* Styles */
 import "../css/app.less";
@@ -15,17 +23,30 @@ import "../css/app.less";
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 
 const routes = [
-    { title:"about us", path:"/aboutUs", component:UC, subPages:[{ title:"our history",path:"/aboutUs/ourHistory", component:UC},{title:"out staff", path:"/aboutUs/ourStaff", component:UC},{ title:"service information", path:"/aboutUs/ourService", component:UC},{ title:"inside zion", external:true, path:"http://www.amez.org/"}]},
-    { title:"pastors page", path:"/pastorsPage", component:UC},
-    { title:"ministries", path:"/ministries", component:UC},
+    { title:"about us", path:"/aboutUs", component:AboutUs, subPages:[{ title:"our history",path:"/aboutUs/ourHistory", component:OurHistory},{title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},{ title:"service information", path:"/aboutUs/ourService", component:OurService},{ title:"inside zion", external:true, path:"http://www.amez.org/"}]},
+    { title:"pastors page", path:"/pastorsPage", component:PastorsPage},
+    { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries},
     { title:"get connected", path:"/getConnected", component:UC},
     { title:"gallery", path:"/gallery", component:UC},
     { title:"contact us", path:"/contactUs", component:UC}  
 ];
 
-const SiteRoutes = route => (
+/*const SiteRoutes = route => (
     <Route path={route.path} render={props => ( <route.component {...props} />)} />
+);*/
+
+const SiteRoutes = route => (
+    <div> 
+        {route.subPages ?        
+            <span>
+                <Route exact path={route.path} component={route.component}/>            
+                {route.subPages.map((subroute, i) => <SiteRoutes key={i} {...subroute} />)}
+            </span>           
+            : <span><Route path={route.path + (route.optionalPath?route.optionalPath:"")} render={props => ( <route.component {...props} />)} /></span>
+        }     
+    </div>
 );
+
 
 class App extends Component{
     constructor(props) {
@@ -105,8 +126,11 @@ class App extends Component{
                     
                     {/* Body*/}
                     <div className="body-container">
-                        <Route exact path="/" component={Home} />
-                        { routes.map((route, i) => <SiteRoutes key={i} {...route} />) }        
+                        <Switch>
+                            <Route exact path="/" component={Home} />                            
+                            { routes.map((route, i) => <SiteRoutes key={i} {...route} />) }                            
+                            <Route component={NoMatch} />                            
+                        </Switch>        
                     </div>
 
                     {/* Footer */}

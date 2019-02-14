@@ -37,6 +37,10 @@
 @import "header.less";
 @import "footer.less";
 @import "home.less";
+@import "aboutus.less";
+@import "picbook.less";
+@import "pastorsPage.less";
+@import "ministries.less";
 
 body, html { 
     margin: 0px !important;
@@ -87,6 +91,70 @@ body, html {
     opacity: 0.01;
     top: calc(90px - 100%);
     transition: all 500ms ease-in;
+}
+/* Common Body */
+.site-page {
+    .title-card {
+        padding: 100px 5px;
+        text-align: center;
+        color: rgba(255,255,255,1);
+        position: relative;
+        h1 { font-size: 4rem; margin:0px; position: relative; z-index: 1;}
+
+        .back-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            img {
+                position: absolute;
+                width: 100%;
+                min-height: 100%;
+                top: 0;
+                left:0;
+                z-index: 0;
+            }
+            .cover {
+                width: 100%;
+                height: 100%;
+                opacity: 0.4;
+                position: relative;
+                z-index: 1;
+                &.c3c2 { background: linear-gradient(to right, @color3, @color2);}
+                &.mainGrad { .backgroundGradient(1);}
+            }
+        }
+        &.c1 {  background-color: rgba(150,150,150,1); }
+    }
+}
+.body-section {  
+    &.notched-top { 
+        position: relative;        
+        &:before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: -@notchSize;
+            left: 50%;
+            transform: translateX(-50%);
+            height: @notchSize;
+            width: @notchSize *2;
+            background-color: rgba(250,250,250,1);
+            border-top-left-radius: @notchSize * 2;
+            border-top-right-radius: @notchSize * 2;
+        }  
+        &.c2 {
+            &:before { background-color: @color2; }
+        } 
+        &.c2-mid {
+            .color2( background, 0.7); 
+            color: rgba(250,250,250,1);
+            &:before { .color2(background-color, 0.7); }
+        }        
+    }
 }
 
 /* Common elements */
@@ -206,6 +274,7 @@ body, html {
             top:50%;
             margin: -5px 0 0 13px;
         }
+        .content-area { min-height: 200px;}
     }
     &.right {
         border-bottom: solid 40px #fff;
@@ -218,5 +287,6 @@ body, html {
             left: -23px;
             top:50%;            
         }
+        .content-area { min-height: 200px;}
     }
   }

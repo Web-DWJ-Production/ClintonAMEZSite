@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class UC extends Component{
+class NoMatch extends Component{
     constructor(props) {
         super(props);
 
@@ -10,7 +10,7 @@ class UC extends Component{
     render(){        
         return(
             <div className="us-container">
-               <h1>Under Construction</h1>
+               <h1>404</h1>
             </div>    
         );        
     }
@@ -20,4 +20,4 @@ class UC extends Component{
     }
 }
 
-export default UC;
+export default NoMatch;

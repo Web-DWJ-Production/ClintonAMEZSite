@@ -747,6 +747,393 @@
   background: rgba(134, 54, 148, 0.7) !important;
   color: #ffffff;
 }
+.about-us {
+  position: relative;
+}
+.about-us .body-section {
+  position: relative;
+}
+.about-us .body-section h1 {
+  margin: 0px 0px 20px;
+  font-size: 3rem;
+  text-align: center;
+}
+.about-us .body-section.full-txt {
+  padding: 40px 5%;
+  font-size: 1.1rem;
+}
+.about-us .body-section.img-txt {
+  display: flex;
+  font-size: 1.1rem;
+}
+.about-us .body-section.img-txt.c1 {
+  background: #e62625;
+  color: #ffffff;
+}
+.about-us .body-section.img-txt.c3 {
+  background: #863694;
+  color: #ffffff;
+}
+.about-us .body-section.img-txt .img-content {
+  position: relative;
+  overflow: hidden;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 400px;
+  display: inline-block;
+}
+.about-us .body-section.img-txt .img-content img {
+  max-width: 100%;
+  min-height: 100%;
+}
+.about-us .body-section.img-txt .txt-content {
+  padding: 40px;
+  display: inline-block;
+}
+.about-us .body-section.img-txt .txt-content h1 {
+  font-weight: initial;
+}
+.about-us .body-section.img-txt .txt-content h1 span {
+  font-weight: bold;
+}
+.our-history .body-section {
+  padding: 40px 0px;
+}
+.our-history .body-section .section-title {
+  text-align: center;
+  width: 100%;
+  padding: 0px 5%;
+  font-size: 3rem;
+}
+.our-history .body-section.localHistory {
+  background: linear-gradient(45deg, #726193 20%, #e37b7c 60%, #ffe4b4);
+  color: #fafafa;
+}
+.our-staff .staffList {
+  padding: 50px 5% 70px;
+  text-align: center;
+}
+.our-staff .staffList.c2-mid .teamMember .member-title {
+  color: #c8c8c8 !important;
+}
+.our-staff .staffList .staffTeamContainer .content-container {
+  padding: 0px 0 30px;
+  position: relative;
+  overflow: hidden;
+}
+.our-staff .staffList .staffTeamContainer .content-container h2 {
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-top: 0px;
+  font-family: 'Homemade Apple', cursive;
+  border-bottom: 3px solid;
+  line-height: 5rem;
+}
+.our-staff .staffList .staffTeamContainer .content-container .teamMember .member-name {
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.our-staff .staffList .staffTeamContainer .content-container .teamMember .member-title {
+  color: #ba0001;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+.our-staff .staffList .staffTeamContainer .content-container .teamMember + .teamMember {
+  margin-top: 20px;
+}
+.our-service .serviceInfo {
+  padding: 70px 5%;
+}
+.our-service .serviceInfo .service-card {
+  border-radius: 4px;
+  display: flex;
+  flex-flow: row wrap;
+}
+.our-service .serviceInfo .service-card .church-img {
+  border-radius: 10px;
+  width: 45%;
+  overflow: hidden;
+}
+@media (max-width: 770px) {
+  .our-service .serviceInfo .service-card .church-img {
+    width: inherit;
+    margin-bottom: 30px;
+  }
+}
+.our-service .serviceInfo .service-card .church-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.our-service .serviceInfo .service-card .service-content {
+  padding: 0px 10px 10px;
+  text-align: center;
+  flex: 1;
+  font-size: 1.5rem;
+}
+.our-service .serviceInfo .service-card .service-content .content-info + .content-info {
+  margin-top: 20px;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .info-txt {
+  font-family: 'Homemade Apple', cursive;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .info-txt p {
+  margin: 0;
+}
+.our-service .serviceInfo .service-card .service-content .content-info p {
+  margin: 0;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .service-info + .service-info {
+  margin-top: 15px;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .service-info .title {
+  font-weight: bold;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt {
+  position: relative;
+  padding: 20px;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-indent: 30px;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.c2:after {
+  background: rgba(186, 0, 1, 0.5) !important;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.c3:after {
+  background: rgba(134, 54, 148, 0.5) !important;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.c4:after {
+  background: rgba(30, 150, 70, 0.5) !important;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.c5:after {
+  background: rgba(48, 137, 201, 0.5) !important;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.c6 {
+  color: #ffffff;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.c6:after {
+  background: rgba(194, 146, 45, 0.5) !important;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.c7:after {
+  background: rgba(251, 206, 65, 0.5) !important;
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.left:after {
+  transform: rotate(-2deg);
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt.right:after {
+  transform: rotate(2deg);
+}
+.our-service .serviceInfo .service-card .service-content .content-info.txt:after {
+  content: '';
+  position: absolute;
+  padding: 10px 0px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 10px;
+}
+.picBook {
+  margin-bottom: 70px;
+}
+.picBook .book-container {
+  padding: 30px 0px;
+  width: 80%;
+  margin: 20px 0px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.picBook .book-container.left {
+  padding-right: 30px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.picBook .book-container.left .content-section .content-text {
+  padding-left: 20px;
+}
+.picBook .book-container.right {
+  padding-left: 30px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  text-align: right;
+  margin-left: auto;
+}
+.picBook .book-container.right .content-section {
+  flex-direction: row-reverse;
+}
+.picBook .book-container.right .content-section .content-text {
+  padding-right: 20px;
+}
+.picBook .book-container.color3 {
+  background-color: #863694 !important;
+  color: #ffffff;
+}
+.picBook .book-container.colorg {
+  background-color: #c8c8c8;
+  color: #000000;
+}
+.picBook .book-container .content-section {
+  display: flex;
+  justify-content: space-between;
+}
+.picBook .book-container .content-section .content-img {
+  position: relative;
+  overflow: hidden;
+}
+.picBook .book-container .content-section .content-img .half-tablet {
+  width: 85%;
+}
+.picBook .book-container .content-section .content-img .half-tablet .content-area {
+  position: relative;
+  overflow: hidden;
+  background: #323232;
+}
+.picBook .book-container .content-section .content-img .half-tablet .content-area img {
+  width: 100%;
+  max-height: 300px;
+}
+.picBook .book-container .content-section .content-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 1.3rem;
+  max-width: 55%;
+  padding: 0px 10px;
+}
+.picBook .book-container .content-section .content-text .info p {
+  line-height: 2.5rem;
+}
+.picBook .book-container .content-section .content-text .controls {
+  text-align: center;
+}
+.picBook .book-container .content-section .content-text .controls .pageNum {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+.picBook .book-container .content-section .content-text .controls .pageNum .pageNum-container {
+  display: inline-block;
+  border-radius: 50px;
+  padding: 5px 20px;
+  border: 2px solid #ffffff;
+  background: rgba(50, 50, 50, 0.3);
+}
+.our-pastor .pastorInfo {
+  padding: 50px 5%;
+}
+.our-pastor .pastorInfo .section-title {
+  text-align: center;
+  width: 100%;
+  font-size: 2.5rem;
+  color: #863694;
+  margin: 30px 0px;
+}
+@media (max-width: 770px) {
+  .our-pastor .pastorInfo .section-title {
+    font-size: 2rem;
+  }
+}
+.our-pastor .pastorInfo .pastor-blog {
+  display: flex;
+  flex-flow: column wrap;
+}
+.our-pastor .pastorInfo .pastor-blog .row {
+  display: flex;
+  flex-flow: row wrap;
+}
+.our-pastor .pastorInfo .pastor-blog .row.headline .church-img {
+  border-radius: 10px;
+  width: 45%;
+  overflow: hidden;
+}
+@media (max-width: 770px) {
+  .our-pastor .pastorInfo .pastor-blog .row.headline .church-img {
+    width: inherit;
+  }
+}
+.our-pastor .pastorInfo .pastor-blog .row.headline .church-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.our-pastor .pastorInfo .pastor-blog .row.headline .text {
+  width: 50%;
+  padding: 5px 20px;
+}
+@media (max-width: 770px) {
+  .our-pastor .pastorInfo .pastor-blog .row.headline .text {
+    width: inherit;
+    padding: 5px 0px;
+  }
+}
+.our-pastor .pastorInfo .pastor-blog .row.info {
+  padding: 10px 0px 50px;
+}
+.our-pastor .pastorInfo .pastor-blog .row.info .newspaper-txt {
+  padding-top: 20px;
+  column-count: 2;
+}
+.our-pastor .pastorInfo .pastor-blog .row.info .newspaper-txt p {
+  margin-top: 0px;
+}
+@media (max-width: 770px) {
+  .our-pastor .pastorInfo .pastor-blog .row.info .newspaper-txt {
+    column-count: 1;
+  }
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt {
+  position: relative;
+  padding: 20px;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  text-indent: 30px;
+}
+@media (max-width: 770px) {
+  .our-pastor .pastorInfo .pastor-blog .row .txt {
+    padding: 15px;
+  }
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.c2:after {
+  background: rgba(186, 0, 1, 0.5) !important;
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.c3:after {
+  background: rgba(134, 54, 148, 0.5) !important;
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.c4:after {
+  background: rgba(30, 150, 70, 0.5) !important;
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.c5:after {
+  background: rgba(48, 137, 201, 0.5) !important;
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.c6 {
+  color: #ffffff;
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.c6:after {
+  background: rgba(194, 146, 45, 0.5) !important;
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.c7:after {
+  background: rgba(251, 206, 65, 0.5) !important;
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.left:after {
+  transform: rotate(-2deg);
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt.right:after {
+  transform: rotate(2deg);
+}
+.our-pastor .pastorInfo .pastor-blog .row .txt:after {
+  content: '';
+  position: absolute;
+  padding: 10px 0px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 10px;
+}
 body,
 html {
   margin: 0px !important;
@@ -789,6 +1176,78 @@ html {
   opacity: 0.01;
   top: calc(90px - 100%);
   transition: all 500ms ease-in;
+}
+/* Common Body */
+.site-page .title-card {
+  padding: 100px 5px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+}
+.site-page .title-card h1 {
+  font-size: 4rem;
+  margin: 0px;
+  position: relative;
+  z-index: 1;
+}
+.site-page .title-card .back-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.site-page .title-card .back-img img {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.site-page .title-card .back-img .cover {
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  position: relative;
+  z-index: 1;
+}
+.site-page .title-card .back-img .cover.c3c2 {
+  background: linear-gradient(to right, #863694, #ba0001);
+}
+.site-page .title-card .back-img .cover.mainGrad {
+  background: linear-gradient(45deg, #863694 20%, #e62625 60%, #fbce41);
+}
+.site-page .title-card.c1 {
+  background-color: #969696;
+}
+.body-section.notched-top {
+  position: relative;
+}
+.body-section.notched-top:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 50px;
+  width: 100px;
+  background-color: #fafafa;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+}
+.body-section.notched-top.c2:before {
+  background-color: #ba0001;
+}
+.body-section.notched-top.c2-mid {
+  background: rgba(186, 0, 1, 0.7) !important;
+  color: #fafafa;
+}
+.body-section.notched-top.c2-mid:before {
+  background-color: rgba(186, 0, 1, 0.7) !important;
 }
 /* Common elements */
 .font-title1 {
@@ -947,6 +1406,9 @@ html {
   top: 50%;
   margin: -5px 0 0 13px;
 }
+.half-tablet.left .content-area {
+  min-height: 200px;
+}
 .half-tablet.right {
   border-bottom: solid 40px #fff;
   border-right: 0;
@@ -957,4 +1419,7 @@ html {
 .half-tablet.right:after {
   left: -23px;
   top: 50%;
+}
+.half-tablet.right .content-area {
+  min-height: 200px;
 }

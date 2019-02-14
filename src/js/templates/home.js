@@ -225,7 +225,7 @@ class Home extends Component{
                             <div className="sub-text">Matthew 18:20</div>
                         </div>
                     </div>
-                    <div className="spacer1"><img src={spacer} alt="spacer image"/></div>
+                    <div className="spacer1"><img src={spacer} alt="spacer"/></div>
                 </section>
 
                 {/* Events */ }
