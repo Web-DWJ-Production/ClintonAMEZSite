@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import backImg from "../../assets/img/tmpMedia/img3.jpg";
+import amezLogo from "../../assets/img/logos/ame_zion_logo.png";
 
 class Ministries extends Component{
     constructor(props) {
@@ -11,14 +13,12 @@ class Ministries extends Component{
     render(){        
         return(
             <div>
-               {(this.props.match.params.ministryId ? <div>{this.props.match.params.ministryId}</div> : <MinistryAll />)}
+               {(this.props.match.params.ministryId ? <MinistryInd ministryId={this.props.match.params.ministryId}/> : <MinistryAll />)}
             </div>    
         );        
     }
 
-    componentDidMount(){
-        //let self = this;        
-    }
+    componentDidMount(){}
 }
 
 class MinistryAll extends Component {
@@ -57,6 +57,8 @@ class MinistryAll extends Component {
                 ]}
             ]
         }
+
+        this.checklogo = this.checklogo.bind(this);
     } 
 
     render(){        
@@ -70,12 +72,12 @@ class MinistryAll extends Component {
                     </div>
                 </section>
                 {this.state.ministryList.map((msection,i) =>
-                    <section className={"body-section notched-top" + (i%2==1? " c2-mid" : "")}>
+                    <section className={"body-section notched-top" + (i%2==1? " c3-mid" : "")}>
                         <h1 className="font-title1">{ msection.sectionTitle }</h1>
                         <div className="ministry-container">
                             {msection.list.map((ministry,j) =>
-                                <a href="">
-                                    <div className="tag-img"><img src={ministry.icon} alt="minstry icon"/></div>
+                                <a href="" className="ministry-tag">
+                                    <div className="tag-img"><img src={this.checklogo(ministry.icon)} alt="minstry icon"/></div>
                                     <div className="tag-info">
                                         <div className="tag-title">{ministry.title}</div>
                                         {ministry.subSections.length > 0 && <div className="tag-subsection">{ministry.subSections[0]}</div>}
@@ -87,6 +89,51 @@ class MinistryAll extends Component {
                 )}                
             </div>    
         );        
+    }
+
+    componentDidMount(){}
+
+    checklogo(logo) {
+        var ret = null;
+        try {
+            ret = (!logo ? amezLogo : logo);
+        }
+        catch(ex){
+            console.log("Error checking logo: ", ex);
+        }
+        return ret;
+    }
+}
+
+class MinistryInd extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ministryComponent: {
+                title:"",
+                defaultMedia:null,
+                logo:null,
+                leadership:[{name:"",title:"",email:""}],
+                mission:"",
+                section:"",
+                subSections: [""],
+                activities: [{name:"",description:""}],
+                siblings: [{title:"", logo:"", subsections:[""]}],                
+                gallery: [""]
+            }
+        }
+    }
+
+    render(){        
+        return(
+            <div class="site-page ministry">
+                <section class="sub-nav-card c1">
+                    <div class="back-img">
+                        <div class="cover c3c2"></div>
+                    </div>
+                </section>
+            </div>            
+        );
     }
 
     componentDidMount(){}
