@@ -1134,6 +1134,22 @@
   z-index: -1;
   border-radius: 10px;
 }
+.ministries .body-section {
+  padding: 30px 3% 80px;
+  text-align: center;
+}
+.ministries .body-section .font-title1 {
+  text-align: center;
+  width: 100%;
+  padding: 0px 5%;
+  font-size: 2.5rem;
+}
+@media (max-width: 770px) {
+  .ministries .body-section .font-title1 {
+    font-size: 2rem;
+    width: inherit;
+  }
+}
 body,
 html {
   margin: 0px !important;
