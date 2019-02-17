@@ -1,0 +1,76 @@
+.get-connected {
+    .prayerCall {
+        padding: 50px 5% 80px;
+        .callCard {
+            display: flex;
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+
+            .call-info {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                width: 35%;
+                padding: 20px;
+                overflow: hidden;
+                .color3(background, 0.9);
+                text-align: center;
+                color: rgba(255,255,255,1);
+                font-size: 1.2rem;
+                .pastor-img { 
+                    border-radius: 50%; 
+                    overflow: hidden; 
+                    width: 100%;
+                    height: 350px;
+                    margin: 10px auto;
+                    img { 
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .pastor-name { margin-bottom: 30px;}
+                .info-section { margin-top: auto; p{ margin: 0; }}
+            }
+            .call-content { 
+                text-align: center;
+                padding: 5px 20px 20px;
+                text-transform: uppercase;
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                color: @color3;
+
+                h1 { font-size: 2.5rem; }
+                h2 { font-size: 2.3rem;}
+                p { font-size: 2rem; }
+
+                .info { 
+                    width: 80%; 
+                    font-size: 1.2rem; 
+                    text-transform: none;
+                    margin: 20px auto 0px;
+                    &.loc { margin: 0px auto 20px; font-weight: bold;} 
+                }
+                .sub-txt { 
+                    font-size: 1.5rem;  
+                    text-transform: none; 
+                    margin-top: auto;
+                    &+.sub-txt { margin-top: 0;}
+                }
+            }
+
+            @media @mobile-device {
+                flex-flow: row wrap;
+                .call-info { width: 100%; }
+            }
+        }
+    }
+
+    .events {
+        padding: 50px 5%;
+        text-align: center;
+        .events-container {
+            height: calc(95vh - 90px);
+        }
+    }
+}

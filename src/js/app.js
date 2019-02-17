@@ -12,6 +12,7 @@ import OurClergy from './templates/ourClergy';
 import OurService from './templates/ourService';
 import PastorsPage from './templates/pastorsPage';
 import Ministries from './templates/ministries';
+import GetConnected from './templates/getConnected';
 
 import UC from './templates/uc';
 import NoMatch from './templates/404';
@@ -26,7 +27,7 @@ const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, subPages:[{ title:"our history",path:"/aboutUs/ourHistory", component:OurHistory},{title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},{ title:"service information", path:"/aboutUs/ourService", component:OurService},{ title:"inside zion", external:true, path:"http://www.amez.org/"}]},
     { title:"pastors page", path:"/pastorsPage", component:PastorsPage},
     { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries},
-    { title:"get connected", path:"/getConnected", component:UC},
+    { title:"get connected", path:"/getConnected", component:GetConnected},
     { title:"gallery", path:"/gallery", component:UC},
     { title:"contact us", path:"/contactUs", component:UC}  
 ];
