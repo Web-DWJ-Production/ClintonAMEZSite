@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Calendar from "react-big-calendar";
 import moment from 'moment';
+import Modal from 'react-awesome-modal';
 
-import backImg from "../../assets/img/tmpMedia/img3.jpg";
-import pastorImg from "../../assets/img/tmpMedia/pastor-mini.jpg";
+import backImg from "../../assets/img/siteMedia/group5.jpg";
+import pastorImg from "../../assets/img/siteMedia/pastor-mini.jpg";
 
 const localizer = Calendar.momentLocalizer(moment);
 
@@ -12,6 +13,8 @@ class GetConnected extends Component{
         super(props);
 
         this.state = {
+            modalvisible:false,
+            modalevent:{},
             events: [
                 {title:"Test Event 1", start:new Date('January 17, 2019 03:24:00'), end:new Date('January 17, 2019 05:24:00')},
                 {title:"Test Event 2", start:new Date('January 28, 2019 15:00:00'), end:new Date('January 28, 2019 17:00:00')},
@@ -24,6 +27,9 @@ class GetConnected extends Component{
             ]
         }
     } 
+
+    openModal(event) {  this.setState({ modalvisible : true, modalevent:event });  }
+    closeModal() { this.setState({ modalvisible : false }); }
 
     render(){        
         return(
@@ -74,9 +80,19 @@ class GetConnected extends Component{
                 <section className="body-section events notched-top light">
                     <h2 className="font-title1">Events</h2>    
                     <div className="events-container">
-                        <Calendar localizer={localizer} defaultDate={new Date()}
+                        <Calendar popup localizer={localizer} defaultDate={new Date()}
                             defaultView="month" events={this.state.events}
-                            style={{ height: "100%" }} />
+                            onSelectEvent={event => this.openModal(event)} style={{ height: "100%" }} />
+
+                        <Modal visible={this.state.modalvisible}
+                            width="400" height="300" effect="fadeInUp"
+                            onClickAway={() => this.closeModal()}>
+                            <div>
+                                <h1>{this.state.modalevent.title}</h1>
+                                <p></p>
+                                <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                            </div>
+                        </Modal>
                     </div>
                 </section>
             </div> 

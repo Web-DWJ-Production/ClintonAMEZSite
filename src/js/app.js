@@ -13,6 +13,7 @@ import OurService from './templates/ourService';
 import PastorsPage from './templates/pastorsPage';
 import Ministries from './templates/ministries';
 import GetConnected from './templates/getConnected';
+import ContactUs from './templates/contactUs';
 
 import UC from './templates/uc';
 import NoMatch from './templates/404';
@@ -29,12 +30,8 @@ const routes = [
     { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries},
     { title:"get connected", path:"/getConnected", component:GetConnected},
     { title:"gallery", path:"/gallery", component:UC},
-    { title:"contact us", path:"/contactUs", component:UC}  
+    { title:"contact us", path:"/contactUs", component:ContactUs}  
 ];
-
-/*const SiteRoutes = route => (
-    <Route path={route.path} render={props => ( <route.component {...props} />)} />
-);*/
 
 const SiteRoutes = route => (
     <div> 

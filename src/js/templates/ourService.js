@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 /* Images */
-import churchImg from "../../assets/img/tmpMedia/img3.jpg";
-import backImg from "../../assets/img/tmpMedia/church1.jpg";
+import churchImg from "../../assets/img/siteMedia/dance2.jpg";
+import backImg from "../../assets/img/siteMedia/group8.jpg";
 
 class OurService extends Component{
     constructor(props) {

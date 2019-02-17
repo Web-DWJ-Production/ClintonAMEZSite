@@ -13,13 +13,13 @@ import CarouselImgCard from './components/carouselImgCard'
 
 /* Media */
 import amezLogo from "../../assets/img/logos/ame_zion_logo.png";
-import carouselCover from "../../assets/img/siteMedia/cover5.jpg";
+import carouselCover from "../../assets/img/siteMedia/ChurchBody.jpg";
 
 import welcomeVid from '../../assets/img/tmpMedia/tmpVideo.mp4'
 import spacer from '../../assets/img/tmpMedia/church2.jpg';
 
 /* Temp Images */
-import pastorImg from "../../assets/img/tmpMedia/pastor1.jpg";
+import pastorImg from "../../assets/img/siteMedia/pastor1.jpg";
 
 class Home extends Component{
     constructor(props) {

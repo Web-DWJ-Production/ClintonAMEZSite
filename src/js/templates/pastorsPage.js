@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 /* Images */
-import backImg from "../../assets/img/tmpMedia/img3.jpg";
-import pastorImg from "../../assets/img/tmpMedia/pastor1.jpg";
+import backImg from "../../assets/img/siteMedia/pastor6.jpg";
+import pastorImg from "../../assets/img/siteMedia/pastor1.jpg";
 
 class PastorsPage extends Component{
     constructor(props) {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 /* Media */
-import header from "../../assets/img/tmpMedia/img1.jpg";
-import img2 from "../../assets/img/tmpMedia/img1-copy.jpg";
-import img3 from "../../assets/img/tmpMedia/img3.jpg";
+import header from "../../assets/img/siteMedia/group2.jpg";
+import img2 from "../../assets/img/siteMedia/pastor4.jpg";
+import img3 from "../../assets/img/siteMedia/img5.jpg";
 
 class AboutUs extends Component{
     constructor(props) {

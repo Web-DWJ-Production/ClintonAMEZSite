@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import backImg from "../../assets/img/tmpMedia/img3.jpg";
+import backImg from "../../assets/img/siteMedia/group4.jpg";
 
 class OurStaff extends Component{
     constructor(props) {

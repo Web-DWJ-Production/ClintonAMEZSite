@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import backImg from "../../assets/img/tmpMedia/img3.jpg";
+import backImg from "../../assets/img/siteMedia/ministry1.jpg";
 import amezLogo from "../../assets/img/logos/ame_zion_logo.png";
 
-import ministryImg1 from "../../assets/img/tmpMedia/c7.jpg";
-import ministryImg2 from "../../assets/img/tmpMedia/c8.jpg";
-import ministryImg3 from "../../assets/img/tmpMedia/c9.jpg";
+import ministryImg1 from "../../assets/img/siteMedia/leadership1.jpg";
+import ministryImg2 from "../../assets/img/siteMedia/group7.jpg";
+import ministryImg3 from "../../assets/img/siteMedia/child1.jpg";
 
 class Ministries extends Component{
     constructor(props) {
