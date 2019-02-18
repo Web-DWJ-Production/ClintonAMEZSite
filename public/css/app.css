@@ -2091,6 +2091,13 @@ button.rbc-input::-moz-focus-inner {
     width: 100%;
   }
 }
+.get-connected .biblestudy {
+  padding: 50px 5% 80px;
+  text-align: center;
+}
+.get-connected .biblestudy h2 {
+  margin: 10px;
+}
 .get-connected .events {
   padding: 50px 5%;
   text-align: center;
@@ -2101,6 +2108,9 @@ button.rbc-input::-moz-focus-inner {
   border-radius: 5px;
   padding: 7px;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.get-connected .events .events-container .rbc-event {
+  background-color: #863694;
 }
 body,
 html {

@@ -77,7 +77,12 @@ class GetConnected extends Component{
                     </div>
                 </section> 
 
-                <section className="body-section events notched-top light">
+                <section className="body-section biblestudy notched-top c3-mid">
+                    <h2 className="font-title1">Bible Study</h2> 
+                    <p>Please Check Back Later For Our Bible Studies</p>
+                </section>
+
+                <section className="body-section events notched-top">
                     <h2 className="font-title1">Events</h2>    
                     <div className="events-container">
                         <Calendar popup localizer={localizer} defaultDate={new Date()}
