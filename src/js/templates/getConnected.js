@@ -38,14 +38,14 @@ class GetConnected extends Component{
                     <h1 className="font-title1">Get Connected</h1>
                     <div className="back-img">
                         <div className="cover c3c2"></div>
-                        <img src={backImg} />
+                        <img src={backImg} alt="get connected img"/>
                     </div>
                 </section>
 
                 <section className="body-section prayerCall notched-top">
                     <div className="callCard">
                         <div className="call-info">
-                            <div className="pastor-img"><img src={pastorImg} /></div>
+                            <div className="pastor-img"><img src={pastorImg} alt="pastor img"/></div>
                             <div className="pastor-name"><div className="name">Rev. Alyce R. Walker Johnson</div> <div className="title">Pastor</div></div>
                             <div className="info-section">
                                 <p>Clinton African Methodist Episcopal Zion Church</p>

@@ -54,7 +54,7 @@ class Gallery extends Component{
                     <h1 className="font-title1">Gallery</h1>
                     <div className="back-img">
                         <div className="cover c3c2"></div>
-                        <img src={backImg} />
+                        <img src={backImg} alt="gallery background img"/>
                     </div>
                 </section>
 
@@ -66,17 +66,17 @@ class Gallery extends Component{
                                 {this.state.displayList.map((gallery,i) =>
                                     <div className="galleryItem" key={i} onClick={() => this.selectGallery(gallery)}>
                                         <div className="itemContainer">
-                                            <div className="img-container"><img src={gallery.previewImg} /></div>
+                                            <div className="img-container"><img src={gallery.previewImg} alt="gallery preview img"/></div>
                                             <div className="item-title">{ gallery.title }</div>
                                         </div>
                                     </div>
                                 )}
                             </div>
-                            <div class="listControl">
-                                <div class="ctrl-container">
-                                    <div class="ctrl ctrl-left" onClick={() => this.changePage(-1)}><i class="fas fa-caret-left" ></i></div>
-                                    <div class="page-values"><span class="ctrl-page">{this.state.page + 1}</span> / <span class="ctrl-total">{this.state.pageTotal}</span></div>
-                                    <div class="ctrl ctrl-right" onClick={() => this.changePage(1)}><i class="fas fa-caret-right"></i></div>
+                            <div className="listControl">
+                                <div className="ctrl-container">
+                                    <div className="ctrl ctrl-left" onClick={() => this.changePage(-1)}><i className="fas fa-caret-left" ></i></div>
+                                    <div className="page-values"><span className="ctrl-page">{this.state.page + 1}</span> / <span className="ctrl-total">{this.state.pageTotal}</span></div>
+                                    <div className="ctrl ctrl-right" onClick={() => this.changePage(1)}><i className="fas fa-caret-right"></i></div>
                                 </div>
                             </div>
                         </div> :<span></span> 
@@ -86,7 +86,7 @@ class Gallery extends Component{
                     {(this.state.selected !== null ? 
                         <div className="selected-gallery">
                             <div className="gallery-tag all" onClick={() => this.selectGallery(null)}>    
-                                <div className="tag-img"><i class="fas fa-arrow-left"></i></div>
+                                <div className="tag-img"><i className="fas fa-arrow-left"></i></div>
                                 <div className="tag-info"><div className="tag-title">Return To Ministry List</div></div>                                
                             </div>
                             <h1 className="font-title1">{this.state.selected.title }</h1>
@@ -100,13 +100,13 @@ class Gallery extends Component{
 
     componentDidMount(){
         let self = this;    
-        this.loadGalleries();    
+        self.loadGalleries();    
     }
 
     selectGallery(gallery){
         var self = this;
         try {
-            this.setState({selected: gallery});
+            self.setState({selected: gallery});
         }
         catch(ex){
             console.log("Error selecting gallery: ", ex);
@@ -117,7 +117,7 @@ class Gallery extends Component{
         var self =this;
         try {
             var newPgTotal = Math.ceil(self.state.galleryList.length / self.state.pageMax);
-            this.setState({ pageTotal: newPgTotal}, () => { this.galleryFilter(); });
+            self.setState({ pageTotal: newPgTotal}, () => { self.galleryFilter(); });
         }
         catch(ex){
             console.log("Error loading galleries: ", ex);
@@ -132,8 +132,8 @@ class Gallery extends Component{
             var newPgTotal = Math.ceil(list.length / self.state.pageMax);
             this.setState({ pageTotal: newPgTotal});
 
-            var minItem = this.state.page * this.state.pageMax;
-            var maxItem = ((this.state.page+1) < newPgTotal ? ((this.state.page+1) * this.state.pageMax) :list.length);
+            var minItem = self.state.page * self.state.pageMax;
+            var maxItem = ((self.state.page+1) < newPgTotal ? ((self.state.page+1) * self.state.pageMax) :list.length);
     
             ret = list.slice(minItem, maxItem);
         }
@@ -147,10 +147,10 @@ class Gallery extends Component{
     changePage(direction) {
         var newPg = 0;
         if(direction < 0){
-            newPg = (this.state.page == 0 ? this.state.page : this.state.page -1);
+            newPg = (this.state.page === 0 ? this.state.page : this.state.page -1);
         }
         else {
-            newPg = (this.state.page == (this.state.pageTotal -1) ? this.state.page : this.state.page +1);
+            newPg = (this.state.page === (this.state.pageTotal -1) ? this.state.page : this.state.page +1);
         }
 
         this.setState({page: newPg}, () => { this.galleryFilter(); });        

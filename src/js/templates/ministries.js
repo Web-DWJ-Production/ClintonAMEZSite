@@ -74,11 +74,11 @@ class MinistryAll extends Component {
                     <h1 className="font-title1">Ministries</h1>
                     <div className="back-img">
                         <div className="cover c3c2"></div>
-                        <img src={backImg} />
+                        <img src={backImg} alt="ministries background img"/>
                     </div>
                 </section>
                 {this.state.ministryList.map((msection,i) =>
-                    <section className={"body-section notched-top" + (i%2==1? " c3-mid" : "")} key={i}>
+                    <section className={"body-section notched-top" + (i%2===1? " c3-mid" : "")} key={i}>
                         <h1 className="font-title1">{ msection.sectionTitle }</h1>
                         <div className="ministry-container">
                             {msection.list.map((ministry,j) =>
@@ -166,7 +166,7 @@ class MinistryInd extends Component {
                     <div className="tag-nav-container">
                         <Link to="/ministries" className="ministry-tag all">
                             <div className="all-container">
-                                <div className="tag-img"><i class="fas fa-arrow-left"></i></div>
+                                <div className="tag-img"><i className="fas fa-arrow-left"></i></div>
                                 <div className="tag-info"><div className="tag-title">Return To Ministry List</div></div>
                             </div>
                         </Link>
@@ -203,7 +203,7 @@ class MinistryInd extends Component {
                 <section className="body-section ministry-content notched-top">
                     {/* Leadership*/}
                     <div className="basic-section">
-                        <div className="basic-img"><img src={ministryImg1}/></div>
+                        <div className="basic-img"><img src={ministryImg1} alt="ministry leadership img"/></div>
                         <div className="basic-content">
                             <h2 className="font-title1">Leadership</h2>
                             <div className="leadership-container">
@@ -219,7 +219,7 @@ class MinistryInd extends Component {
                     </div>
                     {/* Membership*/}
                     <div className="basic-section flip">
-                        <div className="basic-img"><img src={ministryImg2}/></div>
+                        <div className="basic-img"><img src={ministryImg2} alt="ministry membership img"/></div>
                         <div className="basic-content">
                             <h2 className="font-title1">Membership</h2>
                             <div className="membership-container">{this.state.ministryComponent.membership}</div>
@@ -227,13 +227,13 @@ class MinistryInd extends Component {
                     </div>
                     {/* Goals*/}
                     <div className="basic-section">
-                        <div className="basic-img"><img src={ministryImg3}/></div>
+                        <div className="basic-img"><img src={ministryImg3} alt="ministry goals img"/></div>
                         <div className="basic-content">
                             <h2 className="font-title1">Goals</h2>
                             <div className="goals-container">
                                 <ul className="fa-ul">
                                     {this.state.ministryComponent.goals.map((goal,i) =>
-                                        <li key={i}><span class="fa-li" ><i className="fas fa-check"></i></span>{goal}</li>
+                                        <li key={i}><span className="fa-li" ><i className="fas fa-check"></i></span>{goal}</li>
                                     )}
                                 </ul>
                             </div>

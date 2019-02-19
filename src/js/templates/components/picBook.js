@@ -20,7 +20,7 @@ class PicBook extends Component{
                         <div className="content-img">
                             <span className={"half-tablet content "+ this.props.side}>
                                 <div className="content-area">
-                                    <img src={this.state.activePage.pictureLoc} className="tablet-img"/>
+                                    <img src={this.state.activePage.pictureLoc} className="tablet-img" alt="picbook img"/>
                                 </div>
                             </span>
                         </div>

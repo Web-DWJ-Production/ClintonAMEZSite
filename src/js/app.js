@@ -16,7 +16,7 @@ import GetConnected from './templates/getConnected';
 import ContactUs from './templates/contactUs';
 import Gallery from './templates/gallery';
 
-import UC from './templates/uc';
+//import UC from './templates/uc';
 import NoMatch from './templates/404';
 
 /* Styles */

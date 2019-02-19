@@ -3,7 +3,7 @@ import GoogleMap from 'google-map-react';
 
 import backImg from "../../assets/img/tmpMedia/img3.jpg";
 
-const MapMarker = () => <div className="react-mapMarker"><i class="fas fa-church"></i></div>;
+const MapMarker = () => <div className="react-mapMarker"><i className="fas fa-church"></i></div>;
 
 class ContactUs extends Component{
     constructor(props) {
@@ -24,7 +24,7 @@ class ContactUs extends Component{
                     <h1 className="font-title1">Contact Us</h1>
                     <div className="back-img">
                         <div className="cover c3c2"></div>
-                        <img src={backImg} />
+                        <img src={backImg} alt="contact us background img"/>
                     </div>
                 </section>
 
@@ -49,7 +49,7 @@ class ContactUs extends Component{
                 </section>
 
                 <section className="body-section contact-map map notched-top">
-                    <div class="map-container">
+                    <div className="map-container">
                         <GoogleMap apiKey={this.state.key} center={this.state.center} zoom={this.state.zoom} margin={[30,30,30,30]}>
                             <MapMarker lat={this.state.office.lat} lng={this.state.office.lng} name="Company Location"></MapMarker>
                         </GoogleMap>

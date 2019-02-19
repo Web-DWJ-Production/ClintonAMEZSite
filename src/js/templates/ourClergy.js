@@ -35,24 +35,24 @@ class OurStaff extends Component{
 
     render(){        
         return(
-            <div class="site-page our-staff">
-                <section class="title-card">
-                    <h1 class="font-title1">Our Clergy</h1>
-                    <div class="back-img">
-                        <div class="cover c3c2"></div>
-                        <img src={backImg} />
+            <div className="site-page our-staff">
+                <section className="title-card">
+                    <h1 className="font-title1">Our Clergy</h1>
+                    <div className="back-img">
+                        <div className="cover c3c2"></div>
+                        <img src={backImg} alt="clergy background img"/>
                     </div>
                 </section>
                 
                 {this.state.staffList.map((team,i) => 
-                    <section class={"body-section staffList notched-top " + this.state.colorClass[i]} key={i}>                    
-                        <div class="staffTeamContainer">
-                            <div class="content-container">
+                    <section className={"body-section staffList notched-top " + this.state.colorClass[i]} key={i}>                    
+                        <div className="staffTeamContainer">
+                            <div className="content-container">
                                 <h2>{team.name}</h2>
                                 {team.members.map((member,j) =>
-                                    <div class="teamMember" key={j}>
-                                        <div class="member-name">{member.name}</div>
-                                        <div class="member-title">{member.title}</div>
+                                    <div className="teamMember" key={j}>
+                                        <div className="member-name">{member.name}</div>
+                                        <div className="member-title">{member.title}</div>
                                     </div> 
                                 )}
                             </div>
