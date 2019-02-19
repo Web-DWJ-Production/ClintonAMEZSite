@@ -1,22 +1,58 @@
 import React, { Component } from 'react';
+import GoogleMap from 'google-map-react';
 
 import backImg from "../../assets/img/tmpMedia/img3.jpg";
+
+const MapMarker = () => <div className="react-mapMarker"><i class="fas fa-church"></i></div>;
 
 class ContactUs extends Component{
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            key:"AIzaSyAhRHiVtCfg6orX2hg3KhCyMQ_OrBso_Es",
+            center:[39.0959181, -77.1504537],
+            zoom: 15,
+            office: {lat: 39.0959181, lng: -77.1504537}
+        }
     } 
 
     render(){        
         return(
-            <div class="site-page contact-us">
-                <section class="title-card c1">
-                    <h1 class="font-title1">Contact Us</h1>
-                    <div class="back-img">
-                        <div class="cover c3c2"></div>
+            <div className="site-page contact-us">
+                <section className="title-card c1">
+                    <h1 className="font-title1">Contact Us</h1>
+                    <div className="back-img">
+                        <div className="cover c3c2"></div>
                         <img src={backImg} />
+                    </div>
+                </section>
+
+                <section className="body-section contact-form notched-top">
+                    <p className="contact-message">The Clinton Church Family invites you to join us in Christian Fellowship. <br/>Please reach out to us below for any question, prayer requests, or general information.</p>
+                </section>
+
+                <section className="body-section contact-info c3 notched-top">
+                    <div className="info-section">
+                        <h2>Church Address</h2>
+                        <p>Clinton African Methodist Episcopal Zion Church</p>
+                        <p>223 Elizabeth Avenue</p>
+                        <p>Rockville, MD. 20850</p>
+                    </div>
+
+                    <div className="info-section">
+                        <h2>Contact Information</h2>
+                        <p><span>Phone:</span> (301) 340-7942</p>
+                        <p><span>Fax:</span> (301) 825-8938</p>
+                        <p><span>Email:</span> camez223@aol.com</p>
+                    </div>
+                </section>
+
+                <section className="body-section contact-map map notched-top">
+                    <div class="map-container">
+                        <GoogleMap apiKey={this.state.key} center={this.state.center} zoom={this.state.zoom} margin={[30,30,30,30]}>
+                            <MapMarker lat={this.state.office.lat} lng={this.state.office.lng} name="Company Location"></MapMarker>
+                        </GoogleMap>
                     </div>
                 </section>
             </div>

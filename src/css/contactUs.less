@@ -1,0 +1,48 @@
+.contact-us {
+    .contact-form {
+        padding: 30px 5% 50px;
+        text-align: center;
+        .contact-message { 
+            width: 80%; 
+            font-size: 1.7rem;
+            display: inline-block;
+            margin: 30px 0px;
+        }
+    }
+
+    .contact-info {
+        display: flex;
+        padding: 70px 5%;
+        .color3( background, 1);
+        .info-section { 
+            color: rgba(255,255,255,1);
+            text-align: center;
+            width: 50%;
+            font-size: 1.2rem;
+            h2 {font-family: 'Homemade Apple', cursive; }
+            p {
+                span { font-weight: bold;}
+            }
+        }
+    }
+
+    .contact-map {
+        padding: 50px 5%;
+        display: flex;
+        .map-container {
+            display: flex;
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            min-height: 400px;
+            width: 100%;
+            .react-mapMarker {
+                display: inline-flex;
+                border: 2px solid @color6;
+                border-radius: 50%;
+                padding: 10px 7px;
+                font-size: 20px;
+                i { color: @color6;}
+            }
+            div { @media @mobile-device {  height: 350px !important; }}
+        }
+    }
+}

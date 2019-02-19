@@ -34,6 +34,7 @@
 
 @notchSize: 50px;
 @import "../../node_modules/react-big-calendar/lib/less/styles.less";
+@import "../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
 @import "header.less";
 @import "footer.less";
@@ -43,6 +44,9 @@
 @import "pastorsPage.less";
 @import "ministries.less";
 @import "getConnected.less";
+@import "contactUs.less";
+@import "gallery.less";
+@import "image-gallery.less";
 
 body, html { 
     margin: 0px !important;
@@ -301,3 +305,29 @@ body, html {
         .content-area { min-height: 200px;}
     }
   }
+
+  /* Custom Scroll */
+.scroll1 {
+    &::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+     
+    /* Track */
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+     
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: rgba(100,100,100,0.8); 
+        -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(100,100,100,0.4); 
+    }
+}
