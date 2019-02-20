@@ -20,11 +20,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', require('./server/controller/routes.controller.js'));
 
 // Point static path to dist
-//app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
+
 // Catch all other routes and return the index file
-/*app.get('*', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
-});*/
+});
 
 // start app
 app.listen(port);
