@@ -63,9 +63,7 @@ class OurStaff extends Component{
         );        
     }
 
-    componentDidMount(){
-        //let self = this;        
-    }
+    componentDidMount(){window.scrollTo(0, 0);}
 }
 
 export default OurStaff;

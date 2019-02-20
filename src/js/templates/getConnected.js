@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Calendar from "react-big-calendar";
 import moment from 'moment';
 import Modal from 'react-awesome-modal';
+import axios from 'axios';
 
 import backImg from "../../assets/img/siteMedia/group5.jpg";
 import pastorImg from "../../assets/img/siteMedia/pastor-mini.jpg";
@@ -12,19 +13,13 @@ class GetConnected extends Component{
     constructor(props) {
         super(props);
 
+        //this.rootPath = "http://"+window.location.hostname + (window.location.port != "" ? ":"+window.location.port : "");
+        this.rootPath = "http://localhost:7777";
+        
         this.state = {
             modalvisible:false,
             modalevent:{},
-            events: [
-                {title:"Test Event 1", start:new Date('January 17, 2019 03:24:00'), end:new Date('January 17, 2019 05:24:00')},
-                {title:"Test Event 2", start:new Date('January 28, 2019 15:00:00'), end:new Date('January 28, 2019 17:00:00')},
-                {title:"Test Event 3", start:new Date('February 08, 2019 10:24:00'), end:new Date('February 08, 2019 12:24:00')},
-                {title:"Test Event 4", start:new Date('February 17, 2019 13:24:00'), end:new Date('February 17, 2019 15:24:00')},
-                {title:"Test Event 5", start:new Date('March 1, 2019 20:24:00'), end:new Date('March 1, 2019 22:24:00')},
-                {title:"Test Event 6", start:new Date('April 27, 2019 18:24:00'), end:new Date('April 27, 2019 18:24:00')},
-                {title:"Test Event 7", start:new Date('May 3, 2019 17:24:00'), end:new Date('May 3, 2019 17:24:00')},
-                {title:"Test Event 8", start:new Date('July 8, 2019 12:24:00'), end:new Date('July 8, 2019 12:24:00')}
-            ]
+            events: []
         }
     } 
 
@@ -105,7 +100,32 @@ class GetConnected extends Component{
     }
 
     componentDidMount(){
-        //let self = this;        
+        window.scrollTo(0, 0);
+        this.loadEvents();
+    }
+
+    loadEvents(){
+        var self = this;
+        try {
+            
+            var futureDt = new Date();
+            futureDt.setFullYear(futureDt.getFullYear() + 1);
+            var postData = {"startDt": new Date(), "endDt":futureDt};
+
+            axios.post(self.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
+            .then(function(response) {
+                var eData = response.data.results.map(function(el) {
+                    var o = Object.assign({}, el);
+                    o.start = o.start_dt;
+                    o.end = o.end_dt;
+                    return o;
+                });
+                self.setState({ events: eData});
+            });
+        }
+        catch(ex){
+            console.log(" Error loading announcements: ",ex);
+        }
     }
 }
 

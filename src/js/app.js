@@ -38,7 +38,7 @@ const SiteRoutes = route => (
     <div> 
         {route.subPages ?        
             <span>
-                <Route exact path={route.path} component={route.component}/>            
+                <Route exact path={route.path} component={route.component} />            
                 {route.subPages.map((subroute, i) => <SiteRoutes key={i} {...subroute} />)}
             </span>           
             : <span><Route path={route.path + (route.optionalPath?route.optionalPath:"")} render={props => ( <route.component {...props} />)} /></span>

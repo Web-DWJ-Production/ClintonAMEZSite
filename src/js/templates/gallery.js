@@ -1,45 +1,25 @@
 import React, { Component } from 'react';
 import ImageGallery from 'react-image-gallery';
+import axios from 'axios';
 
 import backImg from "../../assets/img/tmpMedia/img3.jpg";
-
-/* Temp Images */
-import img1 from '../../assets/img/tmpMedia/c1.jpg';
-import img2 from '../../assets/img/tmpMedia/c2.jpg';
-import img3 from '../../assets/img/tmpMedia/c3.jpg';
-import img4 from '../../assets/img/tmpMedia/c4.jpg';
-import img5 from '../../assets/img/tmpMedia/c5.jpg';
-import img6 from '../../assets/img/tmpMedia/c6.jpg';
-
-const tmpGallery = [img1,img2,img3,img4,img5,img6,
-                    img1,img2,img3,img4,img5,img6,
-                    img1,img2,img3,img4,img5,img6,
-                    img1,img2,img3,img4,img5,img6,
-                    img1,img2,img3,img4,img5,img6];
 
 class Gallery extends Component{
     constructor(props) {
         super(props);
 
+        //this.rootPath = "http://"+window.location.hostname + (window.location.port != "" ? ":"+window.location.port : "");
+        this.rootPath = "http://localhost:7777";
+
         this.state = {
             selected:null,
+            selectedImages:[],
             loading:false,
             page:0,
             pageTotal:1,
             pageMax: 9,
             displayList: [],
-            galleryList:[
-                {title:"Test Gallery 1",previewImg: img1, images:tmpGallery},
-                {title:"Test Gallery 2",previewImg: img2, images:tmpGallery},
-                {title:"Test Gallery 3",previewImg: img3, images:tmpGallery},
-                {title:"Test Gallery 4",previewImg: img4, images:tmpGallery},
-                {title:"Test Gallery 5",previewImg: img5, images:tmpGallery},
-                {title:"Test Gallery 6",previewImg: img6, images:tmpGallery},
-                {title:"Test Gallery 7",previewImg: img1, images:tmpGallery},
-                {title:"Test Gallery 8",previewImg: img2, images:tmpGallery},
-                {title:"Test Gallery 9",previewImg: img3, images:tmpGallery},
-                {title:"Test Gallery 10",previewImg: img4, images:tmpGallery}
-            ]
+            galleryList:[]
         }
 
         this.selectGallery = this.selectGallery.bind(this);
@@ -90,7 +70,7 @@ class Gallery extends Component{
                                 <div className="tag-info"><div className="tag-title">Return To Ministry List</div></div>                                
                             </div>
                             <h1 className="font-title1">{this.state.selected.title }</h1>
-                            <ImageGallery items={this.state.selected.images.map(function(item){ return {"original":item, "thumbnail":item}; })}/>
+                            <ImageGallery items={this.state.selectedImages.map(function(item){ return {"original":item, "thumbnail":item}; })}/>
                         </div> : <span></span>   
                     )}                        
                 </section>
@@ -100,6 +80,7 @@ class Gallery extends Component{
 
     componentDidMount(){
         let self = this;    
+        window.scrollTo(0, 0);
         self.loadGalleries();    
     }
 
@@ -107,6 +88,12 @@ class Gallery extends Component{
         var self = this;
         try {
             self.setState({selected: gallery});
+
+            axios.post(self.rootPath + "/api/getIndGallery", {setId:gallery.setId}, {'Content-Type': 'application/json'})
+            .then(function(response) {
+                var galleryData = response.data.results
+                self.setState({ selectedImages: galleryData});
+            });
         }
         catch(ex){
             console.log("Error selecting gallery: ", ex);
@@ -114,13 +101,24 @@ class Gallery extends Component{
     }
 
     loadGalleries(){
-        var self =this;
+        var self = this;
         try {
-            var newPgTotal = Math.ceil(self.state.galleryList.length / self.state.pageMax);
-            self.setState({ pageTotal: newPgTotal}, () => { self.galleryFilter(); });
+            fetch(self.rootPath + "/api/getGalleries")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                self.setState({ galleryList: data.results}, () => {
+                    var newPgTotal = Math.ceil(self.state.galleryList.length / self.state.pageMax);
+                    self.setState({ pageTotal: newPgTotal}, () => { self.galleryFilter(); });
+                });                
+            });
         }
         catch(ex){
-            console.log("Error loading galleries: ", ex);
+            console.log(" Error loading galleries: ",ex);
         }
     }
 

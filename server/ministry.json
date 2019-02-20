@@ -7,7 +7,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Administration & Stewardship"],
+        "section":"Administration & Stewardship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -20,7 +21,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Administration & Stewardship"],
+        "section":"Administration & Stewardship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -33,7 +35,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Administration & Stewardship"],
+        "section":"Administration & Stewardship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -46,7 +49,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Administration & Stewardship"],
+        "section":"Administration & Stewardship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -59,7 +63,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Administration & Stewardship"],
+        "section":"Administration & Stewardship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -72,7 +77,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Administration & Stewardship"],
+        "section":"Administration & Stewardship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -85,7 +91,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Administration & Stewardship"],
+        "section":"Administration & Stewardship",
+        "subSections": [],
         "activities": [
             {"title":"", "description":""}       
         ],
@@ -100,7 +107,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -113,7 +121,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -126,7 +135,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Christian Education Department","Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": ["Christian Education Department"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -139,7 +149,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Christian Education Department","Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": ["Christian Education Department"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -152,7 +163,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Christian Education Department","Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": ["Christian Education Department"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -186,6 +198,7 @@
     {
         "title":"Youth/Children",
         "logo":null,
+        "active":false,
         "website":"",
         "leadership":[
             {"name":"Mrs. Cristina Palmer Moore", "title":"Co-Directors of Youth", "email":""},
@@ -195,7 +208,8 @@
         ],
         "mission":"To foster the spiritual growth and development of our youth by working collaboratively with all adults in the church so that the joy of learning about Christ is a reward and the programs only serve as a benchmark of opportunities.",
         "membership":"",
-        "subSections": ["Christian Education Department","Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": ["Christian Education Department"],
         "activities": [
             {"title":"Youth Fellowship and Kingdom building", "description":"Youth, ages 12-22 are provided exciting opportunities for bible study; monthly youth focused activities; liturgical dancing and participation in dynamic special seasonal programs and special programs for College Youth"},            
             {"title":"Liturgical dance", "description":""},
@@ -224,7 +238,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Christian Education Department","Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": ["Christian Education Department"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -237,7 +252,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Christian Education Department","Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": ["Christian Education Department"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -250,7 +266,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Christian Education Department","Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": ["Christian Education Department"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -263,7 +280,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Evangelism & Discipleship"],
+        "section":"Evangelism & Discipleship",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -276,7 +294,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Mission, Outreach, & Service"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -289,7 +308,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Mission, Outreach, & Service"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -302,7 +322,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["WHOMS","Mission, Outreach, & Service"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": ["WHOMS"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -315,7 +336,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["WHOMS","Mission, Outreach, & Service"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": ["WHOMS"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -328,7 +350,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["WHOMS","Mission, Outreach, & Service"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": ["WHOMS"],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -341,7 +364,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Mission, Outreach, & Service"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -354,7 +378,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Mission, Outreach, & Service"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -367,7 +392,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Mission, Outreach, & Service"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -380,7 +406,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Worship & Cultural Arts"],
+        "section":"Mission, Outreach, & Service",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -393,7 +420,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Worship & Cultural Arts"],
+        "section":"Worship & Cultural Arts",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -406,7 +434,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Worship & Cultural Arts"],
+        "section":"Worship & Cultural Arts",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -419,7 +448,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Worship & Cultural Arts"],
+        "section":"Worship & Cultural Arts",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]
@@ -432,7 +462,8 @@
         "leadership":[],
         "mission":"",
         "membership":"",
-        "subSections": ["Worship & Cultural Arts"],
+        "section":"Worship & Cultural Arts",
+        "subSections": [],
         "activities": [],
         "goals": [],                        
         "gallery": [""]

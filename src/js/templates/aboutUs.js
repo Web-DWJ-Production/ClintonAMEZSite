@@ -60,7 +60,7 @@ class AboutUs extends Component{
         );        
     }
 
-    componentDidMount(){}
+    componentDidMount(){ window.scrollTo(0, 0); }
 }
 
 export default AboutUs;

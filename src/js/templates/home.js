@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from 'axios';
 
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from 'react-alice-carousel';
@@ -20,10 +21,13 @@ import spacer from '../../assets/img/tmpMedia/church2.jpg';
 
 /* Temp Images */
 import pastorImg from "../../assets/img/siteMedia/pastor1.jpg";
+var carouselBase = [{type:"cover-title", title:"Welcome To Clinton"}];
 
 class Home extends Component{
     constructor(props) {
         super(props);
+        //this.rootPath = "http://"+window.location.hostname + (window.location.port != "" ? ":"+window.location.port : "");
+        this.rootPath = "http://localhost:7777";
 
         this.state = {
             scrollSpy: true,
@@ -37,37 +41,13 @@ class Home extends Component{
                 600: { items: 2 },
                 1024: { items: 3 },
             },
-            carouselData: [
-                {type:"cover-title", title:"Welcome To Clinton"},
-                {type:"carousel-card-img", title:"Welcome", media:pastorImg, lines:[
-                    {size:"h1", bold:true, text:""},
-                    {size:"paragraph", bold:false, text:"Our vision is to affect a completely transformed community of faith, worthy of citizenship in the Kingdom of God, by the power of God through His Son Jesus Christ. Our mission is to produce ministries that will serve the CAUSE of Christ through the spiritual transformation of minds, bodies and spirits."},
-                    {size:"paragraph", bold:false, text:"Sunday morning worship services begin at 10:00 AM.  Visitors, we encourage you to be sure to explore our 'Galleries' tab."}
-                ]}
-            ],
-            ministriesData: [
-                { title:"Christian Education Department", icon:amezLogo},
-                { title:"WHOMS", icon:amezLogo},
-                { title:"Lay Council", icon:amezLogo},
-                { title:"Faith & Social Justice Ministry", icon:amezLogo},
-                { title:"Young Adults", icon:amezLogo},
-                { title:"Men of Varick", icon:amezLogo},
-                { title:"Women of Zion", icon:amezLogo},
-                { title:"Sunday School", icon:amezLogo}
-            ],
-            eventsData: [
-                {title:"Test Event 1", date:new Date('January 17, 2019 03:24:00')},
-                {title:"Test Event 2", date:new Date('January 28, 2019 15:00:00')},
-                {title:"Test Event 3", date:new Date('February 08, 2019 10:24:00')},
-                {title:"Test Event 4", date:new Date('February 17, 2019 13:24:00')},
-                {title:"Test Event 5", date:new Date('March 1, 2019 20:24:00')},
-                {title:"Test Event 6", date:new Date('April 27, 2019 18:24:00')},
-                {title:"Test Event 7", date:new Date('May 3, 2019 17:24:00')},
-                {title:"Test Event 8", date:new Date('July 8, 2019 12:24:00')}
-            ]
+            carouselData: [],
+            ministriesData: [],
+            eventsData: []
         }
         this.renderSwitch = this.renderSwitch.bind(this);
         this.parseDate = this.parseDate.bind(this);
+        this.checklogo = this.checklogo.bind(this);
     }
 
     openModal(event) {  this.setState({ modalvisible : true, modalevent:event });  }
@@ -77,16 +57,17 @@ class Home extends Component{
         switch(item.type) {
           case 'cover-title':
             return <div className="carousel-card cover-title"><div className="content-title">{item.title}</div></div>;
-          case 'carousel-card-img':
+          case 'card-img':
             return <CarouselImgCard item={item}></CarouselImgCard>;
           default:
             return <div></div>;
         }
     }    
 
-    parseDate(date, type){
+    parseDate(stdate, type){
         var ret = null;
         try {
+            var date = new Date(stdate);
             switch(type){
                 case "day":
                     ret = (date.getDate() < 10 ? "0"+date.getDate() : date.getDate());
@@ -118,16 +99,24 @@ class Home extends Component{
         return (
           this.state.eventsData.map((event, i) => (
             <div className="details-container">
-                <div className="event-container" onClick={() => this.openModal(event)}>
-                    <div className="event-details-container event-date">
-                        <div className="date-day">{this.parseDate(event.date,"day")}</div>
-                        <div className="date-month">{this.parseDate(event.date,"month")}</div>
+                {event.type === "all" ?
+                    <Link to="/getConnected" className="event-container all">
+                        <div className="all-container">
+                            <div className="info-title">{event.title}</div>
+                        </div>
+                    </Link>
+                :
+                    <div className="event-container" onClick={() => this.openModal(event)}>
+                        <div className="event-details-container event-date">
+                            <div className="date-day">{this.parseDate(event.start_dt,"day")}</div>
+                            <div className="date-month">{this.parseDate(event.start_dt,"month")}</div>
+                        </div>
+                        <div className="event-details-container event-info">
+                            <div className="info-title">{event.title}</div>
+                            <div className="info-time">{this.parseDate(event.start_dt,"time")}</div>
+                        </div>
                     </div>
-                    <div className="event-details-container event-info">
-                        <div className="info-title">{event.title}</div>
-                        <div className="info-time">{this.parseDate(event.date,"time")}</div>
-                    </div>
-                </div>
+                }
             </div>
           ))
         )
@@ -188,8 +177,8 @@ class Home extends Component{
                     
                     <div className="ministry-container" id="ministryList">
                         {this.state.ministriesData.map((ministry,i) => 
-                            <Link to="/ministries" className="ministry-tag" key={i}>
-                                <div className="tag-img"><img src={ministry.icon} alt="minstry icon"/></div>
+                            <Link to={"/ministries" + this.getUrl(ministry.title)} className="ministry-tag" key={i}>
+                                <div className="tag-img"><img src={this.checklogo(ministry.logo)} alt="minstry icon"/></div>
                                 <div className="tag-title">{ministry.title}</div>
                             </Link>
                         )}
@@ -256,8 +245,100 @@ class Home extends Component{
         );        
     }
 
+    checklogo(logo) {
+        var ret = null;
+        try {
+            ret = (!logo ? amezLogo : logo);
+        }
+        catch(ex){
+            console.log("Error checking logo: ", ex);
+        }
+        return ret;
+    }
+
+    getUrl(title){
+        var ret = "";
+        try {
+            ret ="/"+title.replace(/([&\/\\()])/g,"_").split(' ').join("").toLowerCase();
+        }
+        catch(ex){
+            console.log("error setting url: ", ex);
+            ret = "";
+        }
+        return ret;
+    }
+
+    loadAnnouncements(){
+        var self = this;
+        try {
+            fetch(self.rootPath + "/api/getAnnouncements")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                var carouselList = carouselBase.concat(data.results);
+                self.setState({ carouselData: carouselList});
+            });
+        }
+        catch(ex){
+            console.log(" Error loading announcements: ",ex);
+        }
+    }
+
+    loadMinistries(){
+        var self = this;
+        try {
+            fetch(self.rootPath + "/api/getSpotlightMinistries")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                self.setState({ ministriesData: data.results});
+            });
+        }
+        catch(ex){
+            console.log(" Error loading announcements: ",ex);
+        }
+    }
+
+    loadEvents(){
+        var self = this;
+        try {
+            
+            var futureDt = new Date();
+            futureDt.setFullYear(futureDt.getFullYear() + 1);
+            var postData = {"startDt": new Date(), "endDt":futureDt};
+
+            axios.post(self.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
+            .then(function(response) {
+                var eData = response.data.results.slice(0,8);
+                // Add Add Events
+                eData.push({title:"All Events",type:"all"});
+                self.setState({ eventsData: eData});
+            });
+        }
+        catch(ex){
+            console.log(" Error loading announcements: ",ex);
+        }
+    }
+
     componentDidMount(){
-        //let self = this;        
+        let self = this;        
+        try {
+            window.scrollTo(0, 0);
+            self.loadAnnouncements();
+            self.loadMinistries();
+            self.loadEvents();
+        }
+        catch(ex){
+            console.log(" Error Loading data: ",ex);
+        }
     }
 }
 

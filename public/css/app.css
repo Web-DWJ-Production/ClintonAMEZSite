@@ -1323,12 +1323,29 @@ button.rbc-input::-moz-focus-inner {
 }
 .home .upcomingEvents .event-list .alice-carousel .details-container .event-container .event-details-container.event-info .info-title {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .home .upcomingEvents .event-list .alice-carousel .details-container .event-container .event-details-container.event-more-info {
   width: 100%;
   background: rgba(134, 54, 148, 0.7) !important;
   color: #ffffff;
+}
+.home .upcomingEvents .event-list .alice-carousel .details-container .event-container.all {
+  background: rgba(194, 146, 45, 0.1) !important;
+  min-height: 90px;
+  color: initial;
+}
+.home .upcomingEvents .event-list .alice-carousel .details-container .event-container.all:hover {
+  text-decoration: none;
+}
+.home .upcomingEvents .event-list .alice-carousel .details-container .event-container.all .all-container {
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+.home .upcomingEvents .event-list .alice-carousel .details-container .event-container.all .all-container .info-title {
+  font-weight: bold;
+  font-size: 2rem;
 }
 .about-us {
   position: relative;
@@ -1746,7 +1763,7 @@ button.rbc-input::-moz-focus-inner {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 10px 10%;
+  padding: 10px 5%;
 }
 .ministries .body-section .ministry-container .ministry-tag {
   display: inline-flex;
@@ -1955,6 +1972,9 @@ button.rbc-input::-moz-focus-inner {
   text-align: center;
   padding: 0px 2% 7px;
 }
+.indministry .ministry-content .basic-section .basic-content h2 {
+  margin-top: 7px;
+}
 .indministry .ministry-content .basic-section .basic-content .leadership-container {
   display: flex;
   justify-content: space-evenly;
@@ -1966,7 +1986,7 @@ button.rbc-input::-moz-focus-inner {
   padding: 7px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin-right: 7px;
+  margin: 0px 7px 7px 0px;
 }
 .indministry .ministry-content .basic-section .basic-content .membership-container {
   font-size: 1.3rem;
