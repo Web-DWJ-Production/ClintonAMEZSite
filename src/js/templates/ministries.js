@@ -124,7 +124,7 @@ class MinistryInd extends Component {
     constructor(props) {
         super(props);
         
-        this.rootPath = "http://"+window.location.hostname + (window.location.port != "" ? ":"+window.location.port : "");
+        this.rootPath = "";
         //this.rootPath = "http://localhost:7777";
 
         this.state = {
