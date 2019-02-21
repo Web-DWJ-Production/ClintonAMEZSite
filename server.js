@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set our api routes
 app.use('/api', require('./server/controller/routes.controller.js'));
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build/index.html'));
+  res.sendFile(path.join(__dirname, 'build','index.html'));
 });
 
 // start app
