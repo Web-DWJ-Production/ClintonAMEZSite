@@ -1,14 +1,18 @@
 {
   "name": "clintonamez_site",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "engines": {
+    "node": "10.15.0",
+    "npm": "6.5.0"
+  },
   "description": "Clinton AMEZ Church Website",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "react-scripts start",
     "build-css": "less-watch-compiler --run-once --main-file=app.less src/css/ public/css/",
     "watch-css": "npm run build-css && less-watch-compiler --main-file=app.less src/css/ public/css/",
     "build": "npm run build-css && react-scripts build",
-    "heroku-postbuild": "npm run build-css && npm run build",
+    "postinstall": "npm run build-css && npm run build",
     "script-run": "react-scripts start",
     "script-dev": "concurrently \"npm run watch-css\" \"npm run script-run\" \"wait-on http://localhost:3001\""
   },
