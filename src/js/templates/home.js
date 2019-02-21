@@ -19,8 +19,7 @@ import carouselCover from "../../assets/img/siteMedia/ChurchBody.jpg";
 import welcomeVid from '../../assets/img/tmpMedia/tmpVideo.mp4'
 import spacer from '../../assets/img/tmpMedia/church2.jpg';
 
-/* Temp Images */
-import pastorImg from "../../assets/img/siteMedia/pastor1.jpg";
+import pastorImg from "../../assets/img/siteMedia/pastor5.jpg";
 var carouselBase = [{type:"cover-title", title:"Welcome To Clinton"}];
 
 class Home extends Component{
@@ -141,31 +140,31 @@ class Home extends Component{
                 {/* Get Connected */}
                 <section className="getConnected">
                     <h1 className="font-title1">Get Connected</h1>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <p>Here at Clinton we are a bible preaching, teaching, & believing minsitry. We invite you to fellowship with us, to walk your faith journey with us, and to join Clinton African Methodist Episcopal Zion Church.</p>
                     <div className="cards-holder">
                         <div className="card service">
-                            <div className="card-container">
-                            <div className="card-title">
+                            <Link to="/getConnected" className="card-container">
+                                <div className="card-title">
                                     <div className="icon-header"><div className="icon-container c6"><i className="icon-center far fa-clock"></i></div></div>
                                     <div className="text">Service Times</div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                         <div className="card prayer">
-                            <div className="card-container">                    
+                            <Link to="/getConnected" className="card-container">                    
                                 <div className="card-title">
                                     <div className="icon-header c6"><div className="icon-container c6"><i className="icon-center fas fa-phone"></i></div></div>
                                     <div className="text">Prayer Call</div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                         <div className="card bible">
-                            <div className="card-container">
-                            <div className="card-title">
+                            <Link to="/getConnected" className="card-container">
+                                <div className="card-title">
                                     <div className="icon-header c6"><div className="icon-container c6"><i className="icon-center fab fa-audible"></i></div></div>
                                     <div className="text">Bible Study</div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </section>
@@ -173,7 +172,7 @@ class Home extends Component{
                 {/* Ministries */}
                 <section className="ourMinistries">                    
                     <h1 className="font-title1">Ministries</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>We believe in the living word and being an active body of christ, through our ministries we are able to connected and serve those within our community and promote positive change.</p>
                     
                     <div className="ministry-container" id="ministryList">
                         {this.state.ministriesData.map((ministry,i) => 
@@ -199,7 +198,8 @@ class Home extends Component{
                         <span className="half-tablet content">
                             <div className="content-area">
                                 <div className="video-container">
-                                    <video className="mini-video" controls><source src={welcomeVid} /></video>
+                                    {/*<video className="mini-video" controls><source src={welcomeVid} /></video>*/}
+                                    <img src={pastorImg} alt="pastor img"/>
                                 </div>
                             </div>
                         </span>

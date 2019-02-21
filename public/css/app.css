@@ -965,7 +965,7 @@ button.rbc-input::-moz-focus-inner {
   margin: 42px 0px;
 }
 .home .getConnected p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 .home .getConnected .cards-holder {
   display: flex;
@@ -1080,7 +1080,7 @@ button.rbc-input::-moz-focus-inner {
   margin: 42px 0px;
 }
 .home .ourMinistries p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 .home .ourMinistries .text-content {
   width: 300px;
@@ -1211,6 +1211,9 @@ button.rbc-input::-moz-focus-inner {
 .home .welcome .tablet-cover .half-tablet .content-area .video-container .mini-video {
   width: 100%;
   height: 100%;
+}
+.home .welcome .tablet-cover .half-tablet .content-area .video-container img {
+  width: 100%;
 }
 .home .para-spacer {
   position: relative;
@@ -2244,7 +2247,10 @@ button.rbc-input::-moz-focus-inner {
   border-radius: 50px;
   padding: 5px 20px;
   border: 2px solid #ffffff;
-  background: rgba(50, 50, 50, 0.3);
+  background: rgba(200, 200, 200, 0.3);
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .gallery .gallery-display .galleryListContainer .listControl .ctrl-container .ctrl {
   cursor: pointer;

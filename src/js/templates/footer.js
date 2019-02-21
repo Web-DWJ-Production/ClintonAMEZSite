@@ -14,7 +14,7 @@ class Footer extends Component{
                 <div className="footer-container">
                     <div className="footer-column">
                         <div className="column-title">About Clinton</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Our mission is to produce ministries that will serve the CAUSE of Christ through the spiritual transformation of minds, bodies and spirits.</p>
                     </div>
 
                     <div className="footer-column">

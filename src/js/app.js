@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { CSSTransitionGroup } from 'react-transition-group';
+import { spring, AnimatedSwitch } from 'react-router-transition';
 
 /* Components */
 import Footer from './templates/footer';
@@ -33,6 +34,20 @@ const routes = [
     { title:"gallery", path:"/gallery", component:Gallery},
     { title:"contact us", path:"/contactUs", component:ContactUs}  
 ];
+  
+function slide(val) {
+    return spring(val, { stiffness: 125, damping: 16, });
+}
+  
+const topBarTransitions = {
+    atEnter: {  offset: -100 },
+    atLeave: { offset: slide(-150) },
+    atActive: { offset: slide(0) }
+};
+
+function mapStyles(styles) {
+    return { opacity: styles.opacity, transform: 'translateY(${styles.offset}px)' };
+}
 
 const SiteRoutes = route => (
     <div> 
@@ -125,11 +140,13 @@ class App extends Component{
                     
                     {/* Body*/}
                     <div className="body-container">
+                        {/*<AnimatedSwitch {...topBarTransitions} mapStyles={mapStyles} className="switch-wrapper">*/}
                         <Switch>
                             <Route exact path="/" component={Home} />                            
                             { routes.map((route, i) => <SiteRoutes key={i} {...route} />) }                            
                             <Route component={NoMatch} />                            
-                        </Switch>        
+                        </Switch>
+                        {/*</AnimatedSwitch> */}
                     </div>
 
                     {/* Footer */}
