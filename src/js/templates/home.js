@@ -25,8 +25,8 @@ var carouselBase = [{type:"cover-title", title:"Welcome To Clinton"}];
 class Home extends Component{
     constructor(props) {
         super(props);
-        this.rootPath = "";
-        //this.rootPath = "http://localhost:7777";
+        //this.rootPath = "";
+        this.rootPath = "http://localhost:7777";
 
         this.state = {
             scrollSpy: true,
