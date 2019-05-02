@@ -85,14 +85,16 @@
                                 text-decoration: none;
                                 text-transform: capitalize;
                                 display: inline-block;
+                                font-weight: bold;
                                 .nav-more { font-size: 1rem; margin-left: 5px;}
                                 &:hover, &:focus { color: rgba(0,0,0,1); text-decoration: none; }
                             }
 
                             &:hover { 
-                                a { color: rgba(255,255,255,1); }
-                                background: rgba(100,100,100,0.8);
-                                //.color3(background, 0.5);
+                                a { 
+                                    color: rgba(255,255,255,1);
+                                    .color3(color, 1);
+                                 }                           
                             }
                         }
                     }
