@@ -9,7 +9,7 @@ class UC extends Component{
 
     render(){        
         return(
-            <div className="us-container">
+            <div className="uc-container">
                <h1>Under Construction</h1>
             </div>    
         );        

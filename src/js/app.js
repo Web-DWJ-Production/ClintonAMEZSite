@@ -17,7 +17,7 @@ import GetConnected from './templates/getConnected';
 import ContactUs from './templates/contactUs';
 import Gallery from './templates/gallery';
 
-//import UC from './templates/uc';
+import UC from './templates/uc';
 import NoMatch from './templates/404';
 
 /* Styles */
@@ -30,7 +30,7 @@ const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, subPages:[{ title:"our history",path:"/aboutUs/ourHistory", component:OurHistory},{title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},{ title:"service information", path:"/aboutUs/ourService", component:OurService},{ title:"inside zion", external:true, path:"http://www.amez.org/"}]},
     { title:"pastors page", path:"/pastorsPage", component:PastorsPage},
     { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries},
-    { title:"get connected", path:"/getConnected", component:GetConnected},
+    { title:"get connected", path:"/getConnected", component:GetConnected, subPages:[{title:"resources", path:"/getConnected/resources", component:UC}]},
     { title:"gallery", path:"/gallery", component:Gallery},
     { title:"contact us", path:"/contactUs", component:ContactUs}  
 ];
@@ -95,10 +95,10 @@ class App extends Component{
                                         <div className="scripture">"O magnify the Lord with me, and let us exalt his name together"</div>
                                     </div>
                                     <div className="nav-container right-align">            
-                                        <div className="social-btn give"><i className="fas fa-dollar-sign"></i> <span>Give Online</span></div>                
+                                        <a href="https://giv.li/0euaiq" target="_blank" className="social-btn give"><i className="fas fa-dollar-sign"></i> <span>Give Online</span></a>                
                                         
-                                        <div className="social-btn facebook" data-fa-transform="shrink-8"><i className="fab fa-facebook-f fa-fw"></i></div>
-                                        <div className="social-btn twitter" data-fa-transform="shrink-8"><i className="fab fa-twitter fa-fw"></i></div>
+                                        <a href="https://www.facebook.com/Clinton-African-Methodist-Episcopal-Zion-Church-344226358930084/" target="_blank" className="social-btn facebook" data-fa-transform="shrink-8"><i className="fab fa-facebook-f fa-fw"></i></a>
+                                        <a href="https://twitter.com/ClintonAMEZion" target="_blank" className="social-btn twitter" data-fa-transform="shrink-8"><i className="fab fa-twitter fa-fw"></i></a>
                                     </div>
                                 </div>
 

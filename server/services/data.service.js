@@ -37,6 +37,7 @@ var data = {
                 else {
                     const db = client.db(database.dbName).collection('announcements');
                     db.find({}, {useNewUrlParser: true}).sort( { order: 1 } ).toArray(function(err, dbres){
+                        
                         if(dbres == null || dbres == undefined) { 
                             response.errorMessage = "Unable get list";
                         }
@@ -128,7 +129,7 @@ var data = {
                     for(var i =0; i < body.photosets.photoset.length; i++){
                         var tmp = getSetInfo(body.photosets.photoset[i]);
 
-                        if(tmp != "") { ret.push(tmp);}
+                        if(tmp != "" && !tmp.title.startsWith("_")) { ret.push(tmp);}
                     }
 
                     response.results = ret;
@@ -332,7 +333,7 @@ function getIndividual(mId, callback){
                         var siblingSearch = (response.results.subSections.length > 0 ? response.results.subSections[response.results.subSections.length - 1] : response.results.title);
                         if(response.results.subSections.length >= 0){}
 
-                        db.find({ $or: [{'subSections': siblingSearch, 'titleId':{$ne: mId}}, {'title': siblingSearch}]}).toArray(function(err,res){
+                        db.find({ $or: [{'subSections': siblingSearch, 'titleId':{$ne: mId}, active: activeStatus}, {'title': siblingSearch, active: activeStatus}]}).toArray(function(err,res){
                             response.results.siblings = (res && res.length > 1 ? res : []);
                             callback(response);
                         });

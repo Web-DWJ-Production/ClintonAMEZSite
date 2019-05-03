@@ -55,9 +55,9 @@ class OurHistory extends Component{
                     <PicBook pages={this.state.story1} side="right" colorclass="color3"></PicBook>
                 </section>  
 
-                <section className="body-section localHistory c2-mid notched-top">
+                <section className="body-section localHistory light notched-top">
                     <h1 className="section-title font-title1">Our Local Church</h1>
-                    <PicBook pages={this.state.story2} side="left" colorclass="colorg"></PicBook>                    
+                    <PicBook pages={this.state.story2} side="left" colorclass="color3"></PicBook>                    
                 </section>  
             </div>   
         );        

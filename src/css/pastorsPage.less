@@ -19,15 +19,17 @@
                 flex-flow: row wrap;
                 &.headline {
                     .church-img { 
-                        border-radius: 10px; 
                         width: 45%; 
                         overflow:hidden; 
+                        -moz-box-shadow:    0 0 10px rgba(0,0,0,.5);
+                        -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5);
+                        box-shadow:         0 0 10px rgba(0,0,0,.5);
                         @media @mobile-device { width: inherit; }
                         img{ width: 100%; height: 100%; object-fit: cover;}
                     }
                     .text {
                         width: 50%;
-                        padding: 5px 20px;
+                        padding: 5px 0px 5px 20px;
 
                         @media @mobile-device { width: inherit; padding: 5px 0px;}
                     }
@@ -45,10 +47,10 @@
 
                 .txt {
                     position: relative;
-                    padding: 20px;
+                    padding: 20px 0px;
                     font-size: 1.1rem;
                     line-height: 2rem;
-                    text-indent: 30px;
+                    //text-indent: 30px;
 
                     @media @mobile-device { padding: 15px; }
                     &.c2 { &:after { .color2(background, 0.5); }}

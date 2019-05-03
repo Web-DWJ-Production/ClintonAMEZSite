@@ -67,7 +67,7 @@ class GetConnected extends Component{
                             <p>Open To All</p>
 
                             <p className="sub-txt">Submit Prayer Requests Via Text to (301) 741-0325 Or</p>
-                            <p className="sub-txt">Via Email At CAMEZPASTOR@Gmail.com</p>
+                            <p className="sub-txt">Via Email At <a class="mail-to" href="mailto:CAMEZPASTOR@Gmail.com">CAMEZPASTOR@Gmail.com</a></p>
                         </div>
                     </div>
                 </section> 
@@ -114,7 +114,8 @@ class GetConnected extends Component{
 
             axios.post(self.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
             .then(function(response) {
-                var eData = response.data.results.map(function(el) {
+                var retData = response.data.results ? response.data.results : [];
+                var eData = retData.map(function(el) {
                     var o = Object.assign({}, el);
                     o.start = o.start_dt;
                     o.end = o.end_dt;

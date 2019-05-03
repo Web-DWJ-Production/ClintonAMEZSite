@@ -25,8 +25,8 @@ var carouselBase = [{type:"cover-title", title:"Welcome To Clinton"}];
 class Home extends Component{
     constructor(props) {
         super(props);
-        //this.rootPath = "";
-        this.rootPath = "http://localhost:7777";
+        this.rootPath = "";
+        //this.rootPath = "http://localhost:7777";
 
         this.state = {
             scrollSpy: true,
@@ -279,7 +279,8 @@ class Home extends Component{
                 return response.json();
             })
             .then(function(data) {
-                var carouselList = carouselBase.concat(data.results);
+                var datRet = data.results ? data.results: [];
+                var carouselList = carouselBase.concat(datRet);
                 self.setState({ carouselData: carouselList});
             });
         }
@@ -299,7 +300,8 @@ class Home extends Component{
                 return response.json();
             })
             .then(function(data) {
-                self.setState({ ministriesData: data.results});
+                var datRet = data.results ? data.results: [];
+                self.setState({ ministriesData: datRet});
             });
         }
         catch(ex){
@@ -317,7 +319,8 @@ class Home extends Component{
 
             axios.post(self.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
             .then(function(response) {
-                var eData = response.data.results.slice(0,8);
+                var retData = response.data.results ? response.data.results : [];
+                var eData = retData.slice(0,8);
                 // Add Add Events
                 eData.push({title:"All Events",type:"all"});
                 self.setState({ eventsData: eData});

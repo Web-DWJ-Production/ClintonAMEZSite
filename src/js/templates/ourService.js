@@ -26,7 +26,7 @@ class OurService extends Component{
                     <div className="service-card">
                         <div className="church-img"><img src={churchImg} alt="church"/></div>
                         <div className="service-content">
-                            <div className="content-info where-we-are txt c3 left">
+                            <div className="content-info where-we-are txt c3">
                                 <div className="info-txt">
                                     <p>Come join us at Clinton A.M.E. Zion anytime,</p> 
                                     <p>We are located at</p>
@@ -36,10 +36,10 @@ class OurService extends Component{
                                     <p>Rockville, MD 20850</p>
                                 </div>
                             </div>
-                            <div className="content-info our-times txt c6 right">
-                                <div className="info-txt">Sunday Services</div>
+                            <div className="content-info our-times txt c6">
+                                <div className="info-txt lrg">Sunday Services</div>
                                 <div className="service-info">
-                                    <div className="title">Sunday School</div>
+                                    <div className="title">Sunday  School</div>
                                     <div className="time">8:30am</div>
                                 </div>
                                 <div className="service-info">

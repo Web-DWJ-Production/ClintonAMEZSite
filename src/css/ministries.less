@@ -26,7 +26,6 @@
                 display: inline-flex;                                
                 padding: 7px 15px;
                 margin-bottom: 15px;
-                //border-radius: 15px;
                 -moz-box-shadow:    0 0 10px rgba(0,0,0,.5);
                 -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5);
                 box-shadow:         0 0 10px rgba(0,0,0,.5);
@@ -43,7 +42,7 @@
                     text-decoration: none;            
                 }
 
-                .tag-img { height: 40px;  margin-right: 7px; img { height: 100%; }}
+                .tag-img { height: 30px; margin-top:5px;  margin-right: 7px; img { height: 100%; }}
                 .tag-info {
                     flex:1;
                     text-transform: capitalize;
@@ -121,7 +120,7 @@
                     text-decoration: none;            
                 }
 
-                .tag-img { height: 40px;  margin-right: 7px; img { height: 100%; }}
+                .tag-img { height: 30px; margin-top:5px; margin-right: 7px; img { height: 100%; }}
                 .tag-info {
                     flex:1;
                     text-transform: capitalize;
@@ -168,8 +167,7 @@
     }
 
     .ministry-mission {
-        padding: 20px 50px 70px;
-        //background-color: @color3;
+        padding: 50px 50px 90px;
         background: linear-gradient(to right, rgba(134,54,148,0.7), rgba(186,0,1,0.7));
         color: rgba(255,255,255,1);
         position: relative;
@@ -179,7 +177,7 @@
     }
 
     .ministry-content {
-        padding: 50px 80px;
+        padding: 70px 80px 90px;
         .basic-section {
             display: flex;
             padding: 7px;
@@ -214,7 +212,7 @@
                 }
 
                 .membership-container { font-size: 1.3rem;}
-                .goals-container { text-align: left;}
+                .goals-container { text-align: left; font-size: 1.3rem;}
             }
         }
     }
@@ -223,28 +221,20 @@
         padding: 20px 50px 70px;
         position: relative;
         text-align: center;
+        font-size: 1.3rem;
         h2 { font-size: 2.5rem;  margin: 20px 0px;}
 
         .activity-center {
+            column-count: 2;
             .activity-item {
-                display: block;
-                border-top: 2px solid rgba(0,0,0,0.5);
+                display: block;                
                 text-align: left;
                 padding: 7px;
-                position: relative;
-                &:before {
-                    content:'';
-                    position: absolute;
-                    height:2px;
-                    width:40%;
-                    top:-2px;
-                    right:0px;
-                    background: rgba(200,200,200,1);
-                }
-
-                &+.activity-item{ margin-top: 7px;}
+                position: relative;                
+                padding-bottom: 7px; 
+                
                 .item-title {font-weight: bold;}
-                .item-description { width: 60%; padding: 5px 10px;}
+                .item-description { padding: 5px 10px;}
             }
         }
     }

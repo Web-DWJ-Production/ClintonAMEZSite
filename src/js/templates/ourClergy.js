@@ -7,7 +7,7 @@ class OurStaff extends Component{
         super(props);
 
         this.state = {
-            colorClass:["", "c2-mid",""],
+            colorClass:["", "light",""],
             staffList: [
                 {"name":"Administrative Team", "members":[
                     {"name":"Ms. Jonice Adams & Ms. Donna Cawley", "title":"Co-Directors, Communication & Brand Management"},

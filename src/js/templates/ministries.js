@@ -31,8 +31,8 @@ class MinistryAll extends Component {
     constructor(props) {
         super(props);
 
-        //this.rootPath = "";
-        this.rootPath = "http://localhost:7777";
+        this.rootPath = "";
+        //this.rootPath = "http://localhost:7777";
 
         this.state = {
             ministryList:[]
@@ -57,7 +57,7 @@ class MinistryAll extends Component {
                         <h1 className="font-title1">{ msection.sectionTitle }</h1>
                         <div className="ministry-container">
                             {msection.list.map((ministry,j) =>
-                                <Link to={"/ministries" + this.getUrl(ministry.title)} key={j} className="ministry-tag">
+                                <Link to={"/ministries/" + this.getUrl(ministry.title)} key={j} className="ministry-tag">
                                     <div className="tag-img"><img src={this.checklogo(ministry.icon)} alt="minstry icon"/></div>
                                     <div className="tag-info">
                                         <div className="tag-title">{ministry.title}</div>
@@ -91,7 +91,7 @@ class MinistryAll extends Component {
     getUrl(title){
         var ret = "";
         try {
-            ret ="/"+title.replace(/([&\/\\()])/g,"_").split(' ').join("").toLowerCase();
+            ret = title.replace(/([&\/\\()])/g,"_").split(' ').join("").toLowerCase();
         }
         catch(ex){
             console.log("error setting url: ", ex);
@@ -124,8 +124,8 @@ class MinistryInd extends Component {
     constructor(props) {
         super(props);
         
-        //this.rootPath = "";
-        this.rootPath = "http://localhost:7777";
+        this.rootPath = "";
+        //this.rootPath = "http://localhost:7777";
 
         this.state = {
             ministryComponent: null
@@ -154,7 +154,7 @@ class MinistryInd extends Component {
 
                         <div className="sibling-container">
                             {this.state.ministryComponent && this.state.ministryComponent.siblings ? this.state.ministryComponent.siblings.map((ministry,j) =>
-                                <Link to={"/ministries" + this.getUrl(ministry.title)} className="ministry-tag" key={j} onClick={this.reloadPage}>
+                                <Link to={"/ministries/" + this.getUrl(ministry.title)} className="ministry-tag" key={j} onClick={() => this.reloadPage(ministry.title)}>
                                     <div className="tag-img"><img src={this.checklogo(this.state.ministryComponent.icon)} alt="minstry icon"/></div>
                                     <div className="tag-info">
                                         <div className="tag-title">{ministry.title}</div>
@@ -276,7 +276,7 @@ class MinistryInd extends Component {
     getUrl(title){
         var ret = "";
         try {
-            ret ="/"+title.replace(/([&\/\\()])/g,"_").split(' ').join("").toLowerCase();
+            ret = title.replace(/([&\/\\()])/g,"_").split(' ').join("").toLowerCase();
         }
         catch(ex){
             console.log("error setting url: ", ex);
@@ -285,8 +285,12 @@ class MinistryInd extends Component {
         return ret;
     }
 
-    reloadPage(){
-        window.location.reload();
+    reloadPage(title){
+        var titleId = this.getUrl(title);
+        var newUrl = "/ministries/" + titleId;
+        window.location = newUrl;
+        window.scrollTo(0, 0);
+        this.loadMinistry(titleId);
     }
 }
 
