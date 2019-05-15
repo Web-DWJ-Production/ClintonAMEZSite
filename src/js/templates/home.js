@@ -20,13 +20,15 @@ import welcomeVid from '../../assets/img/tmpMedia/tmpVideo.mp4'
 import spacer from '../../assets/img/tmpMedia/church2.jpg';
 
 import pastorImg from "../../assets/img/siteMedia/pastor5.jpg";
+
 var carouselBase = [{type:"cover-title", title:"Welcome To Clinton"}];
+var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
 
 class Home extends Component{
     constructor(props) {
         super(props);
-        this.rootPath = "";
-        //this.rootPath = "http://localhost:7777";
+        //this.rootPath = "";
+        this.rootPath = "http://localhost:7777";
 
         this.state = {
             scrollSpy: true,
@@ -71,8 +73,7 @@ class Home extends Component{
                 case "day":
                     ret = (date.getDate() < 10 ? "0"+date.getDate() : date.getDate());
                     break;
-                case "month":
-                    var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
+                case "month":                    
                     ret = Month[date.getMonth()];
                     break;
                 case "year":
@@ -82,6 +83,9 @@ class Home extends Component{
                     ret = ((date.getHours() +1 > 12) ? (date.getHours()+1) -12 : (date.getHours()+1)) +":"
                     + ((date.getMinutes() < 10) ? "0"+ date.getMinutes() : date.getMinutes())
                     + ((date.getHours() +1 > 12) ? " PM" : " AM");
+                    break;
+                case "date":
+                    ret = Month[date.getMonth()] + " " + date.getDate() + " ";
                     break;
                 default:
                     ret = null;
@@ -233,9 +237,13 @@ class Home extends Component{
                         <Modal visible={this.state.modalvisible}
                             width="400" height="300" effect="fadeInUp"
                             onClickAway={() => this.closeModal()}>
-                            <div>
-                                <h1>{this.state.modalevent.title}</h1>
-                                <p></p>
+                            <div className="modalContainer">
+                                <h2>{this.state.modalevent.title}</h2>
+                                <div className="modalBody">
+                                    <p>Date: {this.parseDate(this.state.modalevent.start_dt,"date")}</p>
+                                    <p>Time: {this.parseDate(this.state.modalevent.start_dt,"time")}</p>
+                                    <p>{this.state.modalevent.location}</p>
+                                </div>
                                 <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
                             </div>
                         </Modal>

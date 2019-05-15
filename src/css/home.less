@@ -242,15 +242,14 @@
             justify-content: space-between;
             padding: 10px 13%;                        
             .ministry-tag {
-                display: inline-flex;                
-                color:rgba(255,255,255,1);
-                padding: 7px 10px;
+                display: inline-flex;                                
+                padding: 7px 15px;
                 margin-bottom: 15px;
-                //border-radius: 7px;
-                -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,.5);
-                -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,.5);
-                box-shadow:         inset 0 0 10px rgba(0,0,0,.5);
+                -moz-box-shadow:    0 0 10px rgba(0,0,0,.5);
+                -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5);
+                box-shadow:         0 0 10px rgba(0,0,0,.5);
                 transition: 0.5s all ease-in-out;
+                color: inherit;
 
                 .tag-img { height: 25px;  margin-right: 7px; img { height: 100%; }}
                 .tag-title{ font-size: 1.2rem; flex:1; }                
@@ -437,5 +436,18 @@
                 }
             }
         }
+    }
+}
+
+.modalContainer {
+    height: 100%;
+    h2 {
+        background: @color3;
+        padding: 7px;
+        color: rgba(255,255,255,1);
+    }
+    .modalBody {
+        padding: 20px 7px;
+        font-size: 1.3rem;
     }
 }

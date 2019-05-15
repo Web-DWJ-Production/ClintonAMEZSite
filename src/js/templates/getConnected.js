@@ -8,20 +8,55 @@ import backImg from "../../assets/img/siteMedia/group5.jpg";
 import pastorImg from "../../assets/img/siteMedia/pastor-mini.jpg";
 
 const localizer = Calendar.momentLocalizer(moment);
+var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
 
 class GetConnected extends Component{
     constructor(props) {
         super(props);
 
-        this.rootPath = "";
-        //this.rootPath = "http://localhost:7777";
+        //this.rootPath = "";
+        this.rootPath = "http://localhost:7777";
         
         this.state = {
             modalvisible:false,
             modalevent:{},
             events: []
         }
+        this.parseDate = this.parseDate.bind(this);
     } 
+
+    parseDate(stdate, type){
+        var ret = null;
+        try {
+            var date = new Date(stdate);
+            switch(type){
+                case "day":
+                    ret = (date.getDate() < 10 ? "0"+date.getDate() : date.getDate());
+                    break;
+                case "month":                    
+                    ret = Month[date.getMonth()];
+                    break;
+                case "year":
+                    ret = date.getFullYear();
+                    break;
+                case "time":
+                    ret = ((date.getHours() +1 > 12) ? (date.getHours()+1) -12 : (date.getHours()+1)) +":"
+                    + ((date.getMinutes() < 10) ? "0"+ date.getMinutes() : date.getMinutes())
+                    + ((date.getHours() +1 > 12) ? " PM" : " AM");
+                    break;
+                case "date":
+                    ret = Month[date.getMonth()] + " " + date.getDate() + " ";
+                    break;
+                default:
+                    ret = null;
+                    break;
+            }
+        }
+        catch(ex){
+            console.log("Error parsing date: ", ex);
+        }
+        return ret;
+    }
 
     openModal(event) {  this.setState({ modalvisible : true, modalevent:event });  }
     closeModal() { this.setState({ modalvisible : false }); }
@@ -87,9 +122,13 @@ class GetConnected extends Component{
                         <Modal visible={this.state.modalvisible}
                             width="400" height="300" effect="fadeInUp"
                             onClickAway={() => this.closeModal()}>
-                            <div>
-                                <h1>{this.state.modalevent.title}</h1>
-                                <p></p>
+                            <div className="modalContainer">
+                                <h2>{this.state.modalevent.title}</h2>
+                                <div className="modalBody">
+                                    <p>Date: {this.parseDate(this.state.modalevent.start_dt,"date")}</p>
+                                    <p>Time: {this.parseDate(this.state.modalevent.start_dt,"time")}</p>
+                                    <p>{this.state.modalevent.location}</p>
+                                </div>
                                 <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
                             </div>
                         </Modal>

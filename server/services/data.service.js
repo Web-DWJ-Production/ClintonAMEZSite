@@ -245,7 +245,7 @@ function getTree(callback){
                 callback(response);
             }
             else {  
-                const db = client.db(database.dbName).collection('ministriesDB');
+                const db = client.db(database.dbName).collection('ministries');
 
                 db.find({active: activeStatus},{ projection:{_id:0, title: 1, section:1, subSections:1,logo:1}}).toArray(function(err, res){
                     if(res == null || res == undefined) { response.errorMessage = "Unable get list";}
@@ -273,7 +273,7 @@ function getSpotlightTree(callback){
                 callback(response);
             }
             else {  
-                const db = client.db(database.dbName).collection('ministriesDB');
+                const db = client.db(database.dbName).collection('ministries');
 
                 db.find({spotlight:true, active: activeStatus}, { projection:{_id:0, title: 1, section:1, subSections:1,logo:1}})
                 .toArray(function(err, res){
@@ -305,7 +305,8 @@ function buildTree(list){
     catch(ex){
         console.log("Error Building Tree: ",ex);
     }
-    return Object.values(ret);
+    var retVal = (!ret ? {} : Object.values(ret).sort(function(a,b){ return a.list.length < b.list.length; }));
+    return retVal;
 }
 
 /* Get Individual Ministry */
@@ -320,7 +321,7 @@ function getIndividual(mId, callback){
                 callback(response);
             }
             else {  
-                const db = client.db(database.dbName).collection('ministriesDB');
+                const db = client.db(database.dbName).collection('ministries');
 
                 db.find({'titleId': mId, active: activeStatus}).toArray(function(err, res){
                     if(!res || res.length == 0) { 

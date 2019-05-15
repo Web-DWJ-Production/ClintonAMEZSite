@@ -1102,13 +1102,13 @@ button.rbc-input::-moz-focus-inner {
 }
 .home .ourMinistries .ministry-container .ministry-tag {
   display: inline-flex;
-  color: #ffffff;
-  padding: 7px 10px;
+  padding: 7px 15px;
   margin-bottom: 15px;
-  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: 0.5s all ease-in-out;
+  color: inherit;
 }
 .home .ourMinistries .ministry-container .ministry-tag .tag-img {
   height: 25px;
@@ -1345,6 +1345,18 @@ button.rbc-input::-moz-focus-inner {
 .home .upcomingEvents .event-list .alice-carousel .details-container .event-container.all .all-container .info-title {
   font-weight: bold;
   font-size: 2rem;
+}
+.modalContainer {
+  height: 100%;
+}
+.modalContainer h2 {
+  background: #863694;
+  padding: 7px;
+  color: #ffffff;
+}
+.modalContainer .modalBody {
+  padding: 20px 7px;
+  font-size: 1.3rem;
 }
 .about-us {
   position: relative;
