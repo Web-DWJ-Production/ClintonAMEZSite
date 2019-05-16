@@ -27,8 +27,8 @@ var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov
 class Home extends Component{
     constructor(props) {
         super(props);
-        //this.rootPath = "";
-        this.rootPath = "http://localhost:7777";
+        this.rootPath = "";
+        //this.rootPath = "http://localhost:7777";
 
         this.state = {
             scrollSpy: true,
@@ -147,7 +147,7 @@ class Home extends Component{
                     <p>Here at Clinton we are a bible preaching, teaching, & believing minsitry. We invite you to fellowship with us, to walk your faith journey with us, and to join Clinton African Methodist Episcopal Zion Church.</p>
                     <div className="cards-holder">
                         <div className="card service">
-                            <Link to="/getConnected" className="card-container">
+                            <Link to="/aboutUs/ourService" className="card-container">
                                 <div className="card-title">
                                     <div className="icon-header"><div className="icon-container c6"><i className="icon-center far fa-clock"></i></div></div>
                                     <div className="text">Service Times</div>

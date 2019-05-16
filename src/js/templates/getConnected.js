@@ -14,8 +14,8 @@ class GetConnected extends Component{
     constructor(props) {
         super(props);
 
-        //this.rootPath = "";
-        this.rootPath = "http://localhost:7777";
+        this.rootPath = "";
+        //this.rootPath = "http://localhost:7777";
         
         this.state = {
             modalvisible:false,
