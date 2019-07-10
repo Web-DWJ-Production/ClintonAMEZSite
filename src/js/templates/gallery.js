@@ -67,7 +67,7 @@ class Gallery extends Component{
                         <div className="selected-gallery">
                             <div className="gallery-tag all" onClick={() => this.selectGallery(null)}>    
                                 <div className="tag-img"><i className="fas fa-arrow-left"></i></div>
-                                <div className="tag-info"><div className="tag-title">Return To Ministry List</div></div>                                
+                                <div className="tag-info"><div className="tag-title">Return To Gallery List</div></div>                                
                             </div>
                             <h1 className="font-title1">{this.state.selected.title }</h1>
                             <ImageGallery items={this.state.selectedImages.map(function(item){ return {"original":item, "thumbnail":item}; })}/>
