@@ -28,7 +28,14 @@
             left: 0;
             width: 100%;
             min-height: 100%;
-            img { width: 100%; height: 100%;}
+            img { 
+                width: 100%; 
+                height: 100%;                
+            }
+            @media @mobile-device { 
+                height: 100%;
+                img { object-fit: cover; width: initial; margin-left: -70%;}
+            }
         }
 
         .home-carousel {
@@ -67,7 +74,8 @@
                         text-align: center;
                         font-size: 75px;
                         //font-family: 'Montserrat Alternates', sans-serif;
-                        font-family: 'Homemade Apple', cursive;                           
+                        font-family: 'Homemade Apple', cursive;      
+                        @media @mobile-device { font-size: 40px; }                     
                     }
 
                     &.img-card {
@@ -78,10 +86,11 @@
                         width: 75%;                        
                         .img-card-container { 
                             display: flex;
-                            align-items:flex-start;
-                            align-content:flex-start;
-                            overflow: hidden;
+                            align-items: flex-start;
+                            align-content: flex-start;
+                            overflow: hidden;                            
                         }
+                        @media @mobile-device { width: 80%; .img-card-container {flex-direction: column; } }
                     }
                     .video-container { 
                         //position: relative;
@@ -110,6 +119,8 @@
                         display: inline-block;
                         position: relative;
                         img { max-height: 100%; width: 100%; }
+
+                        @media @mobile-device { width: 100%; }
                     }
                     .card-content {
                         padding: 10px 10px 10px 30px;
@@ -130,10 +141,17 @@
                             &.bold { font-weight: bold; }
                             &+.content-line { margin-top: 15px; }
                         }
+
+                        @media @mobile-device { 
+                            width: 100%;
+                            .content-title { font-size: 1.5rem; }
+                        }
                     }
+
+                    @media @mobile-device { padding: 15px; max-height: calc(~"100% - 30px"); }
                 }  
                 &.full { .carousel-card  {padding: 0px; } }
-                &.card { padding: 40px 15% 10px; height: calc(~"100% - 50px");}                
+                &.card { padding: 40px 15% 10px; height: calc(~"100% - 50px");}                            
             }               
         }
     }
@@ -141,8 +159,8 @@
     .getConnected {
         padding: 20px 5%;
         text-align: center;
-        h1 { font-size: 3rem; margin: 42px 0px;}
-        p { font-size: 1.4rem;}
+        h1 { font-size: 3rem; margin: 42px 0px; @media @mobile-device {font-size: 2rem;}}
+        p { font-size: 1.4rem;  @media @mobile-device {font-size: 1.2rem;}}
         .cards-holder {
             display: flex;
             justify-content: center;
@@ -297,6 +315,20 @@
                 font-size: 40px;
             }
         }
+        @media @mobile-device { 
+            padding: 20px 4%;
+            h1 { font-size: 2rem; }
+            p { font-size: 1.2rem; }
+            .ministry-container { 
+                padding: 10px 0px;
+                justify-content: initial;
+                .ministry-tag {                     
+                    margin-right: 7px;
+                    .tag-title { font-size: 1rem; }
+                    &+.ministry-tag { margin-left: 0px; }
+                }
+            }
+        }
     }
 
     .welcome {
@@ -334,6 +366,11 @@
                 }
             }
         }
+
+        @media @mobile-device {
+            .text-content { width: 100%; }
+            .tablet-cover { width: 100%; }
+        }
     }
 
     .para-spacer {        
@@ -365,6 +402,25 @@
             height: 100%;            
             overflow: hidden;
             img{ width: 100%; filter: grayscale(0.9); }
+        }
+
+        @media @mobile-device { 
+            overflow: hidden;
+            .cover {
+                .cover-text { 
+                    max-width: 80%;
+                    width: 80%;
+                    .title { font-size: 1.5rem; }
+                    .sub-text { font-size: .8rem;}
+                }
+            }
+            .spacer1 {
+                img { 
+                    width: inherit;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
         }
     }
 

@@ -99,6 +99,19 @@
                         }
                     }
                 }
+                .navbar-toggler { 
+                    display: none;
+                    color: rgba(0,0,0,1);
+                    font-size: 28px;
+                    padding: 20px 0px 0px;
+                    &:focus { outline: none !important;}
+                }
+
+                @media @mobile-device { 
+                    justify-content: center;
+                    .top-nav, .bottom-nav { display: none; }
+                    .navbar-toggler { display: block; }
+                }
             }
             .navbar-header {
                 background: rgba(100,100,100,0.8);
@@ -110,8 +123,7 @@
                     .logo { height: 70px;}
                 }
             }
-
-            
+                        
         }
     }
 
@@ -147,5 +159,81 @@
                 }
             }
         }
+    }
+}
+
+/* Mobile Nav */
+.noscroll { overflow: hidden; }
+.app-body {
+    position: relative;
+    overflow-x: hidden;
+}
+.sidenav-container {
+    display: none;
+    position: fixed;
+    top:0;
+    left:100vw;
+    z-index: 1001;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(52,58,64,1);
+    transition: 0.5s all ease-in-out;
+    padding: @navHeightBottom 15% 20px;
+    color: rgba(255,255,255,1);
+
+    .nav-close { 
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px; 
+        opacity: 0;
+        color: rgba(255,255,255,1);         
+    }
+    .sidenav-section {
+        display: flex;
+        flex-direction: column;        
+        text-transform: capitalize;
+        .sidenav-link { font-size: 25px; color: rgba(255,255,255,1) !important;}
+        .sidenav-subcontainer {
+            display: flex;       
+            flex-direction: column;     
+            .sub-link {                 
+                margin-left: 30px;
+                font-size: 20px;
+                a { color: @color3; }
+            }
+        }
+        
+        &+.sidenav-section { margin-top: 40px;}
+    }    
+
+    &.active { 
+        left:0; 
+        .nav-close { 
+            animation-name: background-appear; 
+            animation-duration: 1.5s; 
+            animation-delay: 0.7s;
+            animation-fill-mode: forwards; 
+        }
+    }
+    @media @mobile-device { display: block;}
+}
+
+/* Animation key frames */
+@keyframes page-nav-slide {
+    from {
+        margin-top: @navHeightBottom;
+    }
+    to {
+        margin-top: 0;
+    }
+}
+
+@keyframes background-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

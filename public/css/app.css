@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* Material Icons */
+/* Header Sizes */
 /* Fonts */
 @import "../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 @font-face {
@@ -728,6 +729,27 @@ button.rbc-input::-moz-focus-inner {
   color: #ffffff;
   color: #863694 !important;
 }
+.nav-header .main-nav-container .split-nav.right .navbar-toggler {
+  display: none;
+  color: #000000;
+  font-size: 28px;
+  padding: 20px 0px 0px;
+}
+.nav-header .main-nav-container .split-nav.right .navbar-toggler:focus {
+  outline: none !important;
+}
+@media (max-width: 770px) {
+  .nav-header .main-nav-container .split-nav.right {
+    justify-content: center;
+  }
+  .nav-header .main-nav-container .split-nav.right .top-nav,
+  .nav-header .main-nav-container .split-nav.right .bottom-nav {
+    display: none;
+  }
+  .nav-header .main-nav-container .split-nav.right .navbar-toggler {
+    display: block;
+  }
+}
 .nav-header .main-nav-container .split-nav .navbar-header {
   background: rgba(100, 100, 100, 0.8);
 }
@@ -778,6 +800,89 @@ button.rbc-input::-moz-focus-inner {
 .nav-header .additionalMenu .additionalContainer .add-nav-link a:focus {
   color: #000000;
   text-decoration: none;
+}
+/* Mobile Nav */
+.noscroll {
+  overflow: hidden;
+}
+.app-body {
+  position: relative;
+  overflow-x: hidden;
+}
+.sidenav-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 100vw;
+  z-index: 1001;
+  width: 100vw;
+  height: 100vh;
+  background: #343a40;
+  transition: 0.5s all ease-in-out;
+  padding: 50px 15% 20px;
+  color: #ffffff;
+}
+.sidenav-container .nav-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  opacity: 0;
+  color: #ffffff;
+}
+.sidenav-container .sidenav-section {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+.sidenav-container .sidenav-section .sidenav-link {
+  font-size: 25px;
+  color: #ffffff !important;
+}
+.sidenav-container .sidenav-section .sidenav-subcontainer {
+  display: flex;
+  flex-direction: column;
+}
+.sidenav-container .sidenav-section .sidenav-subcontainer .sub-link {
+  margin-left: 30px;
+  font-size: 20px;
+}
+.sidenav-container .sidenav-section .sidenav-subcontainer .sub-link a {
+  color: #863694;
+}
+.sidenav-container .sidenav-section + .sidenav-section {
+  margin-top: 40px;
+}
+.sidenav-container.active {
+  left: 0;
+}
+.sidenav-container.active .nav-close {
+  animation-name: background-appear;
+  animation-duration: 1.5s;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+}
+@media (max-width: 770px) {
+  .sidenav-container {
+    display: block;
+  }
+}
+/* Animation key frames */
+@keyframes page-nav-slide {
+  from {
+    margin-top: 50px;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes background-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .footer-body {
   background: #323232;
@@ -833,6 +938,16 @@ button.rbc-input::-moz-focus-inner {
   width: 100%;
   height: 100%;
 }
+@media (max-width: 770px) {
+  .home .main-carousel .back-cover {
+    height: 100%;
+  }
+  .home .main-carousel .back-cover img {
+    object-fit: cover;
+    width: initial;
+    margin-left: -70%;
+  }
+}
 .home .main-carousel .home-carousel {
   position: relative;
   height: 100%;
@@ -881,6 +996,11 @@ button.rbc-input::-moz-focus-inner {
   font-size: 75px;
   font-family: 'Homemade Apple', cursive;
 }
+@media (max-width: 770px) {
+  .home .main-carousel .home-carousel .carousel-page .carousel-card.cover-title {
+    font-size: 40px;
+  }
+}
 .home .main-carousel .home-carousel .carousel-page .carousel-card.img-card {
   position: absolute;
   top: 50%;
@@ -893,6 +1013,14 @@ button.rbc-input::-moz-focus-inner {
   align-items: flex-start;
   align-content: flex-start;
   overflow: hidden;
+}
+@media (max-width: 770px) {
+  .home .main-carousel .home-carousel .carousel-page .carousel-card.img-card {
+    width: 80%;
+  }
+  .home .main-carousel .home-carousel .carousel-page .carousel-card.img-card .img-card-container {
+    flex-direction: column;
+  }
 }
 .home .main-carousel .home-carousel .carousel-page .carousel-card .video-container video {
   width: 100%;
@@ -921,6 +1049,11 @@ button.rbc-input::-moz-focus-inner {
   max-height: 100%;
   width: 100%;
 }
+@media (max-width: 770px) {
+  .home .main-carousel .home-carousel .carousel-page .carousel-card .img-container {
+    width: 100%;
+  }
+}
 .home .main-carousel .home-carousel .carousel-page .carousel-card .card-content {
   padding: 10px 10px 10px 30px;
   width: 50%;
@@ -948,6 +1081,20 @@ button.rbc-input::-moz-focus-inner {
 .home .main-carousel .home-carousel .carousel-page .carousel-card .card-content .content-line + .content-line {
   margin-top: 15px;
 }
+@media (max-width: 770px) {
+  .home .main-carousel .home-carousel .carousel-page .carousel-card .card-content {
+    width: 100%;
+  }
+  .home .main-carousel .home-carousel .carousel-page .carousel-card .card-content .content-title {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 770px) {
+  .home .main-carousel .home-carousel .carousel-page .carousel-card {
+    padding: 15px;
+    max-height: calc(100% - 30px);
+  }
+}
 .home .main-carousel .home-carousel .carousel-page.full .carousel-card {
   padding: 0px;
 }
@@ -963,8 +1110,18 @@ button.rbc-input::-moz-focus-inner {
   font-size: 3rem;
   margin: 42px 0px;
 }
+@media (max-width: 770px) {
+  .home .getConnected h1 {
+    font-size: 2rem;
+  }
+}
 .home .getConnected p {
   font-size: 1.4rem;
+}
+@media (max-width: 770px) {
+  .home .getConnected p {
+    font-size: 1.2rem;
+  }
 }
 .home .getConnected .cards-holder {
   display: flex;
@@ -1166,6 +1323,30 @@ button.rbc-input::-moz-focus-inner {
   transform: translate(-50%, -50%);
   font-size: 40px;
 }
+@media (max-width: 770px) {
+  .home .ourMinistries {
+    padding: 20px 4%;
+  }
+  .home .ourMinistries h1 {
+    font-size: 2rem;
+  }
+  .home .ourMinistries p {
+    font-size: 1.2rem;
+  }
+  .home .ourMinistries .ministry-container {
+    padding: 10px 0px;
+    justify-content: initial;
+  }
+  .home .ourMinistries .ministry-container .ministry-tag {
+    margin-right: 7px;
+  }
+  .home .ourMinistries .ministry-container .ministry-tag .tag-title {
+    font-size: 1rem;
+  }
+  .home .ourMinistries .ministry-container .ministry-tag + .ministry-tag {
+    margin-left: 0px;
+  }
+}
 .home .welcome {
   padding: 40px 5% 0px;
   position: relative;
@@ -1212,6 +1393,14 @@ button.rbc-input::-moz-focus-inner {
 .home .welcome .tablet-cover .half-tablet .content-area .video-container img {
   width: 100%;
 }
+@media (max-width: 770px) {
+  .home .welcome .text-content {
+    width: 100%;
+  }
+  .home .welcome .tablet-cover {
+    width: 100%;
+  }
+}
 .home .para-spacer {
   position: relative;
   height: 350px;
@@ -1253,6 +1442,26 @@ button.rbc-input::-moz-focus-inner {
 .home .para-spacer .spacer1 img {
   width: 100%;
   filter: grayscale(0.9);
+}
+@media (max-width: 770px) {
+  .home .para-spacer {
+    overflow: hidden;
+  }
+  .home .para-spacer .cover .cover-text {
+    max-width: 80%;
+    width: 80%;
+  }
+  .home .para-spacer .cover .cover-text .title {
+    font-size: 1.5rem;
+  }
+  .home .para-spacer .cover .cover-text .sub-text {
+    font-size: 0.8rem;
+  }
+  .home .para-spacer .spacer1 img {
+    width: inherit;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 .home .upcomingEvents {
   padding: 20px 5%;

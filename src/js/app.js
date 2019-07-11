@@ -61,23 +61,52 @@ const SiteRoutes = route => (
     </div>
 );
 
+function MobileNav(props){
+    return (
+        <div className={"sidenav-container" + (props.sidebarOpen ? " active": "")}>
+            <div className="nav-close" onClick={() => props.setSidebarDisplay(false)}><i className="fas fa-times"></i></div>
+            <div className="sidenav-section">
+                {routes.map((route, i) =>
+                    <div className="route-page-container">
+                        <Link className="sidenav-link" key={i} to={route.path}>{route.title}</Link>
+                        <div className="sidenav-subcontainer">
+                            {route.subPages && route.subPages.map((subItem,k) => 
+                                <span className="sub-link" key={k}>
+                                {(subItem.external ?
+                                    <a href={subItem.path} target="_blank" key={k} rel="noopener noreferrer">{subItem.title}</a>
+                                    : <Link key={k} to={subItem.path}>{subItem.title}</Link>
+                                )}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
 
 class App extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            sidebarOpen: false,
             additonalMenuDisplay: false,
             additonalMenu:[]
         };
 
         this.showAdditionalMenu = this.showAdditionalMenu.bind(this);
         this.hideAdditionalMenu = this.hideAdditionalMenu.bind(this);
+        this.setSidebarDisplay = this.setSidebarDisplay.bind(this);
     }
 
     render(){     
         return(
            <Router>
                 <div className="app-body">
+                    {/* Mobile Nav */}
+                    <MobileNav setSidebarDisplay={this.setSidebarDisplay} sidebarOpen={this.state.sidebarOpen}/>
                     { /* HEADER */}                    
                     <div className="nav-header fixed-header" id="clintonHeader">
                         <div className="main-nav-container">
@@ -117,6 +146,10 @@ class App extends Component{
                                         )}                                        
                                     </div>
                                 </div>
+
+                                <button className="navbar-toggler" type="button" aria-label="Toggle navigation" onClick={() => this.setSidebarDisplay(true)}>
+                                    <span className="navbar-toggler-icon"><i className="fas fa-bars"></i></span>
+                                </button>
                             </div>
                         </div>
                         <CSSTransitionGroup className="navslider" transitionName="navslide" transitionEnterTimeout={300} transitionLeaveTimeout={500}>
@@ -140,13 +173,11 @@ class App extends Component{
                     
                     {/* Body*/}
                     <div className="body-container">
-                        {/*<AnimatedSwitch {...topBarTransitions} mapStyles={mapStyles} className="switch-wrapper">*/}
                         <Switch>
                             <Route exact path="/" component={Home} />                            
                             { routes.map((route, i) => <SiteRoutes key={i} {...route} />) }                            
                             <Route component={NoMatch} />                            
                         </Switch>
-                        {/*</AnimatedSwitch> */}
                     </div>
 
                     {/* Footer */}
@@ -192,6 +223,12 @@ class App extends Component{
         catch(ex){
             console.log(" Error hiding sub menu: ", ex);
         }
+      }
+
+      setSidebarDisplay(status) {
+        this.setState({ sidebarOpen: status }, () =>{
+            document.body.classList.toggle('noscroll', status);
+        });
       }
 }
 
