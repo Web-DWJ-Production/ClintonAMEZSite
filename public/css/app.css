@@ -2229,6 +2229,18 @@ button.rbc-input::-moz-focus-inner {
   margin-left: 20px;
   padding: 0px 7px;
 }
+@media (max-width: 770px) {
+  .indministry .sub-nav-card .tag-nav-container {
+    flex-direction: column;
+  }
+  .indministry .sub-nav-card .tag-nav-container .sibling-container {
+    margin: 0;
+  }
+  .indministry .sub-nav-card .tag-nav-container .sibling-container .ministry-tag {
+    margin-left: 0;
+    margin-right: 7px;
+  }
+}
 .indministry .ministry-title {
   padding: 50px 2%;
   text-align: center;
@@ -2258,6 +2270,20 @@ button.rbc-input::-moz-focus-inner {
   opacity: 0.7;
   color: #863694;
 }
+@media (max-width: 770px) {
+  .indministry .ministry-title .ministry-individual {
+    flex-direction: column;
+  }
+  .indministry .ministry-title .ministry-individual .individual-img {
+    height: 60px;
+  }
+  .indministry .ministry-title .ministry-individual .individual-title {
+    font-size: 2rem;
+  }
+  .indministry .ministry-title .ministry-individual .individual-subsection {
+    font-size: 1rem;
+  }
+}
 .indministry .ministry-mission {
   padding: 50px 50px 90px;
   background: linear-gradient(to right, rgba(134, 54, 148, 0.7), rgba(186, 0, 1, 0.7));
@@ -2271,6 +2297,11 @@ button.rbc-input::-moz-focus-inner {
 }
 .indministry .ministry-mission p {
   font-size: 1.2rem;
+}
+@media (max-width: 770px) {
+  .indministry .ministry-mission {
+    padding: 50px 5% 90px;
+  }
 }
 .indministry .ministry-content {
   padding: 70px 80px 90px;
@@ -2323,6 +2354,21 @@ button.rbc-input::-moz-focus-inner {
   text-align: left;
   font-size: 1.3rem;
 }
+@media (max-width: 770px) {
+  .indministry .ministry-content {
+    padding: 70px 5% 90px;
+  }
+  .indministry .ministry-content .basic-section {
+    flex-direction: column;
+  }
+  .indministry .ministry-content .basic-section .basic-img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .indministry .ministry-content .basic-section.flip {
+    flex-direction: column;
+  }
+}
 .indministry .ministry-activities {
   padding: 20px 50px 70px;
   position: relative;
@@ -2348,6 +2394,11 @@ button.rbc-input::-moz-focus-inner {
 }
 .indministry .ministry-activities .activity-center .activity-item .item-description {
   padding: 5px 10px;
+}
+@media (max-width: 770px) {
+  .indministry .ministry-activities .activity-center {
+    column-count: initial;
+  }
 }
 .get-connected .prayerCall {
   padding: 50px 5% 80px;
@@ -2559,6 +2610,11 @@ button.rbc-input::-moz-focus-inner {
   font-weight: bold;
   font-size: 1.3rem;
   text-align: center;
+}
+@media (max-width: 770px) {
+  .gallery .gallery-display .galleryListContainer .galleryListSubContainer .galleryItem {
+    width: 48%;
+  }
 }
 .gallery .gallery-display .galleryListContainer .listControl {
   display: flex;

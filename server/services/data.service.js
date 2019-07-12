@@ -3,8 +3,21 @@ var util = require('util');
 var request = require('request');
 var Flickr = require("flickrapi");
 
-var flickrConfig = require("../config/flickrconfig.json");
-var database = require('../config/database');
+
+require('dotenv').config();
+var flickrConfig = {
+	token:process.env.FLICKR_TOKEN,
+    secret:process.env.FLICKR_SECRET,
+    userId:process.env.FLICKR_USERID,
+    access_token:process.env.FLICKR_ACCESS_TOKEN,
+    access_token_secret:process.env.FLICKR_ACCESS_TOKEN_SECRET
+}
+
+var database = {
+    remoteUrl: process.env.REMOTEURL,
+    dbName: process.env.DBNAME,
+    mongoOptions: { connectTimeoutMS: 2000, socketTimeoutMS: 2000}
+}
 var mongoClient = require('mongodb').MongoClient;
 
 var activeStatus = false;
@@ -12,8 +25,8 @@ var activeStatus = false;
 var apiUrl = {
     event: {
         "url":"https://api.teamup.com/",
-        "key":"ks3b71fcec97794663",
-        "token":"2e6db0375ea2d7f6982f5255d0348f31000a230dd0f84e7a667729e1d0e37ed4"
+        "key":process.env.EVENT_KEY,
+        "token":process.env.EVENT_TOKEN
     },
     flickrOptions: { 
         permissions: "write", 
