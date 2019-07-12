@@ -109,7 +109,7 @@ body, html {
         text-align: center;
         color: rgba(255,255,255,1);
         position: relative;
-        h1 { font-size: 4rem; margin:0px; position: relative; z-index: 1;}
+        h1 { font-size: 4rem; margin:0px; position: relative; z-index: 1; @media @mobile-device { font-size: 3rem; }}
 
         .back-img {
             position: absolute;
@@ -126,6 +126,7 @@ body, html {
                 top: 0;
                 left:0;
                 z-index: 0;
+                @media @mobile-device { object-fit: cover;}
             }
             .cover {
                 width: 100%;
@@ -135,7 +136,7 @@ body, html {
                 z-index: 1;
                 &.c3c2 { background: linear-gradient(to right, @color3, @color2);}
                 &.mainGrad { .backgroundGradient(1);}
-            }
+            }           
         }
         &.c1 {  background-color: rgba(150,150,150,1); }
     }

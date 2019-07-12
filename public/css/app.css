@@ -819,13 +819,13 @@ button.rbc-input::-moz-focus-inner {
   height: 100vh;
   background: #343a40;
   transition: 0.5s all ease-in-out;
-  padding: 50px 15% 20px;
+  padding: 50px 12% 20px;
   color: #ffffff;
 }
 .sidenav-container .nav-close {
   position: absolute;
-  top: 10px;
-  right: 20px;
+  top: 35px;
+  right: 45px;
   font-size: 28px;
   opacity: 0;
   color: #ffffff;
@@ -851,7 +851,36 @@ button.rbc-input::-moz-focus-inner {
   color: #863694;
 }
 .sidenav-container .sidenav-section + .sidenav-section {
-  margin-top: 40px;
+  margin-top: 20px;
+}
+.sidenav-container .sidenav-section.btn-section {
+  flex-direction: column;
+}
+.sidenav-container .sidenav-section.btn-section .donate-btn {
+  border-radius: 50px;
+  text-align: center;
+  padding: 5px 10px;
+  background: #ffffff;
+  color: #343a40;
+  font-size: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.sidenav-container .sidenav-section.btn-section .social-btn-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.sidenav-container .sidenav-section.btn-section .social-btn-container .social-btn {
+  border-radius: 50%;
+  display: inline-flex;
+  background: #ffffff;
+  color: #343a40;
+  padding: 2px 5px;
+}
+.sidenav-container .sidenav-section.btn-section .social-btn-container .social-btn i {
+  line-height: inherit;
+  font-size: 20px;
 }
 .sidenav-container.active {
   left: 0;
@@ -910,6 +939,14 @@ button.rbc-input::-moz-focus-inner {
 }
 .footer-body .footer-container .footer-column p.lrg-margin {
   margin-bottom: 10px;
+}
+@media (max-width: 770px) {
+  .footer-body .footer-container {
+    flex-direction: column;
+  }
+  .footer-body .footer-container .column-title {
+    text-align: center;
+  }
 }
 .home {
   position: relative;
@@ -1365,6 +1402,11 @@ button.rbc-input::-moz-focus-inner {
   font-size: 1.2rem;
   line-height: 2rem;
 }
+@media (max-width: 770px) {
+  .home .welcome .text-content {
+    padding: 20px 10px;
+  }
+}
 .home .welcome .tablet-cover {
   border: 2px solid #000000;
   width: 40%;
@@ -1617,6 +1659,18 @@ button.rbc-input::-moz-focus-inner {
 .about-us .body-section.img-txt .txt-content h1 span {
   font-weight: bold;
 }
+@media (max-width: 770px) {
+  .about-us .body-section.img-txt {
+    flex-direction: column;
+  }
+  .about-us .body-section.img-txt .img-content {
+    width: 100%;
+    height: 200px;
+  }
+  .about-us .body-section.img-txt .img-content img {
+    object-fit: cover;
+  }
+}
 .our-history .body-section {
   padding: 40px 0px;
 }
@@ -1773,6 +1827,11 @@ button.rbc-input::-moz-focus-inner {
   margin: 20px 0px;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
+@media (max-width: 770px) {
+  .picBook .book-container {
+    width: 95%;
+  }
+}
 .picBook .book-container.left {
   padding-right: 30px;
   border-top-right-radius: 20px;
@@ -1780,6 +1839,11 @@ button.rbc-input::-moz-focus-inner {
 }
 .picBook .book-container.left .content-section .content-text {
   padding-left: 20px;
+}
+@media (max-width: 770px) {
+  .picBook .book-container.left {
+    padding-right: 15px;
+  }
 }
 .picBook .book-container.right {
   padding-left: 30px;
@@ -1793,6 +1857,14 @@ button.rbc-input::-moz-focus-inner {
 }
 .picBook .book-container.right .content-section .content-text {
   padding-right: 20px;
+}
+@media (max-width: 770px) {
+  .picBook .book-container.right {
+    padding-left: 15px;
+  }
+  .picBook .book-container.right .content-section {
+    flex-direction: column;
+  }
 }
 .picBook .book-container.color3 {
   background-color: #863694 !important;
@@ -1822,6 +1894,16 @@ button.rbc-input::-moz-focus-inner {
   width: 100%;
   max-height: 300px;
 }
+@media (max-width: 770px) {
+  .picBook .book-container .content-section .content-img .half-tablet {
+    width: 95%;
+  }
+  .picBook .book-container .content-section .content-img .half-tablet img {
+    width: initial;
+    object-fit: cover;
+    height: 200px;
+  }
+}
 .picBook .book-container .content-section .content-text {
   display: flex;
   flex-direction: column;
@@ -1848,6 +1930,21 @@ button.rbc-input::-moz-focus-inner {
   padding: 5px 20px;
   border: 2px solid #ffffff;
   background: rgba(50, 50, 50, 0.3);
+}
+@media (max-width: 770px) {
+  .picBook .book-container .content-section {
+    flex-direction: column;
+  }
+  .picBook .book-container .content-section .content-text {
+    max-width: 100%;
+    font-size: 1.1rem;
+  }
+  .picBook .book-container .content-section .content-text .info {
+    padding-top: 10px;
+  }
+  .picBook .book-container .content-section .content-text .info p {
+    line-height: initial;
+  }
 }
 .our-pastor .pastorInfo {
   padding: 50px 5%;
@@ -2385,6 +2482,14 @@ button.rbc-input::-moz-focus-inner {
 .contact-us .contact-info .info-section p span {
   font-weight: bold;
 }
+@media (max-width: 770px) {
+  .contact-us .contact-info {
+    flex-direction: column;
+  }
+  .contact-us .contact-info .info-section {
+    width: 100%;
+  }
+}
 .contact-us .contact-map {
   padding: 50px 5%;
   display: flex;
@@ -2401,6 +2506,7 @@ button.rbc-input::-moz-focus-inner {
   border-radius: 50%;
   padding: 10px 7px;
   font-size: 20px;
+  height: initial !important;
 }
 .contact-us .contact-map .map-container .react-mapMarker i {
   color: #c2922d;
@@ -3011,6 +3117,11 @@ html {
   position: relative;
   z-index: 1;
 }
+@media (max-width: 770px) {
+  .site-page .title-card h1 {
+    font-size: 3rem;
+  }
+}
 .site-page .title-card .back-img {
   position: absolute;
   top: 0;
@@ -3027,6 +3138,11 @@ html {
   top: 0;
   left: 0;
   z-index: 0;
+}
+@media (max-width: 770px) {
+  .site-page .title-card .back-img img {
+    object-fit: cover;
+  }
 }
 .site-page .title-card .back-img .cover {
   width: 100%;

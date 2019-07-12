@@ -24,6 +24,8 @@
                 span { font-weight: bold;}
             }
         }
+
+        @media @mobile-device { flex-direction: column; .info-section { width: 100%; }}
     }
 
     .contact-map {
@@ -40,6 +42,7 @@
                 border-radius: 50%;
                 padding: 10px 7px;
                 font-size: 20px;
+                height: initial !important;
                 i { color: @color6;}
             }
             div { @media @mobile-device {  height: 350px !important; }}

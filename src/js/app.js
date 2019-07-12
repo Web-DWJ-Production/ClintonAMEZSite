@@ -82,6 +82,14 @@ function MobileNav(props){
                     </div>
                 )}
             </div>
+
+            <div className="sidenav-section btn-section">
+                <a href="https://giv.li/0euaiq" target="_blank" className="donate-btn">Donate</a>
+                <div className="social-btn-container">
+                    <a href="https://www.facebook.com/Clinton-African-Methodist-Episcopal-Zion-Church-344226358930084/" target="_blank" className="social-btn facebook" data-fa-transform="shrink-8"><i className="fab fa-facebook-f fa-fw"></i></a>
+                    <a href="https://twitter.com/ClintonAMEZion" target="_blank" className="social-btn twitter" data-fa-transform="shrink-8"><i className="fab fa-twitter fa-fw"></i></a>
+                </div>
+            </div>
         </div>
     );
 }
