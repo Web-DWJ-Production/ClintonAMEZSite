@@ -30,7 +30,7 @@ const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, subPages:[{ title:"our history",path:"/aboutUs/ourHistory", component:OurHistory},{title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},{ title:"service information", path:"/aboutUs/ourService", component:OurService},{ title:"inside zion", external:true, path:"http://www.amez.org/"}]},
     { title:"pastors page", path:"/pastorsPage", component:PastorsPage},
     { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries},
-    { title:"get connected", path:"/getConnected", component:GetConnected, subPages:[{title:"resources", path:"/getConnected/resources", component:UC}]},
+    { title:"get connected", path:"/getConnected", component:GetConnected},
     { title:"gallery", path:"/gallery", component:Gallery},
     { title:"contact us", path:"/contactUs", component:ContactUs}  
 ];
