@@ -128,7 +128,19 @@ class MinistryInd extends Component {
         //this.rootPath = "http://localhost:7777";
 
         this.state = {
-            ministryComponent: null
+            ministryComponent: null,
+            ministryImgs:{
+                "10":"classLeaders.JPG",
+                "11":"deaconess.JPG",
+                "12":"greeters.JPG",
+                "13":"mensMinistry.JPG",
+                "14":"multiMedia.JPG",
+                "15":"multiMedia.JPG",
+                "16":"multiMedia.JPG",
+                "17":"trusteeBoard.JPG",
+                "18":"ushers.JPG",
+                "19":"womensMinistry.JPG"
+            }
         }
 
         this.checklogo = this.checklogo.bind(this);
