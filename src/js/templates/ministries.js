@@ -9,6 +9,9 @@ import ministryImg1 from "../../assets/img/siteMedia/leadership1.jpg";
 import ministryImg2 from "../../assets/img/siteMedia/group7.jpg";
 import ministryImg3 from "../../assets/img/siteMedia/child1.jpg";
 
+var rootPath = "";
+//var rootPath = "http://localhost:7777";
+
 class Ministries extends Component{
     constructor(props) {
         super(props);
@@ -30,9 +33,6 @@ class Ministries extends Component{
 class MinistryAll extends Component {
     constructor(props) {
         super(props);
-
-        this.rootPath = "";
-        //this.rootPath = "http://localhost:7777";
 
         this.state = {
             ministryList:[]
@@ -103,7 +103,7 @@ class MinistryAll extends Component {
     loadMinistries(){
         var self = this;
         try {
-            fetch(self.rootPath + "/api/getAllMinistries")
+            fetch(rootPath + "/api/getAllMinistries")
             .then(function(response) {
                 if (response.status >= 400) {
                   throw new Error("Bad response from server");
@@ -123,29 +123,30 @@ class MinistryAll extends Component {
 class MinistryInd extends Component {
     constructor(props) {
         super(props);
-        
-        this.rootPath = "";
-        //this.rootPath = "http://localhost:7777";
 
         this.state = {
             ministryComponent: null,
             ministryImgs:{
                 "10":"classLeaders.JPG",
-                "11":"deaconess.JPG",
-                "12":"greeters.JPG",
-                "13":"mensMinistry.JPG",
+                "deaconessboard":"deaconess.JPG",
+                "greetersministry":"greeters.JPG",
+                "menofvarick":"mensMinistry.JPG",
                 "14":"multiMedia.JPG",
-                "15":"multiMedia.JPG",
-                "16":"multiMedia.JPG",
-                "17":"trusteeBoard.JPG",
-                "18":"ushers.JPG",
-                "19":"womensMinistry.JPG"
+                "progressiveclub":"progressiveClub.JPG",
+                "stewardboard":"stewardBoard.JPG",
+                "trusteeboard":"trusteeBoard.JPG",
+                "16":"ushers.JPG",
+                "womenofzion":"womensMinistry.JPG",
+                "18":"ministrysociety.JPG",
+                "christianeducationdepartment":"christianEdu.JPG",
+                "youngadultmissionarysociety_yams_":"youngadult.JPG"
             }
         }
 
         this.checklogo = this.checklogo.bind(this);
         this.getUrl = this.getUrl.bind(this);
         this.reloadPage = this.reloadPage.bind(this);
+        this.getPhoto = this.getPhoto.bind(this);
     }
 
     render(){        
@@ -197,7 +198,7 @@ class MinistryInd extends Component {
                         <section className="body-section ministry-content notched-top">
                             {/* Leadership*/}
                             <div className="basic-section">
-                                <div className="basic-img"><img src={ministryImg1} alt="ministry leadership img"/></div>
+                                <div className="basic-img"><img src={this.getPhoto(1)} alt="ministry leadership img"/></div>
                                 <div className="basic-content">
                                     <h2 className="font-title1">Leadership</h2>
                                     <div className="leadership-container">
@@ -213,7 +214,7 @@ class MinistryInd extends Component {
                             </div>
                             {/* Membership*/}
                             <div className="basic-section flip">
-                                <div className="basic-img"><img src={ministryImg2} alt="ministry membership img"/></div>
+                                <div className="basic-img"><img src={this.getPhoto(2)} alt="ministry membership img"/></div>
                                 <div className="basic-content">
                                     <h2 className="font-title1">Membership</h2>
                                     <div className="membership-container">{this.state.ministryComponent.membership}</div>
@@ -221,7 +222,7 @@ class MinistryInd extends Component {
                             </div>
                             {/* Goals*/}
                             <div className="basic-section">
-                                <div className="basic-img"><img src={ministryImg3} alt="ministry goals img"/></div>
+                                <div className="basic-img"><img src={this.getPhoto(3)} alt="ministry goals img"/></div>
                                 <div className="basic-content">
                                     <h2 className="font-title1">Goals</h2>
                                     <div className="goals-container">
@@ -259,12 +260,37 @@ class MinistryInd extends Component {
         this.loadMinistry(this.props.ministryId);
     }
 
+    getPhoto(imgId){
+        var ret = "";
+        try {
+            if(imgId == 1){
+                var minID = this.props.ministryId.toLowerCase();
+                if(minID in this.state.ministryImgs){
+                    ret = '/images/'+this.state.ministryImgs[minID];
+                }
+                else {
+                    ret = ministryImg1;
+                }
+            }
+            else if(imgId == 2){
+                ret = ministryImg2;
+            }
+            else if(imgId == 3){
+                ret = ministryImg3;
+            }
+        }
+        catch(ex){
+
+        }
+        return ret;
+    }
+
     loadMinistry(mId){
         var self = this;
         try {
             var postData = {"ministryId": mId};
 
-            axios.post(self.rootPath + "/api/getIndMinistry", postData, {'Content-Type': 'application/json'})
+            axios.post(rootPath + "/api/getIndMinistry", postData, {'Content-Type': 'application/json'})
             .then(function(response) {
                 self.setState({ ministryComponent: response.data.results});
             });

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMap from 'google-map-react';
 
-import backImg from "../../assets/img/tmpMedia/img3.jpg";
+import backImg from "../../assets/img/siteMedia/cover5.jpg";
 
 const MapMarker = () => <div className="react-mapMarker"><i className="fas fa-church"></i></div>;
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ImageGallery from 'react-image-gallery';
 import axios from 'axios';
 
-import backImg from "../../assets/img/tmpMedia/img3.jpg";
+import backImg from "../../assets/img/siteMedia/church9.jpg";
 
 class Gallery extends Component{
     constructor(props) {

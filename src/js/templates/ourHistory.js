@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import PicBook from './components/picBook';
 
 /* Images */
+import backImg from "../../assets/img/siteMedia/church12.jpg";
 /* Story 1 */
-import s1I1 from "../../assets/img/tmpMedia/c1.jpg";
-import s1I2 from "../../assets/img/tmpMedia/Clinton_2012.jpg";
-import s1I3 from "../../assets/img/tmpMedia/c2.jpg";
-import s1I4 from "../../assets/img/tmpMedia/c3.jpg";
-import s1I5 from "../../assets/img/tmpMedia/c4.jpg";
+import s1I1 from "../../assets/img/siteMedia/amezHistory3.jpg";
+import s1I2 from "../../assets/img/siteMedia/amezHistory2.jpg";
+import s1I3 from "../../assets/img/siteMedia/church7.jpg";
+import s1I4 from "../../assets/img/siteMedia/amezHistory.jpg";
+import s1I5 from "../../assets/img/siteMedia/group6.jpg";
 
 /* Story 2 */
-import s2I1 from "../../assets/img/tmpMedia/c9.jpg";
-import s2I2 from "../../assets/img/tmpMedia/c8.jpg";
-import s2I3 from "../../assets/img/tmpMedia/c7.jpg";
-import s2I4 from "../../assets/img/tmpMedia/c6.jpg";
-import s2I5 from "../../assets/img/tmpMedia/c5.jpg";
-import s2I6 from "../../assets/img/tmpMedia/c4.jpg";
+import s2I1 from "../../assets/img/siteMedia/church3.jpg";
+import s2I2 from "../../assets/img/siteMedia/Clinton_2012.jpg";
+import s2I3 from "../../assets/img/siteMedia/amezHistory3.jpg";
+import s2I4 from "../../assets/img/siteMedia/church2.jpg";
+import s2I5 from "../../assets/img/siteMedia/church4.jpg";
+import s2I6 from "../../assets/img/siteMedia/church10.jpg";
 
 class OurHistory extends Component{
     constructor(props) {
@@ -47,6 +48,7 @@ class OurHistory extends Component{
                     <h1 className="font-title1">Our History</h1>
                     <div className="back-img">
                         <div className="cover c3c2"></div>
+                        <img src={backImg} alt="contact us background img"/>
                     </div>
                 </section>
                 
