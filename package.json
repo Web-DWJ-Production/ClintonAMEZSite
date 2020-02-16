@@ -19,11 +19,12 @@
   "author": "Kris Redding",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "dotenv": "^8.0.0",
     "flickrapi": "^0.6.0",
     "globalize": "^1.4.0",
     "google-map-react": "^1.1.2",
+    "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "mongodb": "^3.1.13",
     "react": "^16.8.1",

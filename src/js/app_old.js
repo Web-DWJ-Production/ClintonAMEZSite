@@ -6,7 +6,8 @@ import { spring, AnimatedSwitch } from 'react-router-transition';
 
 /* Components */
 import Footer from './templates/footer';
-import Home from './templates/home';
+//import Home from './templates/home';
+import Home from './templates/home2';
 import AboutUs from './templates/aboutUs';
 import OurHistory from './templates/ourHistory';
 import OurClergy from './templates/ourClergy';
@@ -34,6 +35,20 @@ const routes = [
     { title:"gallery", path:"/gallery", component:Gallery},
     { title:"contact us", path:"/contactUs", component:ContactUs}  
 ];
+  
+function slide(val) {
+    return spring(val, { stiffness: 125, damping: 16, });
+}
+  
+const topBarTransitions = {
+    atEnter: {  offset: -100 },
+    atLeave: { offset: slide(-150) },
+    atActive: { offset: slide(0) }
+};
+
+function mapStyles(styles) {
+    return { opacity: styles.opacity, transform: 'translateY(${styles.offset}px)' };
+}
 
 const SiteRoutes = route => (
     <div> 
@@ -100,46 +115,69 @@ class App extends Component{
            <Router>
                 <div className="app-body">
                     {/* Mobile Nav */}
-                    {/*<MobileNav setSidebarDisplay={this.setSidebarDisplay} sidebarOpen={this.state.sidebarOpen}/>*/}
+                    <MobileNav setSidebarDisplay={this.setSidebarDisplay} sidebarOpen={this.state.sidebarOpen}/>
                     { /* HEADER */}                    
                     <div className="nav-header fixed-header" id="clintonHeader">
-                        <div className="main-top-nav">
-                            <a href="https://giv.li/0euaiq" target="_blank" rel="noopener noreferrer" className="top-link">Givelify</a>
-                            <a href="" target="_blank" rel="noopener noreferrer" className="top-link">CashApp</a>
-                            <a href="https://www.facebook.com/Clinton-African-Methodist-Episcopal-Zion-Church-344226358930084/" target="_blank" rel="noopener noreferrer" className="top-link social-link facebook"><i className="fab fa-facebook-f fa-fw"/></a>
-                            <a href="https://twitter.com/ClintonAMEZion" target="_blank" rel="noopener noreferrer" className="top-link social-link twitter"><i className="fab fa-twitter fa-fw"/></a>
-                        </div>
-                        <div className="main-bottom-nav">
-                            <nav className="navbar navbar-expand-lg bg-dark">
-                                <Link className="navbar-brand" to="/">
-                                    <img src={logoW} className="logo" alt="A.M.E. Zion Logo" />
-                                </Link>
-                                <button className="navbar-toggler" type="button">
-                                    <div id="menuIcon" className="animateMenu">
-                                        <div className="bar1"></div>
-                                        <div className="bar2"></div>
-                                        <div className="bar3"></div>
-                                    </div>
-                                </button>
-                                <div className="collapse navbar-collapse">
-                                    <ul className="nav navbar-nav navbar-right">
-                                        <li className="nav-item dropdown">
-                                            <a className="nav-link dropdown-toggle" href="#" id="navDrop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Dropdown link
-                                            </a>
-                                            <div className="dropdown-menu" aria-labelledby="navDrop1">
-                                                <a className="dropdown-item" href="">Action</a>
-                                                <a className="dropdown-item" href="">Another action</a>
-                                                <a className="dropdown-item" href="">Something else here</a>
-                                            </div>
-                                        </li>
-                                        <li className="nav-item"><a href="">Test 2</a></li>
-                                        <li className="nav-item"><a href="">Test 3</a></li>
-                                        <li className="nav-item"><a href="">Test 4</a></li>
-                                    </ul>
+                        <div className="main-nav-container">
+                            <div className="split-nav left">                                
+                                <div className="navbar-header">
+                                    <Link to="/" className="navbar-brand">                                        
+                                        <img src={logoW} className="logo" alt="A.M.E. Zion Logo" />
+                                    </Link>
                                 </div>
-                            </nav>
+                            </div>
+
+                            <div className="split-nav right">                                
+                                <div className="top-nav">
+                                    <div className="text-container left-alight">
+                                        <div className="scripture">"O magnify the Lord with me, and let us exalt his name together"</div>
+                                    </div>
+                                    <div className="nav-container right-align">            
+                                        <a href="https://giv.li/0euaiq" target="_blank" className="social-btn give"><i className="fas fa-dollar-sign"></i> <span>Give Online</span></a>                
+                                        
+                                        <a href="https://www.facebook.com/Clinton-African-Methodist-Episcopal-Zion-Church-344226358930084/" target="_blank" className="social-btn facebook" data-fa-transform="shrink-8"><i className="fab fa-facebook-f fa-fw"></i></a>
+                                        <a href="https://twitter.com/ClintonAMEZion" target="_blank" className="social-btn twitter" data-fa-transform="shrink-8"><i className="fab fa-twitter fa-fw"></i></a>
+                                    </div>
+                                </div>
+
+                                
+                                <div className="bottom-nav">
+                                    <div className="navbar-items full">
+                                        {routes.map((route, i) =>
+                                            <div className="nav-link" key={i} onMouseEnter ={() => this.showAdditionalMenu(route.subPages)} onMouseLeave={this.hideAdditionalMenu}>
+                                                <Link to={route.path}>
+                                                    <span>{route.title}</span> 
+                                                    {(route.subPages && route.subPages.length > 0 ?
+                                                        <span className="nav-more"><i className="fas fa-chevron-down"></i></span> 
+                                                        : <span></span>)}
+                                                </Link>
+                                            </div>
+                                        )}                                        
+                                    </div>
+                                </div>
+
+                                <button className="navbar-toggler" type="button" aria-label="Toggle navigation" onClick={() => this.setSidebarDisplay(true)}>
+                                    <span className="navbar-toggler-icon"><i className="fas fa-bars"></i></span>
+                                </button>
+                            </div>
                         </div>
+                        <CSSTransitionGroup className="navslider" transitionName="navslide" transitionEnterTimeout={300} transitionLeaveTimeout={500}>
+                            {(this.state.additonalMenuDisplay === true ?                         
+                                <div className="additionalMenu" onMouseLeave={this.hideAdditionalMenu}>
+                                    <div className="additionalContainer">
+                                        {this.state.additonalMenu.map((item,i) => 
+                                            <div className="add-nav-link" key={i}>
+                                                {(item.external ?
+                                                    <a href={item.path} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                                                    : <Link to={item.path}>{item.title}</Link>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                : null
+                            )}
+                        </CSSTransitionGroup>
                     </div>
                     
                     {/* Body*/}
@@ -158,9 +196,7 @@ class App extends Component{
         );
      }
   
-     componentDidMount(){
-        declareDropDowns();
-     }
+     componentDidMount(){}
 
      showAdditionalMenu(menu){
          var self = this;
@@ -206,21 +242,3 @@ class App extends Component{
 }
 
 export default App;
-
-/* Private Functions */
-function declareDropDowns(){
-    try {
-        /*$('.dropdown').on('show.bs.dropdown', function(e){
-            console.log("1-");
-            $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
-        });
-          
-        $('.dropdown').on('hide.bs.dropdown', function(e){
-            console.log("2-");
-            $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
-        });*/
-    }
-    catch(ex){
-        console.log("Error declaring drop downs: ",ex);
-    }
-}
