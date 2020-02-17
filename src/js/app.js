@@ -27,11 +27,16 @@ import "../css/app.less";
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 
 const routes = [
-    { title:"about us", path:"/aboutUs", component:AboutUs, subPages:[{ title:"our history",path:"/aboutUs/ourHistory", component:OurHistory},{title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},{ title:"service information", path:"/aboutUs/ourService", component:OurService},{ title:"inside zion", external:true, path:"http://www.amez.org/"}]},
-    { title:"pastors page", path:"/pastorsPage", component:PastorsPage},
+    { title:"about us", path:"/aboutUs", component:AboutUs, subPages:[
+        { title:"our history",path:"/aboutUs/ourHistory", component:OurHistory},
+        { title:"pastors page", path:"/aboutUs/pastorsPage", component:PastorsPage},
+        { title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},
+        { title:"service information", path:"/aboutUs/ourService", component:OurService},
+        { title:"gallery", path:"/aboutUs/gallery", component:Gallery},
+        { title:"inside zion", external:true, path:"http://www.amez.org/"}
+    ]},    
     { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries},
-    { title:"get connected", path:"/getConnected", component:GetConnected},
-    { title:"gallery", path:"/gallery", component:Gallery},
+    { title:"get connected", path:"/getConnected", component:GetConnected},    
     { title:"contact us", path:"/contactUs", component:ContactUs}  
 ];
 
@@ -46,6 +51,32 @@ const SiteRoutes = route => (
         }     
     </div>
 );
+
+function BuildSubMap(props){
+    var listRows = [[],[]];
+    try {        
+        for(var j = 0; j < props.list.length; j++){
+            listRows[(j%2)].push(props.list[j]);
+        }
+    }
+    catch(ex){
+        console.log("Error building sub map: ",ex);
+    }
+
+    return (
+        <div className="dropdown-menu" aria-labelledby={"navDrop"+props.loc}>
+            <div className="drop-container">
+                {listRows.map((col, k) =>
+                    <div key={k} className="drop-col">
+                        {col.map((subItem, l) =>
+                            <Link key={l} to={subItem.path}>{subItem.title}</Link>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
 
 function MobileNav(props){
     return (
@@ -110,7 +141,7 @@ class App extends Component{
                             <a href="https://twitter.com/ClintonAMEZion" target="_blank" rel="noopener noreferrer" className="top-link social-link twitter"><i className="fab fa-twitter fa-fw"/></a>
                         </div>
                         <div className="main-bottom-nav">
-                            <nav className="navbar navbar-expand-lg bg-dark">
+                            <nav className="navbar navbar-expand-lg">
                                 <Link className="navbar-brand" to="/">
                                     <img src={logoW} className="logo" alt="A.M.E. Zion Logo" />
                                 </Link>
@@ -123,19 +154,15 @@ class App extends Component{
                                 </button>
                                 <div className="collapse navbar-collapse">
                                     <ul className="nav navbar-nav navbar-right">
-                                        <li className="nav-item dropdown">
-                                            <a className="nav-link dropdown-toggle" href="#" id="navDrop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Dropdown link
-                                            </a>
-                                            <div className="dropdown-menu" aria-labelledby="navDrop1">
-                                                <a className="dropdown-item" href="">Action</a>
-                                                <a className="dropdown-item" href="">Another action</a>
-                                                <a className="dropdown-item" href="">Something else here</a>
-                                            </div>
-                                        </li>
-                                        <li className="nav-item"><a href="">Test 2</a></li>
-                                        <li className="nav-item"><a href="">Test 3</a></li>
-                                        <li className="nav-item"><a href="">Test 4</a></li>
+                                        {routes.map((route, i) =>
+                                            (route.subPages && route.subPages.length > 0 ?
+                                                <li key={i} className="nav-item dropdown">
+                                                    <Link to={route.path} id={"navDrop"+i} className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{route.title}</Link>
+                                                    <BuildSubMap list={route.subPages} loc={i} />                                                                                                    
+                                                </li>
+                                                : <li key={i} className="nav-item"><Link to={route.path} className="nav-link">{route.title}</Link></li>
+                                            )                                           
+                                        )}
                                     </ul>
                                 </div>
                             </nav>
