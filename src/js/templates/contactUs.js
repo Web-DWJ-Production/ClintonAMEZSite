@@ -44,7 +44,7 @@ class ContactUs extends Component{
                         <h2>Contact Information</h2>
                         <p><span>Phone:</span> (301) 340-7942</p>
                         <p><span>Fax:</span> (301) 825-8938</p>
-                        <p><span>Email:</span> <a class="mail-to" href="mailto:camez223@aol.com">camez223@aol.com</a></p>
+                        <p><span>Email:</span> <a className="mail-to" href="mailto:camez223@aol.com">camez223@aol.com</a></p>
                     </div>
                 </section>
 

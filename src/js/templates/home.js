@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -19,6 +19,7 @@ import welcomeVid from '../../assets/img/tmpMedia/tmpVideo.mp4'
 import spacer from '../../assets/img/tmpMedia/church2.jpg';
 
 import pastorImg from "../../assets/img/siteMedia/pastor5.jpg";
+import visitImg from "../../assets/img/siteMedia/group3.jpg";
 
 var carouselBase = [{type:"cover-title", title:"Welcome To Clinton"}];
 var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
@@ -229,6 +230,29 @@ class Home extends Component{
                             <div className="tag-title">View All Ministries</div>
                         </Link>
                     </div>
+                </section>
+
+                {/* Visit */}
+                <section className="visitUs">
+                    <div className="visit-content notched-right">
+                        <h1 className="font-title1">Visit Us</h1>
+                        <div className="item-container">
+                            <div className="visit-item">
+                                <h2>Address</h2>
+                                <p>Clinton African Methodist Episcopal Zion Church</p>
+                                <p>223 Elizabeth Avenue</p>
+                                <p>Rockville, MD. 20850</p>
+                            </div>
+
+                            <div className="visit-item">
+                                <h2>Follow Us</h2>
+                                <p><span className="social-icon"><i className="fab fa-facebook-f fa-fw"/></span> <span>Clinton African Methodist Episcopal Zion Church</span></p>
+                                <p><span className="social-icon"><i className="fab fa-twitter fa-fw"/></span><span>@ClintonAMEZion</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="visit-img"><img src={visitImg} alt="pastor img"/></div>
                 </section>
             </div>    
         );        

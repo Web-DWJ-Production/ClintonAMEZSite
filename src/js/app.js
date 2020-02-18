@@ -27,27 +27,33 @@ import "../css/app.less";
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 
 const routes = [
-    { title:"about us", path:"/aboutUs", component:AboutUs, subPages:[
+    { title:"about us", path:"/aboutUs", component:AboutUs, icon:"fas fa-book-reader", subPages:[
+        { title:"about clinton",path:"/aboutUs/aboutClinton", component:AboutUs},
         { title:"our history",path:"/aboutUs/ourHistory", component:OurHistory},
-        { title:"pastors page", path:"/aboutUs/pastorsPage", component:PastorsPage},
-        { title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},
-        { title:"service information", path:"/aboutUs/ourService", component:OurService},
+        { title:"pastors page", path:"/pastorsPage", component:PastorsPage},
+        { title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},        
         { title:"gallery", path:"/aboutUs/gallery", component:Gallery},
         { title:"inside zion", external:true, path:"http://www.amez.org/"}
-    ]},    
-    { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries},
-    { title:"get connected", path:"/getConnected", component:GetConnected},    
-    { title:"contact us", path:"/contactUs", component:ContactUs}  
+    ]},
+    { title:"get connected", path:"/getConnected", component:GetConnected , icon:"fas fa-puzzle-piece", subPages:[
+        { title:"connect with us", path:"/getConnected/connectWithUs", component:GetConnected},
+        { title:"service information", path:"/getConnected/ourService", component:OurService}
+    ]},     
+    { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries, icon:"fas fa-users"},       
+    { title:"contact us", path:"/contactUs", component:ContactUs, icon:"fas fa-at"}  
 ];
 
 const SiteRoutes = route => (
     <div> 
-        {route.subPages ?        
+        {route.subPages != undefined &&  route.subPages.length > 0 ?        
             <span>
                 <Route exact path={route.path} component={route.component} />            
                 {route.subPages.map((subroute, i) => <SiteRoutes key={i} {...subroute} />)}
             </span>           
-            : <span><Route path={route.path + (route.optionalPath?route.optionalPath:"")} render={props => ( <route.component {...props} />)} /></span>
+            : 
+            <span>
+                <Route path={route.path + (route.optionalPath?route.optionalPath:"")} render={props => ( <route.component {...props} />)} />
+            </span>
         }     
     </div>
 );
@@ -69,7 +75,10 @@ function BuildSubMap(props){
                 {listRows.map((col, k) =>
                     <div key={k} className="drop-col">
                         {col.map((subItem, l) =>
-                            <Link key={l} to={subItem.path}>{subItem.title}</Link>
+                            (subItem.external ?
+                                <a href={subItem.path} target="_blank" key={l} rel="noopener noreferrer">{subItem.title}</a> :
+                                <Link key={l} to={subItem.path}>{subItem.title}</Link>
+                            )
                         )}
                     </div>
                 )}
@@ -84,8 +93,8 @@ function MobileNav(props){
             <div className="nav-close" onClick={() => props.setSidebarDisplay(false)}><i className="fas fa-times"></i></div>
             <div className="sidenav-section">
                 {routes.map((route, i) =>
-                    <div className="route-page-container">
-                        <Link className="sidenav-link" key={i} to={route.path}>{route.title}</Link>
+                    <div className="route-page-container" key={i}>
+                        <Link className="sidenav-link" to={route.path}>{route.title}</Link>
                         <div className="sidenav-subcontainer">
                             {route.subPages && route.subPages.map((subItem,k) => 
                                 <span className="sub-link" key={k}>
@@ -131,7 +140,7 @@ class App extends Component{
            <Router>
                 <div className="app-body">
                     {/* Mobile Nav */}
-                    {/*<MobileNav setSidebarDisplay={this.setSidebarDisplay} sidebarOpen={this.state.sidebarOpen}/>*/}
+                    <MobileNav setSidebarDisplay={this.setSidebarDisplay} sidebarOpen={this.state.sidebarOpen}/>
                     { /* HEADER */}                    
                     <div className="nav-header fixed-header" id="clintonHeader">
                         <div className="main-top-nav">
@@ -145,22 +154,26 @@ class App extends Component{
                                 <Link className="navbar-brand" to="/">
                                     <img src={logoW} className="logo" alt="A.M.E. Zion Logo" />
                                 </Link>
-                                <button className="navbar-toggler" type="button">
-                                    <div id="menuIcon" className="animateMenu">
-                                        <div className="bar1"></div>
-                                        <div className="bar2"></div>
-                                        <div className="bar3"></div>
-                                    </div>
+                                <button className="navbar-toggler" type="button" aria-label="Toggle navigation" onClick={() => this.setSidebarDisplay(true)}>
+                                    <span className="navbar-toggler-icon"><i className="fas fa-bars"></i></span>
                                 </button>
                                 <div className="collapse navbar-collapse">
                                     <ul className="nav navbar-nav navbar-right">
                                         {routes.map((route, i) =>
                                             (route.subPages && route.subPages.length > 0 ?
                                                 <li key={i} className="nav-item dropdown">
-                                                    <Link to={route.path} id={"navDrop"+i} className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{route.title}</Link>
+                                                    <Link to={route.path} id={"navDrop"+i} className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i className={route.icon} />
+                                                        <span>{route.title}</span>
+                                                    </Link>
                                                     <BuildSubMap list={route.subPages} loc={i} />                                                                                                    
                                                 </li>
-                                                : <li key={i} className="nav-item"><Link to={route.path} className="nav-link">{route.title}</Link></li>
+                                                : <li key={i} className="nav-item">
+                                                    <Link to={route.path} className="nav-link">
+                                                        <i className={route.icon} />
+                                                        <span>{route.title}</span>
+                                                    </Link>
+                                                    </li>
                                             )                                           
                                         )}
                                     </ul>
@@ -173,7 +186,7 @@ class App extends Component{
                     <div className="body-container">
                         <Switch>
                             <Route exact path="/" component={Home} />                            
-                            { routes.map((route, i) => <SiteRoutes key={i} {...route} />) }                            
+                            { routes.map((route, i) => <SiteRoutes key={i} {...route} /> ) }                            
                             <Route component={NoMatch} />                            
                         </Switch>
                     </div>
