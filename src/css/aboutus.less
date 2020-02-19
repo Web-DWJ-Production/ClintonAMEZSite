@@ -9,8 +9,8 @@
         &.img-txt {
             display: flex;
             font-size: 1.1rem;
-            &.c1 { background: @color1; color: rgba(255,255,255,1);}
-            &.c3 { background: @color3; color: rgba(255,255,255,1);}
+            &.c1 { background: @color1; color: rgba(255,255,255,1); &.notched-left, &.notched-right { .txt-content { &:before { background-color: @color1; }}}}
+            &.c3 { background: @color3; color: rgba(255,255,255,1); &.notched-left, &.notched-right { .txt-content { &:before { background-color: @color3; }}} }
 
             .img-content { 
                 position: relative;
@@ -25,6 +25,80 @@
                 padding: 40px;
                 display: inline-block;
                 h1{ font-weight: initial; span { font-weight: bold;}}
+            }
+
+
+            &.notched-left {
+                .txt-content{
+                    position: relative;
+                    &:before {
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        z-index: 10;
+                        left: -@notchSize;
+                        top: 50%;                    
+                        height: @notchSize *2;
+                        width: @notchSize;
+                        background-color:rgba(255,255,255,1);                
+                        transform: translateY(-50%);
+                        border-top-left-radius: @notchSize * 2;
+                        border-bottom-left-radius: @notchSize * 2;
+                        box-shadow: -8px 0px 10px 0px rgba(0,0,0,.3);
+                        -moz-box-shadow:    -8px 0px 10px 0px rgba(0,0,0,.3);
+                        -webkit-box-shadow: -8px 0px 10px 0px rgba(0,0,0,.3);
+
+                        @media @mobile-device {
+                            top: -@notchSize;                            
+                            left: 50%;
+                            transform: translateX(-50%);
+                            height: @notchSize;
+                            width: @notchSize * 2;
+                            border-bottom-left-radius: initial;
+                            border-top-right-radius: @notchSize * 2;                        
+                            box-shadow: -8px -8px 10px 0px rgba(0,0,0,.3);
+                            -moz-box-shadow:    -8px -8px 10px 0px rgba(0,0,0,.3);
+                            -webkit-box-shadow: -8px -8px 10px 0px rgba(0,0,0,.3);
+                        }
+                    }
+                }
+            }
+
+            &.notched-right {
+                .txt-content{
+                    position: relative;
+                    &:before {
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        z-index: 10;
+                        right: -@notchSize;
+                        top: 50%;                    
+                        height: @notchSize *2;
+                        width: @notchSize;
+                        background-color:rgba(255,255,255,1);                
+                        transform: translateY(-50%);
+                        border-top-right-radius: @notchSize * 2;
+                        border-bottom-right-radius: @notchSize * 2;
+                        box-shadow: 8px 0px 10px 0px rgba(0,0,0,.3);
+                        -moz-box-shadow:    8px 0px 10px 0px rgba(0,0,0,.3);
+                        -webkit-box-shadow: 8px 0px 10px 0px rgba(0,0,0,.3);
+
+                        @media @mobile-device {
+                            bottom: -@notchSize;
+                            top: initial;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            height: @notchSize;
+                            width: @notchSize * 2;
+                            border-top-right-radius: initial;
+                            border-bottom-left-radius: @notchSize * 2;                        
+                            box-shadow: -8px 8px 10px 0px rgba(0,0,0,.3);
+                            -moz-box-shadow:    -8px 8px 10px 0px rgba(0,0,0,.3);
+                            -webkit-box-shadow: -8px 8px 10px 0px rgba(0,0,0,.3);
+                        }
+                    }
+                }
             }
 
             @media @mobile-device {

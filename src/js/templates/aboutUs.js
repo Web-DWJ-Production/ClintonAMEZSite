@@ -33,7 +33,7 @@ class AboutUs extends Component{
                     <p>We invite you to fellowship with us, to walk your faith journey with us, and to join Clinton African Methodist Episcopal Zion Church.</p>
                 </section>
 
-                <section className="body-section img-txt c3">
+                <section className="body-section img-txt notched-left c3">
                     <div className="img-content"><img src= {img2} alt="what we believe"/></div>
                     <div className="txt-content">
                         <h1 className="font-title1">What We <span>Believe!</span></h1>
@@ -47,7 +47,7 @@ class AboutUs extends Component{
                     </div>
                 </section>
 
-                <section className="body-section img-txt">        
+                <section className="body-section img-txt notched-right">        
                     <div className="txt-content">
                         <h1 className="font-title1">Our <span>Vision</span></h1>
 

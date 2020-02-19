@@ -85,6 +85,10 @@ class Home extends Component{
 
         this.renderSwitch = this.renderSwitch.bind(this);
         this.parseDate = this.parseDate.bind(this);
+
+        this.loadAnnouncements = this.loadAnnouncements.bind(this);
+        this.loadMinistries = this.loadMinistries.bind(this);
+        this.loadEvents = this.loadEvents.bind(this);
     } 
 
     renderSwitch(item) {
@@ -258,8 +262,79 @@ class Home extends Component{
         );        
     }
 
-    componentDidMount(){
-        //let self = this;        
+    componentDidMount(){              
+        try {
+            window.scrollTo(0, 0);
+            //this.loadAnnouncements();
+            //this.loadMinistries();
+            //this.loadEvents();
+        }
+        catch(ex){
+            console.log(" Error Loading data: ",ex);
+        }       
+    }
+
+    loadAnnouncements(){
+        var self = this;
+        try {
+            fetch(self.rootPath + "/api/getAnnouncements")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                var datRet = data.results ? data.results: [];
+                var carouselList = carouselBase.concat(datRet);
+                self.setState({ carouselData: carouselList});
+            });
+        }
+        catch(ex){
+            console.log(" Error loading announcements: ",ex);
+        }
+    }
+
+    loadMinistries(){
+        var self = this;
+        try {
+            fetch(self.rootPath + "/api/getSpotlightMinistries")
+            .then(function(response) {
+                if (response.status >= 400) {
+                  throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                var datRet = data.results ? data.results: [];
+                self.setState({ ministriesData: datRet});
+            });
+        }
+        catch(ex){
+            console.log(" Error loading announcements: ",ex);
+        }
+    }
+
+    loadEvents(){
+        var self = this;
+        try {
+            
+            var futureDt = new Date();
+            futureDt.setFullYear(futureDt.getFullYear() + 1);
+            var postData = {"startDt": new Date(), "endDt":futureDt};
+
+            axios.post(self.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
+            .then(function(response) {
+                var retData = response.data.results ? response.data.results : [];
+                var eData = retData.slice(0,8);
+                // Add Add Events
+                eData.push({title:"All Events",type:"all"});
+                self.setState({ eventsData: eData});
+            });
+        }
+        catch(ex){
+            console.log(" Error loading announcements: ",ex);
+        }
     }
 }
 
