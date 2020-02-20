@@ -9,9 +9,6 @@ import ministryImg1 from "../../assets/img/siteMedia/leadership1.jpg";
 import ministryImg2 from "../../assets/img/siteMedia/group7.jpg";
 import ministryImg3 from "../../assets/img/siteMedia/child1.jpg";
 
-var rootPath = "";
-//var rootPath = "http://localhost:7777";
-
 class Ministries extends Component{
     constructor(props) {
         super(props);
@@ -22,7 +19,7 @@ class Ministries extends Component{
     render(){        
         return(
             <div>
-               {(this.props.match.params.ministryId ? <MinistryInd ministryId={this.props.match.params.ministryId}/> : <MinistryAll />)}
+               {(this.props.match.params.ministryId ? <MinistryInd rootPath={this.props.rootPath} ministryId={this.props.match.params.ministryId}/> : <MinistryAll rootPath={this.props.rootPath} />)}
             </div>    
         );        
     }
@@ -52,22 +49,25 @@ class MinistryAll extends Component {
                         <img src={backImg} alt="ministries background img"/>
                     </div>
                 </section>
-                {this.state.ministryList.map((msection,i) =>
-                    <section className={"body-section notched-top" + (i%2===1? " c3-mid" : "")} key={i}>
-                        <h1 className="font-title1">{ msection.sectionTitle }</h1>
-                        <div className="ministry-container">
-                            {msection.list.map((ministry,j) =>
-                                <Link to={"/ministries/" + this.getUrl(ministry.title)} key={j} className="ministry-tag">
-                                    <div className="tag-img"><img src={this.checklogo(ministry.icon)} alt="minstry icon"/></div>
-                                    <div className="tag-info">
-                                        <div className="tag-title">{ministry.title}</div>
-                                        {ministry.subSections.length > 0 && <div className="tag-subsection">{ministry.subSections[0]}</div>}
-                                    </div>
-                                </Link>
-                            )}
-                        </div>
-                    </section>                
-                )}                
+
+                {this.state.ministryList && this.state.ministryList.length > 0 ?
+                    this.state.ministryList.map((msection,i) =>
+                        <section className={"body-section notched-top" + (i%2===1? " c3-mid" : "")} key={i}>
+                            <h1 className="font-title1">{ msection.sectionTitle }</h1>
+                            <div className="ministry-lrg-container">
+                                {msection.list.map((ministry,j) =>
+                                    <Link to={"/ministries/" + this.getUrl(ministry.title)} key={j} className="ministry-lrg-tag">
+                                        <div className="tag-img"><img src={this.checklogo(ministry.logo)} alt="minstry icon"/></div>
+                                        <div className="tag-info">
+                                            <div className="tag-title">{ministry.title}</div>
+                                            {ministry.subSections.length > 0 && <div className="tag-subsection">{ministry.subSections[0]}</div>}
+                                        </div>
+                                    </Link>
+                                )}
+                            </div>
+                        </section>                
+                    )             
+                    : <div className="loader-container"><div className="hm-spinner" /></div> }   
             </div>    
         );        
     }
@@ -103,7 +103,7 @@ class MinistryAll extends Component {
     loadMinistries(){
         var self = this;
         try {
-            fetch(rootPath + "/api/getAllMinistries")
+            fetch(this.props.rootPath + "/api/getAllMinistries")
             .then(function(response) {
                 if (response.status >= 400) {
                   throw new Error("Bad response from server");
@@ -168,7 +168,7 @@ class MinistryInd extends Component {
                         <div className="sibling-container">
                             {this.state.ministryComponent && this.state.ministryComponent.siblings ? this.state.ministryComponent.siblings.map((ministry,j) =>
                                 <Link to={"/ministries/" + this.getUrl(ministry.title)} className="ministry-tag" key={j} onClick={() => this.reloadPage(ministry.title)}>
-                                    <div className="tag-img"><img src={this.checklogo(this.state.ministryComponent.icon)} alt="minstry icon"/></div>
+                                    <div className="tag-img"><img src={this.checklogo(ministry.logo)} alt="minstry icon"/></div>
                                     <div className="tag-info">
                                         <div className="tag-title">{ministry.title}</div>
                                         {ministry.subSections.length > 0 && <div className="tag-subsection">{ministry.subSections[0]}</div>}
@@ -182,7 +182,7 @@ class MinistryInd extends Component {
                     <span>
                         <section className="body-section ministry-title">
                             <div className="ministry-individual">
-                                <div className="individual-img"><img src={this.checklogo(this.state.ministryComponent.icon)} alt="minstry icon"/></div>
+                                <div className="individual-img"><img src={this.checklogo(this.state.ministryComponent.logo)} alt="minstry icon"/></div>
                                 <div className="individual-info">
                                     <div className="individual-title">{this.state.ministryComponent.title}</div>
                                     {this.state.ministryComponent.subSections.length > 0 && <div className="individual-subsection">{this.state.ministryComponent.subSections[0]}</div>}
@@ -249,7 +249,7 @@ class MinistryInd extends Component {
                             </div>
                         </section>
                     </span>
-                : <span></span>
+                : <div className="loader-container"><div className="hm-spinner" /></div> }
                 }
             </div>            
         );
@@ -290,7 +290,7 @@ class MinistryInd extends Component {
         try {
             var postData = {"ministryId": mId};
 
-            axios.post(rootPath + "/api/getIndMinistry", postData, {'Content-Type': 'application/json'})
+            axios.post(this.props.rootPath + "/api/getIndMinistry", postData, {'Content-Type': 'application/json'})
             .then(function(response) {
                 self.setState({ ministryComponent: response.data.results});
             });

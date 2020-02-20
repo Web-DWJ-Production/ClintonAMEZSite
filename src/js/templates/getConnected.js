@@ -13,9 +13,6 @@ var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov
 class GetConnected extends Component{
     constructor(props) {
         super(props);
-
-        this.rootPath = "";
-        //this.rootPath = "http://localhost:7777";
         
         this.state = {
             modalvisible:false,
@@ -73,38 +70,7 @@ class GetConnected extends Component{
                 </section>
 
                 <section className="body-section prayerCall notched-top">
-                    <div className="callCard">
-                        <div className="call-info">
-                            <div className="pastor-img"><img src={pastorImg} alt="pastor img"/></div>
-                            <div className="pastor-name"><div className="name">Rev. Alyce R. Walker Johnson</div> <div className="title">Pastor</div></div>
-                            <div className="info-section">
-                                <p>Clinton African Methodist Episcopal Zion Church</p>
-                                <p>223 Elizabeth Avenue</p>
-                                <p>Rockville, MD. 20850</p>
-                            </div>
-                        </div>
-
-                        <div className="call-content">
-                            <h1>Clinton A.M.E. Zion Church</h1>
-                            <p>Join Us For</p>
-                            <h2>Mid-Week Prayer</h2>
-
-                            <p>Wednesdays @ 7:00 a.m.</p>
-                            <p>Dial In: (712) 770-8064</p>
-                            <p>Passcode: 757837#</p>
-
-                            <p className="info">Don't worry about anything; instead, pray about everything.  
-                                Tell God what you need, and thank him for all he has done. Then you will 
-                            experiance God's peace, which exceeds anything we can understand.  His peace will guard
-                            your hearts and minds as you line in Christ Jesus.</p>
-                            <p className="info loc"><span>Philippians 4:6-7(NLT)</span></p>
-
-                            <p>Open To All</p>
-
-                            <p className="sub-txt">Submit Prayer Requests Via Text to (301) 741-0325 Or</p>
-                            <p className="sub-txt">Via Email At <a class="mail-to" href="mailto:CAMEZPASTOR@Gmail.com">CAMEZPASTOR@Gmail.com</a></p>
-                        </div>
-                    </div>
+                    <div className="prayerCardImg"><img src="/images/prayerCall.jpg" /></div>
                 </section> 
 
                 <section className="body-section biblestudy notched-top c3-mid">
@@ -151,7 +117,7 @@ class GetConnected extends Component{
             futureDt.setFullYear(futureDt.getFullYear() + 1);
             var postData = {"startDt": new Date(), "endDt":futureDt};
 
-            axios.post(self.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
+            axios.post(self.props.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
             .then(function(response) {
                 var retData = response.data.results ? response.data.results : [];
                 var eData = retData.map(function(el) {

@@ -27,8 +27,6 @@ var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov
 class Home extends Component{
     constructor(props) {
         super(props);
-        this.rootPath = "";
-        //this.rootPath = "http://localhost:7777";
 
         this.state = {
             scrollSpy: true,
@@ -41,46 +39,9 @@ class Home extends Component{
                 600: { items: 2 },
                 1024: { items: 2 }
             },
-            carouselData: [
-                {type:"cover-title", title:"Welcome To Clinton"},
-                {"_id":"5cdc967a39912d06c0a3095e","type":"card-img","title":"Event Alert","media":"https://farm66.staticflickr.com/65535/47806537622_b97cd0691e_z.jpg","lines":[{"size":"h1","bold":true,"text":"Identity Theft Is On The Rise"},{"size":"paragraph","bold":false,"text":"Tuesday May 14th, 10:30am - 12pm"}],"order":1},
-                {"_id":"5cdb5e5c8b6ebd497073c509","type":"card-img","title":"Welcome","media":"https://farm66.staticflickr.com/65535/47852137171_595d774477_z.jpg","lines":[{"size":"paragraph","bold":false,"text":"Welcome to the new Clinton AME Zion Website, we are blessed to unveil this new site to display the works of our church."}],"order":2}
-            ],
+            carouselData: [],
             ministriesData: [],
-            eventsData: [
-                {
-                    "id": "256586516-rid-1582158600",            
-                    "title": "YACM Bible Study",
-                    "who": "Juanita Murkey/Kamron Redding",
-                    "location": "Ebonie Fellowship Hall",            
-                    "start_dt": "2020-02-19T19:30:00-05:00",
-                    "end_dt": "2020-02-19T21:30:00-05:00"        
-                },
-                {
-                    "id": "256586516-rid-1582158600",            
-                    "title": "Event 2",
-                    "who": "Juanita Murkey/Kamron Redding",
-                    "location": "Ebonie Fellowship Hall",            
-                    "start_dt": "2020-02-20T19:30:00-05:00",
-                    "end_dt": "2020-02-20T21:30:00-05:00"        
-                },
-                {
-                    "id": "256586516-rid-1582158600",            
-                    "title": "Event 4",
-                    "who": "Juanita Murkey/Kamron Redding",
-                    "location": "Ebonie Fellowship Hall",            
-                    "start_dt": "2020-04-20T19:30:00-05:00",
-                    "end_dt": "2020-04-21T21:30:00-05:00"        
-                },
-                {
-                    "id": "256586516-rid-1582158600",            
-                    "title": "Event 5",
-                    "who": "Juanita Murkey/Kamron Redding",
-                    "location": "Ebonie Fellowship Hall",            
-                    "start_dt": "2020-05-19T19:30:00-05:00",
-                    "end_dt": "2020-05-19T21:30:00-05:00"        
-                }
-            ]
+            eventsData: []
         }
 
         this.renderSwitch = this.renderSwitch.bind(this);
@@ -163,13 +124,16 @@ class Home extends Component{
             <div className="site-page home">
                <section className="main-carousel background3">
                     <div className="back-cover"><img src={carouselCover} alt="Carousel Cover"/></div>
-                    <Carousel className="clinton-carousels home-carousel" showIndicators={false} showThumbs={false} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
-                        {this.state.carouselData.map((item, i) => 
-                            <div className="carousel-page" key={i}>
-                                { this.renderSwitch(item) }
-                            </div>
-                        )}
-                    </Carousel>
+                    {this.state.carouselData && this.state.carouselData.length > 0 ? 
+                        <Carousel className="clinton-carousels home-carousel" showIndicators={false} showThumbs={false} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
+                            {this.state.carouselData.map((item, i) => 
+                                <div className="carousel-page" key={i}>
+                                    { this.renderSwitch(item) }
+                                </div>
+                            )}
+                        </Carousel>
+                        : <div className="loader-container"><div className="hm-spinner" /></div>
+                    }
                     <div className="event-scroller">
                         <div className="event-title">Upcoming <br/>Events</div>
                         <div className="events-container">
@@ -203,15 +167,15 @@ class Home extends Component{
                 {/* Get Connected */}
                 <section className="getConnected">
                     <div className="connected-puzzle">
-                        <Link to="/getConnected" className="piece sz-2 c4 r2">
+                        <Link to="/getConnected/ourService" className="piece sz-2 c4 r2">
                             <div className="icon-row"><div className="icon-container"><i className="icon-center far fa-clock"/></div></div>
                             <div className="text">Service Times</div>
                         </Link>
-                        <Link to="/getConnected" className="piece sz-1 c3 t">
+                        <Link to="/getConnected/connectWithUs" className="piece sz-1 c3 t">
                             <div className="icon-row"><div className="icon-container"><i className="icon-center fas fa-phone"/></div></div>
                             <div className="text">Prayer Call</div>
                         </Link>
-                        <Link to="/getConnected" className="piece sz-1 c5 l">
+                        <Link to="/getConnected/connectWithUs" className="piece sz-1 c5 l">
                             <div className="icon-row"><div className="icon-container"><i className="icon-center fab fa-audible"/></div></div>
                             <div className="text">Bible Study</div>
                         </Link>
@@ -265,9 +229,9 @@ class Home extends Component{
     componentDidMount(){              
         try {
             window.scrollTo(0, 0);
-            //this.loadAnnouncements();
-            //this.loadMinistries();
-            //this.loadEvents();
+            this.loadAnnouncements();
+            this.loadMinistries();
+            this.loadEvents();
         }
         catch(ex){
             console.log(" Error Loading data: ",ex);
@@ -277,7 +241,7 @@ class Home extends Component{
     loadAnnouncements(){
         var self = this;
         try {
-            fetch(self.rootPath + "/api/getAnnouncements")
+            fetch(self.props.rootPath + "/api/getAnnouncements")
             .then(function(response) {
                 if (response.status >= 400) {
                   throw new Error("Bad response from server");
@@ -298,7 +262,7 @@ class Home extends Component{
     loadMinistries(){
         var self = this;
         try {
-            fetch(self.rootPath + "/api/getSpotlightMinistries")
+            fetch(self.props.rootPath + "/api/getSpotlightMinistries")
             .then(function(response) {
                 if (response.status >= 400) {
                   throw new Error("Bad response from server");
@@ -323,12 +287,12 @@ class Home extends Component{
             futureDt.setFullYear(futureDt.getFullYear() + 1);
             var postData = {"startDt": new Date(), "endDt":futureDt};
 
-            axios.post(self.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
+            axios.post(self.props.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
             .then(function(response) {
                 var retData = response.data.results ? response.data.results : [];
                 var eData = retData.slice(0,8);
                 // Add Add Events
-                eData.push({title:"All Events",type:"all"});
+                //eData.push({title:"All Events",type:"all"});
                 self.setState({ eventsData: eData});
             });
         }

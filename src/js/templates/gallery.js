@@ -8,9 +8,6 @@ class Gallery extends Component{
     constructor(props) {
         super(props);
 
-        this.rootPath = "";
-        //this.rootPath = "http://localhost:7777";
-
         this.state = {
             selected:null,
             selectedImages:[],
@@ -89,7 +86,7 @@ class Gallery extends Component{
         try {
             self.setState({selected: gallery});
 
-            axios.post(self.rootPath + "/api/getIndGallery", {setId:gallery.setId}, {'Content-Type': 'application/json'})
+            axios.post(self.props.rootPath + "/api/getIndGallery", {setId:gallery.setId}, {'Content-Type': 'application/json'})
             .then(function(response) {
                 var galleryData = response.data.results
                 self.setState({ selectedImages: galleryData});
@@ -103,7 +100,7 @@ class Gallery extends Component{
     loadGalleries(){
         var self = this;
         try {
-            fetch(self.rootPath + "/api/getGalleries")
+            fetch(self.props.rootPath + "/api/getGalleries")
             .then(function(response) {
                 if (response.status >= 400) {
                   throw new Error("Bad response from server");

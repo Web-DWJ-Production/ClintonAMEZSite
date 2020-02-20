@@ -26,6 +26,9 @@ import "../css/app.less";
 /* Images */
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 
+const rootPath = "";
+//const rootPath = "http://localhost:7777";
+
 const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, icon:"fas fa-book-reader", subPages:[
         { title:"about clinton",path:"/aboutUs/aboutClinton", component:AboutUs},
@@ -45,14 +48,14 @@ const routes = [
 
 const SiteRoutes = route => (
     <div> 
-        {route.subPages != undefined &&  route.subPages.length > 0 ?        
+        {route.subPages != undefined && route.subPages.length > 0 ?        
             <span>
-                <Route exact path={route.path} component={route.component} />            
+                <Route exact path={route.path} render={props => ( <route.component {...props} rootPath={rootPath}/>)} />            
                 {route.subPages.map((subroute, i) => <SiteRoutes key={i} {...subroute} />)}
             </span>           
             : 
             <span>
-                <Route path={route.path + (route.optionalPath?route.optionalPath:"")} render={props => ( <route.component {...props} />)} />
+                <Route path={route.path + (route.optionalPath?route.optionalPath:"")} render={props => <route.component {...props} rootPath={rootPath}/>} />
             </span>
         }     
     </div>
@@ -185,7 +188,7 @@ class App extends Component{
                     {/* Body*/}
                     <div className="body-container">
                         <Switch>
-                            <Route exact path="/" component={Home} />                            
+                            <Route exact path="/" render={()=> <Home rootPath={rootPath} /> }/>                            
                             { routes.map((route, i) => <SiteRoutes key={i} {...route} /> ) }                            
                             <Route component={NoMatch} />                            
                         </Switch>
