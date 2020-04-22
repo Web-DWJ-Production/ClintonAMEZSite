@@ -19,7 +19,7 @@
   font-family: 'Lora';
   font-style: normal;
   font-weight: 400;
-  src: local('Lora Regular'), local('Lora-Regular'), url(https://fonts.gstatic.com/s/lora/v14/0QIvMX1D_JOuMwr7Jg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/lora/v15/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkqg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Playfair Display SC';
@@ -1308,6 +1308,7 @@ button.rbc-input::-moz-focus-inner {
 .home .visitUs .visit-img img {
   object-fit: cover;
   width: 100%;
+  min-height: 100%;
 }
 @media (max-width: 770px) {
   .home .visitUs {

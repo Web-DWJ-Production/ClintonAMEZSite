@@ -25,6 +25,7 @@
     "globalize": "^1.4.0",
     "google-map-react": "^1.1.2",
     "jquery": "^3.4.1",
+    "marked": "^1.0.0",
     "moment": "^2.24.0",
     "mongodb": "^3.1.13",
     "react": "^16.8.1",
@@ -38,7 +39,9 @@
     "react-router-transition": "^1.2.1",
     "react-scripts": "^2.1.5",
     "react-transition-group": "^1.2.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "storyblok-js-client": "^2.2.0",
+    "storyblok-react": "0.0.10"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",

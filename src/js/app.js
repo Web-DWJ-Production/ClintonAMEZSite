@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { CSSTransitionGroup } from 'react-transition-group';
 import { spring, AnimatedSwitch } from 'react-router-transition';
+import StoryblokService from './utils/storyblok.service';
 
 /* Components */
 import Footer from './templates/footer';
@@ -26,8 +27,9 @@ import "../css/app.less";
 /* Images */
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 
-const rootPath = "";
-//const rootPath = "http://localhost:7777";
+const stb = new StoryblokService();
+//const rootPath = "";
+const rootPath = "http://localhost:7777";
 
 const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, icon:"fas fa-book-reader", subPages:[
@@ -201,9 +203,7 @@ class App extends Component{
         );
      }
   
-     componentDidMount(){
-        declareDropDowns();
-     }
+     componentDidMount(){}
 
      showAdditionalMenu(menu){
          var self = this;
@@ -249,21 +249,3 @@ class App extends Component{
 }
 
 export default App;
-
-/* Private Functions */
-function declareDropDowns(){
-    try {
-        /*$('.dropdown').on('show.bs.dropdown', function(e){
-            console.log("1-");
-            $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
-        });
-          
-        $('.dropdown').on('hide.bs.dropdown', function(e){
-            console.log("2-");
-            $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
-        });*/
-    }
-    catch(ex){
-        console.log("Error declaring drop downs: ",ex);
-    }
-}
