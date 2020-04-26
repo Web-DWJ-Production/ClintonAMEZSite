@@ -28,8 +28,8 @@ import "../css/app.less";
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 
 const stb = new StoryblokService();
-//const rootPath = "";
-const rootPath = "http://localhost:7777";
+const rootPath = "";
+//const rootPath = "http://localhost:7777";
 
 const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, icon:"fas fa-book-reader", subPages:[

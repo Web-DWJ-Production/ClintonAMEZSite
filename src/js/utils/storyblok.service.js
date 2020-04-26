@@ -6,7 +6,7 @@ class StoryblokService extends Component {
         super();
 
         this.devMode = true; // Always loads draft
-        this.token = 'rHdZwroPwneIqCgxoQsdvgtt'
+        this.token = 'HgUfa2kWBrjV5Mawl97FyAtt'
         this.client = new StoryblokClient({
             accessToken: this.token,
             cache: {
@@ -37,7 +37,6 @@ class StoryblokService extends Component {
     }
 
     initEditor(reactComponent) {
-        console.log("[DEBUG]> "); console.log(window);
         if (window.storyblok) {
             window.storyblok.init()
             window.storyblok.on(['change', 'published'], () => window.location.reload(true))

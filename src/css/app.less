@@ -1,5 +1,6 @@
 /* Material Icons */
 @mobile-device: ~"(max-width: 770px)";
+@mobile-nav: ~"(max-width: 992px)";
 
 /* Header Sizes */
 @navHeightBottom: 50px;
@@ -242,10 +243,8 @@ body, html {
         }
     }    
 
-    &.active { 
-        left:0;         
-    }
-    @media @mobile-device { display: block;}
+    &.active { left:0; }
+    @media @mobile-nav { display: block;}
 }
 
 /* Common Body */

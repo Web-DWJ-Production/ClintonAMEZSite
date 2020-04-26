@@ -1,36 +1,20 @@
 import React, { Component } from 'react';
+import SbEditable from 'storyblok-react';
+import StoryblokService from '../utils/storyblok.service';
 
 import backImg from "../../assets/img/siteMedia/group4.jpg";
+
+const stb = new StoryblokService();
 
 class OurStaff extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
-            colorClass:["", "light",""],
-            staffList: [
-                {"name":"Administrative Team", "members":[
-                    {"name":"Ms. Jonice Adams & Ms. Donna Cawley", "title":"Co-Directors, Communication & Brand Management"},
-                    {"name":"Mrs. Robin Avant Brown", "title":"Director, Special Events"},
-                    {"name":"Mr. Ricky Capers", "title":"Treasurer"},
-                    {"name":"Ms. Gina Snowden Harrell", "title":"Quarterly Conference Secretary"},
-                    {"name":"Mr. Timothy K. Johnson", "title":"Director, Media & Technology"},
-                    {"name":"Mrs. Cristina Palmer-Moore", "title":"Director, Scheduling & Space Management"},
-                    {"name":"Ms. Sharon Tucker", "title":"Ministry of Kindness Steward"},
-                    {"name":"Mrs. Verna Woodson", "title":"Financial Secretary"}
-                ]},
-                {"name":"Board Leadership", "members":[
-                    {"name":"Mr. Felton Armstrong", "title":"Preacher's Steward & Chair or Steward Board"},
-                    {"name":"Mr. Dwayne Holloway", "title":"Immediate Past Chair, Trustee Board"},
-                    {"name":"Mrs. Alvanell Thompson", "title":"Leader of Leaders"}
-                ]},
-                {"name":"Clergy", "members":[
-                  {"name":"Rev. Dr. E. Marie Johnson", "title":""},
-                  {"name":"Rev. Deborah Johnson-Mosley", "title":""},
-                  {"name":"Rev. Dr. Barbara Quinton", "title":""}
-              ]}            
-            ]
+            staffList: []
         }
+
+        this.loadStaff = this.loadStaff.bind(this);
     } 
 
     render(){        
@@ -45,25 +29,48 @@ class OurStaff extends Component{
                 </section>
                 
                 {this.state.staffList.map((team,i) => 
-                    <section className={"body-section staffList notched-top " + this.state.colorClass[i]} key={i}>                    
-                        <div className="staffTeamContainer">
-                            <div className="content-container">
-                                <h2>{team.name}</h2>
-                                {team.members.map((member,j) =>
-                                    <div className="teamMember" key={j}>
-                                        <div className="member-name">{member.name}</div>
-                                        <div className="member-title">{member.title}</div>
-                                    </div> 
-                                )}
-                            </div>
-                        </div>                   
+                    <section className={"body-section staffList notched-top " + team.colorClass} key={i}>                    
+                        <SbEditable content={team}>
+                            <div className="staffTeamContainer">
+                                <div className="content-container">
+                                    <h2>{team.name}</h2>
+                                    {team.members.map((member,j) =>
+                                        <SbEditable content={member}>
+                                            <div className="teamMember" key={j}>
+                                                <div className="member-name">{member.name}</div>
+                                                <div className="member-title">{member.title}</div>
+                                            </div> 
+                                        </SbEditable>
+                                    )}
+                                </div>
+                            </div>  
+                        </SbEditable>                 
                     </section>    
                  )} 
             </div>    
         );        
     }
 
-    componentDidMount(){window.scrollTo(0, 0);}
+    loadStaff(page){
+        try {
+            console.log(page.data.story.content.body);
+            if(page.data.story.content.body){
+                this.setState({ staffList: page.data.story.content.body });
+            }
+        }
+        catch(ex){
+            console.log("Error Loading Staff List: ",ex);
+        }
+    }
+
+    componentDidMount(){
+        var self = this;
+        window.scrollTo(0, 0);
+        stb.initEditor(this);
+        stb.getInitialProps({"query":"home"}, 'cdn/stories/aboutus/ourclergy', function(page){
+            self.loadStaff(page);
+        });
+    }
 }
 
 export default OurStaff;
