@@ -41,10 +41,10 @@ const routes = [
         { title:"inside zion", external:true, path:"http://www.amez.org/"}
     ]},
     { title:"get connected", path:"/getConnected", component:GetConnected , icon:"fas fa-puzzle-piece", subPages:[
-        { title:"connect with us", path:"/getConnected/connectWithUs", component:GetConnected},
-        { title:"service information", path:"/getConnected/ourService", component:OurService}
+        { title:"connect with us", path:"/getConnected/connectWithUs", component:GetConnected, class:"no-wrap" },
+        { title:"service information", path:"/getConnected/ourService", component:OurService, class:"no-wrap"}
     ]},     
-    { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries, icon:"fas fa-users"},       
+    /*{ title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries, icon:"fas fa-users"},*/       
     { title:"contact us", path:"/contactUs", component:ContactUs, icon:"fas fa-at"}  
 ];
 
@@ -82,7 +82,7 @@ function BuildSubMap(props){
                         {col.map((subItem, l) =>
                             (subItem.external ?
                                 <a href={subItem.path} target="_blank" key={l} rel="noopener noreferrer">{subItem.title}</a> :
-                                <Link key={l} to={subItem.path}>{subItem.title}</Link>
+                                <Link key={l} to={subItem.path} class={subItem.class}>{subItem.title}</Link>
                             )
                         )}
                     </div>

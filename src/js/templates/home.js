@@ -112,7 +112,7 @@ class Home extends Component{
                         <div className="info-title">{event.title}</div>
                         <div className="info-base">
                             <span>{event.location}</span>
-                            <span>- {this.parseDate(event.start_dt,"time")}</span>
+                            <span>{this.parseDate(event.start_dt,"time")}</span>
                         </div>
                     </div>
                 </div>
@@ -205,9 +205,10 @@ class Home extends Component{
                     <div className="text-content">
                         <h1 className="font-title1">Ministries</h1>
                         <p>We believe in the living word and being an active body of christ, through our ministries we are able to connected and serve those within our community and promote positive change.</p>
-                        <Link to="/ministries" className="ministry-tag all">                                
+                        
+                        {/*<Link to="/ministries" className="ministry-tag all">                                
                             <div className="tag-title">View All Ministries</div>
-                        </Link>
+                        </Link>*/}
                     </div>
                 </section>
 
@@ -218,15 +219,15 @@ class Home extends Component{
                         <div className="item-container">
                             <div className="visit-item">
                                 <h2>Address</h2>
-                                <p>Clinton African Methodist Episcopal Zion Church</p>
-                                <p>223 Elizabeth Avenue</p>
-                                <p>Rockville, MD. 20850</p>
+                                <p className="addr">Clinton African Methodist Episcopal Zion Church</p>
+                                <p className="addr">223 Elizabeth Avenue</p>
+                                <p className="addr">Rockville, MD. 20850</p>
                             </div>
 
                             <div className="visit-item">
                                 <h2>Follow Us</h2>
-                                <p><span className="social-icon"><i className="fab fa-facebook-f fa-fw"/></span> <span>Clinton African Methodist Episcopal Zion Church</span></p>
-                                <p><span className="social-icon"><i className="fab fa-twitter fa-fw"/></span><span>@ClintonAMEZion</span></p>
+                                <p className="social"><div className="social-icon"><i className="fab fa-facebook-f fa-fw"/></div> <div className="txt">Clinton African Methodist Episcopal Zion Church</div></p>
+                                <p className="social"><div className="social-icon"><i className="fab fa-twitter fa-fw"/></div><div className="txt">@ClintonAMEZion</div></p>
                             </div>
                         </div>
                     </div>
