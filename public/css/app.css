@@ -1162,9 +1162,10 @@ button.rbc-input::-moz-focus-inner {
   top: 0;
   left: 0;
   z-index: 2;
-  background: rgba(59, 48, 63, 0.75);
+  background: rgba(59, 48, 63, 0.6);
 }
 .home .getConnected .spacer1 img {
+  object-fit: cover;
   width: 100%;
   filter: grayscale(0.9);
   opacity: 0.5;
@@ -1334,6 +1335,109 @@ button.rbc-input::-moz-focus-inner {
   .home .visitUs .visit-img {
     width: 100%;
   }
+}
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.modalContainer .modalHeader {
+  background: #605763;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+.modalContainer .modalHeader .title {
+  font-size: 1.3rem;
+}
+.modalContainer .modalHeader .modal-close {
+  cursor: pointer;
+}
+.modalContainer .event-img {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+.modalContainer .event-img img {
+  position: relative;
+  z-index: 0;
+  object-fit: cover;
+  width: 100%;
+  filter: grayscale(0.9);
+  opacity: 0.6;
+}
+.modalContainer .event-img:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: rgba(59, 48, 63, 0.6);
+}
+.modalContainer .modalBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 15px 50px;
+}
+.modalContainer .modalBody .body-line {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0;
+}
+.modalContainer .modalBody .body-line .line-icon {
+  margin-right: 20px;
+}
+.modalContainer .modalBody .body-line .line-icon .color-blk {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background: #863694;
+}
+.modalContainer .modalBody .body-line .line-icon i {
+  font-size: 20px;
+  color: #969696;
+}
+.modalContainer .modalBody .body-line .line-text {
+  display: flex;
+  flex-direction: column;
+}
+.modalContainer .modalBody .body-line .line-text .title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.modalContainer .modalBody .body-line .line-text .subtext {
+  font-size: 0.9rem;
+  color: #969696;
+  margin-left: 5px;
+}
+.modalContainer .modalBody .body-line + .body-line {
+  margin-top: 10px;
+}
+.modalContainer .modalBody .special-line {
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #969696;
+  border-bottom: 1px solid #969696;
+  margin: 20px 10px;
+}
+.modalContainer .modalBody .special-line .line-icon {
+  margin-right: 20px;
+}
+.modalContainer .modalBody .special-line .line-icon i {
+  font-size: 30px;
+  color: #863694;
+}
+.modalContainer .modalBody .special-line .line-text {
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 .about-us {
   position: relative;

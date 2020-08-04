@@ -16,7 +16,9 @@ import CarouselImgCard from './components/carouselImgCard'
 
 /* Media */
 import amezLogo from "../../assets/img/logos/ame_zion_logo.png";
-import spacer from '../../assets/img/tmpMedia/church2.jpg';
+import spacer from "../../assets/img/siteMedia/Back10-mini.png";
+//'../../assets/img/tmpMedia/church2.jpg';
+
 import visitImg from "../../assets/img/siteMedia/group3.jpg";
 
 const stb = new StoryblokService();

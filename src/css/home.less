@@ -414,9 +414,9 @@
                 top: 0;
                 left: 0;
                 z-index: 2; 
-                background: rgba(59, 48, 63,0.75);
+                background: rgba(59, 48, 63,0.6);
             }
-            img{ object-fit: cover; min-width: 100%; filter: grayscale(0.9); opacity: 0.5; }
+            img{ object-fit: cover; width: 100%; filter: grayscale(0.9); opacity: 0.5; }
         }
 
         @media @mobile-device { 
@@ -552,6 +552,89 @@
         @media @mobile-device {
             flex-direction: column;
             .visit-img { width: 100%; }
+        }
+    }
+}
+
+.modalContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    .modalHeader {
+        background: rgba(96, 87, 99, 1); 
+        color: rgba(255,255,255,1);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+        .title { font-size: 1.3rem;}
+        .modal-close { cursor: pointer; }
+    }
+
+    .event-img {
+        height: 100px;
+        overflow: hidden;
+        position: relative;
+        
+        img{ 
+            position: relative; 
+            z-index: 0; 
+            object-fit: cover; 
+            width: 100%; 
+            filter: grayscale(0.9);
+            opacity: 0.6;
+        }
+        &:before { 
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2;
+            background: rgba(59, 48, 63, 0.6);
+        }
+    }
+
+    .modalBody { 
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 15px 15px 50px;
+        
+        .body-line {
+            display: flex;
+            flex-direction: row;
+            padding: 5px 0;
+
+            .line-icon { 
+                margin-right: 20px;
+                .color-blk { width: 20px; height: 20px; border-radius: 2px; background: @color3;}
+                i { font-size: 20px; color: rgba(150,150,150,1); }
+            }
+            .line-text {
+                display: flex;
+                flex-direction: column;
+                .title { font-weight: bold; font-size: 1.1rem;}
+                .subtext {  font-size: .9rem; color: rgba(150,150,150,1); margin-left: 5px; }
+            }
+
+            &+.body-line { margin-top:  10px;}
+        }
+
+        .special-line {
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: row;
+            border-top: 1px solid rgba(150,150,150,1);
+            border-bottom: 1px solid rgba(150,150,150,1);
+            margin: 20px 10px;
+            .line-icon { 
+                margin-right: 20px;
+                i { font-size: 30px; color: @color3; }
+            }
+
+            .line-text { font-size: 1.1rem; font-weight: bold;  }
         }
     }
 }
