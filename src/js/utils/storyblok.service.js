@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import StoryblokClient from 'storyblok-js-client';
 
 class StoryblokService extends Component {
@@ -23,7 +23,7 @@ class StoryblokService extends Component {
     }
 
     get(slug, params) {
-        var params = params || {};
+        params = params || {};
 
         if (this.getQuery('_storyblok') || this.devMode || (typeof window !== 'undefined' && window.storyblok)) {
             params.version = 'draft'
@@ -64,7 +64,7 @@ class StoryblokService extends Component {
                 var body = page.data.story.content.body;
 
                 if(body && body.length > 0){
-                    ret = body.filter(function(item) { return item.component.toLowerCase() == type.toLowerCase(); });
+                    ret = body.filter(function(item) { return item.component.toLowerCase() === type.toLowerCase(); });
                 }
             }
         }
@@ -79,6 +79,16 @@ class StoryblokService extends Component {
 
         let [page] = await Promise.all([
             this.get(pageUrl)
+        ]);
+
+        callback(page);
+    }
+
+    async getInitialParamProps({ query }, pageUrl, pageParam, callback) {
+        this.setQuery(query);
+
+        let [page] = await Promise.all([
+            this.get(pageUrl, pageParam)
         ]);
 
         callback(page);

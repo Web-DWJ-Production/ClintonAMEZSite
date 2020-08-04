@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import axios from 'axios';
+import { Link } from "react-router-dom";
+
+import SbEditable from 'storyblok-react';
+import StoryblokService from '../utils/storyblok.service';
 
 import backImg from "../../assets/img/siteMedia/ministry1.jpg";
 import amezLogo from "../../assets/img/logos/ame_zion_logo.png";
@@ -8,6 +10,16 @@ import amezLogo from "../../assets/img/logos/ame_zion_logo.png";
 import ministryImg1 from "../../assets/img/siteMedia/leadership1.jpg";
 import ministryImg2 from "../../assets/img/siteMedia/group7.jpg";
 import ministryImg3 from "../../assets/img/siteMedia/child1.jpg";
+import ministryImg4 from "../../assets/img/siteMedia/ministryImg4.jpg";
+import ministryImg5 from "../../assets/img/siteMedia/ministryImg5.jpg";
+import ministryImg6 from "../../assets/img/siteMedia/ministryImg6.jpg";
+import ministryImg7 from "../../assets/img/siteMedia/ministryImg7.jpg";
+import ministryImg8 from "../../assets/img/siteMedia/ministryImg8.jpg";
+import ministryImg9 from "../../assets/img/siteMedia/ministryImg9.jpg";
+import ministryImg10 from "../../assets/img/siteMedia/ministryImg10.jpg";
+import ministryImg11 from "../../assets/img/siteMedia/ministryImg11.jpg";
+
+const stb = new StoryblokService();
 
 class Ministries extends Component{
     constructor(props) {
@@ -35,9 +47,67 @@ class MinistryAll extends Component {
             ministryList:[]
         }
 
+        this.loadMinistries = this.loadMinistries.bind(this);
         this.checklogo = this.checklogo.bind(this);
-        this.getUrl = this.getUrl.bind(this);
     } 
+
+    checklogo(logo) {
+        var ret = null;
+        try {
+            ret = (!logo ? amezLogo : logo);
+        }
+        catch(ex){
+            console.log("Error checking logo: ", ex);
+        }
+        return ret;
+    }
+
+    loadMinistries(page){
+        var ret = [];
+
+        try {
+            var tmpList = {};
+            
+            if(page.data.stories){
+                for(var i = 0; i < page.data.stories.length; i++){
+                    var item = page.data.stories[i];
+                    if(tmpList[item.content.section]){
+                        tmpList[item.content.section].push(item);
+                    }
+                    else {
+                        tmpList[item.content.section] = [item];
+                    }
+                }
+                
+                Object.keys(tmpList).forEach(function(item){
+                    ret.push({ sectionTitle: item, list: tmpList[item] });
+                });
+
+                ret.sort((a, b) => (a.sectionTitle > b.sectionTitle) ? 1 : -1);
+            }          
+        }
+        catch(ex){
+            console.log("Error loading ministries: ",ex);
+        }
+
+        if(ret.length > 0 ){
+            this.setState({ ministryList: ret });
+        }  
+    }
+
+    componentDidMount(){
+        var self = this;
+        try {
+            window.scrollTo(0, 0);
+            stb.initEditor(this);
+            stb.getInitialParamProps({"query":"ministries"}, 'cdn/stories', {starts_with: 'ministries'},function(page){
+                self.loadMinistries(page);
+            });
+        }
+        catch(ex){
+            console.log(" Error Loading data: ",ex);
+        }  
+    }
 
     render(){        
         return(
@@ -56,11 +126,11 @@ class MinistryAll extends Component {
                             <h1 className="font-title1">{ msection.sectionTitle }</h1>
                             <div className="ministry-lrg-container">
                                 {msection.list.map((ministry,j) =>
-                                    <Link to={"/ministries/" + this.getUrl(ministry.title)} key={j} className="ministry-lrg-tag">
-                                        <div className="tag-img"><img src={this.checklogo(ministry.logo)} alt="minstry icon"/></div>
+                                    <Link to={"/ministries/" + ministry.slug} key={j} className="ministry-lrg-tag">
+                                        <div className="tag-img"><img src={this.checklogo(ministry.content.icon)} alt="minstry icon"/></div>
                                         <div className="tag-info">
-                                            <div className="tag-title">{ministry.title}</div>
-                                            {ministry.subSections.length > 0 && <div className="tag-subsection">{ministry.subSections[0]}</div>}
+                                            <div className="tag-title">{ministry.content.name}</div>
+                                            {ministry.content.smallgroup && <div className="tag-subsection">{ministry.content.smallgroup}</div>}
                                         </div>
                                     </Link>
                                 )}
@@ -70,11 +140,34 @@ class MinistryAll extends Component {
                     : <div className="loader-container"><div className="hm-spinner" /></div> }   
             </div>    
         );        
+    }    
+}
+
+class MinistryInd extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            ministryComponent: null,
+            imgList:{ 
+                section1:[ministryImg1, ministryImg5, ministryImg6, ministryImg7],
+                section2:[ministryImg2, ministryImg4, ministryImg8, ministryImg11],
+                section3:[ministryImg3, ministryImg9, ministryImg10]
+            }
+        }
+
+        this.checklogo = this.checklogo.bind(this);
+        this.loadMinistry = this.loadMinistry.bind(this);
+        this.getPhoto = this.getPhoto.bind(this);
     }
 
-    componentDidMount(){
-        window.scrollTo(0, 0);
-        this.loadMinistries();
+    loadMinistry(page){
+        try {
+            this.setState({ ministryComponent: page.data.story });
+        }
+        catch(ex){
+            console.log("Error Loading Individual Ministry: ",ex);
+        }
     }
 
     checklogo(logo) {
@@ -88,65 +181,45 @@ class MinistryAll extends Component {
         return ret;
     }
 
-    getUrl(title){
+    getPhoto(imgId){
         var ret = "";
         try {
-            ret = title.replace(/([&\/\\()])/g,"_").split(' ').join("").toLowerCase();
+            var tmpList = [];
+            switch(imgId){
+                case 1:
+                    tmpList = this.state.imgList.section1;
+                    break;
+                case 2:
+                    tmpList = this.state.imgList.section2;
+                    break;
+                case 3:
+                    tmpList = this.state.imgList.section3;
+                    break;
+                default:
+                    break;
+            }
+
+            let rand = Math.random() * tmpList.length;
+            ret = tmpList[Math.floor(rand)];
         }
         catch(ex){
-            console.log("error setting url: ", ex);
-            ret = "";
+            console.log("Error Getting Photo: ", imgId, " : ", ex);
         }
         return ret;
     }
 
-    loadMinistries(){
+    componentDidMount(){
         var self = this;
         try {
-            fetch(this.props.rootPath + "/api/getAllMinistries")
-            .then(function(response) {
-                if (response.status >= 400) {
-                  throw new Error("Bad response from server");
-                }
-                return response.json();
-            })
-            .then(function(data) {
-                self.setState({ ministryList: data.results});
+            window.scrollTo(0, 0);
+            stb.initEditor(this);
+            stb.getInitialProps({"query":"ministries"}, 'cdn/stories/ministries/' + self.props.ministryId, function(page){              
+                self.loadMinistry(page);
             });
         }
         catch(ex){
-            console.log(" Error loading announcements: ",ex);
-        }
-    }
-}
-
-class MinistryInd extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            ministryComponent: null,
-            ministryImgs:{
-                "10":"classLeaders.JPG",
-                "deaconessboard":"deaconess.JPG",
-                "greetersministry":"greeters.JPG",
-                "menofvarick":"mensMinistry.JPG",
-                "14":"multiMedia.JPG",
-                "progressiveclub":"progressiveClub.JPG",
-                "stewardboard":"stewardBoard.JPG",
-                "trusteeboard":"trusteeBoard.JPG",
-                "16":"ushers.JPG",
-                "womenofzion":"womensMinistry.JPG",
-                "18":"ministrysociety.JPG",
-                "christianeducationdepartment":"christianEdu.JPG",
-                "youngadultmissionarysociety_yams_":"youngadult.JPG"
-            }
-        }
-
-        this.checklogo = this.checklogo.bind(this);
-        this.getUrl = this.getUrl.bind(this);
-        this.reloadPage = this.reloadPage.bind(this);
-        this.getPhoto = this.getPhoto.bind(this);
+            console.log(" Error Loading data: ",ex);
+        }  
     }
 
     render(){        
@@ -164,35 +237,24 @@ class MinistryInd extends Component {
                                 <div className="tag-info"><div className="tag-title">Return To Ministry List</div></div>
                             </div>
                         </Link>
-
-                        <div className="sibling-container">
-                            {this.state.ministryComponent && this.state.ministryComponent.siblings ? this.state.ministryComponent.siblings.map((ministry,j) =>
-                                <Link to={"/ministries/" + this.getUrl(ministry.title)} className="ministry-tag" key={j} onClick={() => this.reloadPage(ministry.title)}>
-                                    <div className="tag-img"><img src={this.checklogo(ministry.logo)} alt="minstry icon"/></div>
-                                    <div className="tag-info">
-                                        <div className="tag-title">{ministry.title}</div>
-                                        {ministry.subSections.length > 0 && <div className="tag-subsection">{ministry.subSections[0]}</div>}
-                                    </div>
-                                </Link>
-                            ) : <span></span>}
-                        </div>
                     </div>
                 </section>
                 {this.state.ministryComponent ? 
+                    <SbEditable content={this.state.ministryComponent}>
                     <span>
                         <section className="body-section ministry-title">
                             <div className="ministry-individual">
-                                <div className="individual-img"><img src={this.checklogo(this.state.ministryComponent.logo)} alt="minstry icon"/></div>
+                                <div className="individual-img"><img src={this.checklogo(this.state.ministryComponent.content.icon)} alt="minstry icon"/></div>
                                 <div className="individual-info">
-                                    <div className="individual-title">{this.state.ministryComponent.title}</div>
-                                    {this.state.ministryComponent.subSections.length > 0 && <div className="individual-subsection">{this.state.ministryComponent.subSections[0]}</div>}
+                                    <div className="individual-title">{this.state.ministryComponent.content.name}</div>
+                                    {this.state.ministryComponent.content.smallgroup && <div className="individual-subsection">{this.state.ministryComponent.content.smallgroup}</div>}
                                 </div>
                             </div>
                         </section>
 
                         <section className="body-section ministry-mission">
                             <h2 className="font-title1">Our Mission</h2>
-                            <p>{this.state.ministryComponent.mission}</p>
+                            <p>{this.state.ministryComponent.content.mission}</p>
                         </section>
 
                         <section className="body-section ministry-content notched-top">
@@ -202,10 +264,10 @@ class MinistryInd extends Component {
                                 <div className="basic-content">
                                     <h2 className="font-title1">Leadership</h2>
                                     <div className="leadership-container">
-                                        {this.state.ministryComponent.leadership.map((leader,i) =>
+                                        {this.state.ministryComponent.content.leadership.map((leader,i) =>
                                             <div className="leader-info" key={i}>
                                                 <div className="leader-name">{leader.name}</div>
-                                                <div className="leader-position">{leader.title}</div>
+                                                <div className="leader-position">{leader.position}</div>
                                                 <a href={"mailto:"+leader.email} className="leader-email">{leader.email}</a>
                                             </div>
                                         )}
@@ -217,7 +279,7 @@ class MinistryInd extends Component {
                                 <div className="basic-img"><img src={this.getPhoto(2)} alt="ministry membership img"/></div>
                                 <div className="basic-content">
                                     <h2 className="font-title1">Membership</h2>
-                                    <div className="membership-container">{this.state.ministryComponent.membership}</div>
+                                    <div className="membership-container">{this.state.ministryComponent.content.membership}</div>
                                 </div>
                             </div>
                             {/* Goals*/}
@@ -227,108 +289,19 @@ class MinistryInd extends Component {
                                     <h2 className="font-title1">Goals</h2>
                                     <div className="goals-container">
                                         <ul className="fa-ul">
-                                            {this.state.ministryComponent.goals.map((goal,i) =>
-                                                <li key={i}><span className="fa-li" ><i className="fas fa-check"></i></span>{goal}</li>
+                                            {this.state.ministryComponent.content.goals.map((goal,i) =>
+                                                <li key={i}><span className="fa-li" ><i className="fas fa-check"></i></span>{goal.goal}</li>
                                             )}
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </section>
-
-                        <section className="body-section notched-top light ministry-activities">
-                            <h2 className="font-title1">Our Activities</h2>
-                            
-                            <div className="activity-center">
-                                {this.state.ministryComponent.activities.map((activity,i) =>
-                                    <div className="activity-item" key={i}>
-                                        <div className="item-title">{activity.title}</div>
-                                        <div className="item-description">{activity.description}</div>
-                                    </div>
-                                )}
-                            </div>
-                        </section>
                     </span>
+                    </SbEditable>
                 : <div className="loader-container"><div className="hm-spinner" /></div> }
-                }
-            </div>            
+            </div>                   
         );
-    }
-
-    componentDidMount(){
-        window.scrollTo(0, 0);
-        this.loadMinistry(this.props.ministryId);
-    }
-
-    getPhoto(imgId){
-        var ret = "";
-        try {
-            if(imgId == 1){
-                var minID = this.props.ministryId.toLowerCase();
-                if(minID in this.state.ministryImgs){
-                    ret = '/images/'+this.state.ministryImgs[minID];
-                }
-                else {
-                    ret = ministryImg1;
-                }
-            }
-            else if(imgId == 2){
-                ret = ministryImg2;
-            }
-            else if(imgId == 3){
-                ret = ministryImg3;
-            }
-        }
-        catch(ex){
-
-        }
-        return ret;
-    }
-
-    loadMinistry(mId){
-        var self = this;
-        try {
-            var postData = {"ministryId": mId};
-
-            axios.post(this.props.rootPath + "/api/getIndMinistry", postData, {'Content-Type': 'application/json'})
-            .then(function(response) {
-                self.setState({ ministryComponent: response.data.results});
-            });
-        }
-        catch(ex){
-            console.log(" Error loading announcements: ",ex);
-        }
-    }
-
-    checklogo(logo) {
-        var ret = null;
-        try {
-            ret = (!logo ? amezLogo : logo);
-        }
-        catch(ex){
-            console.log("Error checking logo: ", ex);
-        }
-        return ret;
-    }
-
-    getUrl(title){
-        var ret = "";
-        try {
-            ret = title.replace(/([&\/\\()])/g,"_").split(' ').join("").toLowerCase();
-        }
-        catch(ex){
-            console.log("error setting url: ", ex);
-            ret = "";
-        }
-        return ret;
-    }
-
-    reloadPage(title){
-        var titleId = this.getUrl(title);
-        var newUrl = "/ministries/" + titleId;
-        window.location = newUrl;
-        window.scrollTo(0, 0);
-        this.loadMinistry(titleId);
     }
 }
 

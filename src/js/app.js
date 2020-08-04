@@ -1,9 +1,6 @@
 //https://reacttraining.com/react-router/web/example/route-config
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { CSSTransitionGroup } from 'react-transition-group';
-import { spring, AnimatedSwitch } from 'react-router-transition';
-import StoryblokService from './utils/storyblok.service';
 
 /* Components */
 import Footer from './templates/footer';
@@ -18,7 +15,7 @@ import GetConnected from './templates/getConnected';
 import ContactUs from './templates/contactUs';
 import Gallery from './templates/gallery';
 
-import UC from './templates/uc';
+//import UC from './templates/uc';
 import NoMatch from './templates/404';
 
 /* Styles */
@@ -27,7 +24,6 @@ import "../css/app.less";
 /* Images */
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 
-const stb = new StoryblokService();
 const rootPath = "";
 //const rootPath = "http://localhost:7777";
 
@@ -44,13 +40,13 @@ const routes = [
         { title:"connect with us", path:"/getConnected/connectWithUs", component:GetConnected, class:"no-wrap" },
         { title:"service information", path:"/getConnected/ourService", component:OurService, class:"no-wrap"}
     ]},     
-    /*{ title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries, icon:"fas fa-users"},*/       
+    { title:"ministries", path:"/ministries", optionalPath:"/:ministryId?", component:Ministries, icon:"fas fa-users"},       
     { title:"contact us", path:"/contactUs", component:ContactUs, icon:"fas fa-at"}  
 ];
 
 const SiteRoutes = route => (
     <div> 
-        {route.subPages != undefined && route.subPages.length > 0 ?        
+        {route.subPages !== undefined && route.subPages.length > 0 ?        
             <span>
                 <Route exact path={route.path} render={props => ( <route.component {...props} rootPath={rootPath}/>)} />            
                 {route.subPages.map((subroute, i) => <SiteRoutes key={i} {...subroute} />)}
@@ -82,7 +78,7 @@ function BuildSubMap(props){
                         {col.map((subItem, l) =>
                             (subItem.external ?
                                 <a href={subItem.path} target="_blank" key={l} rel="noopener noreferrer">{subItem.title}</a> :
-                                <Link key={l} to={subItem.path} class={subItem.class}>{subItem.title}</Link>
+                                <Link key={l} to={subItem.path} className={subItem.class}>{subItem.title}</Link>
                             )
                         )}
                     </div>
@@ -115,10 +111,10 @@ function MobileNav(props){
             </div>
 
             <div className="sidenav-section btn-section">
-                <a href="https://giv.li/0euaiq" target="_blank" className="donate-btn">Donate</a>
+                <a href="https://giv.li/0euaiq" target="_blank" rel="noopener noreferrer" className="donate-btn">Donate</a>
                 <div className="social-btn-container">
-                    <a href="https://www.facebook.com/Clinton-African-Methodist-Episcopal-Zion-Church-344226358930084/" target="_blank" className="social-btn facebook" data-fa-transform="shrink-8"><i className="fab fa-facebook-f fa-fw"></i></a>
-                    <a href="https://twitter.com/ClintonAMEZion" target="_blank" className="social-btn twitter" data-fa-transform="shrink-8"><i className="fab fa-twitter fa-fw"></i></a>
+                    <a href="https://www.facebook.com/Clinton-African-Methodist-Episcopal-Zion-Church-344226358930084/" target="_blank" rel="noopener noreferrer" className="social-btn facebook" data-fa-transform="shrink-8"><i className="fab fa-facebook-f fa-fw"></i></a>
+                    <a href="https://twitter.com/ClintonAMEZion" target="_blank" rel="noopener noreferrer" className="social-btn twitter" data-fa-transform="shrink-8"><i className="fab fa-twitter fa-fw"></i></a>
                 </div>
             </div>
         </div>
@@ -150,7 +146,7 @@ class App extends Component{
                     <div className="nav-header fixed-header" id="clintonHeader">
                         <div className="main-top-nav">
                             <a href="https://giv.li/0euaiq" target="_blank" rel="noopener noreferrer" className="top-link">Givelify</a>
-                            <a href="" target="_blank" rel="noopener noreferrer" className="top-link">CashApp</a>
+                            {/*<a href="" target="_blank" rel="noopener noreferrer" className="top-link">CashApp</a>*/}
                             <a href="https://www.facebook.com/Clinton-African-Methodist-Episcopal-Zion-Church-344226358930084/" target="_blank" rel="noopener noreferrer" className="top-link social-link facebook"><i className="fab fa-facebook-f fa-fw"/></a>
                             <a href="https://twitter.com/ClintonAMEZion" target="_blank" rel="noopener noreferrer" className="top-link social-link twitter"><i className="fab fa-twitter fa-fw"/></a>
                         </div>

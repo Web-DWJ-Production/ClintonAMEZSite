@@ -5,7 +5,6 @@ import Modal from 'react-awesome-modal';
 import axios from 'axios';
 
 import backImg from "../../assets/img/siteMedia/group5.jpg";
-import pastorImg from "../../assets/img/siteMedia/pastor-mini.jpg";
 
 const localizer = Calendar.momentLocalizer(moment);
 var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
@@ -70,7 +69,7 @@ class GetConnected extends Component{
                 </section>
 
                 <section className="body-section prayerCall notched-top">
-                    <div className="prayerCardImg"><img src="/images/prayerCall.jpg" /></div>
+                    <div className="prayerCardImg"><img src="/images/prayerCall.jpg" alt="prayer call flyer"/></div>
                 </section> 
 
                 <section className="body-section biblestudy notched-top c3-mid">
@@ -95,7 +94,7 @@ class GetConnected extends Component{
                                     <p>Time: {this.parseDate(this.state.modalevent.start_dt,"time")}</p>
                                     <p>{this.state.modalevent.location}</p>
                                 </div>
-                                <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                                <div onClick={() => this.closeModal()}>Close</div>
                             </div>
                         </Modal>
                     </div>

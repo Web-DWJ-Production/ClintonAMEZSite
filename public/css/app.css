@@ -912,7 +912,7 @@ button.rbc-input::-moz-focus-inner {
   }
 }
 .home .welcome {
-  padding: 140px 5% 70px;
+  padding: 140px 5% 0px;
   position: relative;
 }
 .home .welcome .text-content {
@@ -1991,7 +1991,7 @@ button.rbc-input::-moz-focus-inner {
 .indministry .sub-nav-card {
   color: #ffffff;
   position: relative;
-  padding: 160px 2% 30px;
+  padding: 120px 2% 20px;
 }
 .indministry .sub-nav-card .back-img {
   position: absolute;
@@ -2023,7 +2023,6 @@ button.rbc-input::-moz-focus-inner {
 .indministry .sub-nav-card .tag-nav-container .ministry-tag {
   display: inline-flex;
   padding: 7px 15px;
-  margin-bottom: 15px;
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -2179,6 +2178,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .indministry .ministry-content .basic-section .basic-img img {
   width: 100%;
+  min-height: 100%;
 }
 .indministry .ministry-content .basic-section .basic-content {
   flex: 1;
