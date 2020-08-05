@@ -27,7 +27,8 @@ class ComingSoon extends Component{
                         </div>
 
                         <div className="tmpTxt">
-                            <p>As we prepare our new website and digital platform we welcome you to join us online every Sunday for <span>Online Sunday School</span> & <span>Worship</span>. To login: </p>
+                            <p>As we prepare our new website and digital platform we welcome you to join us online every Sunday for <span>Online Sunday School @ 8:30am EST</span> & <span>Worship @ 10am EST</span>.</p>
+                            <p>To login:</p>
                         </div>
 
                         <div className="tmpBtn-container">
