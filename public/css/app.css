@@ -1588,7 +1588,6 @@ button.rbc-input::-moz-focus-inner {
   font-size: 3rem;
 }
 .our-history .body-section.localHistory {
-  background: linear-gradient(45deg, #726193 20%, #e37b7c 60%, #ffe4b4);
   color: #fafafa;
 }
 .our-staff .staffList {
@@ -3449,6 +3448,34 @@ html {
 .site-page .title-card.c1 {
   background-color: #969696;
 }
+.body-section .section-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+.body-section .section-back img {
+  position: relative;
+  z-index: 0;
+  object-fit: cover;
+  width: 100%;
+  min-height: 100%;
+  filter: grayscale(0.9);
+  opacity: 0.6;
+}
+.body-section .section-back:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.6);
+}
 .body-section.notched-top {
   position: relative;
 }
@@ -3478,6 +3505,13 @@ html {
 .body-section.notched-top.c2-mid:before {
   background-color: rgba(186, 0, 1, 0.7) !important;
 }
+.body-section.notched-top.c3 {
+  background: #863694 !important;
+  color: #fafafa;
+}
+.body-section.notched-top.c3:before {
+  background-color: #863694 !important;
+}
 .body-section.notched-top.c3-mid {
   background: rgba(134, 54, 148, 0.7) !important;
   color: #fafafa;
@@ -3491,6 +3525,15 @@ html {
 }
 .body-section.notched-top.light:before {
   background-color: #c8c8c8;
+}
+.body-section.notched-top.b1 {
+  color: #fafafa;
+}
+.body-section.notched-top.b1:before {
+  background-color: #554f58;
+}
+.body-section.notched-top.b1 .section-back {
+  background: rgba(59, 48, 63, 0.6);
 }
 /* Common elements */
 .mail-to {

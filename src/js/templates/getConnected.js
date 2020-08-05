@@ -90,7 +90,7 @@ class GetConnected extends Component{
                     <div className="prayerCardImg"><img src="/images/prayerCall.jpg" alt="prayer call flyer"/></div>
                 </section> 
 
-                <section className="body-section biblestudy notched-top c3-mid">
+                <section className="body-section biblestudy notched-top c3">
                     <h2 className="font-title1">Bible Study</h2> 
                     <p>Please Check Back Later For Our Bible Studies</p>
                 </section>

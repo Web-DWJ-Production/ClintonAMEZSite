@@ -52,7 +52,7 @@ class MinistryAll extends Component {
 
                 {this.state.ministryList && this.state.ministryList.length > 0 ?
                     this.state.ministryList.map((msection,i) =>
-                        <section className={"body-section notched-top" + (i%2===1? " c3-mid" : "")} key={i}>
+                        <section className={"body-section notched-top" + (i%2===1? " c3" : "")} key={i}>
                             <h1 className="font-title1">{ msection.sectionTitle }</h1>
                             <div className="ministry-lrg-container">
                                 {msection.list.map((ministry,j) =>

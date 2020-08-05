@@ -32,7 +32,7 @@ class ContactUs extends Component{
                     <p className="contact-message">The Clinton Church Family invites you to join us in Christian Fellowship. <br/>Please reach out to us below for any question, prayer requests, or general information.</p>
                 </section>
 
-                <section className="body-section contact-info c3 notched-top c3-mid">
+                <section className="body-section contact-info c3 notched-top c3">
                     <div className="info-section">
                         <h2>Church Address</h2>
                         <p>Clinton African Methodist Episcopal Zion Church</p>

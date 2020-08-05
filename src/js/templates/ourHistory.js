@@ -3,6 +3,8 @@ import PicBook from './components/picBook';
 
 /* Images */
 import backImg from "../../assets/img/siteMedia/church12.jpg";
+import spacer from "../../assets/img/siteMedia/Back10-mini.png";
+
 /* Story 1 */
 import s1I1 from "../../assets/img/siteMedia/amezHistory3.jpg";
 import s1I2 from "../../assets/img/siteMedia/amezHistory2.jpg";
@@ -57,9 +59,10 @@ class OurHistory extends Component{
                     <PicBook pages={this.state.story1} side="right" colorclass="color3"></PicBook>
                 </section>  
 
-                <section className="body-section localHistory light notched-top">
+                <section className="body-section localHistory b1 notched-top">
                     <h1 className="section-title font-title1">Our Local Church</h1>
-                    <PicBook pages={this.state.story2} side="left" colorclass="color3"></PicBook>                    
+                    <PicBook pages={this.state.story2} side="left" colorclass="color3"></PicBook>   
+                    <div className="section-back"><img src={spacer} alt="section back"/></div>                 
                 </section>  
             </div>   
         );        
