@@ -3001,6 +3001,186 @@ button.rbc-input::-moz-focus-inner {
     padding: 5px 10px;
   }
 }
+.cs-body {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+.cs-body .content-body {
+  width: 75%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.cs-body .content-body:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  z-index: 2;
+  background-color: #554f58;
+  right: -50px;
+  top: 50%;
+  width: 50px;
+  height: 100px;
+  transform: translateY(-50%);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  box-shadow: 8px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 8px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 8px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 770px) {
+  .cs-body .content-body:before {
+    right: initial;
+    top: initial;
+    left: 50%;
+    bottom: -50px;
+    width: 100px;
+    height: 50px;
+    transform: translateX(-50%);
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 100px;
+  }
+}
+.cs-body .content-body .back-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.cs-body .content-body .back-img img {
+  position: relative;
+  z-index: 0;
+  object-fit: cover;
+  height: 100%;
+  filter: grayscale(0.9);
+  opacity: 0.6;
+}
+.cs-body .content-body .back-img:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: rgba(59, 48, 63, 0.6);
+}
+.cs-body .content-body .body-info {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 3%;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+.cs-body .content-body .body-info .tmpLogo {
+  height: 75px;
+}
+.cs-body .content-body .body-info .tmpLogo img {
+  height: 100%;
+}
+.cs-body .content-body .body-info .tmpTxt {
+  color: #fff;
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
+.cs-body .content-body .body-info .tmpTxt.header {
+  font-size: 2.5rem;
+}
+.cs-body .content-body .body-info .tmpTxt p {
+  margin-bottom: 0px;
+}
+.cs-body .content-body .body-info .tmpTxt span {
+  color: #c2922d;
+}
+@media (max-width: 770px) {
+  .cs-body .content-body .body-info .tmpTxt {
+    font-size: 1;
+    text-align: center;
+  }
+  .cs-body .content-body .body-info .tmpTxt.header {
+    font-size: 1.3rem;
+  }
+}
+.cs-body .content-body .body-info .tmpBtn-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.cs-body .content-body .body-info .tmpBtn-container .tmpBtn {
+  background: #c2922d;
+  color: #fff;
+  border-radius: 50px;
+  padding: 5px 15px;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.3s all ease-in-out;
+}
+.cs-body .content-body .body-info .tmpBtn-container .tmpBtn i {
+  margin-right: 7px;
+}
+.cs-body .content-body .body-info .tmpBtn-container .tmpBtn.noback {
+  cursor: initial;
+  background: rgba(0, 0, 0, 0);
+  border: 2px solid #ffffff;
+  box-shadow: initial;
+}
+.cs-body .content-body .body-info .tmpBtn-container .tmpBtn:hover:not(.noback) {
+  background: rgba(194, 146, 45, 0.5) !important;
+  text-decoration: none;
+}
+.cs-body .content-body .body-info .tmpBtn-container .tmpBtn + .tmpBtn {
+  margin-left: 20px;
+}
+@media (max-width: 770px) {
+  .cs-body .content-body .body-info .tmpBtn-container .tmpBtn + .tmpBtn {
+    margin: 20px 0 0;
+  }
+}
+@media (max-width: 770px) {
+  .cs-body .content-body .body-info .tmpBtn-container .tmpBtn {
+    text-align: center;
+  }
+}
+@media (max-width: 770px) {
+  .cs-body .content-body .body-info .tmpBtn-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 770px) {
+  .cs-body .content-body {
+    padding-bottom: 30px;
+    flex-direction: column;
+    width: 100%;
+    height: 75%;
+  }
+}
+.cs-body .img-body {
+  flex: 1;
+  background: #fff;
+  overflow: hidden;
+}
+.cs-body .img-body img {
+  object-fit: cover;
+  height: 100%;
+}
+@media (max-width: 770px) {
+  .cs-body .img-body img {
+    width: 100%;
+    height: initial;
+  }
+}
+@media (max-width: 770px) {
+  .cs-body {
+    height: initial;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+}
 body,
 html {
   margin: 0px !important;

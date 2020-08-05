@@ -1,0 +1,143 @@
+
+.cs-body {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+    .content-body {
+        width: 75%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        
+        &:before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            z-index: 2;
+
+            background-color: rgb(85,79,88);                
+            right: -@notchSize;
+            top: 50%;
+            width: @notchSize;
+            height: @notchSize *2;
+            transform: translateY(-50%);
+            border-top-right-radius: @notchSize * 2;
+            border-bottom-right-radius: @notchSize * 2;
+
+            box-shadow: 8px 0px 10px 0px rgba(0,0,0,.3);
+            -moz-box-shadow:    8px 0px 10px 0px rgba(0,0,0,.3);
+            -webkit-box-shadow: 8px 0px 10px 0px rgba(0,0,0,.3);     
+            
+            @media @mobile-device {
+                right: initial; top: initial;
+                left: 50%; bottom: -@notchSize;
+                width: @notchSize * 2;
+                height: @notchSize;
+                transform: translateX(-50%);
+
+                border-top-right-radius: 0;
+                border-bottom-left-radius: @notchSize * 2;
+            }
+        }
+
+        .back-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+
+            img {
+                position: relative; 
+                z-index: 0; 
+                object-fit: cover; 
+                height: 100%; 
+                filter: grayscale(0.9);
+                opacity: 0.6;
+            }
+
+            &:before { 
+                content: '';
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                z-index: 2;
+                background: rgba(59, 48, 63, 0.6);
+            }
+        }
+
+        .body-info {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 3%;
+            font-family: 'Montserrat Alternates', sans-serif; 
+
+            .tmpLogo {
+                height: 75px;
+                img { height: 100%;}
+            }
+
+            .tmpTxt {
+                color: #fff;
+                margin-top: 30px;
+                font-size: 1.2rem;
+
+                &.header { font-size: 2.5rem; }
+                p { margin-bottom: 0px; }
+                span { color: @color6;}
+
+                @media @mobile-device { font-size: 1; text-align: center; &.header { font-size: 1.3rem;}}
+            }
+
+            .tmpBtn-container {
+                display: flex;
+                flex-direction: row;
+                margin-top: 30px;
+                .tmpBtn {
+                    background: @color6;
+                    color: #fff;
+                    border-radius: 50px;
+                    padding: 5px 15px;
+                    display: inline-block;
+                    cursor: pointer;
+                    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);                        
+                    transition: 0.3s all ease-in-out;
+                    i { margin-right: 7px; }
+
+                    &.noback {
+                        cursor: initial;
+                        background: rgba(0,0,0,0);
+                        border: 2px solid rgba(255,255,255,1);
+                        box-shadow: initial;
+                    }
+
+                    &:hover:not(.noback) { .color6(background, 0.5); text-decoration: none; }
+
+                    &+.tmpBtn { margin-left: 20px; @media @mobile-device { margin: 20px 0 0; }}
+                    @media @mobile-device { text-align: center;}
+                }
+
+                @media @mobile-device { flex-direction: column;}
+            }
+        }
+
+        @media @mobile-device { padding-bottom: 30px; flex-direction: column; width: 100%; height: 75%; }
+    }
+
+    .img-body {
+        flex:1;
+        background: #fff;
+        overflow: hidden;
+        img { 
+            object-fit: cover;
+            height: 100%;
+            @media @mobile-device { width: 100%; height: initial; }
+        }
+    }
+
+    @media @mobile-device { height: initial; min-height: 100vh; flex-direction: column; }
+}
