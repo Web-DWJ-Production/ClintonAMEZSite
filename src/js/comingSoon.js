@@ -63,6 +63,11 @@ class ComingSoon extends Component{
                             <p>Password: <span>676479</span></p>
                         </div>
 
+                        <div className="tmpTxt">
+                            <p><span>Rev. Alyce R. Walker Johnson, Pastor & Chief Servant</span></p>
+                           
+                        </div>
+
                     </div>
                 </div>
                 <div className="img-body"><img src={soloImg} alt="solo" /></div>
