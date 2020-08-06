@@ -21,14 +21,29 @@ class ComingSoon extends Component{
                         <div className="tmpLogo"><img src={logoW} className="logo" alt="A.M.E. Zion Logo" /></div>
 
                         <div className="tmpTxt header">
-                            <p>Stay Tuned,</p>
-                            <p>Our <span>New Online</span> Experience</p>
-                            <p>Is Coming Soon</p>
+                            <p>COMING SOON!</p>
+                            <p>Stay Tuned for</p>
+                            <p>our <span>NEW Online</span> Experience</p>
                         </div>
 
                         <div className="tmpTxt">
-                            <p>As we prepare our new website and digital platform we welcome you to join us online every Sunday for <span>Online Sunday School @ 8:30am EST</span> & <span>Worship @ 10am EST</span>.</p>
-                            <p>To login:</p>
+                            <p>In the meantime, we invite you to come GROW in CHRIST with us:</p>
+                            <p>Every Wednesday at 7 a.m. for the <span>Mid-Week Prayer Call</span></p>
+                        </div>
+
+                        <div className="tmpBtn-container">
+                            <div className="tmpBtn noback">
+                                <i className="fas fa-phone-volume" />
+                                <span>Dial In: +1 (301) 298-1561</span>
+                            </div>
+
+                            <div className="tmpBtn noback">
+                                <span>Password: 630958#</span>
+                            </div>
+                        </div>
+
+                        <div className="tmpTxt">
+                            <p>Every Sunday for <span>Discipleship Training</span> at 8:30 a.m. & <span>Morning Worship</span> at 10:00 a.m.</p>
                         </div>
 
                         <div className="tmpBtn-container">
