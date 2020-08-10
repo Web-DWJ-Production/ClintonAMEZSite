@@ -23,9 +23,10 @@ import "../css/app.less";
 
 /* Images */
 import logoW from "../assets/img/logos/Clinton_logoW.png";
+import givelifylogo from "../assets/img/logos/givelify-logo-color.png";
 
-//const rootPath = "";
-const rootPath = "http://localhost:7777";
+const rootPath = "";
+//const rootPath = "http://localhost:7777";
 
 const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, icon:"fas fa-book-reader", subPages:[
@@ -145,7 +146,9 @@ class App extends Component{
                     { /* HEADER */}                    
                     <div className="nav-header fixed-header" id="clintonHeader">
                         <div className="main-top-nav">
-                            <a href="https://giv.li/0euaiq" target="_blank" rel="noopener noreferrer" className="top-link">Givelify</a>
+                        
+                            <a href="https://giv.li/0euaiq" target="_blank" rel="noopener noreferrer" className="top-link top-btn-link"><img src={givelifylogo} alt="givelify logo" /></a>
+                            {/*<a href="https://giv.li/0euaiq" target="_blank" rel="noopener noreferrer" className="top-link top-btn-link">Givelify</a> */}
                             {/*<a href="" target="_blank" rel="noopener noreferrer" className="top-link">CashApp</a>*/}
                             <a href="https://www.facebook.com/Clinton-African-Methodist-Episcopal-Zion-Church-344226358930084/" target="_blank" rel="noopener noreferrer" className="top-link social-link facebook"><i className="fab fa-facebook-f fa-fw"/></a>
                             <a href="https://twitter.com/ClintonAMEZion" target="_blank" rel="noopener noreferrer" className="top-link social-link twitter"><i className="fab fa-twitter fa-fw"/></a>

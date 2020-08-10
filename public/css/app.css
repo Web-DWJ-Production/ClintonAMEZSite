@@ -3308,6 +3308,19 @@ html {
 .nav-header .main-top-nav .top-link + .top-link {
   margin-left: 20px;
 }
+.nav-header .main-top-nav .top-btn-link {
+  background: #ffffff;
+  color: #863694;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.nav-header .main-top-nav .top-btn-link img {
+  height: 16px;
+}
+.nav-header .main-top-nav .social-link {
+  padding: 3px 0;
+}
 .nav-header .main-bottom-nav {
   background: #605763;
 }
