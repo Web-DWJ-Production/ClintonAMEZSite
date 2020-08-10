@@ -6,7 +6,7 @@ class StoryblokService extends Component {
         super();
 
         this.devMode = true; // Always loads draft
-        this.token = 'HgUfa2kWBrjV5Mawl97FyAtt'
+        this.token = 'WE238nGZVoj44IZTpgCtjQtt'
         this.client = new StoryblokClient({
             accessToken: this.token,
             cache: {
