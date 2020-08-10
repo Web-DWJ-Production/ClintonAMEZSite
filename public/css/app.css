@@ -1626,6 +1626,8 @@ button.rbc-input::-moz-focus-inner {
   padding: 120px 5%;
 }
 .our-service .serviceInfo .service-card {
+  position: relative;
+  z-index: 1;
   border-radius: 4px;
   display: flex;
   flex-flow: row wrap;
@@ -1866,6 +1868,11 @@ button.rbc-input::-moz-focus-inner {
   .our-pastor .pastorInfo .section-title {
     font-size: 2rem;
   }
+}
+.our-pastor .pastorInfo .section-title,
+.our-pastor .pastorInfo .pastor-blog {
+  position: relative;
+  z-index: 1;
 }
 .our-pastor .pastorInfo .pastor-blog {
   display: flex;
@@ -2360,11 +2367,82 @@ button.rbc-input::-moz-focus-inner {
 .get-connected .prayerCall {
   padding: 100px 5% 130px;
 }
-.get-connected .prayerCall .prayerCardImg {
-  text-align: center;
+.get-connected .prayerCall .split-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
 }
-.get-connected .prayerCall .prayerCardImg img {
-  width: 75%;
+.get-connected .prayerCall .split-section .splitImg {
+  text-align: center;
+  width: 55%;
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.get-connected .prayerCall .split-section .splitImg img {
+  width: 100%;
+  min-height: 100%;
+}
+.get-connected .prayerCall .split-section .splitImg .video-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.get-connected .prayerCall .split-section .splitImg .video-content video {
+  width: 100%;
+}
+.get-connected .prayerCall .split-section .splitImg .video-content .video-title {
+  flex: 1;
+  background: #c2922d !important;
+  color: #ffffff;
+  text-align: left;
+  padding: 2px 7px;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+.get-connected .prayerCall .split-section .splitImg .video-content .video-title .title {
+  font-weight: bold;
+}
+.get-connected .prayerCall .split-section .splitImg .video-content .video-title .date {
+  padding-left: 15px;
+  color: #c8c8c8;
+  font-size: 1rem;
+  margin: 7px 0;
+}
+@media (max-width: 770px) {
+  .get-connected .prayerCall .split-section .splitImg {
+    width: 100%;
+  }
+}
+.get-connected .prayerCall .split-section .split-content {
+  text-align: center;
+  flex: 1;
+  font-size: 1.3rem;
+  padding: 7px 15px;
+  margin-left: 10px;
+}
+.get-connected .prayerCall .split-section .split-content .callInfo div {
+  color: #969696;
+  font-size: 1rem;
+  margin: 7px 0;
+}
+.get-connected .prayerCall .split-section .conent-sub {
+  text-align: left;
+  margin-top: 25px;
+}
+.get-connected .prayerCall .split-section .conent-sub p {
+  margin-bottom: 2px;
+}
+.get-connected .prayerCall .split-section .conent-sub p span {
+  color: #c2922d;
+}
+.get-connected .prayerCall .split-section + .split-section {
+  margin-top: 75px;
+}
+@media (max-width: 770px) {
+  .get-connected .prayerCall .split-section {
+    flex-direction: column;
+  }
 }
 .get-connected .biblestudy {
   padding: 50px 5% 80px;
@@ -2377,16 +2455,25 @@ button.rbc-input::-moz-focus-inner {
   padding: 50px 5%;
   text-align: center;
 }
+.get-connected .events .font-title1 {
+  position: relative;
+  z-index: 1;
+}
 .get-connected .events .events-container {
   height: calc(95vh - 90px);
   background: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
+  z-index: 1;
   padding: 7px;
   overflow: hidden;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
+.get-connected .events .events-container .rbc-calendar {
+  position: relative;
+  z-index: 1;
+}
 .get-connected .events .events-container .rbc-event {
-  background-color: #863694;
+  background-color: #ba0001;
 }
 .contact-us .contact-form {
   padding: 50px 5% 70px;
@@ -3448,6 +3535,9 @@ html {
 .site-page .title-card.c1 {
   background-color: #969696;
 }
+.body-section {
+  position: relative;
+}
 .body-section .section-back {
   position: absolute;
   top: 0;
@@ -3476,6 +3566,33 @@ html {
   z-index: 2;
   background: rgba(255, 255, 255, 0.6);
 }
+.body-section .back-img {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.body-section .back-img img {
+  position: relative;
+  z-index: 0;
+  object-fit: cover;
+  width: 100%;
+  min-height: 100%;
+  filter: grayscale(0.9);
+  opacity: 0.6;
+}
+.body-section .back-img:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
 .body-section.notched-top {
   position: relative;
 }
@@ -3494,6 +3611,10 @@ html {
   box-shadow: 0 -8px 10px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 -8px 10px 0px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 -8px 10px 0px rgba(0, 0, 0, 0.3);
+}
+.body-section.notched-top.c2 {
+  background: #ba0001 !important;
+  color: #ffffff;
 }
 .body-section.notched-top.c2:before {
   background-color: #ba0001;
@@ -3613,6 +3734,56 @@ html {
 }
 .btn-link:hover {
   opacity: 1;
+}
+.btn2-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.btn2-container .btn2 {
+  background: #c2922d;
+  color: #fff;
+  border-radius: 50px;
+  padding: 5px 15px;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.3s all ease-in-out;
+}
+.btn2-container .btn2 i {
+  margin-right: 7px;
+}
+.btn2-container .btn2.noback {
+  cursor: initial;
+  background: rgba(0, 0, 0, 0);
+  border: 2px solid #ffffff;
+  box-shadow: initial;
+}
+.btn2-container .btn2.c6 {
+  color: #000000;
+  border: 2px solid #c2922d;
+}
+.btn2-container .btn2:hover:not(.noback) {
+  background: rgba(194, 146, 45, 0.5) !important;
+  text-decoration: none;
+}
+.btn2-container .btn2 + .btn2 {
+  margin-left: 20px;
+}
+@media (max-width: 770px) {
+  .btn2-container .btn2 + .btn2 {
+    margin: 20px 0 0;
+  }
+}
+@media (max-width: 770px) {
+  .btn2-container .btn2 {
+    text-align: center;
+  }
+}
+@media (max-width: 770px) {
+  .btn2-container {
+    flex-direction: column;
+  }
 }
 .md-row {
   display: flex;

@@ -1,11 +1,59 @@
-.get-connected {
+.get-connected {        
     .prayerCall {
         padding: 100px 5% 130px;
+        .split-section {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: row;
+            .splitImg {
+                text-align: center;                          
+                width: 55%;
+                -moz-box-shadow:    0 0 10px rgba(0,0,0,.5);
+                -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5);
+                box-shadow:         0 0 10px rgba(0,0,0,.5);
+                img { width: 100%; min-height: 100%;}
 
-        .prayerCardImg {
-            text-align: center;
-            img { width: 75%;}
+                .video-content {
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100%;
+
+                    video { width: 100%;}
+                    .video-title {
+                        flex:1;
+                        .color6(background, 1);
+                        color: rgba(255,255,255,1);
+                        text-align: left;
+                        padding: 2px 7px;
+                        font-family: 'Montserrat Alternates', sans-serif; 
+                        .title { font-weight: bold; }
+                        .date { padding-left: 15px; color: rgba(200,200,200,1); font-size: 1rem; margin: 7px 0;}
+                    }
+                }
+                @media @mobile-device { width: 100%;}
+            }
+
+            .split-content {
+                text-align: center;
+                flex:1;
+                font-size: 1.3rem;
+                padding: 7px 15px;
+                margin-left: 10px;
+                .callInfo {
+                    div { color: rgba(150,150,150,1); font-size: 1rem; margin: 7px 0; }
+                }
+            }
+            .conent-sub {
+                text-align: left;
+                margin-top: 25px;
+                p { margin-bottom: 2px; span { color: @color6; }}
+            }
+            
+            &+.split-section { margin-top: 75px; }
+            @media @mobile-device { flex-direction: column; }
         }
+        
     }
     .biblestudy {
         padding: 50px 5% 80px;
@@ -16,16 +64,19 @@
     .events {
         padding: 50px 5%;
         text-align: center;
-        
+        .font-title1 { position: relative; z-index: 1; }
+
         .events-container {
             height: calc(95vh - 90px);
             background: rgba(255,255,255,0.8);
             border-radius: 5px;
+            z-index: 1;
             padding: 7px;
             overflow:hidden;
             box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 
-            .rbc-event { background-color: @color3;}
+            .rbc-calendar { position: relative; z-index: 1;}
+            .rbc-event { background-color: @color2;}
         }
     }
 }

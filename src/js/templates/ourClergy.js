@@ -53,7 +53,7 @@ class OurStaff extends Component{
 
     loadStaff(page){
         try {
-            console.log(page.data.story.content.body);
+            //console.log(page.data.story.content.body);
             if(page.data.story.content.body){
                 this.setState({ staffList: page.data.story.content.body });
             }

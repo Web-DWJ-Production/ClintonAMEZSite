@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 /* Images */
 import churchImg from "../../assets/img/siteMedia/dance2.jpg";
 import backImg from "../../assets/img/siteMedia/group8.jpg";
+import callBack from "../../assets/img/siteMedia/Back09-mini.png";
 
 class OurService extends Component{
     constructor(props) {
@@ -23,6 +24,8 @@ class OurService extends Component{
                 </section>
                 
                 <section className="body-section serviceInfo notched-top">
+                    <div className="back-img"><img src={callBack} alt="background" /></div>
+
                     <div className="service-card">
                         <div className="church-img"><img src={churchImg} alt="church"/></div>
                         <div className="service-content">

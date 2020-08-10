@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 /* Images */
 import backImg from "../../assets/img/siteMedia/pastor6.jpg";
 import pastorImg from "../../assets/img/siteMedia/pastor1.jpg";
+import callBack from "../../assets/img/siteMedia/Back09-mini.png";
 
 class PastorsPage extends Component{
     constructor(props) {
@@ -23,6 +24,8 @@ class PastorsPage extends Component{
                 </section>
                 
                 <section className="body-section pastorInfo notched-top">
+                    <div className="back-img"><img src={callBack} alt="background" /></div>
+
                     <h1 className="section-title">Alyce R. Walker Johnson, B.A., MPA, M.Div.</h1>
 
                     <div className="pastor-blog">

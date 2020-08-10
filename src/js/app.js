@@ -24,8 +24,8 @@ import "../css/app.less";
 /* Images */
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 
-const rootPath = "";
-//const rootPath = "http://localhost:7777";
+//const rootPath = "";
+const rootPath = "http://localhost:7777";
 
 const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, icon:"fas fa-book-reader", subPages:[

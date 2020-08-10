@@ -290,6 +290,7 @@ body, html {
     }
 }
 .body-section {  
+    position: relative;
     .section-back {
         position: absolute;
         top:0; left:0;
@@ -316,6 +317,34 @@ body, html {
         }
     }
 
+    .back-img { 
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        img {
+            position: relative; 
+            z-index: 0; 
+            object-fit: cover;                 
+            width: 100%; 
+            min-height: 100%;
+            filter: grayscale(0.9);
+            opacity: 0.6;
+        }
+
+        &:before { 
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2;
+        }
+    }
+
     &.notched-top { 
         position: relative;        
         &:before {
@@ -335,6 +364,8 @@ body, html {
             -webkit-box-shadow: 0 -8px 10px 0px rgba(0,0,0,.3);
         }  
         &.c2 {
+            .color2(background, 1);
+            color: rgba(255,255,255,1);
             &:before { background-color: @color2; }
         } 
         &.c2-mid {
@@ -416,6 +447,39 @@ body, html {
     text-transform: uppercase;
 
     &:hover { opacity: 1; }
+}
+
+.btn2-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    .btn2 {
+        background: @color6;
+        color: #fff;
+        border-radius: 50px;
+        padding: 5px 15px;
+        display: inline-block;
+        cursor: pointer;
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);                        
+        transition: 0.3s all ease-in-out;
+        i { margin-right: 7px; }
+
+        &.noback {
+            cursor: initial;
+            background: rgba(0,0,0,0);
+            border: 2px solid rgba(255,255,255,1);
+            box-shadow: initial;
+
+        }
+        &.c6 { color: rgba(0,0,0,1); border: 2px solid @color6;}
+
+        &:hover:not(.noback) { .color6(background, 0.5); text-decoration: none; }
+
+        &+.btn2 { margin-left: 20px; @media @mobile-device { margin: 20px 0 0; }}
+        @media @mobile-device { text-align: center;}
+    }
+
+    @media @mobile-device { flex-direction: column;}
 }
 
 .md-row {

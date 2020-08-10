@@ -74,7 +74,7 @@ class MinistryAll extends Component {
                     if(tmpList[item.content.section]){
                         tmpList[item.content.section].push(item);
                     }
-                    else {
+                    else if(item.content.section && item.content.section.length > 0){
                         tmpList[item.content.section] = [item];
                     }
                 }
@@ -100,7 +100,7 @@ class MinistryAll extends Component {
         try {
             window.scrollTo(0, 0);
             stb.initEditor(this);
-            stb.getInitialParamProps({"query":"ministries"}, 'cdn/stories', {starts_with: 'ministries'},function(page){
+            stb.getInitialParamProps({"query":"ministries"}, 'cdn/stories', {starts_with: 'ministries', per_page: 40},function(page){
                 self.loadMinistries(page);
             });
         }
@@ -149,6 +149,7 @@ class MinistryInd extends Component {
 
         this.state = {
             ministryComponent: null,
+            noData: false,
             imgList:{ 
                 section1:[ministryImg1, ministryImg5, ministryImg6, ministryImg7],
                 section2:[ministryImg2, ministryImg4, ministryImg8, ministryImg11],
@@ -163,7 +164,12 @@ class MinistryInd extends Component {
 
     loadMinistry(page){
         try {
-            this.setState({ ministryComponent: page.data.story });
+            if(page.data.story.content && page.data.story.content.name){
+                this.setState({ ministryComponent: page.data.story });
+            }
+            else { 
+                this.setState({ noData: true });
+            }
         }
         catch(ex){
             console.log("Error Loading Individual Ministry: ",ex);
