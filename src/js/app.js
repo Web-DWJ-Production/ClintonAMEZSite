@@ -25,8 +25,8 @@ import "../css/app.less";
 import logoW from "../assets/img/logos/Clinton_logoW.png";
 import givelifylogo from "../assets/img/logos/givelify-logo-color.png";
 
-const rootPath = "";
-//const rootPath = "http://localhost:7777";
+//const rootPath = "";
+const rootPath = "http://localhost:7777";
 
 const routes = [
     { title:"about us", path:"/aboutUs", component:AboutUs, icon:"fas fa-book-reader", subPages:[
@@ -96,13 +96,13 @@ function MobileNav(props){
             <div className="sidenav-section">
                 {routes.map((route, i) =>
                     <div className="route-page-container" key={i}>
-                        <Link className="sidenav-link" to={route.path}>{route.title}</Link>
+                        <Link className="sidenav-link" to={route.path} onClick={() => props.setSidebarDisplay(false)}>{route.title}</Link>
                         <div className="sidenav-subcontainer">
                             {route.subPages && route.subPages.map((subItem,k) => 
                                 <span className="sub-link" key={k}>
                                 {(subItem.external ?
                                     <a href={subItem.path} target="_blank" key={k} rel="noopener noreferrer">{subItem.title}</a>
-                                    : <Link key={k} to={subItem.path}>{subItem.title}</Link>
+                                    : <Link key={k} to={subItem.path} onClick={() => props.setSidebarDisplay(false)}>{subItem.title}</Link>
                                 )}
                                 </span>
                             )}
