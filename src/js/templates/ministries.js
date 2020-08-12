@@ -271,7 +271,7 @@ class MinistryInd extends Component {
 
                         <div className="sibling-container">
                             {this.state.siblings.map((sibling, i) => 
-                                <Link to={sibling.full_slug} className="sibling-tag" key={i}>
+                                <Link to={"/"+sibling.full_slug} className="sibling-tag" key={i}>
                                     <div className="sibling-img"><img src={this.checklogo(sibling.icon)} alt={sibling.name} /></div>
                                     <div className="sibling-name">{ sibling.name }</div>
                                 </Link>
