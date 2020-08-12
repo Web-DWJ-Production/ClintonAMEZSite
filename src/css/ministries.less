@@ -92,7 +92,7 @@
                 .tag-info {
                     flex:1;
                     text-transform: capitalize;
-                    .tag-title{ font-size: 1.2rem; text-align: left; @media @mobile-device { text-align: center;}}
+                    .tag-title{ font-size: 1.2rem; text-align: center;}
                     .tag-subsection { 
                         font-size: .8rem;  
                         padding: 0px 5px; 
@@ -139,6 +139,8 @@
             display: flex;
             position: relative;
             z-index: 1;
+
+            .tag-sub-container { display: flex; flex-direction: column; justify-content: center; }
             .ministry-tag {
                 display: inline-flex;                                
                 padding: 7px 15px;
@@ -186,8 +188,21 @@
 
             .sibling-container {
                 flex: 1;
+                display: flex;
+                flex-direction: row;
                 margin-left: 20px;
-                padding: 0px 7px;
+                padding: 7px;
+
+                .sibling-tag {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    .sibling-img { height: 50px; position: relative; overflow: hidden; img { height: 100%; }}
+                    .sibling-name { color: #fff; }
+
+                    &:hover { text-decoration: none; }
+                    &+.sibling-tag { margin-left: 10px; }
+                }
             }
 
             @media @mobile-device {
@@ -211,7 +226,7 @@
             .individual-info {
                 flex:1;
                 text-transform: capitalize;
-                .individual-title{ font-size: 4rem; text-align: left; @media @mobile-device { text-align: center; }}
+                .individual-title{ font-size: 4rem; text-align: center; }
                 .individual-subsection { 
                     font-size: 1.8rem; 
                     padding: 0px 5px;                     
