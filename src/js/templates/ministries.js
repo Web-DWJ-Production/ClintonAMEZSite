@@ -170,7 +170,7 @@ class MinistryInd extends Component {
             if(subsection){
                 stb.getInitialParamProps({"query":"ministries"}, 'cdn/stories', {filter_query: { smallgroup: { "in": subsection } }, per_page: 15},function(page){
                     if(page.data.stories){ 
-                        var tmpList = page.data.stories.map(function(item){ return { name: item.name, full_slug: item.full_slug, smallgroup: item.content.smallgroup, icon: item.content.icon }});
+                        var tmpList = page.data.stories.map(function(item){ return { name: item.name, slug: item.slug, smallgroup: item.content.smallgroup, icon: item.content.icon }});
                         self.setState({ siblings: tmpList });
                     }
                 });
@@ -271,10 +271,10 @@ class MinistryInd extends Component {
 
                         <div className="sibling-container">
                             {this.state.siblings.map((sibling, i) => 
-                                <Link to={"/"+sibling.full_slug} className="sibling-tag" key={i}>
+                                <a href={"/ministries/"+sibling.slug} className="sibling-tag" key={i}>
                                     <div className="sibling-img"><img src={this.checklogo(sibling.icon)} alt={sibling.name} /></div>
                                     <div className="sibling-name">{ sibling.name }</div>
-                                </Link>
+                                </a>
                             )}
                         </div>
                     </div>
