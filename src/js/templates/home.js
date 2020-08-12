@@ -207,9 +207,9 @@ class Home extends Component{
                         <h1 className="font-title1">Ministries</h1>
                         <p>We believe in the living word and being an active body of christ, through our ministries we are able to connected and serve those within our community and promote positive change.</p>
                         
-                        {/*<Link to="/ministries" className="ministry-tag all">                                
+                        <Link to="/ministries" className="ministry-tag all">                                
                             <div className="tag-title">View All Ministries</div>
-                        </Link>*/}
+                        </Link>
                     </div>
                 </section>
 

@@ -149,6 +149,7 @@ class MinistryInd extends Component {
 
         this.state = {
             ministryComponent: null,
+            siblings: [],
             noData: false,
             imgList:{ 
                 section1:[ministryImg1, ministryImg5, ministryImg6, ministryImg7],
@@ -159,13 +160,35 @@ class MinistryInd extends Component {
 
         this.checklogo = this.checklogo.bind(this);
         this.loadMinistry = this.loadMinistry.bind(this);
+        this.loadSiblings = this.loadSiblings.bind(this);
         this.getPhoto = this.getPhoto.bind(this);
     }
 
+    loadSiblings(subsection){
+        var self = this;
+        try {
+            if(subsection){
+                stb.getInitialParamProps({"query":"ministries"}, 'cdn/stories', {filter_query: { smallgroup: { "in": subsection } }, per_page: 15},function(page){
+                    if(page.data.stories){ 
+                        var tmpList = page.data.stories.map(function(item){ return { name: item.name, full_slug: item.full_slug, smallgroup: item.content.smallgroup, icon: item.content.icon }});
+                        self.setState({ siblings: tmpList });
+                    }
+                });
+            }            
+        }
+        catch(ex){
+            console.log(" [Error] loading siblings");
+        }
+    }
+
     loadMinistry(page){
+        var self = this;
         try {
             if(page.data.story.content && page.data.story.content.name){
                 this.setState({ ministryComponent: page.data.story });
+                if(page.data.story.content.smallgroup) {
+                    self.loadSiblings(self.state.ministryComponent.content.smallgroup);
+                } 
             }
             else { 
                 this.setState({ noData: true });
@@ -237,12 +260,23 @@ class MinistryInd extends Component {
                     </div>
 
                     <div className="tag-nav-container">
-                        <Link to="/ministries" className="ministry-tag all">
-                            <div className="all-container">
-                                <div className="tag-img"><i className="fas fa-arrow-left"></i></div>
-                                <div className="tag-info"><div className="tag-title">Return To Ministry List</div></div>
-                            </div>
-                        </Link>
+                        <div className="tag-sub-container">
+                            <Link to="/ministries" className="ministry-tag all">
+                                <div className="all-container">
+                                    <div className="tag-img"><i className="fas fa-arrow-left"></i></div>
+                                    <div className="tag-info"><div className="tag-title">Return To Ministry List</div></div>
+                                </div>
+                            </Link>
+                        </div>
+
+                        <div className="sibling-container">
+                            {this.state.siblings.map((sibling, i) => 
+                                <Link to={sibling.full_slug} className="sibling-tag" key={i}>
+                                    <div className="sibling-img"><img src={this.checklogo(sibling.icon)} alt={sibling.name} /></div>
+                                    <div className="sibling-name">{ sibling.name }</div>
+                                </Link>
+                            )}
+                        </div>
                     </div>
                 </section>
                 {this.state.ministryComponent ? 

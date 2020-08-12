@@ -964,6 +964,9 @@ button.rbc-input::-moz-focus-inner {
   width: 100%;
 }
 @media (max-width: 770px) {
+  .home .welcome {
+    padding-top: 100px;
+  }
   .home .welcome .text-content {
     width: 100%;
   }
@@ -972,7 +975,7 @@ button.rbc-input::-moz-focus-inner {
   }
 }
 .home .getConnected {
-  padding: 140px 5% 70px;
+  padding: 140px 5%;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -1173,7 +1176,7 @@ button.rbc-input::-moz-focus-inner {
 @media (max-width: 770px) {
   .home .getConnected {
     flex-direction: column-reverse;
-    padding-bottom: 50px;
+    padding: 100px 5%;
   }
   .home .getConnected .text-content {
     width: 100%;
@@ -1187,7 +1190,7 @@ button.rbc-input::-moz-focus-inner {
   }
 }
 .home .ministries .text-content {
-  padding: 70px 15%;
+  padding: 140px 15%;
   display: inline-block;
   z-index: 1;
   text-align: center;
@@ -1202,7 +1205,7 @@ button.rbc-input::-moz-focus-inner {
 }
 @media (max-width: 770px) {
   .home .ministries .text-content {
-    padding: 20px 10px;
+    padding: 100px 10px;
   }
 }
 .home .ministries .ministry-tag {
@@ -1241,7 +1244,7 @@ button.rbc-input::-moz-focus-inner {
   flex: 1;
   background: #863694;
   color: #ffffff;
-  padding: 20px 20px 20px 5%;
+  padding: 50px 20px 50px 5%;
 }
 .home .visitUs .visit-content h1 {
   font-size: 2rem;
@@ -1318,11 +1321,6 @@ button.rbc-input::-moz-focus-inner {
     box-shadow: -8px 8px 10px 0px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: -8px 8px 10px 0px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: -8px 8px 10px 0px rgba(0, 0, 0, 0.3);
-  }
-}
-@media (max-width: 770px) {
-  .home .visitUs .visit-content {
-    padding-bottom: 50px;
   }
 }
 .home .visitUs .visit-img {
@@ -2095,12 +2093,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .ministries .body-section .ministry-lrg-container .ministry-lrg-tag .tag-info .tag-title {
   font-size: 1.2rem;
-  text-align: left;
-}
-@media (max-width: 770px) {
-  .ministries .body-section .ministry-lrg-container .ministry-lrg-tag .tag-info .tag-title {
-    text-align: center;
-  }
+  text-align: center;
 }
 .ministries .body-section .ministry-lrg-container .ministry-lrg-tag .tag-info .tag-subsection {
   font-size: 0.8rem;
@@ -2145,6 +2138,11 @@ button.rbc-input::-moz-focus-inner {
   display: flex;
   position: relative;
   z-index: 1;
+}
+.indministry .sub-nav-card .tag-nav-container .tag-sub-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .indministry .sub-nav-card .tag-nav-container .ministry-tag {
   display: inline-flex;
@@ -2205,8 +2203,32 @@ button.rbc-input::-moz-focus-inner {
 }
 .indministry .sub-nav-card .tag-nav-container .sibling-container {
   flex: 1;
+  display: flex;
+  flex-direction: row;
   margin-left: 20px;
-  padding: 0px 7px;
+  padding: 7px;
+}
+.indministry .sub-nav-card .tag-nav-container .sibling-container .sibling-tag {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.indministry .sub-nav-card .tag-nav-container .sibling-container .sibling-tag .sibling-img {
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+.indministry .sub-nav-card .tag-nav-container .sibling-container .sibling-tag .sibling-img img {
+  height: 100%;
+}
+.indministry .sub-nav-card .tag-nav-container .sibling-container .sibling-tag .sibling-name {
+  color: #fff;
+}
+.indministry .sub-nav-card .tag-nav-container .sibling-container .sibling-tag:hover {
+  text-decoration: none;
+}
+.indministry .sub-nav-card .tag-nav-container .sibling-container .sibling-tag + .sibling-tag {
+  margin-left: 10px;
 }
 @media (max-width: 770px) {
   .indministry .sub-nav-card .tag-nav-container {
@@ -2241,12 +2263,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .indministry .ministry-title .ministry-individual .individual-info .individual-title {
   font-size: 4rem;
-  text-align: left;
-}
-@media (max-width: 770px) {
-  .indministry .ministry-title .ministry-individual .individual-info .individual-title {
-    text-align: center;
-  }
+  text-align: center;
 }
 .indministry .ministry-title .ministry-individual .individual-info .individual-subsection {
   font-size: 1.8rem;
