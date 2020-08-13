@@ -7,6 +7,7 @@ import Footer from './templates/footer';
 import Home from './templates/home';
 import AboutUs from './templates/aboutUs';
 import OurHistory from './templates/ourHistory';
+import OurLeadership from './templates/ourLeadership';
 import OurClergy from './templates/ourClergy';
 import OurService from './templates/ourService';
 import PastorsPage from './templates/pastorsPage';
@@ -22,7 +23,7 @@ import NoMatch from './templates/404';
 import "../css/app.less";
 
 /* Images */
-import logoW from "../assets/img/logos/Clinton_logoW.png";
+import logoW from "../assets/img/logos/Clinton_logoW2.png";
 import givelifylogo from "../assets/img/logos/givelify-logo-color.png";
 
 const rootPath = "";
@@ -34,6 +35,7 @@ const routes = [
         { title:"our history",path:"/aboutUs/ourHistory", component:OurHistory},
         { title:"pastors page", path:"/aboutUs/pastorsPage", component:PastorsPage},
         { title:"our clergy", path:"/aboutUs/ourClergy", component:OurClergy},        
+        { title:"our leadership", path:"/aboutUs/ourLeadership", component:OurLeadership},        
         { title:"gallery", path:"/aboutUs/gallery", component:Gallery},
         { title:"inside zion", external:true, path:"http://www.amez.org/"}
     ]},

@@ -31,8 +31,7 @@ class OurService extends Component{
                         <div className="service-content">
                             <div className="content-info where-we-are txt c3">
                                 <div className="info-txt">
-                                    <p>Come join us at Clinton A.M.E. Zion anytime,</p> 
-                                    <p>We are located at</p>
+                                    <p>Clinton A.M.E. Zion Church Home</p> 
                                 </div>
                                 <div className="address">
                                     <p>223 Elizabeth Avenue</p>
@@ -41,14 +40,38 @@ class OurService extends Component{
                             </div>
                             <div className="content-info our-times txt c6">
                                 <div className="info-txt lrg">Sunday Services</div>
-                                <div className="service-info">
-                                    <div className="title">Sunday  School</div>
-                                    <div className="time">8:30am</div>
+                                <div className="service-info-container">
+                                    <div className="service-info">
+                                        <div className="title">Sunday  School</div>
+                                        <div className="time">8:30am</div>
+                                    </div>
+                                    <div className="service-info">
+                                        <div className="title">Morning Worship Service</div>
+                                        <div className="time">10:00am</div>
+                                    </div>
                                 </div>
-                                <div className="service-info">
-                                    <div className="title">Morning Worship Service</div>
-                                    <div className="time">10:00am</div>
+
+                                <div className="more-info-container">
+                                    <div className="info-txt lrg">Join Us Online</div>
+
+                                    <div className="btn2-container">
+                                        <a className="btn2" href="https://us02web.zoom.us/j/81318905630?pwd=bU0vUWtDOFRudSsvbXdEL3F1RGl5Zz09" target="_blank" rel="noopener noreferrer">
+                                            <i className="fas fa-tablet-alt" />
+                                            <span>Online</span>
+                                        </a>
+
+                                        <div className="btn2 noback c6">
+                                            <i className="fas fa-phone-volume" />
+                                            <span>Dial In: +1 (301) 715-8592</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="content-sub">
+                                        <p>Meeting ID: <span>813 1890 5630</span></p>
+                                        <p>Password: <span>676479</span></p>
+                                    </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

@@ -3,11 +3,10 @@ import SbEditable from 'storyblok-react';
 import StoryblokService from '../utils/storyblok.service';
 
 import backImg from "../../assets/img/siteMedia/group4.jpg";
-import callBack from "../../assets/img/siteMedia/Back09-mini.png";
 
 const stb = new StoryblokService();
 
-class OurClergy extends Component{
+class OurLeadership extends Component{
     constructor(props) {
         super(props);
 
@@ -20,9 +19,9 @@ class OurClergy extends Component{
 
     render(){        
         return(
-            <div className="site-page our-staff our-clergy">
+            <div className="site-page our-staff">
                 <section className="title-card">
-                    <h1 className="font-title1">Our Clergy</h1>
+                    <h1 className="font-title1">Our Leadership</h1>
                     <div className="back-img">
                         <div className="cover c3c2"></div>
                         <img src={backImg} alt="clergy background img"/>
@@ -30,9 +29,7 @@ class OurClergy extends Component{
                 </section>
                 
                 {this.state.staffList.map((team,i) => 
-                    <section className={"body-section staffList clergyList notched-top " + team.colorClass} key={i}>                    
-                        <div className="back-img"><img src={callBack} alt="background" /></div>
-                        
+                    <section className={"body-section staffList notched-top " + team.colorClass} key={i}>                    
                         <SbEditable content={team}>
                             <div className="staffTeamContainer">
                                 <div className="content-container">
@@ -56,6 +53,7 @@ class OurClergy extends Component{
 
     loadStaff(page){
         try {
+            //console.log(page.data.story.content.body);
             if(page.data.story.content.body){
                 this.setState({ staffList: page.data.story.content.body });
             }
@@ -69,10 +67,10 @@ class OurClergy extends Component{
         var self = this;
         window.scrollTo(0, 0);
         stb.initEditor(this);
-        stb.getInitialProps({"query":"home"}, 'cdn/stories/aboutus/ourclergy', function(page){
+        stb.getInitialProps({"query":"home"}, 'cdn/stories/aboutus/ourleadership', function(page){
             self.loadStaff(page);
         });
     }
 }
 
-export default OurClergy;
+export default OurLeadership;

@@ -149,7 +149,9 @@
                 }  
                 &.full { .carousel-card  {padding: 0px; } }
                 &.card { padding: 40px 15% 10px; height: calc(~"100% - 50px");}                            
-            }               
+            }   
+            
+            .control-dots { bottom: 100px; }
         }
 
         .event-scroller {
@@ -201,7 +203,7 @@
                         }
                         .event-info {
                             color: rgba(255,255,255,1);
-                            .info-title { font-weight: bold; font-size: 1.1rem;}
+                            .info-title { font-weight: bold; font-size: 1rem;}
                             .info-base { font-size: .9rem; display: flex; flex-direction: column; }
                          }
                     }
@@ -490,8 +492,9 @@
                     flex: 1;
                     padding-left: 10px;
                     h2 { margin-bottom: 14px;}
-                    p {      
-                        padding-left: 5px;               
+                    p, .vbase {      
+                        padding-left: 5px;  
+                        margin-bottom: 1rem;             
                         .social-icon {                         
                             background: rgba(255,255,255,1);
                             color: @color3;

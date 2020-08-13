@@ -137,9 +137,6 @@
         padding: 50px 5% 70px;
         text-align: center;
 
-        &.c2-mid { 
-            .teamMember { .member-title{ color: rgba(200,200,200,1) !important; }}
-        }
         .staffTeamContainer {            
             .content-container {
                 padding: 0px 0 30px;
@@ -161,6 +158,14 @@
                 }
             }
         }
+
+        &.c2-mid, &.c2, &.c3, &.c3-mid { 
+            .teamMember { .member-title{ color: rgba(200,200,200,1) !important; }}
+        }
+    }
+
+    .clergyList {
+        min-height: 80vh;
     }
 }
 
@@ -198,16 +203,47 @@
                         p { margin: 0; }
                     }
                     p { margin: 0; }
-                    .service-info {
-                        &+.service-info { margin-top: 15px;}
-                        .title { font-weight: bold;}
+                    
+                    .service-info-container {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        .service-info {
+                            .title { font-weight: bold;}
+                        }
                     }
 
+                    .more-info-container { 
+                        margin-top: 15px;
+
+                        .btn2-container {
+                            margin-top: 10px;
+                            text-align: center;
+                            justify-content: center;
+                            .btn2 { 
+                                font-size: 1.2rem;
+                                line-height: 1.2rem;
+                            }
+                        }
+
+                        .content-sub { 
+                            margin-top: 10px;
+                            font-size: 1.2rem; 
+                            text-align: left; 
+                            padding: 0 10px;
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            justify-content: space-around;
+                            p { &+p{ margin-left: 10px; }}
+                        }
+                    }
+                    
                     &.txt {
                         position: relative;
                         padding: 20px;                        
                         line-height: 2rem;
-                        text-indent: 30px;
+                        //text-indent: 30px;
 
                         -moz-box-shadow:    0 0 10px rgba(0,0,0,.5);
                         -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5);

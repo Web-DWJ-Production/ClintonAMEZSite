@@ -7,7 +7,7 @@ import SbEditable from 'storyblok-react';
 import StoryblokService from '../utils/storyblok.service';
 
 import backImg from "../../assets/img/siteMedia/group5.jpg";
-import noVidImg from "../../assets/img/siteMedia/group5.jpg";
+import noVidImg from "../../assets/img/siteMedia/churchback0.jpg";
 import eventBack from "../../assets/img/siteMedia/Back10-mini.png";
 import callBack from "../../assets/img/siteMedia/Back09-mini.png";
 
@@ -31,8 +31,36 @@ class GetConnected extends Component{
         this.parseDate = this.parseDate.bind(this);
         this.compareDates = this.compareDates.bind(this);
         this.loadPage = this.loadPage.bind(this);
+        this.isMedia = this.isMedia.bind(this);
     } 
 
+    isMedia(file, type){
+        var ret = false;
+        try {
+            if(type === "video"){
+                var vidList = [".mp4", ".mov"];
+                for(var i =0; i < vidList.length; i++){
+                    if(file.endsWith(vidList[i])) {
+                        ret = true;
+                        break;
+                    }
+                }
+            }
+            else {
+                var audList = [".mp3"];
+                for(var j=0; j < audList.length; j++){
+                    if(file.endsWith(audList[j])) {
+                        ret = true;
+                        break;
+                    }
+                }
+            }
+        }
+        catch(ex){
+            console.log(" [Error] checking file type: ",ex);
+        }
+        return ret;
+    }
     compareDates(start, end) {
         var ret = true;
         try {
@@ -111,11 +139,14 @@ class GetConnected extends Component{
     }
     loadPage(page){
         try {
-            console.log(page.data.story.content.body);
+            var validPage = { "prayerCall":true, "worshipVideo":true };
+
             if(page.data.story.content.body){
                 for(var i =0; i < page.data.story.content.body.length; i++){
                     var tmpItem = page.data.story.content.body[i];
-                    this.setState({ [tmpItem.component] : tmpItem });
+                    if(tmpItem.component in validPage){
+                        this.setState({ [tmpItem.component] : tmpItem });
+                    }
                 }
             }
         }
@@ -171,7 +202,7 @@ class GetConnected extends Component{
                                 </div>
                             </div>
 
-                            <div className="conent-sub">
+                            <div className="content-sub">
                                 <p>Meeting ID: <span>813 1890 5630</span></p>
                                 <p>Password: <span>676479</span></p>
                             </div>
@@ -181,12 +212,16 @@ class GetConnected extends Component{
                             { this.state.worshipVideo !== null ?
                                 <SbEditable content={this.state.worshipVideo}>
                                     <div className="video-content">
-                                        <video controls>
-                                            <source src={this.state.worshipVideo.file} type="video/mp4" />
-                                            Your browser does not support the video tag.
-                                        </video>
+                                        {this.isMedia(this.state.worshipVideo.file, "video") ? 
+                                            <video controls>
+                                                <source src={this.state.worshipVideo.file} type="video/mp4" />
+                                                Your browser does not support the video tag.
+                                            </video>
+                                            : <div className="no-video" /> 
+                                        }
                                         <div className="video-title">
                                             <div className="title">{this.state.worshipVideo.title}</div>
+                                            <div className="scripture">{this.state.worshipVideo.scripture}</div>
                                             <div className="date">{this.parseDate(this.state.worshipVideo.date, "date")}</div>
                                         </div>
                                     </div>
@@ -205,11 +240,16 @@ class GetConnected extends Component{
                             {this.state.prayerCall !== null && 
                                 <SbEditable content={this.state.prayerCall}>
                                     <div className="callInfo">         
-                                        <div>{this.parseDate(this.state.prayerCall.date, "date")}</div>                           
-                                        <audio controls>
-                                            <source src={this.state.prayerCall.file} type="audio/mpeg" />
-                                            Your browser does not support the audio element.
-                                        </audio>
+                                        <div className="title">{this.state.prayerCall.title}</div>
+                                        <div className="scripture">{this.state.prayerCall.scripture}</div>
+                                        <div className="date">{this.parseDate(this.state.prayerCall.date, "date")}</div>                           
+                                        {this.isMedia(this.state.prayerCall.file, "audio") ?
+                                            <audio controls>
+                                                <source src={this.state.prayerCall.file} type="audio/mpeg" />
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                            : <div className="no-audio" />
+                                        }
                                     </div>
                                 </SbEditable>
                             }

@@ -848,6 +848,9 @@ button.rbc-input::-moz-focus-inner {
   padding: 40px 15% 10px;
   height: calc(100% - 50px);
 }
+.home .main-carousel .home-carousel .control-dots {
+  bottom: 100px;
+}
 .home .main-carousel .event-scroller {
   position: absolute;
   bottom: 0;
@@ -899,7 +902,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .home .main-carousel .event-scroller .events-container .alice-carousel .event-container .event-info .info-title {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 .home .main-carousel .event-scroller .events-container .alice-carousel .event-container .event-info .info-base {
   font-size: 0.9rem;
@@ -1261,10 +1264,13 @@ button.rbc-input::-moz-focus-inner {
 .home .visitUs .visit-content .item-container .visit-item h2 {
   margin-bottom: 14px;
 }
-.home .visitUs .visit-content .item-container .visit-item p {
+.home .visitUs .visit-content .item-container .visit-item p,
+.home .visitUs .visit-content .item-container .visit-item .vbase {
   padding-left: 5px;
+  margin-bottom: 1rem;
 }
-.home .visitUs .visit-content .item-container .visit-item p .social-icon {
+.home .visitUs .visit-content .item-container .visit-item p .social-icon,
+.home .visitUs .visit-content .item-container .visit-item .vbase .social-icon {
   background: #ffffff;
   color: #863694;
   border-radius: 50%;
@@ -1275,17 +1281,21 @@ button.rbc-input::-moz-focus-inner {
   justify-content: center;
   margin-right: 7px;
 }
-.home .visitUs .visit-content .item-container .visit-item p .social-icon i {
+.home .visitUs .visit-content .item-container .visit-item p .social-icon i,
+.home .visitUs .visit-content .item-container .visit-item .vbase .social-icon i {
   width: 100%;
   text-align: center;
 }
-.home .visitUs .visit-content .item-container .visit-item p .txt {
+.home .visitUs .visit-content .item-container .visit-item p .txt,
+.home .visitUs .visit-content .item-container .visit-item .vbase .txt {
   flex: 1;
 }
-.home .visitUs .visit-content .item-container .visit-item p.addr {
+.home .visitUs .visit-content .item-container .visit-item p.addr,
+.home .visitUs .visit-content .item-container .visit-item .vbase.addr {
   margin-bottom: 0;
 }
-.home .visitUs .visit-content .item-container .visit-item p.social {
+.home .visitUs .visit-content .item-container .visit-item p.social,
+.home .visitUs .visit-content .item-container .visit-item .vbase.social {
   display: flex;
   flex-direction: row;
 }
@@ -1598,9 +1608,6 @@ button.rbc-input::-moz-focus-inner {
   padding: 50px 5% 70px;
   text-align: center;
 }
-.our-staff .staffList.c2-mid .teamMember .member-title {
-  color: #c8c8c8 !important;
-}
 .our-staff .staffList .staffTeamContainer .content-container {
   padding: 0px 0 30px;
   position: relative;
@@ -1625,6 +1632,15 @@ button.rbc-input::-moz-focus-inner {
 }
 .our-staff .staffList .staffTeamContainer .content-container .teamMember + .teamMember {
   margin-top: 20px;
+}
+.our-staff .staffList.c2-mid .teamMember .member-title,
+.our-staff .staffList.c2 .teamMember .member-title,
+.our-staff .staffList.c3 .teamMember .member-title,
+.our-staff .staffList.c3-mid .teamMember .member-title {
+  color: #c8c8c8 !important;
+}
+.our-staff .clergyList {
+  min-height: 80vh;
 }
 .our-service .serviceInfo {
   padding: 120px 5%;
@@ -1678,17 +1694,43 @@ button.rbc-input::-moz-focus-inner {
 .our-service .serviceInfo .service-card .service-content .content-info p {
   margin: 0;
 }
-.our-service .serviceInfo .service-card .service-content .content-info .service-info + .service-info {
+.our-service .serviceInfo .service-card .service-content .content-info .service-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .service-info-container .service-info .title {
+  font-weight: bold;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .more-info-container {
   margin-top: 15px;
 }
-.our-service .serviceInfo .service-card .service-content .content-info .service-info .title {
-  font-weight: bold;
+.our-service .serviceInfo .service-card .service-content .content-info .more-info-container .btn2-container {
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .more-info-container .btn2-container .btn2 {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .more-info-container .content-sub {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  text-align: left;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.our-service .serviceInfo .service-card .service-content .content-info .more-info-container .content-sub p + p {
+  margin-left: 10px;
 }
 .our-service .serviceInfo .service-card .service-content .content-info.txt {
   position: relative;
   padding: 20px;
   line-height: 2rem;
-  text-indent: 30px;
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -2430,6 +2472,11 @@ button.rbc-input::-moz-focus-inner {
 .get-connected .prayerCall .split-section .splitImg .video-content video {
   width: 100%;
 }
+.get-connected .prayerCall .split-section .splitImg .video-content .no-video {
+  background: #000;
+  width: 100%;
+  height: 150px;
+}
 .get-connected .prayerCall .split-section .splitImg .video-content .video-title {
   flex: 1;
   background: #c2922d !important;
@@ -2441,11 +2488,17 @@ button.rbc-input::-moz-focus-inner {
 .get-connected .prayerCall .split-section .splitImg .video-content .video-title .title {
   font-weight: bold;
 }
+.get-connected .prayerCall .split-section .splitImg .video-content .video-title .scripture {
+  padding-left: 15px;
+  color: #c8c8c8;
+  font-size: 1rem;
+  margin: 7px 0 0;
+}
 .get-connected .prayerCall .split-section .splitImg .video-content .video-title .date {
   padding-left: 15px;
   color: #c8c8c8;
   font-size: 1rem;
-  margin: 7px 0;
+  margin: 0 0 7px;
 }
 @media (max-width: 770px) {
   .get-connected .prayerCall .split-section .splitImg {
@@ -2459,19 +2512,24 @@ button.rbc-input::-moz-focus-inner {
   padding: 7px 15px;
   margin-left: 10px;
 }
-.get-connected .prayerCall .split-section .split-content .callInfo div {
+.get-connected .prayerCall .split-section .split-content .callInfo .scripture {
   color: #969696;
   font-size: 1rem;
-  margin: 7px 0;
+  margin: 7px 0 0;
 }
-.get-connected .prayerCall .split-section .conent-sub {
+.get-connected .prayerCall .split-section .split-content .callInfo .date {
+  color: #969696;
+  font-size: 1rem;
+  margin: 0 0 7px;
+}
+.get-connected .prayerCall .split-section .content-sub {
   text-align: left;
   margin-top: 25px;
 }
-.get-connected .prayerCall .split-section .conent-sub p {
+.get-connected .prayerCall .split-section .content-sub p {
   margin-bottom: 2px;
 }
-.get-connected .prayerCall .split-section .conent-sub p span {
+.get-connected .prayerCall .split-section .content-sub p span {
   color: #c2922d;
 }
 .get-connected .prayerCall .split-section + .split-section {
