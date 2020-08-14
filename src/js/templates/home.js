@@ -132,7 +132,7 @@ class Home extends Component{
                         <SbEditable content={this.state.sliderContent}>
                             <div className="back-cover"><img src={(this.state.sliderContent ? this.state.sliderContent.backCover : amezLogo)} alt="Carousel Cover"/></div>
                             {this.state.carouselData && this.state.carouselData.length > 0 ? 
-                                <Carousel className="clinton-carousels home-carousel" showIndicators={false} showThumbs={false} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
+                                <Carousel className="clinton-carousels home-carousel" showIndicators={true} showThumbs={false} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
                                     {this.state.carouselData.map((item, i) => 
                                         <div className="carousel-page" key={i}>
                                             { this.renderSwitch(item) }
@@ -215,7 +215,7 @@ class Home extends Component{
 
                 {/* Visit */}
                 <section className="visitUs">
-                    <div className="visit-content notched-right">
+                    <div className="visit-content notched-right notched-top">
                         <h1 className="font-title1">Visit Us</h1>
                         <div className="item-container">
                             <div className="visit-item">
@@ -227,8 +227,8 @@ class Home extends Component{
 
                             <div className="visit-item">
                                 <h2>Follow Us</h2>
-                                <p className="social"><div className="social-icon"><i className="fab fa-facebook-f fa-fw"/></div> <div className="txt">Clinton African Methodist Episcopal Zion Church</div></p>
-                                <p className="social"><div className="social-icon"><i className="fab fa-twitter fa-fw"/></div><div className="txt">@ClintonAMEZion</div></p>
+                                <div className="vbase social"><div className="social-icon"><i className="fab fa-facebook-f fa-fw"/></div> <div className="txt">Clinton African Methodist Episcopal Zion Church</div></div>
+                                <div className="vbase social"><div className="social-icon"><i className="fab fa-twitter fa-fw"/></div><div className="txt">@ClintonAMEZion</div></div>
                             </div>
                         </div>
                     </div>

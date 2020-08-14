@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import SbEditable from 'storyblok-react';
 import StoryblokService from '../utils/storyblok.service';
 
-import backImg from "../../assets/img/siteMedia/churchclergy1.jpg";
-import callBack from "../../assets/img/siteMedia/Back09-mini.png";
+import backImg from "../../assets/img/siteMedia/group4.jpg";
 
 const stb = new StoryblokService();
 
-class OurClergy extends Component{
+class OurLeadership extends Component{
     constructor(props) {
         super(props);
 
@@ -20,9 +19,9 @@ class OurClergy extends Component{
 
     render(){        
         return(
-            <div className="site-page our-staff our-clergy">
+            <div className="site-page our-staff">
                 <section className="title-card">
-                    <h1 className="font-title1">Our Clergy</h1>
+                    <h1 className="font-title1">Our Leadership</h1>
                     <div className="back-img">
                         <div className="cover c3c2"></div>
                         <img src={backImg} alt="clergy background img"/>
@@ -30,26 +29,19 @@ class OurClergy extends Component{
                 </section>
                 
                 {this.state.staffList.map((team,i) => 
-                    <section className={"body-section clergyList notched-top " + team.colorClass} key={i}>                    
-                        <div className="back-img"><img src={callBack} alt="background" /></div>
-                        
+                    <section className={"body-section staffList notched-top " + team.colorClass} key={i}>                    
                         <SbEditable content={team}>
-                            <div className="clergyContainer">
-                                <div className="clergy-img"><img src={team.image} alt="clergy group"/></div>
+                            <div className="staffTeamContainer">
                                 <div className="content-container">
+                                    <h2>{team.name}</h2>
                                     {team.members.map((member,j) =>
-                                        <SbEditable content={member} key={j}>
+                                        <SbEditable content={member}>
                                             <div className="teamMember" key={j}>
                                                 <div className="member-name">{member.name}</div>
                                                 <div className="member-title">{member.title}</div>
                                             </div> 
                                         </SbEditable>
                                     )}
-
-                                    <div className="teamMember special" >
-                                        <div className="member-name">Rev. Alyce R. Walker Johnson</div>
-                                        <div className="member-title">Pastor & Chief Servant</div>
-                                    </div> 
                                 </div>
                             </div>  
                         </SbEditable>                 
@@ -61,6 +53,7 @@ class OurClergy extends Component{
 
     loadStaff(page){
         try {
+            //console.log(page.data.story.content.body);
             if(page.data.story.content.body){
                 this.setState({ staffList: page.data.story.content.body });
             }
@@ -74,10 +67,10 @@ class OurClergy extends Component{
         var self = this;
         window.scrollTo(0, 0);
         stb.initEditor(this);
-        stb.getInitialProps({"query":"home"}, 'cdn/stories/aboutus/ourclergy', function(page){
+        stb.getInitialProps({"query":"home"}, 'cdn/stories/aboutus/ourleadership', function(page){
             self.loadStaff(page);
         });
     }
 }
 
-export default OurClergy;
+export default OurLeadership;
