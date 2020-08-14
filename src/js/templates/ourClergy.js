@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SbEditable from 'storyblok-react';
 import StoryblokService from '../utils/storyblok.service';
 
-import backImg from "../../assets/img/siteMedia/group4.jpg";
+import backImg from "../../assets/img/siteMedia/churchclergy1.jpg";
 import callBack from "../../assets/img/siteMedia/Back09-mini.png";
 
 const stb = new StoryblokService();

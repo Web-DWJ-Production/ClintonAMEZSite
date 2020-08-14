@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 /* Images */
 import churchImg from "../../assets/img/siteMedia/dance2.jpg";
-import backImg from "../../assets/img/siteMedia/group8.jpg";
+import backImg from "../../assets/img/siteMedia/dance1.jpg";
 import callBack from "../../assets/img/siteMedia/Back09-mini.png";
 
 class OurService extends Component{

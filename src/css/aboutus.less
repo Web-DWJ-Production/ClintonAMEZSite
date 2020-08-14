@@ -209,6 +209,11 @@
                     &+.teamMember { margin-top: 7px; }
                 }
             }
+
+            @media @mobile-device {
+                flex-direction: column;
+                .clergy-img { width: 100%; margin-bottom: 15px; }
+            }
         }
     }
 }
@@ -261,12 +266,16 @@
                         margin-top: 15px;
 
                         .btn2-container {
-                            margin-top: 10px;
+                            margin-top: 20px;
                             text-align: center;
                             justify-content: center;
                             .btn2 { 
                                 font-size: 1.2rem;
                                 line-height: 1.2rem;
+                                background: #fff;
+                                color: rgba(0,0,0,1);
+
+                                &.noback{ background: rgba(0,0,0,0);}
                             }
                         }
 
