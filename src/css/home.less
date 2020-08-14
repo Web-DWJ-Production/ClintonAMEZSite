@@ -547,6 +547,27 @@
                     }
                 }
             }
+
+            &.notched-top {
+                position: relative;
+               
+                &:after {
+                    content: '';
+                    display: inline-block;
+                    position: absolute;
+                    top: -@notchSize;
+                    left: 50%;                    
+                    height: @notchSize;
+                    width: @notchSize *2;
+                    background-color: @color3;                
+                    transform: translateX(-50%);
+                    border-top-left-radius: @notchSize * 2;
+                    border-top-right-radius: @notchSize * 2;
+                    box-shadow: 0 -8px 10px 0px rgba(0,0,0,.3);
+                    -moz-box-shadow:    0 -8px 10px 0px rgba(0,0,0,.3);
+                    -webkit-box-shadow: 0 -8px 10px 0px rgba(0,0,0,.3);
+                }
+            }
         }
         .visit-img { 
             overflow: hidden;

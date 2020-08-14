@@ -3,6 +3,7 @@ import ImageGallery from 'react-image-gallery';
 import axios from 'axios';
 
 import backImg from "../../assets/img/siteMedia/church9.jpg";
+import callBack from "../../assets/img/siteMedia/Back09-mini.png";
 
 class Gallery extends Component{
     constructor(props) {
@@ -62,6 +63,8 @@ class Gallery extends Component{
                     {/* Selected Galleries */}
                     {(this.state.selected !== null ? 
                         <div className="selected-gallery">
+                            <div className="back-img"><img src={callBack} alt="background" /></div>
+                        
                             <div className="gallery-tag all" onClick={() => this.selectGallery(null)}>    
                                 <div className="tag-img"><i className="fas fa-arrow-left"></i></div>
                                 <div className="tag-info"><div className="tag-title">Return To Gallery List</div></div>                                

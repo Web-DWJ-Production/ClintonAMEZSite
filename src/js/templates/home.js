@@ -215,7 +215,7 @@ class Home extends Component{
 
                 {/* Visit */}
                 <section className="visitUs">
-                    <div className="visit-content notched-right">
+                    <div className="visit-content notched-right notched-top">
                         <h1 className="font-title1">Visit Us</h1>
                         <div className="item-container">
                             <div className="visit-item">

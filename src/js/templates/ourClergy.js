@@ -30,21 +30,26 @@ class OurClergy extends Component{
                 </section>
                 
                 {this.state.staffList.map((team,i) => 
-                    <section className={"body-section staffList clergyList notched-top " + team.colorClass} key={i}>                    
+                    <section className={"body-section clergyList notched-top " + team.colorClass} key={i}>                    
                         <div className="back-img"><img src={callBack} alt="background" /></div>
                         
                         <SbEditable content={team}>
-                            <div className="staffTeamContainer">
+                            <div className="clergyContainer">
+                                <div className="clergy-img"><img src={team.image} alt="clergy group"/></div>
                                 <div className="content-container">
-                                    <h2>{team.name}</h2>
                                     {team.members.map((member,j) =>
-                                        <SbEditable content={member}>
+                                        <SbEditable content={member} key={j}>
                                             <div className="teamMember" key={j}>
                                                 <div className="member-name">{member.name}</div>
                                                 <div className="member-title">{member.title}</div>
                                             </div> 
                                         </SbEditable>
                                     )}
+
+                                    <div className="teamMember special" >
+                                        <div className="member-name">Rev. Alyce R. Walker Johnson</div>
+                                        <div className="member-title">Pastor & Chief Servant</div>
+                                    </div> 
                                 </div>
                             </div>  
                         </SbEditable>                 

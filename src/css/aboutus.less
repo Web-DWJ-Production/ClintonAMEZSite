@@ -166,6 +166,50 @@
 
     .clergyList {
         min-height: 80vh;
+        padding: 100px 5% 100px;
+
+        .clergyContainer {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            z-index: 1;
+
+            .clergy-img { 
+                width: 55%; 
+                overflow:hidden; 
+                -moz-box-shadow:    0 0 10px rgba(0,0,0,.5);
+                -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5);
+                box-shadow:         0 0 10px rgba(0,0,0,.5);
+                img { object-fit: cover; width: 100%; min-height: 100%; }
+            }
+
+            .content-container {
+                padding: 0 7px 0;
+                position: relative;
+                overflow: hidden;
+                margin-left: 20px;
+
+                h2 { text-align: center; font-family: 'Homemade Apple', cursive !important; line-height: 4rem;}
+
+                .teamMember {
+                    padding: 7px 25px;
+                    border: 1px solid rgba(0,0,0,0.3);
+                    border-radius: 5px 15px;
+                    text-align: center;
+
+                    .member-name { font-weight: bold; font-size: 1.2rem; }
+                    .member-title { color: @color3; font-style: italic; font-size: 1rem;}
+
+                    &.special { 
+                        border-color: @color6;
+                        margin-top: 40px !important;
+                        .member-name, .member-title { color: @color6;}
+                    }
+
+                    &+.teamMember { margin-top: 7px; }
+                }
+            }
+        }
     }
 }
 
