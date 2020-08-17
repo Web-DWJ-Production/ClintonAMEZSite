@@ -24,6 +24,7 @@
     "flickrapi": "^0.6.0",
     "globalize": "^1.4.0",
     "google-map-react": "^1.1.2",
+    "googleapis": "^59.0.0",
     "jquery": "^3.4.1",
     "marked": "^1.0.0",
     "moment": "^2.24.0",

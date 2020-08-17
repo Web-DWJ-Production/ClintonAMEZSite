@@ -1,8 +1,8 @@
-var path = require('path');
-var util = require('util');
-var request = require('request');
-var Flickr = require("flickrapi");
-
+const path = require('path');
+const util = require('util');
+const request = require('request');
+const Flickr = require("flickrapi");
+let { google } = require('googleapis');
 
 require('dotenv').config();
 var flickrConfig = {
@@ -13,11 +13,18 @@ var flickrConfig = {
     access_token_secret:process.env.FLICKR_ACCESS_TOKEN_SECRET
 }
 
+var calendarConfig = {
+    clientEmail: process.env.GOOGLE_EVENT_CLIENT_EMAIL,
+    privateKey: process.env.GOOGLE_EVENT_PRIVATE_KEY,
+    calendarId: process.env.GOOGLE_EVENT_CALENDAR_ID
+}
+
 var database = {
     remoteUrl: process.env.REMOTEURL,
     dbName: process.env.DBNAME,
     mongoOptions: { connectTimeoutMS: 2000, socketTimeoutMS: 2000}
 }
+
 var mongoClient = require('mongodb').MongoClient;
 
 var activeStatus = false;
@@ -83,7 +90,7 @@ var data = {
             var startDt = req.body.startDt;
             var endDt = req.body.endDt;
 
-            getEventsByRange(startDt, endDt, function(ret) { res.status(200).json(ret); });
+            getEventsByRangeGoogle(startDt, endDt, function(ret) { res.status(200).json(ret); });
         }
         catch(ex){
             response.errorMessage = "[Error]: Error getting events: "+ex;
@@ -207,7 +214,60 @@ module.exports = data;
 
 /* Private Methods */
 /* Get Events By Range */
-function getEventsByRange(startDt, endDt, callback){
+function getEventsByRangeGoogle(startDt, endDt, callback){
+    var response = {"errorMessage":null, "results":null};
+
+    try {
+        var sdt = getDateFormat(startDt);
+        var edt = getDateFormat(endDt);
+
+        if(sdt != null && edt != null){
+            // configure a JWT auth client
+            var jwtClient = new google.auth.JWT(calendarConfig.clientEmail, null, calendarConfig.privateKey, ['https://www.googleapis.com/auth/calendar']);
+            
+            jwtClient.authorize(function (err, tokens) {
+                    if (err) {
+                      console.log(err);
+                      response.error = err;
+                      callback(response);                      
+                    } else {
+                        let calendar = google.calendar({ version: 'v3', auth: jwtClient });
+                        calendar.events.list({ 
+                            auth: jwtClient, 
+                            calendarId: calendarConfig.calendarId,
+                            singleEvents:true, orderBy:'startTime',
+                            timeMin:(new Date(startDt)).toISOString(),
+                            timeMax:(new Date(endDt)).toISOString()
+                        },function (err, res) {
+                            if (err) {
+                                response.error = 'The API returned an error: ' + err;
+                                console.log("Error: ",err);
+                            }
+                            else {
+                                response.results = res.data.items.map(function(event){
+                                    return { 
+                                        title: event.summary, description: event.description,
+                                        organizer: event.organizer, location: event.location, who: event.organizer,
+                                        start_dt: (event.start.dateTime ? event.start.dateTime : event.start.date),
+                                        end_dt: (event.end.dateTime ? event.end.dateTime : event.end.date)
+                                     };
+                                });            
+                            }
+                            callback(response);
+                        });
+                    }
+            });
+        }
+    }
+    catch(ex){
+        console.log("error getting events by range2: ", ex);
+        response.errorMessage = "Error Getting Events Range";
+        callback(response);
+    }    
+}
+
+/* Get Events By Range */
+function getEventsByRangeTeamUp(startDt, endDt, callback){
     var response = {"errorMessage":null, "results":null};
 
     try {

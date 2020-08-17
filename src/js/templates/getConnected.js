@@ -314,12 +314,12 @@ class GetConnected extends Component{
                                         </div>
                                     }
 
-                                    {(this.state.modalevent.who && this.state.modalevent.who.length > 0) &&
+                                    {/*(this.state.modalevent.who && this.state.modalevent.who) &&
                                         <div className="special-line">
                                             <div className="line-icon"><i className="fas fa-user-circle" /></div>
                                             <div className="line-text"><span>{this.state.modalevent.who}</span></div>
                                         </div>
-                                    }
+                                    */}
                                 </div>
                             </div>
                         </Modal>
