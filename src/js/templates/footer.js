@@ -15,6 +15,9 @@ class Footer extends Component{
                     <div className="footer-column">
                         <div className="column-title">About Clinton</div>
                         <p>Our mission is to produce ministries that will serve the CAUSE of Christ through the spiritual transformation of minds, bodies and spirits.</p>
+                        <div className="column-title">Service Times</div>
+                        <p>Sunday School: 8:30am</p>
+                        <p>Sunday Morning Worship: 10:00am</p>
                     </div>
 
                     <div className="footer-column">
@@ -23,11 +26,12 @@ class Footer extends Component{
                         <p><a href="http://www.amez.org/" target="_blank" rel="noopener noreferrer">Inside Zion</a></p>
                         <p><a href="/aboutUs">About Clinton</a></p>
                         <p><a href="/getConnected">Get Connected</a></p>
+                        
                     </div>
 
                     <div className="footer-column">
-                        <div className="column-title">Service Times</div>
-                        <p>Sundays 10:00am</p>
+                        <div className="column-title">More Info</div>
+                        
                     </div>
 
                     <div className="footer-column">

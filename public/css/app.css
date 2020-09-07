@@ -7,7 +7,7 @@
   font-family: 'Eczar';
   font-style: normal;
   font-weight: 400;
-  src: local('Eczar Regular'), local('Eczar-Regular'), url(https://fonts.gstatic.com/s/eczar/v8/BXRlvF3Pi-DLmz0lDOs.ttf) format('truetype');
+  src: local('Eczar Regular'), local('Eczar-Regular'), url(https://fonts.gstatic.com/s/eczar/v9/BXRlvF3Pi-DLmz0lDOs.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Inknut Antiqua';
@@ -25,7 +25,7 @@
   font-family: 'Playfair Display SC';
   font-style: normal;
   font-weight: 400;
-  src: local('Playfair Display SC Regular'), local('PlayfairDisplaySC-Regular'), url(https://fonts.gstatic.com/s/playfairdisplaysc/v9/ke85OhoaMkR6-hSn7kbHVoFf7ZfgMPr_lbkMFQ.ttf) format('truetype');
+  src: local('Playfair Display SC Regular'), local('PlayfairDisplaySC-Regular'), url(https://fonts.gstatic.com/s/playfairdisplaysc/v10/ke85OhoaMkR6-hSn7kbHVoFf7ZfgMPr_lbkMFQ.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Spectral';
@@ -2221,6 +2221,9 @@ button.rbc-input::-moz-focus-inner {
 .ministries .body-section .ministry-lrg-container .ministry-lrg-tag .tag-info {
   flex: 1;
   text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .ministries .body-section .ministry-lrg-container .ministry-lrg-tag .tag-info .tag-title {
   font-size: 1.2rem;

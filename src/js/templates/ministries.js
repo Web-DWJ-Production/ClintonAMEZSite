@@ -127,7 +127,7 @@ class MinistryAll extends Component {
                             <div className="ministry-lrg-container">
                                 {msection.list.map((ministry,j) =>
                                     <Link to={"/ministries/" + ministry.slug} key={j} className="ministry-lrg-tag">
-                                        <div className="tag-img"><img src={this.checklogo(ministry.content.icon)} alt="minstry icon"/></div>
+                                        <div className="tag-img"><img src={this.checklogo(ministry.content.groupimage)} alt="minstry icon"/></div>
                                         <div className="tag-info">
                                             <div className="tag-title">{ministry.content.name}</div>
                                             {ministry.content.smallgroup && <div className="tag-subsection">{ministry.content.smallgroup}</div>}

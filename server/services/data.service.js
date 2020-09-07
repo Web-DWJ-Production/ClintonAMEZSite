@@ -228,7 +228,7 @@ function getEventsByRangeGoogle(startDt, endDt, callback){
             jwtClient.authorize(function (err, tokens) {
                     if (err) {
                       console.log(err);
-                      response.error = err;
+                      response.errorMessage = err;
                       callback(response);                      
                     } else {
                         let calendar = google.calendar({ version: 'v3', auth: jwtClient });
@@ -240,7 +240,7 @@ function getEventsByRangeGoogle(startDt, endDt, callback){
                             timeMax:(new Date(endDt)).toISOString()
                         },function (err, res) {
                             if (err) {
-                                response.error = 'The API returned an error: ' + err;
+                                response.errorMessage = 'The API returned an error: ' + err;
                                 console.log("Error: ",err);
                             }
                             else {
