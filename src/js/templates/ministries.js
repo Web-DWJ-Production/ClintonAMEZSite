@@ -152,8 +152,8 @@ class MinistryInd extends Component {
             siblings: [],
             noData: false,
             imgList:{ 
-                section1:[ministryImg1, ministryImg5, ministryImg6, ministryImg7],
-                section2:[ministryImg2, ministryImg4, ministryImg8, ministryImg11],
+                section1:[ministryImg1, ministryImg5, ministryImg6, ministryImg7, ministryImg8],
+                section2:[ministryImg2, ministryImg4, ministryImg5, ministryImg11],
                 section3:[ministryImg3, ministryImg9, ministryImg10]
             }
         }
@@ -318,7 +318,7 @@ class MinistryInd extends Component {
                             <div className="basic-section flip">
                                 <div className="basic-img"><img src={this.getPhoto(2)} alt="ministry membership img"/></div>
                                 <div className="basic-content">
-                                    <h2 className="font-title1">Membership</h2>
+                                    <h2 className="font-title1">Service Areas</h2>
                                     <div className="membership-container">{this.state.ministryComponent.content.membership}</div>
                                 </div>
                             </div>
