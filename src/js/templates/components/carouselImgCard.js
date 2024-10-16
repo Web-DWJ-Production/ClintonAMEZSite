@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SbEditable from 'storyblok-react'
+// import marked from 'marked'
 
 class CarouselImgCard extends Component{
     constructor(props) {
@@ -7,27 +9,38 @@ class CarouselImgCard extends Component{
         this.state = {}
     }
 
-   
+    body(text) {
+        var rawMarkup = "";
+        try {
+            if(text) {
+                rawMarkup = text; // marked(text);
+            }
+        }
+        catch(ex){
+            console.log("Error getting body Text: ",ex);
+        }
+        return { __html:  rawMarkup};
+    }
 
-    render(){        
+    render(){       
+        var cardItem = (this.props.blok ? this.props.blok : {});
+
         return(
-            <div className="carousel-card img-card"> 
-                <div className="img-card-container">                       
-                    <div className="img-container"><img src={this.props.item.media} className="carousel-card-img" alt="" /></div>
-                    <div className="card-content">
-                        <div className="content-title">{this.props.item.title}</div>
-                        {this.props.item.lines.map((line,i) =>
-                            <div className={'content-line ' + line.size + (line.bold === true ? ' bold': '')} key={i}>{line.text}</div>
-                        )}                        
+            <SbEditable content={cardItem}>
+                <div className="carousel-card img-card"> 
+                    <div className="img-card-container">                       
+                        <div className="img-container"><img src={cardItem.image} className="carousel-card-img" alt="" /></div>
+                        <div className="card-content">
+                            <div className="content-title">{cardItem.title}</div>
+                            <div className='content-line' dangerouslySetInnerHTML={this.body(cardItem.text)}></div>                      
+                        </div>
                     </div>
-                </div>
-            </div>    
+                </div> 
+            </SbEditable>   
         );        
     }
 
-    componentDidMount(){
-        //let self = this;        
-    }
+    componentDidMount(){}
 }
 
 export default CarouselImgCard;

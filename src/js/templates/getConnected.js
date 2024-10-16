@@ -5,10 +5,11 @@ import Modal from 'react-awesome-modal';
 import axios from 'axios';
 
 import backImg from "../../assets/img/siteMedia/group5.jpg";
-import pastorImg from "../../assets/img/siteMedia/pastor-mini.jpg";
+import eventBack from "../../assets/img/siteMedia/Back10-mini.png";
 
 const localizer = Calendar.momentLocalizer(moment);
-var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
+var Month = ["January", "February", "March","April","May","June","July","August","September","October","November","December"];
+var Day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 class GetConnected extends Component{
     constructor(props) {
@@ -20,7 +21,23 @@ class GetConnected extends Component{
             events: []
         }
         this.parseDate = this.parseDate.bind(this);
+        this.compareDates = this.compareDates.bind(this);
     } 
+
+    compareDates(start, end) {
+        var ret = true;
+        try {
+            var tmpSt = this.parseDate(start, "date");
+            var tmpEd = this.parseDate(end, "date");
+
+            ret = (tmpSt === tmpEd);
+        }
+        catch(ex){
+            console.log("Error comparing dates: ", ex);
+        }
+
+        return ret;
+    }
 
     parseDate(stdate, type){
         var ret = null;
@@ -42,7 +59,7 @@ class GetConnected extends Component{
                     + ((date.getHours() +1 > 12) ? " PM" : " AM");
                     break;
                 case "date":
-                    ret = Month[date.getMonth()] + " " + date.getDate() + " ";
+                    ret = Day[date.getDay()]+ ", "+ date.getDate() + " " + Month[date.getMonth()] + " " + date.getFullYear();
                     break;
                 default:
                     ret = null;
@@ -70,7 +87,7 @@ class GetConnected extends Component{
                 </section>
 
                 <section className="body-section prayerCall notched-top">
-                    <div className="prayerCardImg"><img src="/images/prayerCall.jpg" /></div>
+                    <div className="prayerCardImg"><img src="/images/prayerCall.jpg" alt="prayer call flyer"/></div>
                 </section> 
 
                 <section className="body-section biblestudy notched-top c3-mid">
@@ -86,16 +103,54 @@ class GetConnected extends Component{
                             onSelectEvent={event => this.openModal(event)} style={{ height: "100%" }} />
 
                         <Modal visible={this.state.modalvisible}
-                            width="400" height="300" effect="fadeInUp"
+                            width="450" effect="fadeInUp"
                             onClickAway={() => this.closeModal()}>
                             <div className="modalContainer">
-                                <h2>{this.state.modalevent.title}</h2>
+                                <div className="modalHeader">
+                                    <div className="title">Clinton Events</div>
+                                    <div className="modal-close" onClick={() => this.closeModal()}><i className="far fa-times-circle" /></div>
+                                </div> 
+
+                                <div className="event-img"><img src={eventBack} alt="event styled background" /></div>
+                                                                   
                                 <div className="modalBody">
-                                    <p>Date: {this.parseDate(this.state.modalevent.start_dt,"date")}</p>
-                                    <p>Time: {this.parseDate(this.state.modalevent.start_dt,"time")}</p>
-                                    <p>{this.state.modalevent.location}</p>
+                                    <div className="body-line">
+                                        <div className="line-icon"><div className="color-blk"/></div>
+                                        <div className="line-text">
+                                            <span className="title">{this.state.modalevent.title}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="body-line">
+                                        <div className="line-icon"><i className="far fa-calendar-alt" /></div>
+                                        <div className="line-text">
+                                            <span>{this.parseDate(this.state.modalevent.start_dt,"date")}</span>
+                                            {!this.compareDates(this.state.modalevent.start_dt, this.state.modalevent.end_dt) && 
+                                                <span className="subtext">{this.parseDate(this.state.modalevent.end_dt,"date")}</span>
+                                            }
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div className="body-line">
+                                        <div className="line-icon"><i className="far fa-clock" /></div>
+                                        <div className="line-text"><span>{this.parseDate(this.state.modalevent.start_dt,"time")} - {this.parseDate(this.state.modalevent.end_dt,"time")}</span></div>
+                                    </div>
+
+                                    {(this.state.modalevent.location && this.state.modalevent.location.length > 0) &&
+                                        <div className="body-line">
+                                            <div className="line-icon"><i className="fas fa-map-marker-alt" /></div>
+                                            <div className="line-text"><span>{this.state.modalevent.location}</span></div>
+                                        </div>
+                                    }
+
+                                    {(this.state.modalevent.who && this.state.modalevent.who.length > 0) &&
+                                        <div className="special-line">
+                                            <div className="line-icon"><i className="fas fa-user-circle" /></div>
+                                            <div className="line-text"><span>{this.state.modalevent.who}</span></div>
+                                        </div>
+                                    }
                                 </div>
-                                <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
                             </div>
                         </Modal>
                     </div>
@@ -117,7 +172,7 @@ class GetConnected extends Component{
             futureDt.setFullYear(futureDt.getFullYear() + 1);
             var postData = {"startDt": new Date(), "endDt":futureDt};
 
-            axios.post(self.props.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
+            /*axios.post(self.props.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
             .then(function(response) {
                 var retData = response.data.results ? response.data.results : [];
                 var eData = retData.map(function(el) {
@@ -127,7 +182,7 @@ class GetConnected extends Component{
                     return o;
                 });
                 self.setState({ events: eData});
-            });
+            });*/
         }
         catch(ex){
             console.log(" Error loading announcements: ",ex);

@@ -8,18 +8,20 @@ import AliceCarousel from 'react-alice-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
+import SbEditable from 'storyblok-react';
+import StoryblokService from '../utils/storyblok.service';
+
 /* Components */
 import CarouselImgCard from './components/carouselImgCard'
 
 /* Media */
 import amezLogo from "../../assets/img/logos/ame_zion_logo.png";
-import carouselCover from "../../assets/img/siteMedia/ChurchBody.jpg";
+import spacer from "../../assets/img/siteMedia/Back10-mini.png";
+//'../../assets/img/tmpMedia/church2.jpg';
 
-import welcomeVid from '../../assets/img/tmpMedia/tmpVideo.mp4'
-import spacer from '../../assets/img/tmpMedia/church2.jpg';
-
-import pastorImg from "../../assets/img/siteMedia/pastor5.jpg";
 import visitImg from "../../assets/img/siteMedia/group3.jpg";
+
+const stb = new StoryblokService();
 
 var carouselBase = [{type:"cover-title", title:"Welcome To Clinton"}];
 var Month = ["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
@@ -39,6 +41,9 @@ class Home extends Component{
                 600: { items: 2 },
                 1024: { items: 2 }
             },
+            page:{},
+            sliderContent:null,
+            welcomeContent: null,
             carouselData: [],
             ministriesData: [],
             eventsData: []
@@ -50,14 +55,14 @@ class Home extends Component{
         this.loadAnnouncements = this.loadAnnouncements.bind(this);
         this.loadMinistries = this.loadMinistries.bind(this);
         this.loadEvents = this.loadEvents.bind(this);
-    } 
+    }
 
     renderSwitch(item) {
         switch(item.type) {
           case 'cover-title':
             return <div className="carousel-card cover-title"><div className="content-title">{item.title}</div></div>;
           case 'card-img':
-            return <CarouselImgCard item={item}></CarouselImgCard>;
+            return <CarouselImgCard blok={item}></CarouselImgCard>;
           default:
             return <div></div>;
         }
@@ -109,7 +114,7 @@ class Home extends Component{
                         <div className="info-title">{event.title}</div>
                         <div className="info-base">
                             <span>{event.location}</span>
-                            <span>- {this.parseDate(event.start_dt,"time")}</span>
+                            <span>{this.parseDate(event.start_dt,"time")}</span>
                         </div>
                     </div>
                 </div>
@@ -123,46 +128,54 @@ class Home extends Component{
         return(
             <div className="site-page home">
                <section className="main-carousel background3">
-                    <div className="back-cover"><img src={carouselCover} alt="Carousel Cover"/></div>
-                    {this.state.carouselData && this.state.carouselData.length > 0 ? 
-                        <Carousel className="clinton-carousels home-carousel" showIndicators={false} showThumbs={false} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
-                            {this.state.carouselData.map((item, i) => 
-                                <div className="carousel-page" key={i}>
-                                    { this.renderSwitch(item) }
-                                </div>
-                            )}
-                        </Carousel>
-                        : <div className="loader-container"><div className="hm-spinner" /></div>
-                    }
-                    <div className="event-scroller">
-                        <div className="event-title">Upcoming <br/>Events</div>
-                        <div className="events-container">
-                            <AliceCarousel className="event-carousel" items={eventItems}
-                                duration={500} mouseDragEnabled={true} autoPlay={true} dotsDisabled={true}
-                                autoPlayInterval={7000} autoPlayDirection="ltr" responsive={this.state.responsive}
-                                disableAutoPlayOnAction={true} buttonsDisabled={true} ref={ el => this.Carousel = el }/>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Welcome From Our Pastor */}
-                <section className="welcome">
-                    <div className="text-content">
-                        <h1 className="font-title1">Welcome From Our Pastor</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-
-                    <div className="tablet-cover">
-                        <span className="half-tablet content">
-                            <div className="content-area">
-                                <div className="video-container">
-                                    {/*<video className="mini-video" controls><source src={welcomeVid} /></video>*/}
-                                    <img src={pastorImg} alt="pastor img"/>
+                   {/* Landing Slider - [E] */}
+                   {this.state.sliderContent &&
+                        <SbEditable content={this.state.sliderContent}>
+                            <div className="back-cover"><img src={(this.state.sliderContent ? this.state.sliderContent.backCover : amezLogo)} alt="Carousel Cover"/></div>
+                            {this.state.carouselData && this.state.carouselData.length > 0 ? 
+                                <Carousel className="clinton-carousels home-carousel" showIndicators={false} showThumbs={false} showStatus={false} interval={this.state.scrollDuration} infiniteLoop autoPlay>
+                                    {this.state.carouselData.map((item, i) => 
+                                        <div className="carousel-page" key={i}>
+                                            { this.renderSwitch(item) }
+                                        </div>
+                                    )}
+                                </Carousel>
+                                : <div className="loader-container"><div className="hm-spinner" /></div>
+                            }
+                            <div className="event-scroller">
+                                <div className="event-title">Upcoming <br/>Events</div>
+                                <div className="events-container">
+                                    <AliceCarousel className="event-carousel" items={eventItems}
+                                        duration={500} mouseDragEnabled={true} autoPlay={true} dotsDisabled={true}
+                                        autoPlayInterval={7000} autoPlayDirection="ltr" responsive={this.state.responsive}
+                                        disableAutoPlayOnAction={true} buttonsDisabled={true} ref={ el => this.Carousel = el }/>
                                 </div>
                             </div>
-                        </span>
-                    </div>
+                        </SbEditable>
+                    }
                 </section>
+
+                {/* Welcome From Our Pastor - [E] */}
+                { this.state.welcomeContent &&
+                    <section className="welcome">
+                        <SbEditable content={this.state.welcomeContent}>
+                            <div className="text-content">
+                                <h1 className="font-title1">{this.state.welcomeContent.title}</h1>
+                                <p>{this.state.welcomeContent.text}</p>
+                            </div>
+
+                            <div className="tablet-cover">
+                                <span className="half-tablet content">
+                                    <div className="content-area">
+                                        <div className="video-container">
+                                            <img src={ (this.state.welcomeContent.image ? this.state.welcomeContent.image : amezLogo)} alt="home welcome img"/>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                        </SbEditable>
+                    </section>
+                }
 
                 {/* Get Connected */}
                 <section className="getConnected">
@@ -194,9 +207,10 @@ class Home extends Component{
                     <div className="text-content">
                         <h1 className="font-title1">Ministries</h1>
                         <p>We believe in the living word and being an active body of christ, through our ministries we are able to connected and serve those within our community and promote positive change.</p>
-                        <Link to="/ministries" className="ministry-tag all">                                
+                        
+                        {/*<Link to="/ministries" className="ministry-tag all">                                
                             <div className="tag-title">View All Ministries</div>
-                        </Link>
+                        </Link>*/}
                     </div>
                 </section>
 
@@ -207,15 +221,15 @@ class Home extends Component{
                         <div className="item-container">
                             <div className="visit-item">
                                 <h2>Address</h2>
-                                <p>Clinton African Methodist Episcopal Zion Church</p>
-                                <p>223 Elizabeth Avenue</p>
-                                <p>Rockville, MD. 20850</p>
+                                <p className="addr">Clinton African Methodist Episcopal Zion Church</p>
+                                <p className="addr">223 Elizabeth Avenue</p>
+                                <p className="addr">Rockville, MD. 20850</p>
                             </div>
 
                             <div className="visit-item">
                                 <h2>Follow Us</h2>
-                                <p><span className="social-icon"><i className="fab fa-facebook-f fa-fw"/></span> <span>Clinton African Methodist Episcopal Zion Church</span></p>
-                                <p><span className="social-icon"><i className="fab fa-twitter fa-fw"/></span><span>@ClintonAMEZion</span></p>
+                                <p className="social"><div className="social-icon"><i className="fab fa-facebook-f fa-fw"/></div> <div className="txt">Clinton African Methodist Episcopal Zion Church</div></p>
+                                <p className="social"><div className="social-icon"><i className="fab fa-twitter fa-fw"/></div><div className="txt">@ClintonAMEZion</div></p>
                             </div>
                         </div>
                     </div>
@@ -226,10 +240,17 @@ class Home extends Component{
         );        
     }
 
-    componentDidMount(){              
+    componentDidMount(){   
+        var self = this;           
         try {
             window.scrollTo(0, 0);
-            this.loadAnnouncements();
+            stb.initEditor(this);
+            stb.getInitialProps({"query":"home"}, 'cdn/stories/home', function(page){
+                self.setState({page:page}, ()=> {
+                    self.loadAnnouncements();
+                });
+            });
+
             this.loadMinistries();
             this.loadEvents();
         }
@@ -241,16 +262,11 @@ class Home extends Component{
     loadAnnouncements(){
         var self = this;
         try {
-            fetch(self.props.rootPath + "/api/getAnnouncements")
-            .then(function(response) {
-                if (response.status >= 400) {
-                  throw new Error("Bad response from server");
-                }
-                return response.json();
-            })
-            .then(function(data) {
-                var datRet = data.results ? data.results: [];
-                var carouselList = carouselBase.concat(datRet);
+            this.setState({ sliderContent: stb.getContentType("slider", this.state.page), welcomeContent: stb.getContentType("welcome", this.state.page) }, () =>{
+                var itemList = self.state.sliderContent;
+                var tmpList = (itemList && itemList.body ? itemList.body : []);
+                var carouselList = carouselBase.concat(tmpList.map(function(item){ item.type = "card-img"; return item; }));
+                
                 self.setState({ carouselData: carouselList});
             });
         }
@@ -291,8 +307,6 @@ class Home extends Component{
             .then(function(response) {
                 var retData = response.data.results ? response.data.results : [];
                 var eData = retData.slice(0,8);
-                // Add Add Events
-                //eData.push({title:"All Events",type:"all"});
                 self.setState({ eventsData: eData});
             });
         }

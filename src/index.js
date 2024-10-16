@@ -1,5 +1,8 @@
 import React from 'react';
-import App from './js/app.js';
-
 import ReactDOM from 'react-dom';
-ReactDOM.render(<App />, document.getElementById('app'));
+
+import ComingSoon from './js/comingSoon.js';
+//import App from './js/app.js';
+
+//ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<ComingSoon />, document.getElementById('app'));
