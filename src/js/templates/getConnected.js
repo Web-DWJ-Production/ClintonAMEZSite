@@ -172,7 +172,7 @@ class GetConnected extends Component{
             futureDt.setFullYear(futureDt.getFullYear() + 1);
             var postData = {"startDt": new Date(), "endDt":futureDt};
 
-            axios.post(self.props.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
+            /*axios.post(self.props.rootPath + "/api/getEvents", postData, {'Content-Type': 'application/json'})
             .then(function(response) {
                 var retData = response.data.results ? response.data.results : [];
                 var eData = retData.map(function(el) {
@@ -182,7 +182,7 @@ class GetConnected extends Component{
                     return o;
                 });
                 self.setState({ events: eData});
-            });
+            });*/
         }
         catch(ex){
             console.log(" Error loading announcements: ",ex);

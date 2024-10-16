@@ -3,7 +3,6 @@ var util = require('util');
 var request = require('request');
 var Flickr = require("flickrapi");
 
-
 require('dotenv').config();
 var flickrConfig = {
 	token:process.env.FLICKR_TOKEN,
@@ -18,8 +17,7 @@ var database = {
     dbName: process.env.DBNAME,
     mongoOptions: { connectTimeoutMS: 2000, socketTimeoutMS: 2000}
 }
-var mongoClient = require('mongodb').MongoClient;
-
+// var mongoClient = require('mongodb').MongoClient;
 var activeStatus = false;
 
 var apiUrl = {
@@ -42,6 +40,7 @@ var data = {
         var response = {"errorMessage":null, "results":null};
 
         try {
+            /*
             mongoClient.connect(database.remoteUrl, database.mongoOptions, function(err, client){
                 if(err) {
                     response.errorMessage = err;
@@ -69,6 +68,8 @@ var data = {
                     });
                 }
             });
+            */
+            res.status(200).json({"errorMessage":null, "results":[]});
         }
         catch(ex){
             response.errorMessage = "[Error]: Error getting announcements: "+ex;
@@ -252,6 +253,7 @@ function getTree(callback){
     var response = {"errorMessage":null, "results":null};
 
     try {
+        /*
         mongoClient.connect(database.remoteUrl, database.mongoOptions, function(err, client){
             if(err) {
                 response.errorMessage = err;
@@ -268,6 +270,8 @@ function getTree(callback){
                 });
             }
         });
+        */
+        res.status(200).json(response);
     }
     catch(ex){
         response.errorMessage = "Error getting Tree: " + ex;
@@ -280,6 +284,7 @@ function getSpotlightTree(callback){
     var response = {"errorMessage":null, "results":null};
 
     try {
+        /*
         mongoClient.connect(database.remoteUrl, database.mongoOptions, function(err, client){
             if(err) {
                 response.errorMessage = err;
@@ -297,6 +302,8 @@ function getSpotlightTree(callback){
                 });
             }
         });
+        */
+        res.status(200).json(response);
     }
     catch(ex){
         response.errorMessage = "Error getting Tree: " + ex;
@@ -328,6 +335,7 @@ function getIndividual(mId, callback){
 
     try {
         mId = mId.toLowerCase();
+        /*
         mongoClient.connect(database.remoteUrl, database.mongoOptions, function(err, client){
             if(err) {
                 response.errorMessage = err;
@@ -355,6 +363,8 @@ function getIndividual(mId, callback){
                 });
             }
         });
+        */
+        res.status(200).json(response);
     }
     catch(ex){
         response.errorMessage = "Error getting Individuals: " + ex;

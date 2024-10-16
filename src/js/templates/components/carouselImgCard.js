@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SbEditable from 'storyblok-react'
-import marked from 'marked'
+// import marked from 'marked'
 
 class CarouselImgCard extends Component{
     constructor(props) {
@@ -9,14 +9,12 @@ class CarouselImgCard extends Component{
         this.state = {}
     }
 
-    
     body(text) {
         var rawMarkup = "";
         try {
             if(text) {
-                rawMarkup = marked(text);
+                rawMarkup = text; // marked(text);
             }
-        
         }
         catch(ex){
             console.log("Error getting body Text: ",ex);

@@ -7,37 +7,37 @@
   font-family: 'Eczar';
   font-style: normal;
   font-weight: 400;
-  src: local('Eczar Regular'), local('Eczar-Regular'), url(https://fonts.gstatic.com/s/eczar/v8/BXRlvF3Pi-DLmz0lDOs.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/eczar/v22/BXR2vF3Pi-DLmxcpJB-qbNTyTMDXHd6mrjgR.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Inknut Antiqua';
   font-style: normal;
   font-weight: 400;
-  src: local('Inknut Antiqua Regular'), local('InknutAntiqua-Regular'), url(https://fonts.gstatic.com/s/inknutantiqua/v6/Y4GSYax7VC4ot_qNB4nYpBdaKUUE4Jg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/inknutantiqua/v14/Y4GSYax7VC4ot_qNB4nYpBdaKUUE4Jg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lora';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lora/v16/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkqg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/lora/v35/0QI6MX1D_JOuGQbT0gvTJPa787weuxJBkqg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Playfair Display SC';
   font-style: normal;
   font-weight: 400;
-  src: local('Playfair Display SC Regular'), local('PlayfairDisplaySC-Regular'), url(https://fonts.gstatic.com/s/playfairdisplaysc/v9/ke85OhoaMkR6-hSn7kbHVoFf7ZfgMPr_lbkMFQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/playfairdisplaysc/v17/ke85OhoaMkR6-hSn7kbHVoFf7ZfgMPr_lbkMFQ.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Spectral';
   font-style: normal;
   font-weight: 400;
-  src: local('Spectral Regular'), local('Spectral-Regular'), url(https://fonts.gstatic.com/s/spectral/v6/rnCr-xNNww_2s0amA9M5kn0.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/spectral/v13/rnCr-xNNww_2s0amA9M5kn0.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Spectral SC';
   font-style: normal;
   font-weight: 400;
-  src: local('Spectral SC Regular'), local('SpectralSC-Regular'), url(https://fonts.gstatic.com/s/spectralsc/v5/KtkpALCRZonmalTgyPmRfsWl42Q.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/spectralsc/v12/KtkpALCRZonmalTgyPmRfsWl42Q.ttf) format('truetype');
 }
 /* Colors */
 .rbc-btn {
